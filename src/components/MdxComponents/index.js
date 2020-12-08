@@ -13,7 +13,7 @@ import Jargon from './jargon';
 import Layout from './layout';
 import LinkCard from './linkCard';
 import { blockquote, pre, table, list } from '../../styles';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import emoji from '../../utils/emoji';
 
 const idFromHeader = (props) => {

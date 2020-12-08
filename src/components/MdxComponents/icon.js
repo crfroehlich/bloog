@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Icons from 'react-feather';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 
 const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 

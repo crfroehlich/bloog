@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { AlertCircle, AlertOctagon, AlertTriangle } from 'react-feather';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 const skipParagraph = css`
   .paragraph {

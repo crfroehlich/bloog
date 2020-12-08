@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming';
+import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import { light, dark } from '../../theme';
 
 class ThemeProvider extends React.Component {

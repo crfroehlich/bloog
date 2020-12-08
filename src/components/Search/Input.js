@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { shadowAround } from '../../styles';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { Search, Trash } from 'react-feather';
 import useDebounce from '../../utils/useDebounce';
 import config from 'config';

@@ -2,8 +2,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Link } from '../';
-import { css } from '@emotion/core';
-import { useTheme } from 'emotion-theming';
+import { css } from '@emotion/react';
+import { useTheme } from '@emotion/react';
 import { onMobile, onTablet } from '../../styles/responsive';
 
 const logoStyle = (theme) => css`

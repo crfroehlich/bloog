@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { Download } from 'react-feather';
 import emoji from '../../utils/emoji';
 import { decreaseIntensivity } from '../../utils/colors';

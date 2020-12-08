@@ -3,10 +3,10 @@ import OpenedSvg from '../../images/opened';
 import ClosedSvg from '../../images/closed';
 import config from 'config';
 import { Link } from '../';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 import styled from '@emotion/styled';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import emoji from '../../utils/emoji';
 
 // If you want to have a css call based on props, create a function that returns a css call like this

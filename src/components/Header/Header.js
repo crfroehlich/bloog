@@ -6,7 +6,7 @@ import Logo from './logo';
 import Navigation from './navigation';
 import { ButtonIcon, DarkModeSwitch, SearchInput, Sidebar } from '../';
 import { HelpCircle, Menu, Search } from 'react-feather';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import SocialButtons from './social';
 import { Rss } from '../Buttons';
 import { globalHistory } from '@reach/router';

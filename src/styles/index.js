@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { onMobile, onTablet } from './responsive';
 
 export const show = css`

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import colorFn from 'color';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 
 const BadgeWrapper = styled.span`
   padding: 4px 8px;

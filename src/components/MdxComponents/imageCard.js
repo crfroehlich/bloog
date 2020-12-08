@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import Card from './card';
 import { onMobile } from '../../styles/responsive';
 

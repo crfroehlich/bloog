@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Maximize, Minimize } from 'react-feather';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import { ButtonIcon } from '../';
 
 export const FullScreenEnter = styled(({ toggle, ...props }) => {

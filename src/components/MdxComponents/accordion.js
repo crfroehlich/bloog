@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { useTheme } from 'emotion-theming';
+import { useTheme } from '@emotion/react';
 import Collapsible from 'react-collapsible';
 import { ChevronUp, ChevronDown } from 'react-feather';
 import { renderToStaticMarkup } from 'react-dom/server';
