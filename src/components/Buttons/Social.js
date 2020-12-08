@@ -5,7 +5,6 @@ import {
   Facebook as FB,
   GitHub as GH,
   Gitlab as GL,
-  Instagram as IN,
   Linkedin as LI,
   Mail as MA,
   Rss as RS,
@@ -35,7 +34,6 @@ SocialButton.propTypes = {
 export const Facebook = (props) => <SocialButton icon={FB} {...props} />;
 export const Github = (props) => <SocialButton icon={GH} {...props} />;
 export const Gitlab = (props) => <SocialButton icon={GL} {...props} />;
-export const Instagram = (props) => <SocialButton icon={IN} {...props} />;
 export const Linkedin = (props) => <SocialButton icon={LI} {...props} />;
 export const Mail = (props) => <SocialButton icon={MA} {...props} />;
 export const Rss = (props) => <SocialButton icon={RS} {...props} />;

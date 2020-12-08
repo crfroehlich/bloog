@@ -13,11 +13,9 @@ configManager.generate(__dirname + '/.generated.config.js', config);
 const plugins = [
   'gatsby-plugin-loadable-components-ssr',
   'gatsby-plugin-sitemap',
-  'gatsby-plugin-instagram-embed',
   'gatsby-plugin-pinterest',
   'gatsby-plugin-twitter',
   'gatsby-plugin-sharp',
-  'gatsby-plugin-sass',
   {
     resolve: `gatsby-plugin-layout`,
     options: {
@@ -134,7 +132,7 @@ const plugins = [
       config: path.join(__dirname, '.generated.config.js'),
       images: path.join(__dirname, 'src/images'),
       styles: path.join(__dirname, 'src/styles'),
-      css: path.join(__dirname, 'src/styles/main.scss'),
+      css: path.join(__dirname, 'src/styles/main.css'),
     },
   },
   {

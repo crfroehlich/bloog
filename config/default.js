@@ -43,7 +43,6 @@ module.exports = {
     facebook: '',
     github: '',
     gitlab: '',
-    instagram: '',
     linkedin: '',
     mail: '',
     gmail: '',
@@ -61,9 +60,6 @@ module.exports = {
     search: {
       enabled: true,
       indexName: 'docs',
-      algoliaAppId: null,
-      algoliaSearchKey: null,
-      algoliaAdminKey: null,
       excerptSize: 20000,
       engine: 'localsearch',
       placeholder: 'Search',
@@ -96,7 +92,6 @@ module.exports = {
     },
     scrollTop: true,
     showMetadata: true,
-    propagateNetlifyEnv: true,
     pageProgress: {
       enabled: false,
       // includePaths: [],

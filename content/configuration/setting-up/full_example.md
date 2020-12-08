@@ -75,10 +75,10 @@ social:
 
 features:
   darkMode:
-    enabled: true  
+    enabled: true
     default: false
   editOnRepo:
-    location: https://github.com/filipowm/boogi 
+    location: https://github.com/filipowm/boogi
     type: github
     editable: true
   mermaid:
@@ -99,7 +99,6 @@ features:
   previousNext:
     enabled: true
     arrowKeyNavigation: true
-  propagateNetlifyEnv: true
   rss:
     enabled: true
     showIcon: false
@@ -116,7 +115,7 @@ features:
   scrollTop: true
   search:
     enabled: true
-    engine: 'algolia'
+    engine: 'localsearch'
     placeholder: 'Search'
     startComponent: 'input' # icon
     debounceTime: 380

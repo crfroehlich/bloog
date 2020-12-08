@@ -36,7 +36,6 @@ export default (iconBaseProps, socialConfig) => {
   buttons.create(socialConfig.facebook, 'Facebook');
   buttons.create(socialConfig.github, 'Github');
   buttons.create(socialConfig.gitlab, 'Gitlab');
-  buttons.create(socialConfig.instagram, 'Instagram');
   buttons.create(socialConfig.linkedin, 'Linkedin', {
     additionalProps: {
       fill: iconBaseProps.stroke,

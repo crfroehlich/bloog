@@ -96,7 +96,7 @@
 * **toc:** :bug: fix issue with sections creation when headers not start from h1 ([b0c0ba4](https://github.com/filipowm/BooGi/commit/b0c0ba4b85dd427568f60962c8cd91bd1863d641))
 * :bug: fix content images not showing up due to invalid position of components ([33f407b](https://github.com/filipowm/BooGi/commit/33f407b4324a1c14d3c3fd447c0c856759b73b3f))
 * :bug: fix embed images size from 100 to 1050 ([9ad41c6](https://github.com/filipowm/BooGi/commit/9ad41c6ca546c3a17d61d73679c174dc51884019))
-* :bug: fix instagram, twitter and pinterest embeds ([65f1ed1](https://github.com/filipowm/BooGi/commit/65f1ed1fb22143c85c4f26979fa75a83c691d805))
+* :bug: fix twitter and pinterest embeds ([65f1ed1](https://github.com/filipowm/BooGi/commit/65f1ed1fb22143c85c4f26979fa75a83c691d805))
 * :bug: fix scrolling to section from URL anchor ([15c9e77](https://github.com/filipowm/BooGi/commit/15c9e776ad6546f89de5c3d5088d5f72ec56d911))
 * :lipstick: fix content taking expanding to wide in code tags ([7ff0676](https://github.com/filipowm/BooGi/commit/7ff067665180360d74a7b63e22a253dacc7e79ab))
 * :lipstick: fix header buttons positioning ([e5040e2](https://github.com/filipowm/BooGi/commit/e5040e28ffdee10043996e8df8090c2960b4634a))

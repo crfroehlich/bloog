@@ -105,40 +105,6 @@ class EnvReader extends ConfigReader {
   }
 }
 
-class NetlifyEnvReader extends ConfigReader {
-  constructor(allowNetlifyEnvPropagation) {
-    super();
-    this.allowNetlifyEnvPropagation = allowNetlifyEnvPropagation;
-  }
-
-  read() {
-    let result = {};
-    if (this.allowNetlifyEnvPropagation && readEnvOrDefault('NETLIFY', false)) {
-      const context = readEnvOrDefault('CONTEXT');
-      const repositoryUrl = readEnvOrDefault('REPOSITORY_URL');
-      const url = readEnvOrDefault('URL');
-      const deployUrl = context === 'production' ? url : readEnvOrDefault('DEPLOY_PRIME_URL', url);
-      console.log(
-        'Setting up Netlify variables.',
-        'URL:',
-        deployUrl,
-        'Docs Location:',
-        repositoryUrl
-      );
-      result = {
-        metadata: {
-          url: deployUrl,
-        },
-        features: {
-          editOnRepo: {
-            location: repositoryUrl,
-          },
-        },
-      };
-    }
-    return result;
-  }
-}
 
 const read = () => {
   const fileConfig = new FileReader().read();
@@ -147,8 +113,6 @@ const read = () => {
 
   let config = _.merge(def, fileConfig);
   config = _.merge(config, envConfig);
-  const netlifyConfig = new NetlifyEnvReader(config.features.propagateNetlifyEnv).read();
-  config = _.merge(config, netlifyConfig);
   postProcessConfig(config);
   return config;
 };

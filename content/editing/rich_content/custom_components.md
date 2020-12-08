@@ -19,10 +19,10 @@ Simple:
 ```html
 <Layout>
 
-*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis 
+*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis
 luctus mi imperdiet lobortis vitae at urna. Sed posuere lacinia turpis a commodo.
 
-*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis 
+*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis
 luctus mi imperdiet lobortis vitae at urna. Sed posuere lacinia turpis a commodo.
 
 </Layout>
@@ -45,7 +45,7 @@ Here comes some **text**. And some [URL](https://google.com)
 
 <Tip>Layout is nice!</Tip>
 
-*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis 
+*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis
 luctus mi imperdiet lobortis vitae at urna. Sed posuere lacinia turpis a commodo.
 
 </div>
@@ -58,10 +58,10 @@ luctus mi imperdiet lobortis vitae at urna. Sed posuere lacinia turpis a commodo
 
 <Layout>
 
-*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis 
+*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis
 luctus mi imperdiet lobortis vitae at urna. Sed posuere lacinia turpis a commodo.
 
-*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis 
+*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis
 luctus mi imperdiet lobortis vitae at urna. Sed posuere lacinia turpis a commodo.
 
 </Layout>
@@ -82,7 +82,7 @@ Here comes some **text**. And some [URL](https://google.com)
 
 <Tip>Layout is nice!</Tip>
 
-*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis 
+*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis
 luctus mi imperdiet lobortis vitae at urna. Sed posuere lacinia turpis a commodo.
 
 </div>
@@ -98,7 +98,7 @@ You can use other components inside accordion.
 ```html
 <Accordion title="Click here to open">
 
-*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis 
+*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis
 luctus mi imperdiet lobortis vitae at urna. Sed posuere lacinia turpis a commodo.
 
 </Accordion>
@@ -116,10 +116,10 @@ You can change title when collapsible is open by setting `titleWhenOpen` propert
 
 <Accordion title="Click here to open">
 
-*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis 
+*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis
 luctus mi imperdiet lobortis vitae at urna. Sed posuere lacinia turpis a commodo.
 
-</Accordion>  
+</Accordion>
 
 <Accordion title=":thumbsdown: Now is closed" titleWhenOpen=":thumbsup: Now is open" open="true">
 
@@ -176,10 +176,10 @@ Other components can be used inside card.
 
 <Card>
 
-*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis 
+*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis
 luctus mi imperdiet lobortis vitae at urna. Sed posuere lacinia turpis a commodo.
 
-*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis 
+*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis
 luctus mi imperdiet lobortis vitae at urna. Sed posuere lacinia turpis a commodo.
 
 </Card>
@@ -191,10 +191,10 @@ luctus mi imperdiet lobortis vitae at urna. Sed posuere lacinia turpis a commodo
 
 <Card>
 
-*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis 
+*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis
 luctus mi imperdiet lobortis vitae at urna. Sed posuere lacinia turpis a commodo.
 
-*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis 
+*Lorem ipsum* dolor **sit amet**, consectetur adipiscing elit. Aenean lobortis turpis
 luctus mi imperdiet lobortis vitae at urna. Sed posuere lacinia turpis a commodo.
 
 </Card>
@@ -202,7 +202,7 @@ luctus mi imperdiet lobortis vitae at urna. Sed posuere lacinia turpis a commodo
 ## Link Card
 
 Link card can be used to distinguish a link and make it
-stand out from the text. 
+stand out from the text.
 
 **Syntax**
 
@@ -217,7 +217,7 @@ stand out from the text.
 ## File Download Card
 
 Download card can be used to distinguish a download file link and make it
-stand out from the text. 
+stand out from the text.
 
 **Syntax**
 
@@ -231,7 +231,7 @@ stand out from the text.
 
 ## Image Card
 
-Image card can be used to distinguish an image 
+Image card can be used to distinguish an image
 and its description.
 
 **Syntax**
@@ -242,7 +242,7 @@ and its description.
 
 **Example**
 
-<ImageCard src="https://sites.google.com/site/mojeczolo/_/rsrc/1365421980319/nyan-cat/nyan_cat_wallpaper_by_nyakiru-d3e1zfl.png"> 
+<ImageCard src="https://sites.google.com/site/mojeczolo/_/rsrc/1365421980319/nyan-cat/nyan_cat_wallpaper_by_nyakiru-d3e1zfl.png">
 
 Here goes :rocket: some text
 </ImageCard>
@@ -255,7 +255,7 @@ Here goes :rocket: some text
 <Badge>Default Badge</Badge>
 <Badge color="#fe9612">Orange Badge</Badge>
 
-You can also use badge <Badge color="red">Inline Badge</Badge> 
+You can also use badge <Badge color="red">Inline Badge</Badge>
 inline your text.
 ```
 
@@ -264,7 +264,7 @@ inline your text.
 <Badge>Default Badge</Badge>
 <Badge color="#fe9612">Orange Badge</Badge>
 
-You can also use badge <Badge color="red">Inline Badge</Badge> 
+You can also use badge <Badge color="red">Inline Badge</Badge>
 inline your text.
 
 ## Icons
@@ -285,7 +285,7 @@ Reference and available icons can be found [here](https://bit.dev/feathericons/r
 <Icon name="calendar" color="brown"/>
 <Icon name="calendar" color="green"/>
 
-If can use kebab-case <Icon name="phone-call" color="#3487e1"/> 
+If can use kebab-case <Icon name="phone-call" color="#3487e1"/>
 or PascalCase (UpperCamelCase) <Icon name="PhoneCall" color="#34e187"/> for icon name.
 ```
 
@@ -297,30 +297,30 @@ or PascalCase (UpperCamelCase) <Icon name="PhoneCall" color="#34e187"/> for icon
 <Icon name="calendar" color="brown"/>
 <Icon name="calendar" color="green"/>
 
-If can use kebab case <Icon name="phone-call" color="#3487e1"/> 
+If can use kebab case <Icon name="phone-call" color="#3487e1"/>
 or camel case <Icon name="PhoneCall" color="#34e187"/>syntax.
 
 ## Abbreviations
 
-Follow [this guide](/editing/rich_content/abbreviations) to learn about 
+Follow [this guide](/editing/rich_content/abbreviations) to learn about
 abbreviations (jargon).
 
 ## Emoticons
 
-Follow [this guide](/editing/rich_content/emojis) to learn about 
+Follow [this guide](/editing/rich_content/emojis) to learn about
 emojis (emoticons).
 
 ## Diagrams
 
-Follow [this guide](/editing/rich_content/graphs) to learn about 
+Follow [this guide](/editing/rich_content/graphs) to learn about
 diagrams and graphs.
 
 ## Code snippets
 
-Follow [this guide](/editing/rich_content/snippets) to learn about 
+Follow [this guide](/editing/rich_content/snippets) to learn about
 code highlighting and code snippets.
 
 ## Embeds
 
-Follow [this guide](/editing/rich_content/embed) to learn about 
-embedding external services into your page (like Youtube, Twitter, Instagram, Codepen etc..).
+Follow [this guide](/editing/rich_content/embed) to learn about
+embedding external services into your page (like Youtube, Twitter, Codepen etc..).

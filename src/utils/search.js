@@ -1,8 +1,8 @@
 const query = (excerptSize) => `{
-    pages: allMdx(filter: {fields: {draft: {ne: true}}}) {
+    allMdx {
       edges {
         node {
-          objectID: id
+          id
           fields {
             slug
           }
@@ -17,86 +17,34 @@ const query = (excerptSize) => `{
   }`;
 
 const flatten = (arr) =>
-  arr.map(({ node: { frontmatter, fields, ...rest } }) => ({
-    ...frontmatter,
-    ...fields,
-    ...rest,
+  arr.map(({ node: { id, frontmatter: { title, description }, fields: { slug }, excerpt } }) => ({
+    id,
+    title,
+    description,
+    slug,
+    excerpt,
   }));
 
-const transformer = ({ data }) => flatten(data.pages.edges);
+const transformer = ({ data }) => flatten(data.allMdx.edges);
 
-const algolia = (indexName, excerptSize) => {
-  const settings = { attributesToSnippet: [`excerpt:20`] };
-  return [
-    {
-      query: query(excerptSize),
-      transformer: transformer,
-      indexName: indexName,
-      settings,
-    },
-  ];
-};
-
-const localsearch = (excerptSize) => ({
-  query: query(excerptSize),
-  normalizer: transformer,
-  name: 'Boogi',
-  ref: 'objectID',
-  index: ['title', 'description', 'excerpt'],
-  store: ['slug', 'title', 'excerpt'],
-});
-
-const disableLocalSearchPlugin = {
-  resolve: require.resolve(`../../plugins/gatsby-plugin-disable-localsearch`),
-  options: {
-    name: 'Boogi',
-  },
-};
-
-const buildAlgoliaPluginConfig = (searchConfig) => {
-  if (searchConfig.algoliaAppId && searchConfig.algoliaAdminKey) {
-    return [
-      {
-        resolve: `gatsby-plugin-algolia`,
-        options: {
-          appId: searchConfig.algoliaAppId, // algolia application id
-          apiKey: searchConfig.algoliaAdminKey, // algolia admin key to index
-          queries: algolia(searchConfig.indexName, searchConfig.excerptSize),
-          chunkSize: 10000, // default: 1000
-        },
-      },
-      disableLocalSearchPlugin,
-    ];
-  }
-  console.warn('Algolia App ID or Admin Key are not set!');
-  return [disableLocalSearchPlugin];
-};
-
-const buildLocalsearchPluginConfig = (searchConfig) => {
-  const conf = localsearch(searchConfig.excerptSize);
+const buildLocalsearchPluginConfig = () => {
   return [
     {
       resolve: 'gatsby-plugin-local-search',
       options: {
         engine: 'flexsearch',
-        engineOptions: searchConfig.localSearchEngine,
-        ...conf,
+        engineOptions: 'default',
+        query: query(8000),
+        normalizer: transformer,
+        name: 'Boogi',
+        ref: 'id',
+        index: ['title', 'description', 'excerpt', 'slug'],
+        store: ['id', 'slug', 'title', 'description', 'excerpt'],
       },
     },
   ];
 };
 
-module.exports.getSearchPlugins = (searchConfig) => {
-  if (!searchConfig || searchConfig.enabled !== true) {
-    return [disableLocalSearchPlugin];
-  }
-  switch (searchConfig.engine.toLowerCase()) {
-    case 'localsearch':
-      return buildLocalsearchPluginConfig(searchConfig);
-    case 'algolia':
-      return buildAlgoliaPluginConfig(searchConfig);
-    default:
-      console.warn(`Unsupported search engine: ${searchConfig.engine}`);
-  }
-  return [disableLocalSearchPlugin];
+module.exports.getSearchPlugins = () => {
+  return buildLocalsearchPluginConfig();
 };

@@ -9,7 +9,6 @@ import loadable from '@loadable/component';
 import { onMobile } from '../../styles/responsive';
 import { visibleMobile, shadowAround } from '../../styles';
 
-const Algolia = loadable(() => import('./algolia/'))
 const LocalSearch = loadable(() => import('./localsearch/'))
 
 const SearchWrapper = styled.div`
@@ -59,14 +58,7 @@ svg {
 
 const SearchEngine = React.forwardRef((props, ref) => {
   const engine = config.features.search.engine.toLowerCase();
-  switch(engine) {
-    case 'algolia':
-      return <Algolia inputRef={ref} index={config.features.search.indexName} />
-    case 'localsearch':
-      return <LocalSearch inputRef={ref} />
-  }
-  console.warn(`Unsupported search engine: ${engine}`);
-  return null;
+  return <LocalSearch inputRef={ref} />
 });
 
 const Search = React.forwardRef(({ onVisibleChange, closeSelf, ...props }, ref) => {

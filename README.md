@@ -8,8 +8,8 @@
 Create **awesome documentation** or tutorial pages with modern look-and-feel.
 Customize it to your needs, run locally, deploy anywhere.
 
-**Important** Check [boogi-cli](https://github.com/filipowm/boogi-cli) to start 
-quickly, simplify your codebase, easily run locally and build you BooGi-based app. 
+**Important** Check [boogi-cli](https://github.com/filipowm/boogi-cli) to start
+quickly, simplify your codebase, easily run locally and build you BooGi-based app.
 We recommend using `boogi-cli` instead of using `gatsby-cli` directly.
 
 ## Motivation
@@ -26,9 +26,9 @@ for projects and products quickly. It follows docs-as-code principles, where
 you treat your documentation in the same way as your code.
 
 It is a fork of https://github.com/hasura/gatsby-gitbook-starter, however
-it went through total rework and changes. We improve it to provide significantly 
-more features, make look-and-feel more similar to Gitbook, improve stability, 
-performance, make it more configurable and easier to start with. 
+it went through total rework and changes. We improve it to provide significantly
+more features, make look-and-feel more similar to Gitbook, improve stability,
+performance, make it more configurable and easier to start with.
 
 ## 🔥 Features
 
@@ -37,12 +37,10 @@ performance, make it more configurable and easier to start with.
 - GitBook-like style theme, inspired by https://docs.gitbook.com/
 - light / dark mode themes
 - responsive design with mobile / tablet support
-- rich-content and rich-text features like text formatting, graphs and diagrams, 
-  quotes, columnar layout, emojis, highlights, live code editor, 
+- rich-content and rich-text features like text formatting, graphs and diagrams,
+  quotes, columnar layout, emojis, highlights, live code editor,
   syntax highlighting, external code snippets and many many more!
 - draft pages
-- search integration with [Algolia](https://www.algolia.com/)
-- local search (search in a browser without need to integrate with Algolia)
 - Progressive Web App which can work offline
 - integration with Google Analytics
 - full screen mode
@@ -63,7 +61,7 @@ also a live demo.
 
 You need to have `boogi-cli` installed: `npm install -g boogi-cli`.
 
-1. Initialize BooGi project (config wizard will help you to 
+1. Initialize BooGi project (config wizard will help you to
    set it up!) in current directory:
    ```bash
    boogi init
