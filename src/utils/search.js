@@ -27,13 +27,13 @@ const flatten = (arr) =>
 
 const transformer = ({ data }) => flatten(data.allMdx.edges);
 
-const buildLocalsearchPluginConfig = () => {
+const buildLocalsearchPluginConfig = (conf) => {
   return [
     {
       resolve: 'gatsby-plugin-local-search',
       options: {
         engine: 'flexsearch',
-        engineOptions: 'default',
+        engineOptions: conf.localSearchEngine,
         query: query(8000),
         normalizer: transformer,
         name: 'Boogi',
@@ -45,6 +45,6 @@ const buildLocalsearchPluginConfig = () => {
   ];
 };
 
-module.exports.getSearchPlugins = () => {
-  return buildLocalsearchPluginConfig();
+module.exports.getSearchPlugins = (conf) => {
+  return buildLocalsearchPluginConfig(conf);
 };
