@@ -101,7 +101,7 @@ export const table = (theme) => css`
     tr {
       font-weight: bold;
       text-align: left;
-      th:first-child {
+      th:first-of-type {
         border-top-left-radius: 4px;
       }
       th:last-child {
@@ -120,16 +120,16 @@ export const table = (theme) => css`
     margin: 0;
     padding: 0;
 
-    &:nth-child(even) {
+    &:nth-of-type(even) {
       background-color: ${theme.table.evenRow};
     }
 
-    &:nth-child(odd) {
+    &:nth-of-type(odd) {
       background-color: ${theme.table.oddRow};
     }
 
     &:last-child {
-      td:first-child {
+      td:first-of-type {
         border-bottom-left-radius: 4px;
       }
       td:last-child {
@@ -147,8 +147,8 @@ export const table = (theme) => css`
     background-color: ${theme.table.rowHover};
   }
 
-  th :first-child,
-  td :first-child {
+  th :first-of-type,
+  td :first-of-type {
     margin-top: 0;
   }
 
@@ -178,7 +178,7 @@ export const scrollbar = css`
 `;
 
 export const skipParagraph = css`
-  &:first-child {
+  &:first-of-type {
     margin-top: 0;
   }
   &:last-child {
@@ -191,13 +191,13 @@ export const list = css`
     p {
       margin: 8px 0;
     }
-    p:first-child {
+    p:first-of-type {
       margin-top: 0;
     }
     p:last-child {
       margin-bottom: 0;
     }
-    p:nth-child(n + 2):last-child {
+    p:nth-of-type(n + 2):last-child {
       margin-bottom: 10px;
     }
   }

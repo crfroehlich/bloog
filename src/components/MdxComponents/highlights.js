@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 
 const skipParagraph = css`
   .paragraph {
-    &:first-child {
+    &:first-of-type {
       margin-top: 0;
     }
     &:last-child {

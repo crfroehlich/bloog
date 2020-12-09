@@ -7,12 +7,12 @@ const ContentTree = ({ edges, location }) => {
   const [collapsed, setCollapsed] = useState({});
   return (
     <>
-      {treeData.children.map((group) => {
+      {treeData.children.map((group, i) => {
         const key = group.path ? group.path : Math.random().toString(36).substring(2);
         return (
           <ContentTreeGroup
             treeState={{ collapsed: collapsed, setCollapsed: setCollapsed }}
-            key={key}
+            key={`${key}_${i}`}
             location={location}
             {...group}
           />

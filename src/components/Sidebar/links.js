@@ -42,7 +42,7 @@ const Links = ({ links }) => (
   <ul>
     {links.map((link, key) => {
       if (link.link !== '' && link.text !== '') {
-        return <Link key={key} to={link.link} text={link.text} />;
+        return <Link key={`${key}_${link}`} to={link.link} text={link.text} />;
       }
     })}
   </ul>

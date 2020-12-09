@@ -30,7 +30,7 @@ const calculatePage = (results, page) => {
 const search = (query, index, store, page) => {
   const performance = getPerformance();
   const t1 = performance.now();
-  const results = useFlexSearch(query, index, JSON.parse(store));
+  const results = useFlexSearch(query, index, store);
   const maxResults =
     config.features.search.pagination.totalPages * config.features.search.hitsPerPage;
   const nbHits = results.length > maxResults ? maxResults : results.length;
@@ -87,9 +87,9 @@ const LocalSearch = ({ inputRef }) => (
             ) : null}
             <HitsWrapper>
               <ul>
-                {searchResult.hits.map((hit) => (
+                {searchResult.hits.map((hit,i) => (
                   <PageHit
-                    key={hit.slug}
+                    key={`${hit.slug}_${i}`}
                     hit={hit}
                     q={query}
                     maxWords={config.features.search.snippetLength}

@@ -68,9 +68,9 @@ const NestedContentTreeNode = styled(
   ({ className, location, children, setCollapsed, collapsed }) => (
     //<Slide top>
     <ul className={className}>
-      {children.map((item) => (
+      {children.map((item,i) => (
         <ContentTreeNode
-          key={item.url}
+          key={`${item.url}_${i}`}
           setCollapsed={setCollapsed}
           collapsed={collapsed}
           location={location}

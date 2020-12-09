@@ -90,7 +90,7 @@ const Pagination = ({ totalPages, nbPages, currentPage, refine, showPrevious, sh
           const isCurrent = currentPage === page;
 
           return (
-            <li key={index}>
+            <li key={`${index}_${Date.now()}`}>
               <Button refine={refine} page={page} isCurrent={isCurrent}>
                 {page}
               </Button>

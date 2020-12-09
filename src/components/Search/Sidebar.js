@@ -1,13 +1,12 @@
 /* eslint-disable react/display-name */
 import styled from '@emotion/styled';
 import React, { useRef } from 'react';
-import config from 'config';
 import VisibilitySensor from 'react-visibility-sensor';
 import { X } from 'react-feather';
 import loadable from '@loadable/component';
 
 import { onMobile } from '../../styles/responsive';
-import { visibleMobile, shadowAround } from '../../styles';
+import { visibleMobile } from '../../styles';
 
 const LocalSearch = loadable(() => import('./localsearch/'))
 
@@ -36,36 +35,31 @@ const SearchSidebar = styled.div`
   }
 `;
 const CloseSearch = styled.div`
-padding: 14px;
-margin-bottom: 14px;
-width: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
-box-shadow: 0 3px 8px 0 ${(props) => props.theme.colors.shadow};
-border-bottom: 1px solid ${(props) => props.theme.colors.border};
-svg {
-  width: 1.2em;
-}
-&:hover {
-  color: ${(props) => props.theme.colors.hover};
+  padding: 14px;
+  margin-bottom: 14px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 3px 8px 0 ${(props) => props.theme.colors.shadow};
+  border-bottom: 1px solid ${(props) => props.theme.colors.border};
   svg {
-    stroke: ${(props) => props.theme.colors.hover};
+    width: 1.2em;
   }
-}
+  &:hover {
+    color: ${(props) => props.theme.colors.hover};
+    svg {
+      stroke: ${(props) => props.theme.colors.hover};
+    }
+  }
 `;
-
-const SearchEngine = React.forwardRef((props, ref) => {
-  const engine = config.features.search.engine.toLowerCase();
-  return <LocalSearch inputRef={ref} />
-});
 
 const Search = React.forwardRef(({ onVisibleChange, closeSelf, ...props }, ref) => {
   const inputRef = useRef(null);
   const onVisibilityChange = (isVisible) => {
-    if (isVisible && inputRef.current) {
-      inputRef.current.focus();
+    if (isVisible && ref.ref) {
+     // ref.current.focus();
     }
     if (onVisibleChange) {
       onVisibleChange(isVisible);
@@ -78,9 +72,9 @@ const Search = React.forwardRef(({ onVisibleChange, closeSelf, ...props }, ref) 
           <X />
           <span css={{marginLeft: '5px'}}>Close</span>
         </CloseSearch>
-        <VisibilitySensor onChange={onVisibilityChange}>
-          <SearchEngine ref={inputRef} />
-        </VisibilitySensor>
+        
+          <LocalSearch inputRef={ref} />
+        
       </SearchWrapper>
     </SearchSidebar>
   );

@@ -21,7 +21,7 @@ border-radius: 4px;
 
 const Text = styled.p`
 margin-top: 15px;
-& > p:first-child {
+& > p:first-of-type {
     margin-top: 0;
 }
 & > p:last-child {

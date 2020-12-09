@@ -11,7 +11,7 @@ const Navigation = styled(({ className, links }) => {
               const openRule = link.external ? '_blank' : '_self';
               if (link.link !== '' && link.text !== '') {
                 return (
-                  <li key={key}>
+                  <li key={`${key}_${link}`}>
                     <a
                       href={link.link}
                       target={openRule}

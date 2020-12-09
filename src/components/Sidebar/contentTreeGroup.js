@@ -34,9 +34,9 @@ const ContentTreeGroup = styled(({ className, treeState, title, icon, location, 
         </>
       ) : null}
       <ul>
-        {children.map((child) => (
+        {children.map((child,i) => (
           <ContentTreeNode
-            key={child.url}
+            key={`${child.url}_${i}`}
             toggle={toggle}
             collapsed={treeState.collapsed}
             location={location}

@@ -98,7 +98,7 @@ const TocTitle = styled(({ className }) => {
 
 const buildToC = (item, items, maxDepth, depth) => {
   if (item.items) {
-    item.items.forEach((innerItem) => {
+    item.items.forEach((innerItem, i) => {
       if (depth > maxDepth) {
         return;
       }
@@ -107,7 +107,7 @@ const buildToC = (item, items, maxDepth, depth) => {
         : '#';
       const title = emoji.emojify(innerItem.title);
       let listItem = (
-        <ListItem key={items.length} to={`#${itemId}`} level={depth}>
+        <ListItem key={`${items.length}_${i}`} to={`#${itemId}`} level={depth}>
           {title}
         </ListItem>
       );

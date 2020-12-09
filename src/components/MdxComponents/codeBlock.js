@@ -64,7 +64,7 @@ const CodeBlock = ({ children: code, ...props }) => {
               let splitToken;
 
               return (
-                <div {...lineProps} key={line + i}>
+                <div {...lineProps} key={`${line}_${i}`}>
                   {line.map((token, key) => {
                     if (isDiff) {
                       if (
@@ -82,7 +82,7 @@ const CodeBlock = ({ children: code, ...props }) => {
                           };
 
                           return (
-                            <React.Fragment key={token + key}>
+                            <React.Fragment key={`${token}_${key}`}>
                               <span
                                 {...getTokenProps({ token: firstChar, key })}
                                 style={diffStyle}
