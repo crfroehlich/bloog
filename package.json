@@ -104,7 +104,7 @@
     "ts-migrate-plugins": "^0.1.10"
   },
   "resolutions": {
-    "gatsby-react-router-scroll": "3.0.3",
+    "gatsby-react-router-scroll": "3.3.0",
     "lodash": "4.17.20"
   }
 }
