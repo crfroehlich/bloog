@@ -1,7 +1,6 @@
 /* eslint-disable react/display-name */
 import styled from '@emotion/styled';
 import React, { useRef } from 'react';
-import VisibilitySensor from 'react-visibility-sensor';
 import { X } from 'react-feather';
 import loadable from '@loadable/component';
 
@@ -56,15 +55,6 @@ const CloseSearch = styled.div`
 `;
 
 const Search = React.forwardRef(({ onVisibleChange, closeSelf, ...props }, ref) => {
-  const inputRef = useRef(null);
-  const onVisibilityChange = (isVisible) => {
-    if (isVisible && ref.ref) {
-     // ref.current.focus();
-    }
-    if (onVisibleChange) {
-      onVisibleChange(isVisible);
-    }
-  };
   return (
     <SearchSidebar {...props} ref={ref}>
       <SearchWrapper {...props}>
@@ -72,9 +62,7 @@ const Search = React.forwardRef(({ onVisibleChange, closeSelf, ...props }, ref) 
           <X />
           <span css={{marginLeft: '5px'}}>Close</span>
         </CloseSearch>
-        
           <LocalSearch inputRef={ref} />
-        
       </SearchWrapper>
     </SearchSidebar>
   );
