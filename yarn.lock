@@ -16374,7 +16374,7 @@ try-to-catch@^1.0.2:
   resolved "https://registry.yarnpkg.com/try-to-catch/-/try-to-catch-1.1.1.tgz#770162dd13b9a0e55da04db5b7f888956072038a"
   integrity sha512-ikUlS+/BcImLhNYyIgZcEmq4byc31QpC+46/6Jm5ECWkVFhf8SM2Fp/0pMVXPX6vk45SMCwrP4Taxucne8I0VA==
 
-ts-migrate-plugins@^0.1.10:
+ts-migrate-plugins@0.1.10, ts-migrate-plugins@^0.1.10:
   version "0.1.10"
   resolved "https://registry.yarnpkg.com/ts-migrate-plugins/-/ts-migrate-plugins-0.1.10.tgz#504263f663b01f366aa9551f9c05594bcbdc58f4"
   integrity sha512-Tk7dIpSR/fJDNVN2ZemqHAz2jV/6TvD0NgOk5BGuFXkHZQsXz+mRr2LMmxxRHPGtck8Cj9r3hzz6tLhUgyyVBQ==
@@ -16393,7 +16393,7 @@ ts-migrate-server@^0.1.10:
     typescript "4.0.2"
     updatable-log "^0.2.0"
 
-ts-migrate@^0.1.10:
+ts-migrate@0.1.10:
   version "0.1.10"
   resolved "https://registry.yarnpkg.com/ts-migrate/-/ts-migrate-0.1.10.tgz#4267702dea47d4859bfaf410f1088c327212c051"
   integrity sha512-yARvC786gmv+HOw18GIt9PKemVfEINc5hl6Ybrkv/t80w2nxycv1MhQ/NmGNanfuO1xayqiBgoi9TNshzQQm6g==
