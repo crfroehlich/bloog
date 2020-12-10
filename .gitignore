@@ -10,3 +10,10 @@ node_modules
 reduxcache*
 *.log
 .generated.config.js
+
+.yarn/*
+#!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
