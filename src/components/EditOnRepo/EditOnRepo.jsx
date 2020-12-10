@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import styled from '@emotion/styled';
-import { Link } from '../';
+import { Link } from '..';
 import { shadowAround } from '../../styles';
 import { onTablet, onMobile } from '../../styles/responsive';
 

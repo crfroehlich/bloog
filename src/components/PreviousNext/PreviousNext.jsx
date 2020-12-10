@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from '../';
+import { Link } from '..';
 import styled from '@emotion/styled';
 import emoji from '../../utils/emoji';
 import { navigate } from 'gatsby';

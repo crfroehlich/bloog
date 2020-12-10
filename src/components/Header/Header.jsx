@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import config from 'config';
 import Logo from './logo';
 import Navigation from './navigation';
-import { ButtonIcon, DarkModeSwitch, SearchInput, Sidebar } from '../';
+import { ButtonIcon, DarkModeSwitch, SearchInput, Sidebar } from '..';
 import { HelpCircle, Menu, Search } from 'react-feather';
 import { useTheme } from '@emotion/react';
 import SocialButtons from './social';

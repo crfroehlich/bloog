@@ -7,7 +7,7 @@ import loadable from '@loadable/component';
 import { onMobile } from '../../styles/responsive';
 import { visibleMobile } from '../../styles';
 
-const LocalSearch = loadable(() => import('./localsearch/'))
+const LocalSearch = loadable(() => import('./localsearch'))
 
 const SearchWrapper = styled.div`
   display: flex;

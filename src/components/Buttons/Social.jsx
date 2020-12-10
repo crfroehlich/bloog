@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import ButtonIcon from './ButtonIcon';
-import { Link } from '../';
+import { Link } from '..';
 import {
   Facebook as FB,
   GitHub as GH,
