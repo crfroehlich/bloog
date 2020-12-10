@@ -1,15 +1,23 @@
 import React from 'react';
 import styled from '@emotion/styled';
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
 import config from 'config';
+// @ts-expect-error ts-migrate(6142) FIXME: Module './contentTree' was resolved to '/mnt/k/cod... Remove this comment to see the full error message
 import ContentTree from './contentTree';
+// @ts-expect-error ts-migrate(6142) FIXME: Module './links' was resolved to '/mnt/k/code/scra... Remove this comment to see the full error message
 import Links from './links';
+// @ts-expect-error ts-migrate(6142) FIXME: Module './poweredBy' was resolved to '/mnt/k/code/... Remove this comment to see the full error message
 import PoweredBy from './poweredBy';
+// @ts-expect-error ts-migrate(2305) FIXME: Module '"../Navigation"' has no exported member 'g... Remove this comment to see the full error message
 import { getNavigationData } from '../Navigation';
+// @ts-expect-error ts-migrate(6142) FIXME: Module '../../styles' was resolved to '/mnt/k/code... Remove this comment to see the full error message
 import { scrollbar } from '../../styles';
 import { onMobile } from '../../styles/responsive';
 
 const Sidebar = styled.div`
-  margin-left: ${(props) => props.theme.layout.leftMargin};
+  margin-left: ${(props) => props.theme.  
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'layout' does not exist on type 'Theme'.
+layout.leftMargin};
   height: 100%;
   display: flex;
   overflow-y: hidden;
@@ -40,12 +48,19 @@ const PoweredByWrapper = styled.div`
   display: block;
   padding: 0;
   position: relative;
-  box-shadow: 0 -7px 10px -5px ${(props) => props.theme.navigationSidebar.backgroundPrimary};
+  box-shadow: 0 -7px 10px -5px ${(props) => props.theme.  
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'navigationSidebar' does not exist on typ... Remove this comment to see the full error message
+navigationSidebar.backgroundPrimary};
 `;
 
-const NavigationWrapper = styled(({ className, children }) => {
+const NavigationWrapper = styled(({
+  className,
+  children
+}: any) => {
   return (
+    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <aside className={className}>
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <Sidebar>{children}</Sidebar>
     </aside>
   );
@@ -106,11 +121,11 @@ const NavigationWrapper = styled(({ className, children }) => {
   }
 `;
 
-const Divider = styled((props) => (
-  <div {...props}>
-    <hr />
-  </div>
-))`
+// @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+const Divider = styled((props: any) => <div {...props}>
+  {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+  <hr />
+</div>)`
   padding: 0.5rem 0;
   hr {
     margin: 0;
@@ -119,22 +134,35 @@ const Divider = styled((props) => (
     border-bottom: 1px solid ${(props) => props.theme.navigationSidebar.border};
   }
 `;
-const ContentNavigation = ({ show, className, location }) => {
+const ContentNavigation = ({
+  show,
+  className,
+  location
+}: any) => {
   const edges = getNavigationData();
   return (
+    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <NavigationWrapper className={className} show={show}>
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <SidebarMain css={scrollbar}>
+        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
         <ContentTree edges={edges} location={location} />
         {config.sidebar.links && config.sidebar.links.length > 0 ? (
+          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <>
+            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
             <Divider />
+            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
             <Links links={config.sidebar.links} />
           </>
         ) : null}
       </SidebarMain>
       {config.sidebar.poweredBy && config.sidebar.poweredBy.name ? (
+        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <>
+          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
           <PoweredByWrapper>
+            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
             <PoweredBy
               trademark={config.sidebar.poweredBy.trademark}
               name={config.sidebar.poweredBy.name}

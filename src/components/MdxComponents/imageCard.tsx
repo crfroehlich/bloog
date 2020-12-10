@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
+// @ts-expect-error ts-migrate(6142) FIXME: Module './card' was resolved to '/mnt/k/code/scrat... Remove this comment to see the full error message
 import Card from './card';
 import { onMobile } from '../../styles/responsive';
 
@@ -29,13 +30,21 @@ margin-top: 15px;
 }
 `;
 
-export default ({ children, width, height, src}) => {
+export default ({
+  children,
+  width,
+  height,
+  src
+}: any) => {
   const theme = useTheme();
   const imgWidth = width ? width : '50%';
   const imgHeight = width ? width : '50%';
   return (
+      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <ImageCard width={imgWidth} height={imgHeight}>
+        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
         <Image src={src} />
+        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
         <Text>{children}</Text>
       </ImageCard>
   );

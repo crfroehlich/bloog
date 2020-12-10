@@ -1,13 +1,18 @@
 import React from 'react';
 import styled from '@emotion/styled';
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'images/up-arrow.inline.svg' or... Remove this comment to see the full error message
 import Arrow from 'images/up-arrow.inline.svg';
 import { onMobile, onTablet } from '../../styles/responsive';
 
 const scrollToTop = () => window.scrollTo(0, 0);
 
-const ScrollTop = styled(({ className }) => {
+const ScrollTop = styled(({
+  className
+}: any) => {
   return (
+    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <div className={className} onClick={scrollToTop} role={'button'} tabIndex={0}>
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <Arrow />
     </div>
   );

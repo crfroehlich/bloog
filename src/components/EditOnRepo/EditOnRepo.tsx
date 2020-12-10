@@ -1,8 +1,9 @@
 /* eslint-disable no-case-declarations */
-import PropTypes from 'prop-types';
 import React from 'react';
 import styled from '@emotion/styled';
+// @ts-expect-error ts-migrate(2305) FIXME: Module '".."' has no exported member 'Link'.
 import { Link } from '..';
+// @ts-expect-error ts-migrate(6142) FIXME: Module '../../styles' was resolved to '/mnt/k/code... Remove this comment to see the full error message
 import { shadowAround } from '../../styles';
 import { onTablet, onMobile } from '../../styles/responsive';
 
@@ -28,25 +29,46 @@ const Edit = styled('div')`
     align-items: center;
     min-width: 175px;
     outline: none;
-    transition: ${(props) => props.theme.transitions.hover};
-    border: 1px solid ${(props) => props.theme.editOnRepo.border};
+    transition: ${(props) => props.theme.    
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'transitions' does not exist on type 'The... Remove this comment to see the full error message
+transitions.hover};
+    border: 1px solid ${(props) => props.theme.    
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'editOnRepo' does not exist on type 'Them... Remove this comment to see the full error message
+editOnRepo.border};
     border-radius: 4px;
-    color: ${(props) => props.theme.editOnRepo.font.base};
-    background-color: ${(props) => props.theme.editOnRepo.background};
+    color: ${(props) => props.theme.    
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'editOnRepo' does not exist on type 'Them... Remove this comment to see the full error message
+editOnRepo.font.base};
+    background-color: ${(props) => props.theme.    
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'editOnRepo' does not exist on type 'Them... Remove this comment to see the full error message
+editOnRepo.background};
     height: 30px;
     padding: 5px 16px;
     &:hover {
-      background-color: ${(props) => props.theme.editOnRepo.hover};
-      color: ${(props) => props.theme.editOnRepo.font.hover};
+      background-color: ${(props) => props.theme.      
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'editOnRepo' does not exist on type 'Them... Remove this comment to see the full error message
+editOnRepo.hover};
+      color: ${(props) => props.theme.      
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'editOnRepo' does not exist on type 'Them... Remove this comment to see the full error message
+editOnRepo.font.hover};
     }
   }
 `;
 
-const EditButton = styled(({ className, icon, link, text }) => {
+const EditButton = styled(({
+  className,
+  icon,
+  link,
+  text
+}: any) => {
   return (
+    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Edit>
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <Link className={className} to={link} css={shadowAround} target={'_blank'}>
+        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
         <img src={icon} alt={'Git Repository'} loading={'lazy'} /> 
+        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
         <span>{text}</span>
       </Link>
     </Edit>
@@ -73,7 +95,14 @@ const EditButton = styled(({ className, icon, link, text }) => {
 
 const rootDir = 'content';
 
-const EditOnRepo = ({ repoType, branch, location, path }) => {
+type Props = {
+    repoType: string;
+    branch: string;
+    location: string;
+    path: string;
+};
+
+const EditOnRepo = ({ repoType, branch, location, path }: Props) => {
   let icon = null;
   let link = `${location}/${path}`;
   let text = 'Edit on ';
@@ -102,14 +131,8 @@ const EditOnRepo = ({ repoType, branch, location, path }) => {
       console.log(`Repository type ${repoType} is not supported by edit on repo feature`);
       return '';
   }
+  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   return <EditButton icon={icon} link={link} text={text} />;
-};
-
-EditOnRepo.propTypes = {
-  repoType: PropTypes.string.isRequired,
-  branch: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired,
 };
 
 export default EditOnRepo;

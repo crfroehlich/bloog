@@ -1,18 +1,20 @@
 const fs = require('fs');
 
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable '_'.
 const _ = require('lodash');
 const defaults = require('../../config/default');
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'readYamlOr... Remove this comment to see the full error message
 const { readYamlOrJson } = require('./fileUtils');
 const processPwa = require('./config-pwa');
 
-const generate = (path, config) => {
+const generate = (path: any, config: any) => {
   const generated = `module.exports = ${JSON.stringify(config, undefined, 4)};`;
-  fs.writeFile(path, generated, function (err) {
+  fs.writeFile(path, generated, function (err: any) {
     if (err) return console.log(err);
   });
 };
 
-const readEnvOrDefault = (name, def) => {
+const readEnvOrDefault = (name: any, def: any) => {
   let value = process.env[name];
   return value ? value : def ? def : null;
 };
@@ -23,6 +25,7 @@ class ConfigReader {
   }
 }
 
+// @ts-expect-error ts-migrate(2300) FIXME: Duplicate identifier 'FileReader'.
 class FileReader extends ConfigReader {
   getPath() {
     return readEnvOrDefault('CONFIG_PATH', __dirname + '/../../config/config.yml');
@@ -35,15 +38,16 @@ class FileReader extends ConfigReader {
 }
 
 class EnvReader extends ConfigReader {
-  readArray(key) {
+  readArray(key: any) {
     const value = this.readValue(key);
     if (value) {
+      // @ts-expect-error ts-migrate(2339) FIXME: Property 'split' does not exist on type 'string | ... Remove this comment to see the full error message
       return value.split(',').map(String.trim);
     }
     return value;
   }
 
-  readValue(key) {
+  readValue(key: any) {
     if (key in process.env) {
       const value = process.env[key];
       try {
@@ -62,15 +66,15 @@ class EnvReader extends ConfigReader {
     return undefined;
   }
 
-  generatePrefix(prefix, key) {
+  generatePrefix(prefix: any, key: any) {
     const suffix = key
       .split(/(?=[A-Z])/)
-      .map((str) => str.toUpperCase())
+      .map((str: any) => str.toUpperCase())
       .join('_');
     return prefix !== '' ? `${prefix}_${suffix}` : suffix;
   }
 
-  readObject(obj, config, prefix) {
+  readObject(obj: any, config: any, prefix: any) {
     for (let [key, value] of Object.entries(obj)) {
       const newPrefix = this.generatePrefix(prefix, key);
       if (
@@ -98,6 +102,7 @@ class EnvReader extends ConfigReader {
     }
   }
 
+  // @ts-expect-error ts-migrate(2416) FIXME: Property 'read' in type 'EnvReader' is not assigna... Remove this comment to see the full error message
   read() {
     const config = {};
     this.readObject(defaults, config, '');
@@ -107,6 +112,7 @@ class EnvReader extends ConfigReader {
 
 
 const read = () => {
+  // @ts-expect-error ts-migrate(2339) FIXME: Property 'read' does not exist on type 'FileReader... Remove this comment to see the full error message
   const fileConfig = new FileReader().read();
   const envConfig = new EnvReader().read();
   const def = _.cloneDeep(defaults);
@@ -117,12 +123,13 @@ const read = () => {
   return config;
 };
 
-const postProcessConfig = (config) => {
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'postProces... Remove this comment to see the full error message
+const postProcessConfig = (config: any) => {
   if (config.pwa.enabled === true) {
     processPwa(config);
   }
 
-  config.sidebar.groups.sort(function (a, b) {
+  config.sidebar.groups.sort(function (a: any, b: any) {
     // ASC  -> a.length - b.length
     // DESC -> b.length - a.length
     let byOrder = a.order > b.order ? 1 : a.order > b.order ? -1 : 0;

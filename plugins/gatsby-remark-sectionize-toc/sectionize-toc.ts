@@ -5,28 +5,28 @@ const MAX_HEADING_DEPTH = 6;
 
 module.exports = () => transform;
 
-const transform = (tree, maxDepth) => {
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'transform'... Remove this comment to see the full error message
+const transform = (tree: any, maxDepth: any) => {
   const maxTocDepth = maxDepth ? maxDepth : MAX_HEADING_DEPTH;
   const visitFunction = sectionize(maxTocDepth);
   for (let depth = MAX_HEADING_DEPTH; depth > 0; depth--) {
-    visit(tree, (node) => node.type === 'heading' && node.depth === depth, visitFunction);
+    visit(tree, (node: any) => node.type === 'heading' && node.depth === depth, visitFunction);
   }
 };
-const sectionize = (maxTocDepth) => {
+const sectionize = (maxTocDepth: any) => {
   let minDepth = MAX_HEADING_DEPTH;
-  return (node, ancestors) => {
+  return (node: any, ancestors: any) => {
     const start = node;
     const depth = start.depth;
     const parent = ancestors[ancestors.length - 1];
     minDepth = depth < minDepth ? depth : minDepth;
-    const isEnd = (node) =>
-      (node.type === 'heading' && node.depth <= depth) ||
-      // node.depth - (minDepth - 1) was added to fix case, when headers
-      // do not start from h1 or h2 (etc..)
-      (node.type === 'section' &&
-        node.depth > depth &&
-        node.depth - (minDepth - 1) <= maxTocDepth) ||
-      node.type === 'export';
+    const isEnd = (node: any) => (node.type === 'heading' && node.depth <= depth) ||
+    // node.depth - (minDepth - 1) was added to fix case, when headers
+    // do not start from h1 or h2 (etc..)
+    (node.type === 'section' &&
+      node.depth > depth &&
+      node.depth - (minDepth - 1) <= maxTocDepth) ||
+    node.type === 'export';
     const end = findAfter(parent, start, isEnd);
     const startIndex = parent.children.indexOf(start);
     const endIndex = parent.children.indexOf(end);

@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
+// @ts-expect-error ts-migrate(2305) FIXME: Module '".."' has no exported member 'Link'.
 import { Link } from '..';
 import styled from '@emotion/styled';
+// @ts-expect-error ts-migrate(2306) FIXME: File '/mnt/k/code/scratchpads/BooGi/src/utils/emoj... Remove this comment to see the full error message
 import emoji from '../../utils/emoji';
 import { navigate } from 'gatsby';
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
 import config from 'config';
 import { ChevronLeft, ChevronRight } from 'react-feather'
 
+// @ts-expect-error ts-migrate(2305) FIXME: Module '"../Navigation"' has no exported member 'c... Remove this comment to see the full error message
 import { calculateFlatNavigation, getNavigationData } from '../Navigation';
 import { onMobile } from '../../styles/responsive';
 
@@ -25,7 +29,11 @@ const PreviousNextWrapper = styled.div`
   grid-template-columns: calc(50% - 12px) calc(50% - 12px);
 `;
 
-const Arrow = styled(({ className, arrow }) => <div className={className}>{arrow.render({color: ''})}</div>)`
+const Arrow = styled(({
+  className,
+  arrow
+// @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+}: any) => <div className={className}>{arrow.render({color: ''})}</div>)`
   display: block;
   margin: 0;
   flex: 0 0 auto;
@@ -58,7 +66,9 @@ const Label = styled.div`
   display: block;
   margin: 0;
   padding: 0;
-  color: ${(props) => props.theme.previousNext.fontLabel};
+  color: ${(props) => props.theme.  
+// @ts-expect-error ts-migrate(2339) FIXME: Property 'previousNext' does not exist on type 'Th... Remove this comment to see the full error message
+previousNext.fontLabel};
 
   span {
     font-size: 12px;
@@ -67,13 +77,22 @@ const Label = styled.div`
   }
 `;
 
-const ContentWrapper = styled(({ className, label, title }) => {
+const ContentWrapper = styled(({
+  className,
+  label,
+  title
+}: any) => {
   return (
+    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <div className={className}>
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <Label>
+        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
         <span>{label}</span>
       </Label>
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <Title>
+        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
         <span>{emoji.emojify(title)}</span>
       </Title>
     </div>
@@ -88,26 +107,45 @@ const ContentWrapper = styled(({ className, label, title }) => {
   }
 `;
 
-const LeftButton = ({ url, title, label }) => {
+const LeftButton = ({
+  url,
+  title,
+  label
+}: any) => {
   return (
+    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Button url={url}>
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <Arrow arrow={ChevronLeft} />
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <ContentWrapper title={title} label={label} css={{ textAlign: 'right' }} />
     </Button>
   );
 };
 
-const RightButton = ({ url, title, label }) => {
+const RightButton = ({
+  url,
+  title,
+  label
+}: any) => {
   return (
+    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Button url={url}>
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <ContentWrapper title={title} label={label} />
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <Arrow arrow={ChevronRight} />
     </Button>
   );
 };
 
-const Button = styled(({ className, url, children }) => {
+const Button = styled(({
+  className,
+  url,
+  children
+}: any) => {
   return (
+    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <Link to={url ? url : '#'} className={className}>
       {children}
     </Link>
@@ -144,11 +182,11 @@ const Button = styled(({ className, url, children }) => {
   }
 `;
 
-const calculatePreviousNext = (nav, index) => {
+const calculatePreviousNext = (nav: any, index: any) => {
   const nextInfo = {};
   const previousInfo = {};
   let currentIndex = index;
-  const set = (nav, info) => {
+  const set = (nav: any, info: any) => {
     if (nav) {
       info.url = nav.url;
       info.title = nav.title;
@@ -158,11 +196,16 @@ const calculatePreviousNext = (nav, index) => {
   if (currentIndex === undefined) {
     // index
     if (nav[0]) {
+      // @ts-expect-error ts-migrate(2339) FIXME: Property 'url' does not exist on type '{}'.
       nextInfo.url = nav[0].url;
+      // @ts-expect-error ts-migrate(2339) FIXME: Property 'title' does not exist on type '{}'.
       nextInfo.title = nav[0].title;
+      // @ts-expect-error ts-migrate(2339) FIXME: Property 'path' does not exist on type '{}'.
       nextInfo.path = nav[0].groupName;
     }
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'url' does not exist on type '{}'.
     previousInfo.url = null;
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'title' does not exist on type '{}'.
     previousInfo.title = null;
     currentIndex = -1;
   } else {
@@ -174,13 +217,15 @@ const calculatePreviousNext = (nav, index) => {
   return [previousInfo, nextInfo];
 };
 
-const setArrowNavigation = (previous, next) => {
+const setArrowNavigation = (previous: any, next: any) => {
   useEffect(() => {
     document.onkeydown = (e) => {
       e = e || window.event;
+      // @ts-expect-error ts-migrate(2367) FIXME: This condition will always return 'false' since th... Remove this comment to see the full error message
       if (e.keyCode == '37' && previous.url) {
         // left arrow
         navigate(previous.url);
+      // @ts-expect-error ts-migrate(2367) FIXME: This condition will always return 'false' since th... Remove this comment to see the full error message
       } else if (e.keyCode == '39' && next.url) {
         // right arrow
         navigate(next.url);
@@ -189,11 +234,13 @@ const setArrowNavigation = (previous, next) => {
   }, [previous, next]);
 };
 
-const PreviousNext = ({ mdx }) => {
+const PreviousNext = ({
+  mdx
+}: any) => {
   const edges = getNavigationData();
   const navigation = calculateFlatNavigation(edges);
   let currentIndex;
-  navigation.every((el, index) => {
+  navigation.every((el: any, index: any) => {
     if (el && el.url === mdx.fields.slug) {
       currentIndex = index;
       return false;
@@ -205,15 +252,22 @@ const PreviousNext = ({ mdx }) => {
   if (config.features.previousNext.arrowKeyNavigation === true) {
     setArrowNavigation(previous, next);
   }
+  // @ts-expect-error ts-migrate(2339) FIXME: Property 'path' does not exist on type '{}'.
   const previousLabel = `${previous.path ? previous.path + conf.pathDivider : ''} ${
     conf.previousName
   }`;
+  // @ts-expect-error ts-migrate(2339) FIXME: Property 'path' does not exist on type '{}'.
   const nextLabel = `${conf.nextName} ${next.path ? conf.pathDivider + next.path : ''}`;
   return (
+    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <PreviousNextWrapper>
+      {/* @ts-expect-error ts-migrate(2532) FIXME: Object is possibly 'undefined'. */}
       {currentIndex >= 0 ? (
+        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <>
+          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
           <LeftButton url={previous.url} title={previous.title} label={previousLabel} />
+          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
           <RightButton url={next.url} title={next.title} label={nextLabel} />
         </>
       ) : null}
