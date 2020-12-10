@@ -8,7 +8,7 @@ import {
   Sidebar,
   TableOfContents,
   ThemeProvider,
-} from '../';
+} from '..';
 
 import config from 'config';
 import React, { useRef, useEffect, useState } from 'react';

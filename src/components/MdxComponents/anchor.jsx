@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { anchor } from '../../styles';
 import { useTheme } from '@emotion/react';
-import { Link } from '../';
+import { Link } from '..';
 
 const AnchorTag = ({ children: link, ...props }) => {
   if (link) {

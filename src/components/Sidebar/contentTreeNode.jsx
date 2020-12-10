@@ -2,7 +2,7 @@ import React from 'react';
 import OpenedSvg from '../../images/opened';
 import ClosedSvg from '../../images/closed';
 import config from 'config';
-import { Link } from '../';
+import { Link } from '..';
 import { css } from '@emotion/react';
 
 import styled from '@emotion/styled';
