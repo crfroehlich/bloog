@@ -1,8 +1,8 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'readYamlOr... Remove this comment to see the full error message
-const { readYamlOrJson } = require('./fileUtils');
-const jargonData = readYamlOrJson(__dirname + '/../../config/jargon.yml');
+import { readYamlOrJson } from './fileUtils';
 
-const validateProperty = (entry: any, property: any, key: any) => {
+export const jargonData = readYamlOrJson(__dirname + '/../../config/jargon.yml');
+
+export const validateProperty = (entry: any, property: any, key: any) => {
   const value = entry[property];
   if (typeof value === 'undefined' || value === null || value.length === 0) {
     throw "Property '" + property + "' is not defined for jargon entry '" + key + "'!";
@@ -24,5 +24,3 @@ for (const key in jargonData) {
   // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
   jargon[key] = long_description;
 }
-
-module.exports = jargon;

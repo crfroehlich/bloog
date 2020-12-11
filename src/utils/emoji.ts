@@ -1,16 +1,12 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'emoji'.
-const emoji = require('node-emoji');
+import e from 'node-emoji';
 
-const emojify = (text: any) => {
-  return emoji.emojify(text, (name: any) => name);
+export const emojify = (text: any) => {
+  return e.emojify(text, (name: any) => name);
 };
 
-const clean = (text: any) => {
+export const clean = (text: any) => {
   const emojified = emojify(text);
-  return emoji.strip(emojified);
+  return e.strip(emojified);
 };
 
-module.exports = {
-  emojify,
-  clean,
-};
+export const emoji = { clean, emojify };

@@ -1,4 +1,4 @@
-module.exports = {
+export const defaults = {
   metadata: {
     name: 'BooGi',
     short_name: 'BooGi',
@@ -133,3 +133,5 @@ module.exports = {
     }
   },
 };
+
+export default defaults;

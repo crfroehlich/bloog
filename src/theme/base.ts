@@ -1,9 +1,8 @@
 import defaultColors from './colors';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'colo... Remove this comment to see the full error message
 import colorfn from 'color';
 import { increaseIntensivity, decreaseIntensivity, grayscaleCompatible } from '../utils/colors';
 
-const colors = {
+export const colors = {
   ...defaultColors,
 
   primary: defaultColors.red,
@@ -18,20 +17,20 @@ const colors = {
   shadow: defaultColors.gray + '33',
 };
 
-const pageLayout = {
+export const pageLayout = {
   leftWidth: '318px',
   leftMargin: '30px',
   rightWidth: '',
   rightMargin: '',
 };
 
-const transitions = {
+export const transitions = {
   hover: 'all .5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s',
   hoverFast: 'all .3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s',
   hoverColor: 'color .5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s',
 };
 
-const content = (colors: any) => ({
+export const content = (colors: any) => ({
   background: colors.mainBackground,
   border: colors.border,
   font: colors.font,
@@ -44,7 +43,7 @@ const content = (colors: any) => ({
   }
 });
 
-const navigationSidebar = (colors: any) => ({
+export const navigationSidebar = (colors: any) => ({
   backgroundSecondary: colors.background,
   backgroundPrimary: colors.background,
   border: colors.border,
@@ -71,7 +70,7 @@ const navigationSidebar = (colors: any) => ({
   }
 });
 
-const header = (colors: any) => ({
+export const header = (colors: any) => ({
   background: colors.background,
   shadow: colors.shadow,
 
@@ -91,7 +90,7 @@ const header = (colors: any) => ({
   }
 });
 
-const search = (colors: any) => ({
+export const search = (colors: any) => ({
   background: colors.background,
 
   mark: {
@@ -120,7 +119,7 @@ const search = (colors: any) => ({
   }
 });
 
-const editOnRepo = (colors: any) => ({
+export const editOnRepo = (colors: any) => ({
   background: colors.background,
   border: colors.border,
   hover: colors.hover,
@@ -131,14 +130,14 @@ const editOnRepo = (colors: any) => ({
   }
 });
 
-const jargon = (colors: any) => ({
+export const jargon = (colors: any) => ({
   background: colors.background,
   border: colors.border,
   font: colors.font,
   shadow: colors.shadow
 });
 
-const highlights = (colors: any) => ({
+export const highlights = (colors: any) => ({
   warning: {
     border: colors.orange,
     background: colors.orangeLight,
@@ -164,7 +163,7 @@ const highlights = (colors: any) => ({
   }
 });
 
-const table = (colors: any) => ({
+export const table = (colors: any) => ({
   header: {
     background: colors.primary,
     font: increaseIntensivity(colorfn(colors.primary).negate().grayscale(), 0.5),
@@ -176,7 +175,7 @@ const table = (colors: any) => ({
   border: colors.border
 });
 
-const tableOfContents = (colors: any) => ({
+export const tableOfContents = (colors: any) => ({
   background: colors.mainBackground,
 
   font: {
@@ -188,7 +187,7 @@ const tableOfContents = (colors: any) => ({
   border: colors.border
 });
 
-const previousNext = (colors: any) => ({
+export const previousNext = (colors: any) => ({
   background: colors.mainBackground,
   hover: colors.primary,
   font: colors.font,
@@ -197,25 +196,8 @@ const previousNext = (colors: any) => ({
   shadow: colors.shadow
 });
 
-const scrollTop = (colors: any) => ({
+export const scrollTop = (colors: any) => ({
   background: colors.primary,
   hover: increaseIntensivity(colors.primary, 0.15),
   arrow: colorfn(colors.primary).negate().grayscale().lighten(0.4).rgb().string()
 });
-
-export default {
-  colors: colors,
-  layout: pageLayout,
-  transitions: transitions,
-  header: header,
-  search: search,
-  navigationSidebar: navigationSidebar,
-  content: content,
-  editOnRepo: editOnRepo,
-  jargon: jargon,
-  highlights: highlights,
-  table: table,
-  tableOfContents: tableOfContents,
-  previousNext: previousNext,
-  scrollTop: scrollTop,
-};

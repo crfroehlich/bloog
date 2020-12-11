@@ -1,14 +1,9 @@
-import React from 'react';
 import { graphql } from 'gatsby';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'gats... Remove this comment to see the full error message
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import styled from '@emotion/styled';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '$components' or its correspond... Remove this comment to see the full error message
 import { Layout, EditOnRepo, PreviousNext, Seo } from '$components';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
 import config from 'config';
-// @ts-expect-error ts-migrate(2306) FIXME: File '/mnt/k/code/scratchpads/BooGi/src/utils/emoj... Remove this comment to see the full error message
-import emoji from '../utils/emoji';
+import { emoji } from '../utils/emoji';
 import { onMobile, onTablet } from '../styles/responsive';
 
 const Title = styled.h1`
@@ -98,7 +93,7 @@ const ReadingTime = styled(({
   className,
   time
 }: any) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   <span className={className}>Reading time: {time} min</span>
 ))`
   font-style: italic;
@@ -111,18 +106,18 @@ const LastUpdated = styled(({
   name
 }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <span className={className}>
       Last update:{' '}
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <i>
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <b>{time}</b>
       </i>{' '}
       by
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <i>
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <b> {name}</b>
       </i>
     </span>
@@ -160,18 +155,18 @@ export default class MDXRuntimeTest extends React.Component {
     const docTitle = emoji.emojify(mdx.fields.title);
     const headTitle = metaTitle ? metaTitle : emoji.clean(docTitle);
     return (
-      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      
       <Layout {...this.props}>
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <Seo frontmatter={mdx.frontmatter} url={this.props.location.href} title={headTitle} />
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <PageTitle>
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <TitleWrapper>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+            
             <Title>{docTitle}</Title>
             {docsLocation && ((editable && mdx.frontmatter.editable !== false) || mdx.frontmatter.editable === true) ? (
-              // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              
               <EditOnRepo
                 location={docsLocation}
                 branch={gitBranch.name}
@@ -184,10 +179,10 @@ export default class MDXRuntimeTest extends React.Component {
           </TitleWrapper>
           {(config.features.showMetadata === true && mdx.frontmatter.showMetadata !== false) ||
           mdx.frontmatter.showMetadata === true ? (
-            // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            
             <div css={{ display: 'block' }}>
               {mdx.parent.fields ? (
-                // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                
                 <LastUpdated
                   time={mdx.parent.fields.gitLogLatestDate}
                   name={mdx.parent.fields.gitLogLatestAuthorName}
@@ -196,24 +191,24 @@ export default class MDXRuntimeTest extends React.Component {
               ) : (
                 ''
               )}
-              {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+              
               <ReadingTime time={mdx.timeToRead * 2} />
             </div>
           ) : (
             ''
           )}
         </PageTitle>
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <ContentWrapper>
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </ContentWrapper>
         {(config.features.previousNext.enabled === true &&
           mdx.frontmatter.showPreviousNext !== false) ||
         mdx.frontmatter.showPreviousNext ? (
-          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          
           <div css={{ padding: '30px 0' }}>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+            
             <PreviousNext mdx={mdx} />
           </div>
         ) : (

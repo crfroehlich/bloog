@@ -19,7 +19,7 @@ import { StaticQuery, graphql } from 'gatsby';
 
 const Results = ({
   q
-// @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+
 }: any) => <SearchStatus noHits={true} searching={false} query={q} />;
 
 const getPerformance = () => {
@@ -61,7 +61,7 @@ const search = (query: any, index: any, store: any, page: any) => {
 const LocalSearch = ({
   inputRef
 }: any) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   <StaticQuery
     query={graphql`
       query {
@@ -82,34 +82,34 @@ const LocalSearch = ({
       const searchResult = search(query, index, store, page);
       // @ts-expect-error ts-migrate(2531) FIXME: Object is possibly 'null'.
       const showResults = query && query.length > 1 && focus;
-      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      
       return <>
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <Input
           refine={(value: any) => setQuery(value)}
           inputRef={inputRef}
           onFocus={() => setFocus(true)}
           {...{ focus }}
         />
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <div style={{ flex: '1' }}>
           {showResults && config.features.search.showStats ? (
-            // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            
             <Stats
               nbHits={searchResult.nbHits}
               processingTimeMS={searchResult.processingTimeMS}
             />
           ) : null}
           {showResults && searchResult && searchResult.hits.length === 0 ? (
-            // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            
             <Results q={query} />
           ) : null}
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <HitsWrapper>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+            
             <ul>
               {searchResult.hits.map((hit: any,i: any) => (
-                // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                
                 <PageHit
                   key={`${hit.slug}_${i}`}
                   hit={hit}
@@ -123,7 +123,7 @@ const LocalSearch = ({
         {showResults &&
         searchResult.hits.length > 0 &&
         config.features.search.pagination.enabled ? (
-          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          
           <Pagination
             totalPages={config.features.search.pagination.totalPages}
             showPrevious={config.features.search.pagination.showPrevious}

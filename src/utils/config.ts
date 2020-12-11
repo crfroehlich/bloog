@@ -1,13 +1,10 @@
-const fs = require('fs');
+import fs from 'fs';
+import * as _ from 'lodash';
+import defaults from '../../config/default';
+import { readYamlOrJson } from './fileUtils';
+import { postProcessConfig as processPwa } from './config-pwa';
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable '_'.
-const _ = require('lodash');
-const defaults = require('../../config/default');
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'readYamlOr... Remove this comment to see the full error message
-const { readYamlOrJson } = require('./fileUtils');
-const processPwa = require('./config-pwa');
-
-const generate = (path: any, config: any) => {
+export const generate = (path: any, config: any) => {
   const generated = `module.exports = ${JSON.stringify(config, undefined, 4)};`;
   fs.writeFile(path, generated, function (err: any) {
     if (err) return console.log(err);
@@ -25,7 +22,6 @@ class ConfigReader {
   }
 }
 
-// @ts-expect-error ts-migrate(2300) FIXME: Duplicate identifier 'FileReader'.
 class FileReader extends ConfigReader {
   getPath() {
     return readEnvOrDefault('CONFIG_PATH', __dirname + '/../../config/config.yml');
@@ -111,8 +107,7 @@ class EnvReader extends ConfigReader {
 }
 
 
-const read = () => {
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'read' does not exist on type 'FileReader... Remove this comment to see the full error message
+export const read = () => {
   const fileConfig = new FileReader().read();
   const envConfig = new EnvReader().read();
   const def = _.cloneDeep(defaults);
@@ -123,7 +118,6 @@ const read = () => {
   return config;
 };
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'postProces... Remove this comment to see the full error message
 const postProcessConfig = (config: any) => {
   if (config.pwa.enabled === true) {
     processPwa(config);
@@ -136,5 +130,3 @@ const postProcessConfig = (config: any) => {
     return byOrder === 0 ? b.path.length - a.path.length : byOrder;
   });
 };
-
-module.exports = { read, generate };

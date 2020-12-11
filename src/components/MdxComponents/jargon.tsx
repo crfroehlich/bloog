@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -83,7 +82,7 @@ const Jargon = ({
 }: any) => {
   const theme = useTheme();
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <JargonWrapper theme={theme} {...props}>
       {children}
     </JargonWrapper>

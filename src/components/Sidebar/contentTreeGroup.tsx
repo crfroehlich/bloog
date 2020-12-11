@@ -1,13 +1,10 @@
-import React from 'react';
-// @ts-expect-error ts-migrate(6142) FIXME: Module './contentTreeNode' was resolved to '/mnt/k... Remove this comment to see the full error message
-import ContentTreeNode from './contentTreeNode';
+import { ContentTreeNode } from '..';
 // @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
 import config from 'config';
 import styled from '@emotion/styled';
-// @ts-expect-error ts-migrate(2306) FIXME: File '/mnt/k/code/scratchpads/BooGi/src/utils/emoj... Remove this comment to see the full error message
-import emoji from '../../utils/emoji';
+import { emoji } from '..';
 
-const ContentTreeGroup = styled(({
+export const ContentTreeGroup = styled(({
   className,
   treeState,
   title,
@@ -35,23 +32,23 @@ const ContentTreeGroup = styled(({
   const emojified = emoji.emojify(title);
   return (
     // {...item}
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <div className={className}>
       {title ? (
-        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        
         <>
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <span>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+            
             {icon ? <img src={icon} alt={`group ${emojified}`} loading={'lazy'} /> : null}{' '}
             {emojified}
           </span>
         </>
       ) : null}
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <ul>
         {children.map((child: any,i: any) => (
-          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          
           <ContentTreeNode
             key={`${child.url}_${i}`}
             toggle={toggle}

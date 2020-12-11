@@ -48,6 +48,4 @@ const buildLocalsearchPluginConfig = (conf: any) => {
   ];
 };
 
-module.exports.getSearchPlugins = (conf: any) => {
-  return buildLocalsearchPluginConfig(conf);
-};
+export const getSearchPlugins = (conf: any) => buildLocalsearchPluginConfig(conf);

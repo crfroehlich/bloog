@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../../styles' was resolved to '/mnt/k/code... Remove this comment to see the full error message
-import { shadowAround } from '../../styles';
 import { useTheme } from '@emotion/react';
 import { Search, Trash } from 'react-feather';
-import useDebounce from '../../utils/useDebounce';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
 import config from 'config';
-// @ts-expect-error ts-migrate(6142) FIXME: Module './styles' was resolved to '/mnt/k/code/scr... Remove this comment to see the full error message
-import { marginLeftRight } from './styles';
-import { onMobile } from '../../styles/responsive';
+import { onMobile, IComponentTheme, useDebounce, shadowAround } from '..';
 
 const SearchIcon = styled(Search)`
   width: 1.2em;
@@ -18,9 +12,9 @@ const SearchIcon = styled(Search)`
 `;
 
 const CleanSearch = styled(({ ...props }) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   <div {...props} role={'button'} aria-label="clean search">
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    
     <Trash />
   </div>
 ))`
@@ -31,9 +25,7 @@ const CleanSearch = styled(({ ...props }) => (
   }
   &:hover {
     svg {
-      stroke: ${(props) => props.theme.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.primary};
+      stroke: ${(props: IComponentTheme) => props.theme.colors.primary};
     }
   }
 `;
@@ -116,9 +108,9 @@ const SidebarSearchInput = ({
   showClean,
   ...props
 }: any) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   <SidebarSearchInputWrapper>
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    
     <SearchInput search={search} inputRef={inputRef} showClean={showClean} {...props} />
   </SidebarSearchInputWrapper>
 );
@@ -150,11 +142,11 @@ const SearchInput = ({
   };
 
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <Form css={shadowAround(theme)} onSubmit={preventSubmit} style={style} >
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <SearchIcon />
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <Input
         ref={inputRef}
         className={'searchInput '}
@@ -169,7 +161,7 @@ const SearchInput = ({
         }}
         {...props}
       />
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       {showClean ? <CleanSearch onClick={clean} /> : ''}
     </Form>
   );

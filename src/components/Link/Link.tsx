@@ -1,13 +1,11 @@
-import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 import isAbsoluteUrl from 'is-absolute-url';
 
-const Link = ({
+export const Link = ({
   to,
   ...props
 }: any) =>
   isAbsoluteUrl(to) ? (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <a
       href={to}
       {...props}
@@ -17,7 +15,6 @@ const Link = ({
       {props.children}
     </a>
   ) : (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <GatsbyLink to={to} {...props} />
   );
 

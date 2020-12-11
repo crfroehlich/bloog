@@ -90,6 +90,12 @@
     "lint": "eslint --fix \"**/*.{js,jsx}\""
   },
   "devDependencies": {
+    "@types/color": "^3.0.1",
+    "@types/js-yaml": "^3.12.5",
+    "@types/loadable__component": "^5.13.1",
+    "@types/node-emoji": "^1.8.1",
+    "@types/react": "^17.0.0",
+    "@types/react-helmet": "^6.1.0",
     "babel-eslint": "10.1.0",
     "eslint": "7.15.0",
     "eslint-config-prettier": "7.0.0",

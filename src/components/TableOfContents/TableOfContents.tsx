@@ -1,24 +1,14 @@
-import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
 import { AlignRight } from 'react-feather';
 // @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
 import config from 'config';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'reac... Remove this comment to see the full error message
 import Scrollspy from 'react-scrollspy';
-import { sleep } from '../../utils/utils';
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../../styles' was resolved to '/mnt/k/code... Remove this comment to see the full error message
-import { scrollbar } from '../../styles';
-// @ts-expect-error ts-migrate(2306) FIXME: File '/mnt/k/code/scratchpads/BooGi/src/utils/emoj... Remove this comment to see the full error message
-import emoji from '../../utils/emoji';
+import { sleep, scrollbar, emoji, IComponentTheme } from '..';
 
 const Sidebar = styled.aside`
-  background-color: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'tableOfContents' does not exist on type ... Remove this comment to see the full error message
-tableOfContents.background};
-  display: ${(props) => props.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'show' does not exist on type '{ theme?: ... Remove this comment to see the full error message
-show ? 'block' : 'none'};
+  background-color: ${(props: IComponentTheme) => props.theme?.tableOfContents?.background};
+  display: ${(props: IComponentTheme) => props.show ? 'block' : 'none'};
   min-width: 260px;
   height: 100vh;
   overflow: auto;
@@ -38,39 +28,25 @@ show ? 'block' : 'none'};
       font-weight: 500;
       line-height: 1.5;
       padding: 5px 24px 5px 16px;
-      color: ${(props) => props.theme.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'tableOfContents' does not exist on type ... Remove this comment to see the full error message
-tableOfContents.font.base};
+      color: ${(props: IComponentTheme) => props.theme?.tableOfContents?.font?.base};
       text-decoration: none;
       display: block;
       position: relative;
-      border-left: 1px solid ${(props) => props.theme.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'tableOfContents' does not exist on type ... Remove this comment to see the full error message
-tableOfContents.border};
-      transition: ${(props) => props.theme.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'transitions' does not exist on type 'The... Remove this comment to see the full error message
-transitions.hover};
+      border-left: 1px solid ${(props: IComponentTheme) => props.theme?.tableOfContents?.border};
+      transition: ${(props: IComponentTheme) => props.theme?.transitions?.hover};
     }
 
     &:hover {
       a {
-        border-left-color: ${(props) => props.theme.        
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'tableOfContents' does not exist on type ... Remove this comment to see the full error message
-tableOfContents.font.hover};
-        color: ${(props) => props.theme.        
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'tableOfContents' does not exist on type ... Remove this comment to see the full error message
-tableOfContents.font.hover} !important;
+        border-left-color: ${(props: IComponentTheme) => props.theme?.tableOfContents?.font?.hover};
+        color: ${(props: IComponentTheme) => props.theme?.tableOfContents?.font?.hover} !important;
       }
     }
   }
   .currentItem {
     a {
-      border-left: 2px solid ${(props) => props.theme.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'tableOfContents' does not exist on type ... Remove this comment to see the full error message
-tableOfContents.font.current} !important;
-      color: ${(props) => props.theme.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'tableOfContents' does not exist on type ... Remove this comment to see the full error message
-tableOfContents.font.current} !important;
+      border-left: 2px solid ${(props: IComponentTheme) => props.theme?.tableOfContents?.font?.current} !important;
+      color: ${(props: IComponentTheme) => props.theme?.tableOfContents?.font?.current} !important;
     }
   }
 `;
@@ -84,9 +60,7 @@ const ListItem = styled(({
   ...props
 }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <li className={className}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <a href={props.to} {...props}>
         {children}
       </a>
@@ -95,7 +69,7 @@ const ListItem = styled(({
 })`
   a {
     font-weight: ${({ level }) => (level === 0 ? 700 : 400)};
-    padding-left: ${(props) => (props.level || 0) * 0.85}rem !important;
+    padding-left: ${(props: IComponentTheme) => (props.level || 0) * 0.85}rem !important;
     svg {
       float: right;
       margin-right: 1rem;
@@ -107,9 +81,7 @@ const TocTitle = styled(({
   className
 }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <span className={className}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <AlignRight size={15} />
       Contents
     </span>
@@ -121,8 +93,8 @@ const TocTitle = styled(({
   text-transform: uppercase;
   letter-spacing: 1.2px;
   padding: 7px 24px 7px 16px;
-  border-left: 1px solid ${(props) => props.theme.tableOfContents.border};
-  color: ${(props) => props.theme.tableOfContents.font.base};
+  border-left: 1px solid ${(props: IComponentTheme) => props.theme?.tableOfContents?.border};
+  color: ${(props: IComponentTheme) => props.theme?.tableOfContents?.font?.base};
   display: flex;
   align-items: center;
   svg {
@@ -141,7 +113,7 @@ const buildToC = (item: any, items: any, maxDepth: any, depth: any) => {
         : '#';
       const title = emoji.emojify(innerItem.title);
       let listItem = (
-        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        
         <ListItem key={`${items.length}_${i}`} to={`#${itemId}`} level={depth}>
           {title}
         </ListItem>
@@ -193,12 +165,11 @@ const tocItemsEqual = (items: any, targetItems: any) => {
   return true;
 };
 
-const TableOfContents = ({
+export const TableOfContents = ({
   show,
   className,
   location
 }: any) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   <StaticQuery
     query={graphql`
       query {
@@ -226,7 +197,7 @@ const TableOfContents = ({
         let ids = finalNavItems.map((item) => {
           return item.props.to.substr(1);
         });
-        const scrollspyRef = React.createRef();
+        const scrollspyRef = createRef();
         const refresh = () => {
           // This function is a workaround for a problem when scrollspy items get updated.
           // In such case props are updated properly, but state is kept stale causing
@@ -234,12 +205,11 @@ const TableOfContents = ({
           // trigger scrollspy reinitialization when its props change.
           if (
             scrollspyRef.current &&
-            // @ts-expect-error ts-migrate(2571) FIXME: Object is of type 'unknown'.
+            
             !tocItemsEqual(scrollspyRef.current.props.items, scrollspyRef.current.state.targetItems)
           ) {
             sleep(200).then(() => {
               if (scrollspyRef.current) {
-                // @ts-expect-error ts-migrate(2571) FIXME: Object is of type 'unknown'.
                 scrollspyRef.current._initFromProps();
               } else {
                 refresh();
@@ -248,11 +218,8 @@ const TableOfContents = ({
           }
         };
         return (
-          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <Sidebar show={show} className={className} css={scrollbar}>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
             <TocTitle>Contents</TocTitle>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
             <Scrollspy
               ref={scrollspyRef}
               onUpdate={refresh}

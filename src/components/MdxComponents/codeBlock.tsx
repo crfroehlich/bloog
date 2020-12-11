@@ -31,15 +31,15 @@ const LoadableComponent = Loadable({
 // @ts-expect-error ts-migrate(7031) FIXME: Binding element 'code' implicitly has an 'any' typ... Remove this comment to see the full error message
 const CodeBlock = ({ children: code, ...props }) => {
   if (props['react-live']) {
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     return <LoadableComponent code={code} />;
   } else {
     const lang = props.className ? props.className.split('-')[1] : null;
     return (
-      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      
       <Highlight {...defaultProps} code={code} language={lang ? lang : 'javascript'} theme={theme}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          
           <pre className={className + ' pre'} style={style} p={3}>
             {cleanTokens(tokens).map((line: any, i: any) => {
               let lineClass = {};
@@ -71,7 +71,7 @@ const CodeBlock = ({ children: code, ...props }) => {
               let splitToken;
 
               return (
-                // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                
                 <div {...lineProps} key={`${line}_${i}`}>
                   {line.map((token: any, key: any) => {
                     if (isDiff) {
@@ -91,25 +91,25 @@ const CodeBlock = ({ children: code, ...props }) => {
                           };
 
                           return (
-                            // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                            
                             <React.Fragment key={`${token}_${key}`}>
-                              {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+                              
                               <span
                                 {...getTokenProps({ token: firstChar, key })}
                                 // @ts-expect-error ts-migrate(2322) FIXME: Type '{ userSelect: string; MozUserSelect: string;... Remove this comment to see the full error message
                                 style={diffStyle}
                               />
-                              {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+                              
                               <span {...getTokenProps({ token: splitToken, key })} />
                             </React.Fragment>
                           );
                         } else {
-                          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                          
                           return <span {...getTokenProps({ token, key })} style={diffStyle} />;
                         }
                       }
                     }
-                    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                    
                     return <span {...getTokenProps({ token, key })} />;
                   })}
                 </div>

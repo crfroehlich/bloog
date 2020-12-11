@@ -1,18 +1,11 @@
-import React from 'react';
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../../images/opened' was resolved to '/mnt... Remove this comment to see the full error message
 import OpenedSvg from '../../images/opened';
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../../images/closed' was resolved to '/mnt... Remove this comment to see the full error message
 import ClosedSvg from '../../images/closed';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
 import config from 'config';
-// @ts-expect-error ts-migrate(2305) FIXME: Module '".."' has no exported member 'Link'.
-import { Link } from '..';
+import { Link, emoji } from '..';
 import { css } from '@emotion/react';
 
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
-// @ts-expect-error ts-migrate(2306) FIXME: File '/mnt/k/code/scratchpads/BooGi/src/utils/emoj... Remove this comment to see the full error message
-import emoji from '../../utils/emoji';
 
 // If you want to have a css call based on props, create a function that returns a css call like this
 // let dynamicStyle = (props) => css`color: ${props.color}`
@@ -35,7 +28,7 @@ const ContentLink = styled(({
   link,
   children
 }: any) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   <Link to={link} className={className}>
     {children}
   </Link>
@@ -55,9 +48,7 @@ const NodeContent = styled(({
   link,
   children
 }: any) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   <li className={className}>
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
     {text && <ContentLink link={link}>{text}</ContentLink>}
     {children}
   </li>
@@ -90,10 +81,8 @@ const NestedContentTreeNode = styled(
     collapsed
   }: any) => (
     //<Slide top>
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <ul className={className}>
       {children.map((item: any,i: any) => (
-        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <ContentTreeNode
           key={`${item.url}_${i}`}
           setCollapsed={setCollapsed}
@@ -122,9 +111,7 @@ const NodeCollapseButton = styled(({
   collapse
 }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <button onClick={collapse} aria-label="collapse" className={className}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       {!isCollapsed ? <OpenedSvg /> : <ClosedSvg />}
     </button>
   );
@@ -145,7 +132,7 @@ const NodeCollapseButton = styled(({
   }
 `;
 
-const ContentTreeNode = ({
+export const ContentTreeNode = ({
   className,
   toggle,
   collapsed,
@@ -167,9 +154,7 @@ const ContentTreeNode = ({
   let isCollapsed = collapsed[url];
   const text = emoji.emojify(title);
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <NodeContent
         text={text}
         link={url}
@@ -177,16 +162,13 @@ const ContentTreeNode = ({
         css={active ? activeNode(theme) : ''}
       >
         {title && hasChildren ? (
-          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
           <>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
             <NodeCollapseButton isCollapsed={isCollapsed} collapse={collapse} />
           </>
         ) : null}
       </NodeContent>
 
       {!isCollapsed ? (
-        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
         <NestedContentTreeNode collapsed={collapsed} location={location} setCollapsed={toggle}>
           {children}
         </NestedContentTreeNode>

@@ -1,4 +1,3 @@
-import React from 'react';
 // @ts-expect-error ts-migrate(6142) FIXME: Module '../Hits' was resolved to '/mnt/k/code/scra... Remove this comment to see the full error message
 import { Hit } from '../Hits';
 // @ts-expect-error ts-migrate(2306) FIXME: File '/mnt/k/code/scratchpads/BooGi/src/utils/emoj... Remove this comment to see the full error message
@@ -41,13 +40,13 @@ const highlight = (query: any, text: any, maxWords: any) => {
   let afterText = text.substring(startPos + qLength);
   afterText = trim_words(afterText, boundary);
   afterText = emoji.emojify(afterText);
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   return <>
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    
     <span>{beforeText}</span>
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    
     <Highlight>{emoji.emojify(query)}</Highlight>
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    
     <span>{afterText}</span>
   </>
 }
@@ -58,9 +57,9 @@ export const PageHit = ({
   maxWords
 }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <li>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <Hit
         slug={hit.slug}
         title={emoji.emojify(hit.title)}

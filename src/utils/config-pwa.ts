@@ -7,9 +7,9 @@ const calculateValue = (value: any, fallbackValue: any) => {
 };
 
 const calculateIconLocalPath = (icon: any) => {
-  if (icon && icon.startsWith('/assets/')) {
+  if (icon?.startsWith('/assets/')) {
     return `static${icon}`;
-  } else if (icon && icon.startsWith('assets/')) {
+  } else if (icon?.startsWith('assets/')) {
     return `static/${icon}`;
   }
   return icon;
@@ -40,8 +40,7 @@ const setIconsType = (icons: any) => {
   });
 };
 
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'postProces... Remove this comment to see the full error message
-const postProcessConfig = (config: any) => {
+export const postProcessConfig = (config: any) => {
   const manifest = { ...config.pwa.manifest };
   manifest.name = calculateValue(manifest.name, config.metadata.name);
   manifest.short_name = calculateValue(manifest.short_name, shortNameFromMetadata(config.metadata));
@@ -62,5 +61,3 @@ const postProcessConfig = (config: any) => {
     enabled: config.pwa.enabled,
   };
 };
-
-module.exports = postProcessConfig;

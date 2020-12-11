@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import Collapsible from 'react-collapsible';
@@ -8,7 +7,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 // @ts-expect-error ts-migrate(2306) FIXME: File '/mnt/k/code/scratchpads/BooGi/src/utils/emoj... Remove this comment to see the full error message
 import emoji from '../../utils/emoji';
 // @ts-expect-error ts-migrate(6142) FIXME: Module '../../styles' was resolved to '/mnt/k/code... Remove this comment to see the full error message
-import { shadowAround } from '../../styles';
+import { shadowAround } from '../../styles/styles';
 
 const AccordionWrapper = styled.div`
 margin: 10px 0;
@@ -65,15 +64,15 @@ export default ({
   const theme = useTheme();
   // @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
   const color = encodeURIComponent(theme.colors.primary); // replace # to not follow uri as usual
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   const closed = renderToStaticMarkup(<ChevronDown size={22} color={color} />);
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   const open = renderToStaticMarkup(<ChevronUp size={22} color={color} />);
   const triggerWhenOpen = titleWhenOpen ? titleWhenOpen : title;
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <AccordionWrapper theme={theme} openImg={open} closedImg={closed}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <Collapsible
         lazyRender={true}
         trigger={emoji.emojify(title)}

@@ -1,6 +1,6 @@
 
-import React from 'react';
 import styled from '@emotion/styled';
+import { IComponentTheme } from '..';
 
 const ButtonIconWrapper = styled('div')`
   display: flex;
@@ -8,46 +8,24 @@ const ButtonIconWrapper = styled('div')`
   padding: 4px;
   outline: none;
 
-  background-color: ${(props) => props.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'background' does not exist on type '{ th... Remove this comment to see the full error message
-background};
+  background-color: ${({ background }: IComponentTheme) => background};
   border-radius: 50%;
   cursor: pointer;
   &:hover {
     svg {
-      fill: ${(props) => props.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'hoverFill' does not exist on type '{ the... Remove this comment to see the full error message
-hoverFill};
-      stroke: ${(props) => props.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'hoverStroke' does not exist on type '{ t... Remove this comment to see the full error message
-hoverStroke};
+      fill: ${(props: IComponentTheme) => props.hoverFill};
+      stroke: ${(props: IComponentTheme) => props.hoverStroke};
     }
   }
   svg {
-    transition: ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'transitions' does not exist on type 'The... Remove this comment to see the full error message
-transitions.hover};
-    fill: ${(props) => props.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'fill' does not exist on type '{ theme?: ... Remove this comment to see the full error message
-fill};
-    stroke: ${(props) => props.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'stroke' does not exist on type '{ theme?... Remove this comment to see the full error message
-stroke};
+    transition: ${(props: IComponentTheme) => props.theme?.transitions?.hover};
+    fill: ${(props: IComponentTheme) => props.fill};
+    stroke: ${(props: IComponentTheme) => props.stroke};
   }
 `;
 
-type Props = {
-    background?: string;
-    hoverFill?: string;
-    hoverStroke?: string;
-    fill?: string;
-    stroke?: string;
-    icon: any;
-};
-
-const ButtonIcon = ({ icon, ...props }: Props) => {
+export const ButtonIcon = ({ icon, ...props }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <ButtonIconWrapper {...props} role={'button'} tabIndex={0}>
       {/* not defining color as a workaround to use css styling instead */}
       {icon.render({ color: '' })}

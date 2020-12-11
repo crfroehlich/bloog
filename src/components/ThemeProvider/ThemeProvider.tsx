@@ -1,10 +1,8 @@
-import React from 'react';
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
-import { light, dark } from '../../theme';
+import { light, dark } from '../../theme/themeBuilder';
 
 type State = any;
-
-class ThemeProvider extends React.Component<{}, State> {
+class ThemeProvider extends Component<{}, State> {
   darkModeConfig: any;
 
   state = {
@@ -13,7 +11,6 @@ class ThemeProvider extends React.Component<{}, State> {
 
   // @ts-expect-error ts-migrate(2339) FIXME: Property 'darkModeConfig' does not exist on type '... Remove this comment to see the full error message
   constructor({ darkModeConfig }: {}) {
-    // @ts-expect-error ts-migrate(2554) FIXME: Expected 1-2 arguments, but got 0.
     super();
     this.darkModeConfig = darkModeConfig;
   }
@@ -55,9 +52,9 @@ class ThemeProvider extends React.Component<{}, State> {
     const currentActiveTheme = isDarkThemeActive ? dark : light;
 
     return (
-      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      
       <div>
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <EmotionThemeProvider theme={currentActiveTheme}>{children}</EmotionThemeProvider>
       </div>
     );

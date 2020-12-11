@@ -1,5 +1,4 @@
 // import Link from "../Link";
-import React from 'react';
 import styled from '@emotion/styled';
 // @ts-expect-error ts-migrate(2305) FIXME: Module '".."' has no exported member 'Link'.
 import { Link } from '..';
@@ -69,15 +68,15 @@ const Logo = styled(({
   split[last] = split[last] + '</strong>';
   const title2 = split.join(' ');
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <div className={className}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <LogoWrapper>
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <Link to={link} css={logoStyle(theme)}>
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <img css={{display: 'inline-block'}} src={img} alt={'logo'} loading={'lazy'} />
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <span css={{display: 'inline-block'}} dangerouslySetInnerHTML={{ __html: title2 }} />
         </Link>
       </LogoWrapper>

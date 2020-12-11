@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { ChevronLeft, ChevronRight } from 'react-feather';
-import { onMobile } from '../../styles/responsive';
+import { onMobile, IComponentTheme } from '..';
 
 const Button = styled(({
   refine,
@@ -16,7 +15,6 @@ const Button = styled(({
     refine(page);
   };
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <button href="#" onClick={changePage} {...props}>
       {children}
     </button>
@@ -24,29 +22,29 @@ const Button = styled(({
 })`
   width: 32px;
   height: 32px;
-  visibility: ${(props) => (props.show || props.show === undefined ? 'visible' : 'hidden')};
+  visibility: ${(props: IComponentTheme) => (props.show || props.show === undefined ? 'visible' : 'hidden')};
   vertical-align: middle;
-  transition: ${(props) => props.theme.transitions.hover};
-  background-color: ${(props) =>
+  transition: ${(props: IComponentTheme) => props.theme?.transitions?.hover};
+  background-color: ${(props: IComponentTheme) =>
     props.isCurrent
-      ? props.theme.search.pagination.current.background
-      : props.theme.search.pagination.background};
-  border: 1px solid ${(props) => props.theme.search.pagination.border};
+      ? props.theme?.search?.pagination?.current?.background
+      : props.theme?.search?.pagination?.background};
+  border: 1px solid ${(props: IComponentTheme) => props.theme?.search?.pagination?.border};
 
-  color: ${(props) =>
+  color: ${(props: IComponentTheme) =>
     props.isCurrent
-      ? props.theme.search.pagination.current.font
-      : props.theme.search.pagination.font};
+      ? props.theme?.search?.pagination?.current?.font
+      : props.theme?.search?.pagination?.font};
   border-radius: 4px;
-  box-shadow: 0 0 4px 0 ${(props) => props.theme.colors.border};
+  box-shadow: 0 0 4px 0 ${(props: IComponentTheme) => props.theme?.colors?.border};
   font-size: 1em;
   cursor: inherit;
   &:hover {
-    background-color: ${(props) => props.theme.search.pagination.hover};
-    color: ${(props) => props.theme.search.pagination.fontHover};
+    background-color: ${(props: IComponentTheme) => props.theme?.search?.pagination?.hover};
+    color: ${(props: IComponentTheme) => props.theme?.search?.pagination?.fontHover};
   }
   svg {
-    stroke: ${(props) => props.theme.search.pagination.font};
+    stroke: ${(props: IComponentTheme) => props.theme?.search?.pagination?.font};
     vertical-align: middle;
   }
 `;
@@ -68,19 +66,13 @@ const PagesList = styled.ul`
 `;
 
 const PagesListWrapper = styled.div`
-  border-top: 1px solid ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
-search.pagination.border};
-  background: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.background};
+  border-top: 1px solid ${(props: IComponentTheme) => props.theme?.search?.pagination?.border};
+  background: ${(props: IComponentTheme) => props.theme?.colors?.background};
   width: 100%;
   display: flex;
   position: sticky;
   bottom: 0;
-  box-shadow: 0 -2px 4px 0 ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.shadow};
+  box-shadow: 0 -2px 4px 0 ${(props: IComponentTheme) => props.theme?.colors?.shadow};
 `;
 
 const leftRightMargin = '12px';
@@ -97,16 +89,16 @@ const Pagination = ({
   const previousPage = currentPage > 1 ? currentPage - 1 : 1;
   const nextPage = currentPage === pagesToShow ? currentPage : currentPage + 1;
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <PagesListWrapper>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <PagesList>
         {showPrevious ? (
-          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          
           <li style={{ marginRight: leftRightMargin }}>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+            
             <Button show={currentPage > 1} refine={refine} page={previousPage}>
-              {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+              
               <ChevronLeft />
             </Button>
           </li>
@@ -116,9 +108,9 @@ const Pagination = ({
           const isCurrent = currentPage === page;
 
           return (
-            // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            
             <li key={`${index}_${Date.now()}`}>
-              {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+              
               <Button refine={refine} page={page} isCurrent={isCurrent}>
                 {page}
               </Button>
@@ -126,11 +118,11 @@ const Pagination = ({
           );
         })}
         {showNext ? (
-          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          
           <li style={{ marginLeft: leftRightMargin }}>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+            
             <Button show={currentPage !== pagesToShow} refine={refine} page={nextPage}>
-              {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+              
               <ChevronRight />
             </Button>
           </li>

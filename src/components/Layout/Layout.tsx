@@ -23,7 +23,7 @@ import React, { useRef, useEffect, useState } from 'react';
 // @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'reac... Remove this comment to see the full error message
 import { Slide } from 'react-reveal';
 // @ts-expect-error ts-migrate(6142) FIXME: Module '../../styles' was resolved to '/mnt/k/code... Remove this comment to see the full error message
-import { hiddenMobile, hiddenTablet } from '../../styles';
+import { hiddenMobile, hiddenTablet } from '../../styles/styles';
 import { onMobile, onTablet } from '../../styles/responsive';
 import 'css';
 
@@ -100,12 +100,12 @@ const Layout = ({
   actOnClose(searchSidebarRef, closeSearch);
 
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <ThemeProvider ref={themeProviderRef} darkModeConfig={config.features.darkMode}>
       {config.header.enabled === true ? (
-        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        
         <>
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <div
             // @ts-expect-error ts-migrate(2322) FIXME: Type '{ children: Element; css: { zIndex: number; ... Remove this comment to see the full error message
             css={{
@@ -114,13 +114,13 @@ const Layout = ({
               display: showSearch || searchVisible ? 'block' : 'none',
             }}
           >
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+            
             <Slide right delay={0} duration={400} when={showSearch}>
-              {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+              
               <SearchSidebar ref={searchSidebarRef} onVisibleChange={setSearchVisible} closeSelf={closeSearch} />
             </Slide>
           </div>
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <Header
             show={! (config.features.fullScreenMode.hideHeader && fullscreenMode)}
             location={location}
@@ -132,21 +132,21 @@ const Layout = ({
       ) : (
         ''
       )}
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <MDXProvider components={MdxComponents}>
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         {config.features.scrollTop === true ? <ScrollTop /> : ''}
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <Wrapper>
           {config.sidebar.enabled === true ? (
-            // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            
             <Sidebar show={! (config.features.fullScreenMode.hideSidebar && fullscreenMode)} location={location} css={hiddenMobile} />
           ) : (
             ''
           )}
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <Content>{children}</Content>
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <TableOfContents show={! (config.features.fullScreenMode.hideToc && fullscreenMode)} location={location} css={hiddenTablet} />
         </Wrapper>
       </MDXProvider>

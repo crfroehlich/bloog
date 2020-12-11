@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 
 const LayoutEl = styled.div`
@@ -35,7 +34,7 @@ const Layout = ({
 }: any) => {
   let space = spacing || 'medium';
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <LayoutEl className={'spacing-' + space} {...props}>
       {children}
     </LayoutEl>

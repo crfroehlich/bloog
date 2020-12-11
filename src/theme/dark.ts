@@ -1,6 +1,6 @@
 import defaultColors from './colors';
 
-const colors = {
+export const darkColors = {
   ...defaultColors,
 
   primary: defaultColors.red,
@@ -14,6 +14,4 @@ const colors = {
   shadow: defaultColors.gray + '33',
 };
 
-export default {
-  colors: colors,
-};
+export default darkColors;

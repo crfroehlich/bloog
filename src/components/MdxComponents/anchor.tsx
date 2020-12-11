@@ -1,6 +1,6 @@
 import * as React from 'react';
 // @ts-expect-error ts-migrate(6142) FIXME: Module '../../styles' was resolved to '/mnt/k/code... Remove this comment to see the full error message
-import { anchor } from '../../styles';
+import { anchor } from '../../styles/styles';
 import { useTheme } from '@emotion/react';
 // @ts-expect-error ts-migrate(2305) FIXME: Module '".."' has no exported member 'Link'.
 import { Link } from '..';
@@ -9,7 +9,7 @@ import { Link } from '..';
 const AnchorTag = ({ children: link, ...props }) => {
   if (link) {
     return (
-      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      
       <Link to={props.href} css={anchor(useTheme())}>
         {link}
       </Link>
