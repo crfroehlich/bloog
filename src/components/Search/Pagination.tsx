@@ -77,7 +77,7 @@ const PagesListWrapper = styled.div`
 
 const leftRightMargin = '12px';
 
-const Pagination = ({
+export const Pagination = ({
   totalPages,
   nbPages,
   currentPage,

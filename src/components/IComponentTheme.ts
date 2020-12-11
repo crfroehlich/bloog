@@ -1,16 +1,17 @@
 interface Nested {
   background?: string;
   border?: string;
-  font?: {
-    base?: string;
-    hover?: string;
-    current?: string;
-  },
+  base?: string;
+  font?: Nested,
   hover?: string;
   pagination?: Nested;
   current?: Nested;
   fontHover?: string;
   shadow?: string;
+  primary?: string;
+  gray?: string;
+  grayDark?: string;
+  grayLight?: string;
 }
 
 export interface IComponentTheme {

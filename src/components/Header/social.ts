@@ -1,4 +1,3 @@
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../Buttons/Social' was resolved to '/mnt/k... Remove this comment to see the full error message
 import * as SocialButtons from '../Buttons/Social';
 
 const SocialButtonsBuilder = (baseProps: any) => {

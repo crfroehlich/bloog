@@ -6,6 +6,7 @@ import loadable from '@loadable/component';
 
 import { onMobile } from '../../styles/responsive';
 import { visibleMobile } from '../../styles/styles';
+import { IComponentTheme } from '..';
 const LocalSearch = loadable(() => import('./localsearch'))
 
 const SearchWrapper = styled.div`
@@ -18,9 +19,7 @@ const SearchWrapper = styled.div`
 `;
 
 const SearchSidebar = styled.div`
-  display: block; //${(props) => (props.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'show' does not exist on type '{ theme?: ... Remove this comment to see the full error message
-show ? 'block' : 'none')};
+  display: block; //${(props: IComponentTheme) => (props.show ? 'block' : 'none')};
   z-index: 20;
   height: 100vh;
   position: fixed;
@@ -29,9 +28,7 @@ show ? 'block' : 'none')};
   top: 0;
   width: 480px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
-  background: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.background};
+  background: ${(props: IComponentTheme) => props.theme?.colors?.background};
   ${onMobile} {
     width: 100%;
   }
@@ -44,29 +41,21 @@ const CloseSearch = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 3px 8px 0 ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.shadow};
-  border-bottom: 1px solid ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.border};
+  box-shadow: 0 3px 8px 0 ${(props: IComponentTheme) => props.theme?.colors?.shadow};
+  border-bottom: 1px solid ${(props: IComponentTheme) => props.theme?.colors?.border};
   svg {
     width: 1.2em;
   }
   &:hover {
-    color: ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.hover};
+    color: ${(props: IComponentTheme) => props.theme?.colors?.hover};
     svg {
-      stroke: ${(props) => props.theme.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.hover};
+      stroke: ${(props: IComponentTheme) => props.theme?.colors?.hover};
     }
   }
 `;
 
 // @ts-expect-error ts-migrate(2339) FIXME: Property 'onVisibleChange' does not exist on type ... Remove this comment to see the full error message
-const Search = React.forwardRef(({ onVisibleChange, closeSelf, ...props }, ref) => {
+export const Search = React.forwardRef(({ onVisibleChange, closeSelf, ...props }, ref) => {
   return (
     
     <SearchSidebar {...props} ref={ref}>

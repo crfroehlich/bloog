@@ -25,7 +25,7 @@ const CleanSearch = styled(({ ...props }) => (
   }
   &:hover {
     svg {
-      stroke: ${(props: IComponentTheme) => props.theme.colors.primary};
+      stroke: ${(props: IComponentTheme) => props.theme?.colors?.primary};
     }
   }
 `;
@@ -34,9 +34,7 @@ const Input = styled.input`
   outline: none;
   border: none;
   font-size: 1em;
-  transition: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'transitions' does not exist on type 'The... Remove this comment to see the full error message
-transitions.hover};
+  transition: ${(props: IComponentTheme) => props.theme?.transitions?.hover};
   border-radius: 1px;
   padding-left: 10px;
   background-color: transparent;
@@ -44,9 +42,7 @@ transitions.hover};
   border-width: 0 !important;
   &,
   ::placeholder {
-    color: ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.gray};
+    color: ${(props: IComponentTheme) => props.theme?.colors?.gray};
   }
 `;
 
@@ -66,38 +62,28 @@ const Form = styled.form`
   background-color: rgba(223,225,235, .4);
   border: 1px solid rgba(223,225,235, 1)
   &, *, input::placeholder, svg {
-    transition: ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'transitions' does not exist on type 'The... Remove this comment to see the full error message
-transitions.hover};
+    transition: ${(props: IComponentTheme) => props.theme?.transitions?.hover};
   }
   &:focus, &:visited, &:hover, &:focus-within  {
     outline: none;
     background-color: transparent;
     input, input::placeholder{
-      color: ${(props) => props.theme.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.grayDark};
+      color: ${(props: IComponentTheme) => props.theme?.colors?.grayDark};
     }
     svg {
-      stroke: ${(props) => props.theme.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.grayDark};
+      stroke: ${(props: IComponentTheme) => props.theme?.colors?.grayDark};
     }
   }
   
   svg {
-    stroke: ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.grayLight};
+    stroke: ${(props: IComponentTheme) => props.theme?.colors?.grayLight};
   }
 `;
 
 const SidebarSearchInputWrapper = styled.div`
 position: sticky;
 top: 0;
-background: ${(props) => props.theme.
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.background};
+background: ${(props: IComponentTheme) => props.theme?.colors?.background};
 width: 100%;
 padding: 0 24px;
 `;

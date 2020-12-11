@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { IComponentTheme } from '..';
 import { paddingLeftRight } from './styles';
 
 const Token = styled.span`
@@ -6,7 +7,7 @@ const Token = styled.span`
 `;
 
 const StatsWrapper = styled.p`
-  color: ${(props) => props.theme.search.font.base};
+  color: ${(props: IComponentTheme) => props.theme?.search?.font?.base};
   font-size: 11px;
   text-align: right;
   margin-top: 10px;
