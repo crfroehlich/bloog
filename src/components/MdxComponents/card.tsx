@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
-import { useTheme } from '@emotion/react';
-import { ArrowRight } from 'react-feather';
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../../styles' was resolved to '/mnt/k/code... Remove this comment to see the full error message
+import { IComponentTheme } from '..';
 import { shadowAround } from '../../styles/styles';
 
 const Card = styled.div`
@@ -12,9 +10,7 @@ const Card = styled.div`
   margin: 10px 0;
   border-radius: 4px;
   border: 1px solid transparent;
-  transition: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'transitions' does not exist on type 'The... Remove this comment to see the full error message
-transitions.hover};
+  transition: ${(props: IComponentTheme) => props.theme?.transitions?.hover};
 `;
 
 export default ({ ...props }) => {

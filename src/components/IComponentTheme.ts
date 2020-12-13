@@ -23,6 +23,8 @@ export interface IComponentTheme {
   isCurrent?: boolean;
   isDarkThemeActive: boolean;
   level?: number;
+  openImg?: string;
+  closedImg?: string;
   show?: string;
   stroke?: string;
   toggleActiveTheme: (...args: any[]) => any;

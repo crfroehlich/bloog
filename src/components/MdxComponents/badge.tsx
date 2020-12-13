@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'colo... Remove this comment to see the full error message
 import colorFn from 'color';
 import { useTheme } from '@emotion/react';
 
@@ -20,7 +19,7 @@ foreground};
   margin-right: 4px;
 `;
 
-const Badge = ({
+export const Badge = ({
   children,
   color,
   ...props
