@@ -5,9 +5,9 @@ import { X } from 'react-feather';
 import loadable from '@loadable/component';
 
 import { onMobile } from '../../styles/responsive';
-import { visibleMobile } from '../../styles';
+import { visibleMobile } from '../../styles/styles';
 
-const LocalSearch = loadable(() => import('./localsearch'))
+const LocalSearch = loadable(() => import('./localsearch/LocalSearch'))
 
 const SearchWrapper = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ const SearchWrapper = styled.div`
   -webkit-overflow-scrolling: touch;
 `;
 
-const SearchSidebar = styled.div`
+const SearchSidebarWrapper = styled.div`
   display: block; //${(props) => (props.show ? 'block' : 'none')};
   z-index: 20;
   height: 100vh;
@@ -54,9 +54,9 @@ const CloseSearch = styled.div`
   }
 `;
 
-const Search = React.forwardRef(({ onVisibleChange, closeSelf, ...props }, ref) => {
+export const SearchSidebar = React.forwardRef(({ onVisibleChange, closeSelf, ...props }, ref) => {
   return (
-    <SearchSidebar {...props} ref={ref}>
+    <SearchSidebarWrapper {...props} ref={ref}>
       <SearchWrapper {...props}>
         <CloseSearch css={visibleMobile} onClick={closeSelf}>
           <X />
@@ -64,8 +64,6 @@ const Search = React.forwardRef(({ onVisibleChange, closeSelf, ...props }, ref) 
         </CloseSearch>
           <LocalSearch inputRef={ref} />
       </SearchWrapper>
-    </SearchSidebar>
+    </SearchSidebarWrapper>
   );
 });
-
-export default Search;

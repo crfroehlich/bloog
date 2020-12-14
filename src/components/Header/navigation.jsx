@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { onMobile } from '../../styles/responsive';
 
-const Navigation = styled(({ className, links }) => {
+export const Navigation = styled(({ className, links }) => {
   return (
     <nav css={{display: 'flex'}}>
       <ul className={className}>
@@ -81,5 +81,3 @@ const Navigation = styled(({ className, links }) => {
     }
   }
 `;
-
-export default Navigation;

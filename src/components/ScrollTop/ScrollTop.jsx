@@ -5,7 +5,7 @@ import { onMobile, onTablet } from '../../styles/responsive';
 
 const scrollToTop = () => window.scrollTo(0, 0);
 
-const ScrollTop = styled(({ className }) => {
+export const ScrollTop = styled(({ className }) => {
   return (
     <div className={className} onClick={scrollToTop} role={'button'} tabIndex={0}>
       <Arrow />
@@ -48,5 +48,3 @@ const ScrollTop = styled(({ className }) => {
     background: ${(props) => props.theme.scrollTop.hover};
   }
 `;
-
-export default ScrollTop;

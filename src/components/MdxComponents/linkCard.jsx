@@ -2,12 +2,12 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { ArrowRight } from 'react-feather';
-import emoji from '../../utils/emoji';
-import Link from '../Link';
+import { emojiTools as emoji } from '../../utils/emoji';
+import { Link } from '../Link';
 import { decreaseIntensivity } from '../../utils/colors';
-import Card from './card';
+import { Card } from './card';
 
-const LinkCard = styled(Card)`
+const LinkCardWrapper = styled(Card)`
   cursor: pointer;
   flex-direction: row;
   align-items: center;
@@ -36,11 +36,11 @@ export default ({ title, url }) => {
   const path = url.replace(/(https:\/\/)|(http:\/\/)/, '');
   return (
     <Link to={url}>
-      <LinkCard>
+      <LinkCardWrapper>
         <ArrowRight color={theme.colors.primary} size={23} />
         <Title>{emoji.emojify(title)}</Title>
         <LinkPath>{path}</LinkPath>
-      </LinkCard>
+      </LinkCardWrapper>
     </Link>
   );
 };

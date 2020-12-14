@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import ButtonIcon from './ButtonIcon';
+import { ButtonIcon } from './ButtonIcon';
 import { Link } from '..';
 import {
   Facebook as FB,
@@ -41,3 +41,16 @@ export const Slack = (props) => <SocialButton icon={SL} {...props} />;
 export const Twitch = (props) => <SocialButton icon={TC} {...props} />;
 export const Twitter = (props) => <SocialButton icon={TW} {...props} />;
 export const Youtube = (props) => <SocialButton icon={YT} {...props} />;
+
+export const SocialButtons = {
+  Facebook,
+  Github,
+  Gitlab,
+  Linkedin,
+  Mail,
+  Rss,
+  Slack,
+  Twitch,
+  Twitter,
+  Youtube,
+}

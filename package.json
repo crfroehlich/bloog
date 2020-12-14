@@ -88,6 +88,8 @@
     "lint": "eslint --fix \"**/*.{js,jsx}\""
   },
   "devDependencies": {
+    "@types/color": "^3.0.1",
+    "@types/loadable__component": "^5.13.1",
     "@types/lodash": "^4.14.165",
     "@types/mdx-js__react": "^1.5.3",
     "@types/node": "^14.14.13",

@@ -71,7 +71,7 @@ const PagesListWrapper = styled.div`
 
 const leftRightMargin = '12px';
 
-const Pagination = ({ totalPages, nbPages, currentPage, refine, showPrevious, showNext }) => {
+export const Pagination = ({ totalPages, nbPages, currentPage, refine, showPrevious, showNext }) => {
   const pagesToShow = totalPages && nbPages > totalPages ? totalPages : nbPages;
   const previousPage = currentPage > 1 ? currentPage - 1 : 1;
   const nextPage = currentPage === pagesToShow ? currentPage : currentPage + 1;
@@ -110,5 +110,3 @@ const Pagination = ({ totalPages, nbPages, currentPage, refine, showPrevious, sh
     </PagesListWrapper>
   );
 };
-
-export default Pagination;

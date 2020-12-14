@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { useTheme } from '@emotion/react';
-import { ArrowRight } from 'react-feather';
-import { shadowAround } from '../../styles';
+import { shadowAround } from '../../styles/styles';
 
-const Card = styled.div`
+const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -15,6 +13,6 @@ const Card = styled.div`
   transition: ${(props) => props.theme.transitions.hover};
 `;
 
-export default ({ ...props }) => {
-  return <Card css={shadowAround} {...props} />;
+export const Card = ({ ...props }) => {
+  return <CardWrapper css={shadowAround} {...props} />;
 };

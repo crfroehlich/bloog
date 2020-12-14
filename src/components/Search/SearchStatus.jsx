@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { marginLeftRight } from './styles';
-import Loading from '../Loader';
+import { Loading } from '../Loader';
 
 const queryToken = css`
   font-weight: bold;
@@ -19,7 +19,7 @@ const StatusWrapper = styled.div`
   }
 `;
 
-const SearchStatus = ({ searching, noHits, query }) => {
+export const SearchStatus = ({ searching, noHits, query }) => {
   let text = '';
   if (searching) {
     text = 'Searching...';
@@ -38,5 +38,3 @@ const SearchStatus = ({ searching, noHits, query }) => {
     ''
   );
 };
-
-export default SearchStatus;

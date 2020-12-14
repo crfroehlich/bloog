@@ -2,9 +2,9 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import styled from '@emotion/styled';
-import { Layout, EditOnRepo, PreviousNext, Seo } from '$components';
-import config from 'config';
-import emoji from '../utils/emoji';
+import { Layout, EditOnRepo, PreviousNext, Seo } from '..';
+import { config } from 'config';
+import { emojiTools as emoji } from '../utils/emoji';
 import { onMobile, onTablet } from '../styles/responsive';
 
 const Title = styled.h1`

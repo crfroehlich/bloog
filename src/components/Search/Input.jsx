@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { shadowAround } from '../../styles';
+import { shadowAround } from '../../styles/styles';
 import { useTheme } from '@emotion/react';
 import { Search, Trash } from 'react-feather';
 import useDebounce from '../../utils/useDebounce';
@@ -89,13 +89,13 @@ width: 100%;
 padding: 0 24px;
 `;
 
-const SidebarSearchInput = ({ search, inputRef, showClean, ...props }) => (
+export const SidebarSearchInput = ({ search, inputRef, showClean, ...props }) => (
   <SidebarSearchInputWrapper>
     <SearchInput search={search} inputRef={inputRef} showClean={showClean} {...props} />
   </SidebarSearchInputWrapper>
 );
 
-const SearchInput = ({ search, inputRef, showClean, style, ...props }) => {
+export const SearchInput = ({ search, inputRef, showClean, style, ...props }) => {
   const theme = useTheme();
   const preventSubmit = (e) => {
     e.preventDefault();
@@ -136,5 +136,3 @@ const SearchInput = ({ search, inputRef, showClean, style, ...props }) => {
     </Form>
   );
 };
-
-export { SearchInput, SidebarSearchInput };

@@ -184,7 +184,7 @@ const scrollTop = (colors) => ({
   arrow: colorfn(colors.primary).negate().grayscale().lighten(0.4).rgb().string(),
 });
 
-export default {
+export const base = {
   colors: colors,
   layout: pageLayout,
   transitions: transitions,

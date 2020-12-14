@@ -1,1 +1,1 @@
-export { default } from './EditOnRepo';
+export * from './EditOnRepo';

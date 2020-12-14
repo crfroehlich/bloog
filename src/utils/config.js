@@ -1,12 +1,11 @@
-const fs = require('fs');
+import fs from 'fs';
+import { merge, cloneDeep } from 'lodash';
+import { config as defaults } from 'config';
+import { readYamlOrJson } from './fileUtils';
+import { processPwa } from './config-pwa';
 
-const _ = require('lodash');
-const defaults = require('../../config/default');
-const { readYamlOrJson } = require('./fileUtils');
-const processPwa = require('./config-pwa');
-
-const generate = (path, config) => {
-  const generated = `module.exports = ${JSON.stringify(config, undefined, 4)};`;
+export const generate = (path, config) => {
+  const generated = `export const generatedConfig = ${JSON.stringify(config, undefined, 4)};`;
   fs.writeFile(path, generated, function (err) {
     if (err) return console.log(err);
   });
@@ -106,13 +105,13 @@ class EnvReader extends ConfigReader {
 }
 
 
-const read = () => {
+export const read = () => {
   const fileConfig = new FileReader().read();
   const envConfig = new EnvReader().read();
-  const def = _.cloneDeep(defaults);
+  const def = cloneDeep(defaults);
 
-  let config = _.merge(def, fileConfig);
-  config = _.merge(config, envConfig);
+  let config = merge(def, fileConfig);
+  config = merge(config, envConfig);
   postProcessConfig(config);
   return config;
 };
@@ -129,5 +128,3 @@ const postProcessConfig = (config) => {
     return byOrder === 0 ? b.path.length - a.path.length : byOrder;
   });
 };
-
-module.exports = { read, generate };

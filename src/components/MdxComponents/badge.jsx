@@ -16,7 +16,7 @@ const BadgeWrapper = styled.span`
   margin-right: 4px;
 `;
 
-const Badge = ({ children, color, ...props }) => {
+export const Badge = ({ children, color, ...props }) => {
   const theme = useTheme();
 
   const background = color || theme.colors.primary;
@@ -29,5 +29,3 @@ const Badge = ({ children, color, ...props }) => {
     </BadgeWrapper>
   );
 };
-
-export default Badge;

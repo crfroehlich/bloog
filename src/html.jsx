@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import config from 'config';
+import { config } from 'config';
 import { scrollbar } from './styles';
 
 export default class HTML extends React.Component {

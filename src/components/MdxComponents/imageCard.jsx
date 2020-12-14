@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
-import Card from './card';
+import { Card } from './card';
 import { onMobile } from '../../styles/responsive';
 
-const ImageCard = styled(Card)`
+const ImageCardWrapper = styled(Card)`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   ${onMobile} {
@@ -29,14 +29,14 @@ margin-top: 15px;
 }
 `;
 
-export default ({ children, width, height, src}) => {
+export const ImageCard = ({ children, width, height, src}) => {
   const theme = useTheme();
   const imgWidth = width ? width : '50%';
   const imgHeight = width ? width : '50%';
   return (
-      <ImageCard width={imgWidth} height={imgHeight}>
+      <ImageCardWrapper width={imgWidth} height={imgHeight}>
         <Image src={src} />
         <Text>{children}</Text>
-      </ImageCard>
+      </ImageCardWrapper>
   );
 };

@@ -4,12 +4,12 @@ import { useTheme } from '@emotion/react';
 import Collapsible from 'react-collapsible';
 import { ChevronUp, ChevronDown } from 'react-feather';
 import { renderToStaticMarkup } from 'react-dom/server';
-import emoji from '../../utils/emoji';
-import { shadowAround } from '../../styles';
+import { emojiTools } from '../../utils/emoji';
+import { shadowAround } from '../../styles/styles';
 
 const AccordionWrapper = styled.div`
-margin: 10px 0;
-& > div {
+  margin: 10px 0;
+  & > div {
     ${(props) => shadowAround(props.theme)};
     border-radius: 4px;
 
@@ -39,10 +39,10 @@ margin: 10px 0;
     & > div > div { 
         padding: 8px 16px;
     }
-}
+  }
 `;
 
-export default ({ title, titleWhenOpen, expanded, children, ...props }) => {
+export const Accordion = ({ title, titleWhenOpen, expanded, children, ...props }) => {
   const theme = useTheme();
   const color = encodeURIComponent(theme.colors.primary); // replace # to not follow uri as usual
   const closed = renderToStaticMarkup(<ChevronDown size={22} color={color} />);
@@ -52,8 +52,8 @@ export default ({ title, titleWhenOpen, expanded, children, ...props }) => {
     <AccordionWrapper theme={theme} openImg={open} closedImg={closed}>
       <Collapsible
         lazyRender={true}
-        trigger={emoji.emojify(title)}
-        triggerWhenOpen={emoji.emojify(triggerWhenOpen)}
+        trigger={emojiTools.emojify(title)}
+        triggerWhenOpen={emojiTools.emojify(triggerWhenOpen)}
         {...props}
       >
         {children}

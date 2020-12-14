@@ -1,9 +1,7 @@
-const findAfter = require('unist-util-find-after');
-const visit = require('unist-util-visit-parents');
+import findAfter from 'unist-util-find-after';
+import visit from 'unist-util-visit-parents';
 
 const MAX_HEADING_DEPTH = 6;
-
-module.exports = () => transform;
 
 const transform = (tree, maxDepth) => {
   const maxTocDepth = maxDepth ? maxDepth : MAX_HEADING_DEPTH;
@@ -12,6 +10,7 @@ const transform = (tree, maxDepth) => {
     visit(tree, (node) => node.type === 'heading' && node.depth === depth, visitFunction);
   }
 };
+
 const sectionize = (maxTocDepth) => {
   let minDepth = MAX_HEADING_DEPTH;
   return (node, ancestors) => {
@@ -43,4 +42,11 @@ const sectionize = (maxTocDepth) => {
     };
     parent.children.splice(startIndex, section.children.length, section);
   };
+};
+
+export const sectionizeToc = ({ markdownAST, markdownNode }, pluginOptions) => {
+  const maxDepth = markdownNode.frontmatter.tocDepth
+    ? markdownNode.frontmatter.tocDepth
+    : pluginOptions.maxDepth;
+  transform(markdownAST, maxDepth);
 };

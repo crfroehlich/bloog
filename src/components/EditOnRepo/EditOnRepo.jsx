@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled from '@emotion/styled';
 import { Link } from '..';
-import { shadowAround } from '../../styles';
+import { shadowAround } from '../../styles/styles';
 import { onTablet, onMobile } from '../../styles/responsive';
 
 const Edit = styled('div')`
@@ -73,7 +73,7 @@ const EditButton = styled(({ className, icon, link, text }) => {
 
 const rootDir = 'content';
 
-const EditOnRepo = ({ repoType, branch, location, path }) => {
+export const EditOnRepo = ({ repoType, branch, location, path }) => {
   let icon = null;
   let link = `${location}/${path}`;
   let text = 'Edit on ';
@@ -100,7 +100,6 @@ const EditOnRepo = ({ repoType, branch, location, path }) => {
       break;
     default:
       console.log(`Repository type ${repoType} is not supported by edit on repo feature`);
-      return '';
   }
   return <EditButton icon={icon} link={link} text={text} />;
 };
@@ -111,5 +110,3 @@ EditOnRepo.propTypes = {
   location: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
 };
-
-export default EditOnRepo;

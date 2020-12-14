@@ -1,6 +1,6 @@
 import React from 'react';
 import { Hit } from '../Hits';
-import emoji from '../../../utils/emoji';
+import { emojiTools as emoji } from '../../../utils/emoji';
 import styled from '@emotion/styled';
 
 const trim_words = (str, numWords) => {

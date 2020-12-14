@@ -53,7 +53,7 @@ const LogoWrapper = styled.div`
   }
 `;
 
-const Logo = styled(({ className, link, img, title }) => {
+export const Logo = styled(({ className, link, img, title }) => {
   const theme = useTheme();
   let split = title.split(' ');
   split[0] = '<strong>' + split[0];
@@ -81,5 +81,3 @@ const Logo = styled(({ className, link, img, title }) => {
     padding-right: 0;
   }
 `;
-
-export default Logo;

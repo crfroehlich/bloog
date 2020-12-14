@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Link } from '..';
 import styled from '@emotion/styled';
-import emoji from '../../utils/emoji';
+import { emojiTools as emoji } from '../../utils/emoji';
 import { navigate } from 'gatsby';
-import config from 'config';
+import { config } from 'config';
 import { ChevronLeft, ChevronRight } from 'react-feather'
 
 import { calculateFlatNavigation, getNavigationData } from '../Navigation';
@@ -189,7 +189,7 @@ const setArrowNavigation = (previous, next) => {
   }, [previous, next]);
 };
 
-const PreviousNext = ({ mdx }) => {
+export const PreviousNext = ({ mdx }) => {
   const edges = getNavigationData();
   const navigation = calculateFlatNavigation(edges);
   let currentIndex;
@@ -220,5 +220,3 @@ const PreviousNext = ({ mdx }) => {
     </PreviousNextWrapper>
   );
 };
-
-export default PreviousNext;

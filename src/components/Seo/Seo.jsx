@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import config from 'config';
+import { config } from 'config';
 
-const Seo = ({ frontmatter, title, url }) => {
+export const Seo = ({ frontmatter, title, url }) => {
   const description = frontmatter.description
     ? frontmatter.description
     : config.metadata.description;
@@ -43,5 +43,3 @@ Seo.propTypes = {
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
 };
-
-export default Seo;

@@ -1,5 +1,5 @@
 import React from 'react';
 import { Pagination } from '..';
-export default ({ currentPage, ...rest }) => (
+export const SearchPagination = ({ currentPage, ...rest }) => (
   <Pagination currentPage={currentPage} {...rest} />
 );

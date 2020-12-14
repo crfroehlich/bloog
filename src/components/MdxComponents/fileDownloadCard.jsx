@@ -2,9 +2,9 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { Download } from 'react-feather';
-import emoji from '../../utils/emoji';
+import { emojiTools as emoji } from '../../utils/emoji';
 import { decreaseIntensivity } from '../../utils/colors';
-import Card from './card';
+import { Card } from './card';
 
 const DownloadCard = styled(Card)`
   cursor: pointer;
@@ -30,7 +30,7 @@ const Title = styled.div`
   flex: 1;
 `;
 
-export default ({ title, url }) => {
+export const FileDownloadCard = ({ title, url }) => {
   const theme = useTheme();
   const splitted = url.split('/')
   const filename = splitted[splitted.length - 1]

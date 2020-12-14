@@ -1,20 +1,20 @@
 /* eslint-disable react/display-name */
 import React from 'react';
-import Accordion from './accordion';
-import AnchorTag from './anchor';
-import Badge from './badge';
-import Card from './card';
-import CodeBlock from './codeBlock';
-import DownloadCard from './fileDownloadCard';
-import Highlights from './highlights';
-import Icon from './icon';
-import ImageCard from './imageCard';
-import Jargon from './jargon';
-import Layout from './layout';
-import LinkCard from './linkCard';
-import { blockquote, pre, table, list } from '../../styles';
+import { Accordion } from './accordion';
+import { AnchorTag } from './anchor';
+import { Badge } from './badge';
+import { Card } from './card';
+import { CodeBlock } from './codeBlock';
+import { DownloadCard } from './fileDownloadCard';
+import { Highlights } from './highlights';
+import { Icon } from './icon';
+import { ImageCard } from './imageCard';
+import { Jargon } from './jargon';
+import { Layout } from './layout';
+import { LinkCard } from './linkCard';
+import { blockquote, pre, table, list } from '../../styles/styles';
 import { useTheme } from '@emotion/react';
-import emoji from '../../utils/emoji';
+import { emojiTools as emoji } from '../../utils/emoji';
 
 const idFromHeader = (props) => {
   let name = props.children;
@@ -59,7 +59,7 @@ const emphasis = (props) => {
   return <em {...props} />;
 };
 
-export default {
+export const MdxComponents = {
   h1: (props) => Header(1, props),
   h2: (props) => Header(2, props),
   h3: (props) => Header(3, props),

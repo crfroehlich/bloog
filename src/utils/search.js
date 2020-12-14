@@ -1,4 +1,4 @@
-const query = (excerptSize) => `{
+export const query = (excerptSize) => `{
     allMdx {
       edges {
         node {
@@ -45,6 +45,4 @@ const buildLocalsearchPluginConfig = (conf) => {
   ];
 };
 
-module.exports.getSearchPlugins = (conf) => {
-  return buildLocalsearchPluginConfig(conf);
-};
+export const getSearchPlugins = (conf) => buildLocalsearchPluginConfig(conf);

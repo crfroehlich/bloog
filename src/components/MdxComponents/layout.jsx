@@ -24,7 +24,8 @@ const LayoutEl = styled.div`
     flex: 1 1 0px;
   }
 `;
-const Layout = ({ children, spacing, ...props }) => {
+
+export const Layout = ({ children, spacing, ...props }) => {
   let space = spacing || 'medium';
   return (
     <LayoutEl className={'spacing-' + space} {...props}>
@@ -32,5 +33,3 @@ const Layout = ({ children, spacing, ...props }) => {
     </LayoutEl>
   );
 };
-
-export default Layout;

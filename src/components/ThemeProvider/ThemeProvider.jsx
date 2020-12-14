@@ -1,8 +1,8 @@
 import React from 'react';
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
-import { light, dark } from '../../theme';
+import { light, dark } from '../../theme/ThemeBuilder';
 
-class ThemeProvider extends React.Component {
+export class ThemeProvider extends React.Component {
   state = {
     isDarkThemeActive: false,
   };
@@ -52,5 +52,3 @@ class ThemeProvider extends React.Component {
     );
   }
 }
-
-export default ThemeProvider;

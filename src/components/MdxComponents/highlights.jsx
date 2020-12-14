@@ -46,7 +46,7 @@ const Highlight = ({ children, color, icon, ...props }) => {
   );
 };
 
-export default {
+export const Highlights = {
   Warning: (props) =>
     Highlight({
       color: 'warning',

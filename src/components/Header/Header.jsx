@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
-import config from 'config';
-import Logo from './logo';
-import Navigation from './navigation';
+import { config } from 'config';
+import { Logo } from './logo';
+import { Navigation } from './navigation';
 import { ButtonIcon, DarkModeSwitch, SearchInput, Sidebar } from '..';
 import { HelpCircle, Menu, Search } from 'react-feather';
 import { useTheme } from '@emotion/react';
-import SocialButtons from './social';
+import { social as SocialButtons } from './social';
 import { Rss } from '../Buttons';
 import { globalHistory } from '@reach/router';
-import { hiddenMobile, visibleMobile, visibleTablet, hiddenTablet } from '../../styles';
+import { hiddenMobile, visibleMobile, visibleTablet, hiddenTablet } from '../../styles/styles';
 import { onMobile, onTablet, isMobile } from '../../styles/responsive';
 import { FullScreenClose, FullScreenEnter, FullScreenHeader } from './fullscreen';
 
@@ -201,7 +201,7 @@ const SocialButtonsWrapper = styled.div`
   }
 `;
 
-const Header = ({ setShowSearch, location, themeProvider, show, toggleFullscreenMode }) => (
+export const Header = ({ setShowSearch, location, themeProvider, show, toggleFullscreenMode }) => (
   <StaticQuery
     query={graphql`
       query headerTitleQuery {
@@ -325,5 +325,3 @@ const Header = ({ setShowSearch, location, themeProvider, show, toggleFullscreen
     }}
   />
 );
-
-export default Header;

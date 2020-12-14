@@ -1,4 +1,4 @@
-import * as SocialButtons from '../Buttons/Social';
+import { SocialButtons } from '../Buttons/Social';
 
 const SocialButtonsBuilder = (baseProps) => {
   const iconBaseProps = baseProps;
@@ -31,7 +31,7 @@ const SocialButtonsBuilder = (baseProps) => {
   };
 };
 
-export default (iconBaseProps, socialConfig) => {
+export const social = (iconBaseProps, socialConfig) => {
   const buttons = SocialButtonsBuilder(iconBaseProps);
   buttons.create(socialConfig.facebook, 'Facebook');
   buttons.create(socialConfig.github, 'Github');

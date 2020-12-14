@@ -10,10 +10,10 @@ import {
   ThemeProvider,
 } from '..';
 
-import config from 'config';
+import { config } from 'config';
 import React, { useRef, useEffect, useState } from 'react';
 import { Slide } from 'react-reveal';
-import { hiddenMobile, hiddenTablet } from '../../styles';
+import { hiddenMobile, hiddenTablet } from '../../styles/styles';
 import { onMobile, onTablet } from '../../styles/responsive';
 import 'css';
 
@@ -75,7 +75,7 @@ function actOnClose(ref, onClose) {
   }, [ref]);
 }
 
-const Layout = ({ children, location }) => {
+export const Layout = ({ children, location }) => {
   const [showSearch, setShowSearch] = useState(false);
   const [searchVisible, setSearchVisible] = useState(false);
   const [fullscreenMode, setFullScreenMode] = useState(false);
@@ -125,5 +125,3 @@ const Layout = ({ children, location }) => {
     </ThemeProvider>
   );
 };
-
-export default Layout;

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { HitsWrapper } from '../Hits';
-import config from 'config';
-import Input from './input';
-import { PageHit } from './hitComps';
-import SearchStatus from '../Status';
-import Pagination from './pagination';
-import Stats from './stats';
+import { config } from 'config';
+import { SearchInput } from './SearchInput';
+import { PageHit } from './PageHit';
+import SearchStatus from '../SearchStatus';
+import { SearchPagination } from './SearchPagination';
+import { Stats } from './Stats';
 import { useFlexSearch } from 'react-use-flexsearch';
 import { StaticQuery, graphql } from 'gatsby';
 
@@ -47,7 +47,7 @@ const search = (query, index, store, page) => {
   };
 };
 
-const LocalSearch = ({ inputRef }) => (
+export const LocalSearch = ({ inputRef }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -69,7 +69,7 @@ const LocalSearch = ({ inputRef }) => (
       const showResults = query && query.length > 1 && focus;
       return (
         <>
-          <Input
+          <SearchInput
             refine={(value) => setQuery(value)}
             inputRef={inputRef}
             onFocus={() => setFocus(true)}
@@ -101,7 +101,7 @@ const LocalSearch = ({ inputRef }) => (
           {showResults &&
           searchResult.hits.length > 0 &&
           config.features.search.pagination.enabled ? (
-            <Pagination
+            <SearchPagination
               totalPages={config.features.search.pagination.totalPages}
               showPrevious={config.features.search.pagination.showPrevious}
               showNext={config.features.search.pagination.showNext}
@@ -115,5 +115,3 @@ const LocalSearch = ({ inputRef }) => (
     }}
   />
 );
-
-export default LocalSearch;

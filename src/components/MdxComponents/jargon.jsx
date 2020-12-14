@@ -61,7 +61,7 @@ const JargonWrapper = styled.em`
   }
 `;
 
-const Jargon = ({ children, ...props }) => {
+export const Jargon = ({ children, ...props }) => {
   const theme = useTheme();
   return (
     <JargonWrapper theme={theme} {...props}>
@@ -69,5 +69,3 @@ const Jargon = ({ children, ...props }) => {
     </JargonWrapper>
   );
 };
-
-export default Jargon;

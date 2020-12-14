@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from 'gatsby';
 import config from 'config';
 
-const getNavigationData = () => {
+export const getNavigationData = () => {
   const { allMdx } = useStaticQuery(graphql`
     query NavigationQuery {
       allMdx(filter: {fields: {draft: {ne: true}}}) {
@@ -129,7 +129,7 @@ const calculateTreeDataForData = (contentData) => {
   return result;
 };
 
-const calculateNavigation = (edges) => {
+export const calculateNavigation = (edges) => {
   const contentData = config.sidebar.ignoreIndex
     ? edges.filter(
         ({
@@ -152,7 +152,7 @@ const flat = (parent, acc) => {
   })
 }
 
-const calculateFlatNavigation = (edges) => {
+export const calculateFlatNavigation = (edges) => {
   const navigation = calculateNavigation(edges);
   const acc = [];
   navigation.children.forEach(group => {
@@ -160,5 +160,3 @@ const calculateFlatNavigation = (edges) => {
   })
   return acc;;
 };
-
-export { getNavigationData, calculateNavigation, calculateFlatNavigation };

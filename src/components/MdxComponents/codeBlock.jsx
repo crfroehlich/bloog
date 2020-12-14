@@ -2,7 +2,7 @@ import * as React from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/dracula';
 import Loadable from 'react-loadable';
-import LoadingProvider from './loading';
+import { LoadingProvider } from './loading';
 
 /** Removes the last token from a code example if it's empty. */
 function cleanTokens(tokens) {
@@ -24,8 +24,7 @@ const LoadableComponent = Loadable({
   loading: LoadingProvider,
 });
 
-/* eslint-disable react/jsx-key */
-const CodeBlock = ({ children: code, ...props }) => {
+export const CodeBlock = ({ children: code, ...props }) => {
   if (props['react-live']) {
     return <LoadableComponent code={code} />;
   } else {
@@ -68,7 +67,7 @@ const CodeBlock = ({ children: code, ...props }) => {
                   {line.map((token, key) => {
                     if (isDiff) {
                       if (
-                        (key === 0 || key === 1) &
+                        (key === 0 || key === 1) &&
                         (token.content.charAt(0) === '+' || token.content.charAt(0) === '-')
                       ) {
                         if (token.content.length > 1) {
@@ -106,5 +105,3 @@ const CodeBlock = ({ children: code, ...props }) => {
     );
   }
 };
-
-export default CodeBlock;

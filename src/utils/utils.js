@@ -1,8 +1,8 @@
-const sleep = (milliseconds) => {
+export const sleep = (milliseconds) => {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 };
 
-const arraysEqual = (a, b) => {
+export const arraysEqual = (a, b) => {
   if (a === b) return true;
   if (a == null || b == null) return false;
   if (a.length != b.length) return false;
@@ -12,5 +12,3 @@ const arraysEqual = (a, b) => {
   }
   return true;
 };
-
-export { sleep, arraysEqual };

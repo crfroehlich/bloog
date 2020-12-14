@@ -4,7 +4,7 @@ import { useTheme } from '@emotion/react';
 
 const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 
-const Icon = ({ ...props }) => {
+export const Icon = ({ ...props }) => {
   const theme = useTheme();
   let name = props.name
     .split('-')
@@ -33,5 +33,3 @@ const Icon = ({ ...props }) => {
     </span>
   );
 };
-
-export default Icon;

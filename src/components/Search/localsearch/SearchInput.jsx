@@ -1,5 +1,5 @@
 import React from 'react';
 import { SidebarSearchInput } from '..';
-export default (({ refine, ...rest }) => (
+export const SearchInput = (({ refine, ...rest }) => (
   <SidebarSearchInput search={(value) => refine(value)} {...rest} showClean={true} />
 ));

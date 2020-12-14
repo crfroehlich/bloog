@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 
-const ReactLiveProvider = ({ code }) => {
+export const ReactLiveProvider = ({ code }) => {
   return (
     <LiveProvider code={code}>
       <LiveEditor />
@@ -10,5 +10,3 @@ const ReactLiveProvider = ({ code }) => {
     </LiveProvider>
   );
 };
-
-export default ReactLiveProvider;

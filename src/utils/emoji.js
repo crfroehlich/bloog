@@ -1,15 +1,14 @@
-const emoji = require('node-emoji');
+import emoji from 'node-emoji';
 
-const emojify = (text) => {
-  return emoji.emojify(text, (name) => name);
-};
+class EmojiHelper {
+  emojify(text) {
+    return emoji.emojify(text, (name) => name);
+  }
+  clean(text) {
+    const emojified = this.emojify(text);
+    return emoji.strip(emojified);
+  }
+}
 
-const clean = (text) => {
-  const emojified = emojify(text);
-  return emoji.strip(emojified);
-};
-
-module.exports = {
-  emojify,
-  clean,
-};
+export const emojiTools = new EmojiHelper();
+export default emojiTools;

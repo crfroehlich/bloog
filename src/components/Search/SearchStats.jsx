@@ -12,12 +12,10 @@ const StatsWrapper = styled.p`
   margin-top: 10px;
 `;
 
-const Stats = ({ hits, processingTimeMS }) => (
+export const SearchStats = ({ hits, processingTimeMS }) => (
   <StatsWrapper css={paddingLeftRight}>
     Found
     <Token> {hits}</Token> results in
     <Token> {processingTimeMS}</Token> ms
   </StatsWrapper>
 );
-
-export default Stats;

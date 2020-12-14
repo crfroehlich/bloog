@@ -1,4 +1,4 @@
-module.exports = {
+export const config = {
   metadata: {
     name: 'BooGi',
     short_name: 'BooGi',

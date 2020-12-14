@@ -3168,10 +3168,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/color-name@npm:^1.1.1":
+"@types/color-convert@npm:*":
+  version: 2.0.0
+  resolution: "@types/color-convert@npm:2.0.0"
+  dependencies:
+    "@types/color-name": "*"
+  checksum: c7291845fc5bed2d393a08934af2fa386d0944d1b81aada4e0fc20f7bcad61e5997435768ba292d72efd892d84a1aca921b5b39d826c59cc5374e4d136e33b86
+  languageName: node
+  linkType: hard
+
+"@types/color-name@npm:*, @types/color-name@npm:^1.1.1":
   version: 1.1.1
   resolution: "@types/color-name@npm:1.1.1"
   checksum: 8311db94a9c4ecd247763b81e783ee49d87678b4ce6a7ee502e2bd5cea242b7357804a04855db009f713174bc654cc0c01c7303d40d757e5d710f5ac0368500f
+  languageName: node
+  linkType: hard
+
+"@types/color@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@types/color@npm:3.0.1"
+  dependencies:
+    "@types/color-convert": "*"
+  checksum: 8d217c104dd9443aeb44cf1ab0ab2d6c9c68a3a4d7284fbda0fc1f14fa65418ce960c5bfcca588ab00b46971b8090a29de54c04c26c54a9da1a457beb8416519
   languageName: node
   linkType: hard
 
@@ -3341,6 +3359,15 @@ __metadata:
   dependencies:
     "@types/node": "*"
   checksum: 3aaf557d5b82e733d5a17b7f55af5d6be953363c3a594f006d64265790fe87c301c6e1400c0b6b1cf72add50a0ceddc25afb8231ab8302a2e5b6ebfbfac30e5d
+  languageName: node
+  linkType: hard
+
+"@types/loadable__component@npm:^5.13.1":
+  version: 5.13.1
+  resolution: "@types/loadable__component@npm:5.13.1"
+  dependencies:
+    "@types/react": "*"
+  checksum: 5c7c6e53d3af4e13bd26cd7972d839a26ee7e3e6f73b5108868e0950978ce88a878c7ea37bfa0d77c3dab134b98545e051dd2753acde141830bc10924a5127aa
   languageName: node
   linkType: hard
 
@@ -4063,6 +4090,8 @@ __metadata:
     "@mdx-js/react": 1.6.22
     "@philpl/buble": 0.19.7
     "@playlyfe/gql": 2.6.2
+    "@types/color": ^3.0.1
+    "@types/loadable__component": ^5.13.1
     "@types/lodash": ^4.14.165
     "@types/mdx-js__react": ^1.5.3
     "@types/node": ^14.14.13

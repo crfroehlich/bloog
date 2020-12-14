@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import config from 'config';
-import ContentTree from './contentTree';
-import Links from './links';
-import PoweredBy from './poweredBy';
+import { config } from 'config';
+import { ContentTree } from './ContentTree';
+import { Links } from './links';
+import { PoweredBy } from './poweredBy';
 import { getNavigationData } from '../Navigation';
-import { scrollbar } from '../../styles';
+import { scrollbar } from '../../styles/styles';
 import { onMobile } from '../../styles/responsive';
 
 const Sidebar = styled.div`
@@ -119,7 +119,8 @@ const Divider = styled((props) => (
     border-bottom: 1px solid ${(props) => props.theme.navigationSidebar.border};
   }
 `;
-const ContentNavigation = ({ show, className, location }) => {
+
+export const ContentNavigation = ({ show, className, location }) => {
   const edges = getNavigationData();
   return (
     <NavigationWrapper className={className} show={show}>
@@ -146,5 +147,3 @@ const ContentNavigation = ({ show, className, location }) => {
     </NavigationWrapper>
   );
 };
-
-export default ContentNavigation;

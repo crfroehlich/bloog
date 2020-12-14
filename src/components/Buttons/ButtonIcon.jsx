@@ -24,7 +24,7 @@ const ButtonIconWrapper = styled('div')`
   }
 `;
 
-const ButtonIcon = ({ icon, ...props }) => {
+export const ButtonIcon = ({ icon, ...props }) => {
   return (
     <ButtonIconWrapper {...props} role={'button'} tabIndex={0}>
       {/* not defining color as a workaround to use css styling instead */}
@@ -41,5 +41,3 @@ ButtonIcon.propTypes = {
   stroke: PropTypes.string,
   icon: PropTypes.object.isRequired,
 };
-
-export default ButtonIcon;

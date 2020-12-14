@@ -2,10 +2,10 @@ import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
 import { AlignRight } from 'react-feather';
-import config from 'config';
+import { config } from 'config';
 import Scrollspy from 'react-scrollspy';
 import { sleep } from '../../utils/utils';
-import { scrollbar } from '../../styles';
+import { scrollbar } from '../../styles/styles';
 import emoji from '../../utils/emoji';
 
 const Sidebar = styled.aside`
@@ -160,7 +160,7 @@ const tocItemsEqual = (items, targetItems) => {
   return true;
 };
 
-const TableOfContents = ({ show, className, location }) => (
+export const TableOfContents = ({ show, className, location }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -225,5 +225,3 @@ const TableOfContents = ({ show, className, location }) => (
     }}
   />
 );
-
-export default TableOfContents;

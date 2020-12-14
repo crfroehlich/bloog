@@ -51,7 +51,7 @@ const spinner = css`
   }
 `;
 
-export default ({ ...props }) => (
+export const Loader = ({ ...props }) => (
   <div css={spinner} {...props}>
     <div className={'double-bounce1'}></div>
     <div className={'double-bounce2'}></div>

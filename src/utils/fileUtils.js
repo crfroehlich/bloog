@@ -1,8 +1,8 @@
-const { readFileSync, close, open, utimes } = require('fs');
-const yaml = require('js-yaml');
-const path = require('path');
+import { readFileSync, close, open, utimes } from 'fs';
+import yaml from 'js-yaml';
+import path from 'path';
 
-const touch = (path) => {
+export const touch = (path) => {
   return new Promise((resolve, reject) => {
     const time = new Date();
     utimes(path, time, time, (err) => {
@@ -17,7 +17,7 @@ const touch = (path) => {
   });
 };
 
-const readYamlOrJson = (path) => {
+export const readYamlOrJson = (path) => {
   try {
     if (path.endsWith('.yml') || path.endsWith('.yaml')) {
       const fileContents = readFileSync(path, 'utf8');
@@ -32,6 +32,7 @@ const readYamlOrJson = (path) => {
   }
 };
 
-const rootDir = () => path.dirname(require.main.filename);
-
-module.exports = { touch, readYamlOrJson, rootDir };
+export const rootDir = () => {
+  const filename = require && require.main ? require.main.filename : '';
+  return path.dirname(filename)
+};
