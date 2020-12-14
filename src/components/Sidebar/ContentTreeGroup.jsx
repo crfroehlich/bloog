@@ -75,4 +75,4 @@ const ContentTreeGroup = styled(({ className, treeState, title, icon, location, 
   }
 `;
 
-export default ContentTreeGr
+export default ContentTreeGroup;
