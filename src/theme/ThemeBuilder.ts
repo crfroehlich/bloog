@@ -4,11 +4,13 @@ import { dark as darkTheme } from './dark';
 import { cloneDeep, merge } from 'lodash';
 
 class ThemeBuilder {
-  constructor(base) {
+  result: any;
+
+  constructor(base: any) {
     this.result = cloneDeep(base);
   }
 
-  applyColors(colors) {
+  applyColors(colors: any) {
     this.result['colors'] = merge(this.result.colors, colors);
     return this;
   }
@@ -24,7 +26,7 @@ class ThemeBuilder {
     return this;
   }
 
-  applyTheme(theme) {
+  applyTheme(theme: any) {
     this.result = merge(this.result, theme);
     return this;
   }

@@ -1,31 +1,54 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
 import { config } from 'config';
+// @ts-expect-error ts-migrate(2305) FIXME: Module '"./styles"' has no exported member 'scroll... Remove this comment to see the full error message
 import { scrollbar } from './styles';
 
-export default class HTML extends React.Component {
+type Props = {
+    htmlAttributes?: any;
+    headComponents?: any[];
+    bodyAttributes?: any;
+    preBodyComponents?: any[];
+    body?: string;
+    postBodyComponents?: any[];
+};
+
+export default class HTML extends React.Component<Props> {
+
   render() {
     return (
+      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
       <html {...this.props.htmlAttributes} lang="en">
+        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
         <head>
+          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
           <meta charSet="utf-8" />
+          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           {config.metadata.ogImage ? (
+            // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <meta property="og:image" content={config.metadata.ogImage} />
           ) : null}
+          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
           <meta property="twitter:card" content="summary_large_image" />
           {config.metadata.ogImage ? (
+            // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <meta property="twitter:image" content={config.metadata.ogImage} />
           ) : null}
           {config.metadata.favicon ? (
+            // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
             <link rel="shortcut icon" type="image/svg" href={config.metadata.favicon} />
           ) : null}
+          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
           <noscript key="noscript"></noscript>
           {this.props.headComponents}
         </head>
+        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
         <body css={scrollbar} {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
+          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
           <div key={`body`} id="___gatsby" dangerouslySetInnerHTML={{ __html: this.props.body }} />
           {this.props.postBodyComponents}
         </body>
@@ -33,12 +56,3 @@ export default class HTML extends React.Component {
     );
   }
 }
-
-HTML.propTypes = {
-  htmlAttributes: PropTypes.object,
-  headComponents: PropTypes.array,
-  bodyAttributes: PropTypes.object,
-  preBodyComponents: PropTypes.array,
-  body: PropTypes.string,
-  postBodyComponents: PropTypes.array,
-};

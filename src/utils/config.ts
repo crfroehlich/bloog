@@ -1,17 +1,19 @@
 import fs from 'fs';
 import { merge, cloneDeep } from 'lodash';
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
 import { config as defaults } from 'config';
 import { readYamlOrJson } from './fileUtils';
+// @ts-expect-error ts-migrate(2305) FIXME: Module '"./config-pwa"' has no exported member 'pr... Remove this comment to see the full error message
 import { processPwa } from './config-pwa';
 
-export const generate = (path, config) => {
+export const generate = (path: any, config: any) => {
   const generated = `export const generatedConfig = ${JSON.stringify(config, undefined, 4)};`;
   fs.writeFile(path, generated, function (err) {
     if (err) return console.log(err);
   });
 };
 
-const readEnvOrDefault = (name, def) => {
+const readEnvOrDefault = (name: any, def: any) => {
   let value = process.env[name];
   return value ? value : def ? def : null;
 };
@@ -34,15 +36,16 @@ class FileReader extends ConfigReader {
 }
 
 class EnvReader extends ConfigReader {
-  readArray(key) {
+  readArray(key: any) {
     const value = this.readValue(key);
     if (value) {
+      // @ts-expect-error ts-migrate(2339) FIXME: Property 'split' does not exist on type 'string | ... Remove this comment to see the full error message
       return value.split(',').map(String.trim);
     }
     return value;
   }
 
-  readValue(key) {
+  readValue(key: any) {
     if (key in process.env) {
       const value = process.env[key];
       try {
@@ -61,15 +64,15 @@ class EnvReader extends ConfigReader {
     return undefined;
   }
 
-  generatePrefix(prefix, key) {
+  generatePrefix(prefix: any, key: any) {
     const suffix = key
       .split(/(?=[A-Z])/)
-      .map((str) => str.toUpperCase())
+      .map((str: any) => str.toUpperCase())
       .join('_');
     return prefix !== '' ? `${prefix}_${suffix}` : suffix;
   }
 
-  readObject(obj, config, prefix) {
+  readObject(obj: any, config: any, prefix: any) {
     for (let [key, value] of Object.entries(obj)) {
       const newPrefix = this.generatePrefix(prefix, key);
       if (
@@ -97,6 +100,7 @@ class EnvReader extends ConfigReader {
     }
   }
 
+  // @ts-expect-error ts-migrate(2416) FIXME: Property 'read' in type 'EnvReader' is not assigna... Remove this comment to see the full error message
   read() {
     const config = {};
     this.readObject(defaults, config, '');
@@ -116,12 +120,12 @@ export const read = () => {
   return config;
 };
 
-const postProcessConfig = (config) => {
+const postProcessConfig = (config: any) => {
   if (config.pwa.enabled === true) {
     processPwa(config);
   }
 
-  config.sidebar.groups.sort(function (a, b) {
+  config.sidebar.groups.sort(function (a: any, b: any) {
     // ASC  -> a.length - b.length
     // DESC -> b.length - a.length
     let byOrder = a.order > b.order ? 1 : a.order > b.order ? -1 : 0;

@@ -2,7 +2,10 @@ const defaultOptions = {
     publishDraft: false,
 };
 
-exports.onCreateNode = ({ node, actions }, pluginOptions) => {
+exports.onCreateNode = ({
+  node,
+  actions
+}: any, pluginOptions: any) => {
   const { createNodeField } = actions;
 
   const options = {

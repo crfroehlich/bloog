@@ -1,4 +1,4 @@
-export const query = (excerptSize) => `{
+export const query = (excerptSize: any) => `{
     allMdx {
       edges {
         node {
@@ -16,18 +16,21 @@ export const query = (excerptSize) => `{
     }
   }`;
 
-const flatten = (arr) =>
-  arr.map(({ node: { id, frontmatter: { title, description }, fields: { slug }, excerpt } }) => ({
-    id,
-    title,
-    description,
-    slug,
-    excerpt,
-  }));
+const flatten = (arr: any) => arr.map(({
+  node: { id, frontmatter: { title, description }, fields: { slug }, excerpt }
+}: any) => ({
+  id,
+  title,
+  description,
+  slug,
+  excerpt,
+}));
 
-const transformer = ({ data }) => flatten(data.allMdx.edges);
+const transformer = ({
+  data
+}: any) => flatten(data.allMdx.edges);
 
-const buildLocalsearchPluginConfig = (conf) => {
+const buildLocalsearchPluginConfig = (conf: any) => {
   return [
     {
       resolve: 'gatsby-plugin-local-search',
@@ -45,4 +48,4 @@ const buildLocalsearchPluginConfig = (conf) => {
   ];
 };
 
-export const getSearchPlugins = (conf) => buildLocalsearchPluginConfig(conf);
+export const getSearchPlugins = (conf: any) => buildLocalsearchPluginConfig(conf);

@@ -2,6 +2,7 @@
 require('dotenv').config();
 const { getSearchPlugins } = require('./src/utils/search');
 const configManager = require('./src/utils/config');
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require('path');
 const emoji = require('./src/utils/emoji');
 const _ = require('lodash');
@@ -148,6 +149,7 @@ if (config.features.pageProgress && config.features.pageProgress.enabled) {
   plugins.push({
     resolve: 'gatsby-plugin-page-progress',
     options: {
+      // @ts-expect-error ts-migrate(2322) FIXME: Type '{ includePaths: any; excludePaths: any; heig... Remove this comment to see the full error message
       includePaths: config.features.pageProgress.includePaths,
       excludePaths: config.features.pageProgress.excludePaths,
       height: config.features.pageProgress.height,
@@ -177,8 +179,10 @@ if (config.features.rss && config.features.rss.enabled) {
       `,
       feeds: [
         {
-          serialize: ({ query: { site, allMdx } }) => {
-            const items = allMdx.edges.map((edge) => {
+          serialize: ({
+            query: { site, allMdx }
+          }: any) => {
+            const items = allMdx.edges.map((edge: any) => {
               const frontmatter = edge.node.frontmatter;
               const fields = edge.node.parent.fields;
               const rawTitle =
@@ -236,7 +240,7 @@ if (config.features.rss && config.features.rss.enabled) {
 }
 
 const searchPlugins = getSearchPlugins(config.features.search);
-searchPlugins.forEach(plugin => plugins.push(plugin));
+searchPlugins.forEach((plugin: any) => plugins.push(plugin));
 
 // check and add pwa functionality
 if (config.pwa && config.pwa.enabled && config.pwa.manifest) {
@@ -247,6 +251,7 @@ if (config.pwa && config.pwa.enabled && config.pwa.manifest) {
   plugins.push({
     resolve: 'gatsby-plugin-offline',
     options: {
+      // @ts-expect-error ts-migrate(2322) FIXME: Type '{ appendScript: string; }' is not assignable... Remove this comment to see the full error message
       appendScript: require.resolve(`./src/custom-sw-code.js`),
     },
   });

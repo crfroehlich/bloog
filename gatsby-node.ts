@@ -1,9 +1,12 @@
+// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
 const path = require('path');
 const { startCase } = require('lodash');
 const chokidar = require(`chokidar`);
 const { touch } = require('./src/utils/fileUtils');
 
-exports.createSchemaCustomization = ({ actions }) => {
+exports.createSchemaCustomization = ({
+  actions
+}: any) => {
   const { createTypes } = actions;
 
   const typeDefs = `
@@ -40,7 +43,10 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(typeDefs);
 };
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = ({
+  graphql,
+  actions
+}: any) => {
   const { createPage } = actions;
   return new Promise((resolve, reject) => {
     resolve(
@@ -59,7 +65,7 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         `
-      ).then((result) => {
+      ).then((result: any) => {
         if (result.errors) {
           console.log(result.errors); // eslint-disable-line no-console
           reject(result.errors);
@@ -70,7 +76,9 @@ exports.createPages = ({ graphql, actions }) => {
         });
 
         // Create pages.
-        result.data.allMdx.edges.forEach(({ node }) => {
+        result.data.allMdx.edges.forEach(({
+          node
+        }: any) => {
           createPage({
             path: node.fields.slug ? node.fields.slug : '/',
             component: path.resolve('./src/templates/docs.js'),
@@ -84,7 +92,9 @@ exports.createPages = ({ graphql, actions }) => {
   });
 };
 
-exports.onCreateWebpackConfig = ({ actions }) => {
+exports.onCreateWebpackConfig = ({
+  actions
+}: any) => {
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
@@ -96,13 +106,19 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   });
 };
 
-exports.onCreateBabelConfig = ({ actions }) => {
+exports.onCreateBabelConfig = ({
+  actions
+}: any) => {
   actions.setBabelPlugin({
     name: '@babel/plugin-proposal-export-default-from',
   });
 };
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
+exports.onCreateNode = ({
+  node,
+  getNode,
+  actions
+}: any) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `Mdx`) {

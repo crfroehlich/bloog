@@ -15,7 +15,11 @@ const skipParagraph = css`
   }
 `;
 
-const HighlightWrapper = styled(({ className, children }) => (
+const HighlightWrapper = styled(({
+  className,
+  children
+}: any) => (
+  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   <div className={className}>{children}</div>
 ))`
   margin: 16px 0;
@@ -28,47 +32,52 @@ const HighlightWrapper = styled(({ className, children }) => (
   border-radius: 4px;
 `;
 
-const Highlight = ({ children, color, icon, ...props }) => {
+const Highlight = ({
+  children,
+  color,
+  icon,
+  ...props
+}: any) => {
   const theme = useTheme();
+  // @ts-expect-error ts-migrate(2339) FIXME: Property 'highlights' does not exist on type 'Them... Remove this comment to see the full error message
   const highlightColor = theme.highlights[color];
   return (
+    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <HighlightWrapper
       background={highlightColor.background}
       border={highlightColor.border}
       font={highlightColor.font}
       {...props}
     >
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <div css={{ marginRight: '16px', lineHeight: 0 }}>
         {icon.render({ color: highlightColor.border, size: 24 })}
       </div>
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <div css={skipParagraph}>{children}</div>
     </HighlightWrapper>
   );
 };
 
 export const Highlights = {
-  Warning: (props) =>
-    Highlight({
-      color: 'warning',
-      icon: AlertTriangle,
-      ...props,
-    }),
-  Error: (props) =>
-    Highlight({
-      color: 'error',
-      icon: AlertOctagon,
-      ...props,
-    }),
-  Info: (props) =>
-    Highlight({
-      color: 'info',
-      icon: AlertCircle,
-      ...props,
-    }),
-  Tip: (props) =>
-    Highlight({
-      color: 'tip',
-      icon: AlertCircle,
-      ...props,
-    }),
+  Warning: (props: any) => Highlight({
+    color: 'warning',
+    icon: AlertTriangle,
+    ...props,
+  }),
+  Error: (props: any) => Highlight({
+    color: 'error',
+    icon: AlertOctagon,
+    ...props,
+  }),
+  Info: (props: any) => Highlight({
+    color: 'info',
+    icon: AlertCircle,
+    ...props,
+  }),
+  Tip: (props: any) => Highlight({
+    color: 'tip',
+    icon: AlertCircle,
+    ...props,
+  }),
 };

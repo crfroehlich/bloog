@@ -32,11 +32,11 @@ export const transparent = css`
   outline: none;
 `;
 
-export const shadowAround = (theme) => css`
+export const shadowAround = (theme: any) => css`
   box-shadow: 0 0 6px 0 ${theme.colors.shadow};
 `;
 
-export const blockquote = (theme) => css`
+export const blockquote = (theme: any) => css`
   font-size: 1.4em;
   width: 100%;
   margin: 30px auto;
@@ -78,7 +78,7 @@ export const pre = css`
   }
 `;
 
-export const anchor = (theme) => css`
+export const anchor = (theme: any) => css`
   transition: color 0.15s;
   color: ${theme.colors.primary};
   &:hover {
@@ -86,7 +86,7 @@ export const anchor = (theme) => css`
   }
 `;
 
-export const table = (theme) => css`
+export const table = (theme: any) => css`
   padding: 0;
   border: 1px solid ${theme.table.border};
   border-radius: 4px;

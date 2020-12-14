@@ -1,3 +1,4 @@
+// @ts-expect-error ts-migrate(2613) FIXME: Module '"/home/fro/code/template/src/theme/colors"... Remove this comment to see the full error message
 import defaultColors from './colors';
 import colorfn from 'color';
 import { increaseIntensivity, decreaseIntensivity, grayscaleCompatible } from '../utils/colors';
@@ -30,28 +31,31 @@ const transitions = {
   hoverColor: 'color .5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s',
 };
 
-const content = (colors) => ({
+const content = (colors: any) => ({
   background: colors.mainBackground,
   border: colors.border,
   font: colors.font,
   titleFont: increaseIntensivity(colors.font, 0.15),
+
   code: {
     border: colors.border,
     font: colors.fontDark,
     background: colors.background,
-  },
+  }
 });
 
-const navigationSidebar = (colors) => ({
+const navigationSidebar = (colors: any) => ({
   backgroundSecondary: colors.background,
   backgroundPrimary: colors.background,
   border: colors.border,
+
   row: {
     hover: colors.border,
     active: colorfn(colors.white).mix(colorfn(colors.background)).whiten(3.5).hex(),
     activeBorder: colors.border,
     collapseHover: colors.hover,
   },
+
   font: {
     group: decreaseIntensivity(colors.font, 0.25),
     base: colors.font,
@@ -59,43 +63,51 @@ const navigationSidebar = (colors) => ({
     active: colors.primary,
     hover: colors.primary,
   },
+
   poweredBy: {
     font: colors.grayLight,
     background: colors.border,
     hover: colors.primary,
-  },
+  }
 });
 
-const header = (colors) => ({
+const header = (colors: any) => ({
   background: colors.background,
   shadow: colors.shadow,
+
   font: {
     base: colors.primary,
     hover: colorfn(colors.primary).negate().hex(),
   },
+
   border: colors.border,
+
   icons: {
     background: colors.background,
     shadow: colors.shadow,
     fill: decreaseIntensivity(colors.background, 0.4),
     stroke: decreaseIntensivity(colors.background, 0.4),
     hover: colors.primary,
-  },
+  }
 });
 
-const search = (colors) => ({
+const search = (colors: any) => ({
   background: colors.background,
+
   mark: {
     font: colors.font,
     background: colors.primary,
   },
+
   font: {
     base: colors.font,
     hover: colors.font,
     highlight: colors.fontDark,
   },
+
   hover: colors.border,
   border: colors.border,
+
   pagination: {
     background: colors.mainBackground,
     border: colors.border,
@@ -105,83 +117,90 @@ const search = (colors) => ({
       background: colors.primary,
       font: grayscaleCompatible(colors.primary),
     },
-  },
+  }
 });
 
-const editOnRepo = (colors) => ({
+const editOnRepo = (colors: any) => ({
   background: colors.background,
   border: colors.border,
   hover: colors.hover,
+
   font: {
     base: colors.font,
     hover: grayscaleCompatible(colors.hover),
-  },
+  }
 });
 
-const jargon = (colors) => ({
+const jargon = (colors: any) => ({
   background: colors.background,
   border: colors.border,
   font: colors.font,
-  shadow: colors.shadow,
+  shadow: colors.shadow
 });
 
-const highlights = (colors) => ({
+const highlights = (colors: any) => ({
   warning: {
     border: colors.orange,
     background: colors.orangeLight,
     font: colors.fontDark,
   },
+
   error: {
     border: colors.red,
     background: colors.redLight,
     font: colors.fontDark,
   },
+
   info: {
     border: colors.blue,
     background: colors.blueLight,
     font: colors.fontDark,
   },
+
   tip: {
     border: colors.green,
     background: colors.greenLight,
     font: colors.fontDark,
-  },
+  }
 });
 
-const table = (colors) => ({
+const table = (colors: any) => ({
   header: {
     background: colors.primary,
     font: increaseIntensivity(colorfn(colors.primary).negate().grayscale(), 0.5),
   },
+
   oddRow: colors.mainBackground,
   evenRow: colors.background,
   rowHover: colors.hover + '3d',
-  border: colors.border,
+  border: colors.border
 });
 
-const tableOfContents = (colors) => ({
+const tableOfContents = (colors: any) => ({
   background: colors.mainBackground,
+
   font: {
     base: decreaseIntensivity(colors.font, 0.15),
     hover: colors.primary,
     current: colors.primary,
   },
-  border: colors.border,
+
+  border: colors.border
 });
 
-const previousNext = (colors) => ({
+const previousNext = (colors: any) => ({
   background: colors.mainBackground,
   hover: colors.primary,
   font: colors.font,
   fontLabel: decreaseIntensivity(colors.font, 0.45),
   border: colors.border,
-  shadow: colors.shadow,
+  shadow: colors.shadow
 });
 
-const scrollTop = (colors) => ({
+const scrollTop = (colors: any) => ({
   background: colors.primary,
   hover: increaseIntensivity(colors.primary, 0.15),
-  arrow: colorfn(colors.primary).negate().grayscale().lighten(0.4).rgb().string(),
+  arrow: colorfn(colors.primary).negate().grayscale().lighten(0.4).rgb().string()
 });
 
 export const base = {

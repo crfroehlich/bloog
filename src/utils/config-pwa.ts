@@ -1,13 +1,12 @@
-const hasValue = (value) => value && value.length > 0;
+const hasValue = (value: any) => value && value.length > 0;
 
-const shortNameFromMetadata = (metadata) =>
-  calculateValue(metadata.short_name, metadata.name.replace(/\w+/, ''));
+const shortNameFromMetadata = (metadata: any) => calculateValue(metadata.short_name, metadata.name.replace(/\w+/, ''));
 
-const calculateValue = (value, fallbackValue) => {
+const calculateValue = (value: any, fallbackValue: any) => {
   return hasValue(value) ? value : hasValue(fallbackValue) ? fallbackValue : null;
 };
 
-const calculateIconLocalPath = (icon) => {
+const calculateIconLocalPath = (icon: any) => {
   if (icon && icon.startsWith('/assets/')) {
     return `static${icon}`;
   } else if (icon && icon.startsWith('assets/')) {
@@ -29,18 +28,19 @@ const formatsMap = {
   webp: 'image/webp',
 };
 
-const setIconsType = (icons) => {
-  icons.forEach((icon) => {
+const setIconsType = (icons: any) => {
+  icons.forEach((icon: any) => {
     if (!icon.type) {
       const splitted = icon.split('.');
       const extension = splitted.length > 0 ? splitted[splitted.length - 1].toLowerCase() : null;
+      // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
       const type = formatsMap[extension];
       icon.type = type;
     }
   });
 };
 
-export const postProcessConfig = (config) => {
+export const postProcessConfig = (config: any) => {
   const manifest = { ...config.pwa.manifest };
   manifest.name = calculateValue(manifest.name, config.metadata.name);
   manifest.short_name = calculateValue(manifest.short_name, shortNameFromMetadata(config.metadata));

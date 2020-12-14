@@ -2,9 +2,14 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { onMobile } from '../../styles/responsive';
 
-const Trademark = styled(({ className, trademark }) => {
+const Trademark = styled(({
+  className,
+  trademark
+}: any) => {
   return (
+    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
     <div className={className}>
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <img src={trademark} alt="powered by logo" loading={'lazy'} />
     </div>
   );
@@ -17,9 +22,15 @@ const Trademark = styled(({ className, trademark }) => {
     width: 25px;
   }
 `;
-const PoweredText = styled(({ className, text }) => (
+const PoweredText = styled(({
+  className,
+  text
+}: any) => (
+  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   <div className={className}>
+    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
     <span>
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       Powered By <b>{text}</b>
     </span>
   </div>
@@ -33,10 +44,19 @@ const PoweredText = styled(({ className, text }) => (
   }
 `;
 
-export const PoweredBy = styled(({ className, trademark, name, link }) => (
+export const PoweredBy = styled(({
+  className,
+  trademark,
+  name,
+  link
+}: any) => (
+  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
   <div css={{ margin: '0 auto', width: 'fit-content' }}>
+    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
     <a className={className} href={link} target="_blank" rel="noreferrer">
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <Trademark trademark={trademark} />
+      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
       <PoweredText text={name} />
     </a>
   </div>
