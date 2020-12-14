@@ -1,5 +1,5 @@
 const path = require('path');
-const startCase = require('lodash.startcase');
+const { startCase } = require('lodash');
 const chokidar = require(`chokidar`);
 const { touch } = require('./src/utils/fileUtils');
 
