@@ -11,7 +11,7 @@ export const FullScreenEnter = styled(({
 }: any) => {
     const theme = useTheme();
     return (
-      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      
       <ButtonIcon
         title={'Enter fullscreen mode'}
         // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
@@ -51,11 +51,11 @@ header.background};
   }: any) => {
     const theme = useTheme();
     return (
-      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      
       <div className={className} onClick={toggle}>
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <span css={{marginRight: '6px'}}>Close full mode</span>
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <ButtonIcon
           title={'Close fullscreen mode'}
           // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.

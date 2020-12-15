@@ -10,14 +10,14 @@ const Link = styled(({
   text
 }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <li className={className}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <a href={to} target={'_blank'} css={flex} rel={'noreferrer'}>
         {text}
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <button css={transparent}>
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <ExternalLink size={14} />
         </button>
       </a>
@@ -50,11 +50,11 @@ const Link = styled(({
 export const Links = ({
   links
 }: any) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   <ul>
     {links.map((link: any, key: any) => {
       if (link.link !== '' && link.text !== '') {
-        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        
         return <Link key={`${key}_${link}`} to={link.link} text={link.text} />;
       }
     })}

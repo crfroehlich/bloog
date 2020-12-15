@@ -40,13 +40,13 @@ const highlight = (query: any, text: any, maxWords: any) => {
   let afterText = text.substring(startPos + qLength);
   afterText = trim_words(afterText, boundary);
   afterText = emoji.emojify(afterText);
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   return <>
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    
     <span>{beforeText}</span>
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    
     <Highlight>{emoji.emojify(query)}</Highlight>
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    
     <span>{afterText}</span>
   </>
 }
@@ -57,9 +57,9 @@ export const PageHit = ({
   maxWords
 }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <li>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <Hit
         slug={hit.slug}
         title={emoji.emojify(hit.title)}

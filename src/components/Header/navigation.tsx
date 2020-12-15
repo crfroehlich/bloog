@@ -7,18 +7,18 @@ export const Navigation = styled(({
   links
 }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <nav css={{display: 'flex'}}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <ul className={className}>
         {links
           ? links.map((link: any, key: any) => {
               const openRule = link.external ? '_blank' : '_self';
               if (link.link !== '' && link.text !== '') {
                 return (
-                  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                  
                   <li key={`${key}_${link}`}>
-                    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+                    
                     <a
                       href={link.link}
                       target={openRule}

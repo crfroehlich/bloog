@@ -1,9 +1,7 @@
 import fs from 'fs';
 import { merge, cloneDeep } from 'lodash';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
-import { config as defaults } from 'config';
+import { config as defaults } from '../../config';
 import { readYamlOrJson } from './fileUtils';
-// @ts-expect-error ts-migrate(2305) FIXME: Module '"./config-pwa"' has no exported member 'pr... Remove this comment to see the full error message
 import { processPwa } from './config-pwa';
 
 export const generate = (path: any, config: any) => {

@@ -46,11 +46,11 @@ const Header = (level: any, props: any) => {
 };
 
 const Table = ({...props}) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   <div css={{ display: 'grid' }}>
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    
     <div css={{ overflowX: 'auto' }}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <table css={table(useTheme())} {...props} />
     </div>
   </div>
@@ -64,17 +64,17 @@ const Section = (props: any) => {
     header = props.children.props;
   }
   const name = idFromHeader(header);
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   return <section id={name} {...props} />;
 };
 
 const emphasis = (props: any) => {
   const useJargon = !(typeof props.children === 'string');
   if (useJargon) {
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     return <Jargon {...props} />;
   }
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   return <em {...props} />;
 };
 
@@ -86,24 +86,24 @@ export const MdxComponents = {
   h5: (props: any) => Header(5, props),
   h6: (props: any) => Header(6, props),
   section: (props: any) => Section(props),
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   blockquote: (props: any) => <blockquote css={blockquote(useTheme())} {...props} />,
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   p: (props: any) => <p className="paragraph" {...props} />,
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   pre: (props: any) => <pre css={pre} {...props} />,
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   table: (props: any) => <Table {...props}/>,
   em: emphasis,
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   img: (props: any) => <a href={props.src} target="_blank" rel="noopener noreferrer">
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    
     <img loading={'lazy'} {...props} />
   </a>,
   code: CodeBlock,
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   ul: (props: any) => <ul css={list} {...props} />,
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   ol: (props: any) => <ol css={list} {...props} />,
   a: AnchorTag,
   Badge,

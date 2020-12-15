@@ -1,15 +1,12 @@
-// 08:46
 require('dotenv').config();
-const { getSearchPlugins } = require('./src/utils/search');
-const configManager = require('./src/utils/config');
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require('path');
-const emoji = require('./src/utils/emoji');
-const _ = require('lodash');
-const { truncate } = require('lodash');
+import { getSearchPlugins } from './src/utils/search';
+import { read, generate } from './src/utils/config';
+import path from 'path';
+import { emojiTools as emoji } from './src/utils/emoji';
+import { orderBy } from 'lodash';
 
-const config = configManager.read();
-configManager.generate(__dirname + '/.generated.config.js', config);
+const config = read();
+generate(__dirname + '/.generated.config.js', config);
 
 const plugins = [
   'gatsby-plugin-loadable-components-ssr',
@@ -42,6 +39,7 @@ const plugins = [
   },
   'gatsby-plugin-react-helmet',
   'gatsby-source-local-git',
+  'gatsby-plugin-ts',
   {
     resolve: 'gatsby-source-filesystem',
     options: {
@@ -201,7 +199,7 @@ if (config.features.rss && config.features.rss.enabled) {
                 author: author,
               };
             });
-            return _.orderBy(items, ['date', 'title'], ['desc', 'asc']);
+            return orderBy(items, ['date', 'title'], ['desc', 'asc']);
           },
           query: `
           {

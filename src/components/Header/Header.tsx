@@ -121,21 +121,21 @@ const SearchOpener = ({
 }: any) => {
   const theme = useTheme();
   const method = forcedComponent || config.features.search.startComponent;
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   let opener = <div></div>;
   switch (method.toLowerCase()) {
     case 'input':
       opener = (
-        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        
         <SearchWrapper css={hiddenMobile} style={{ marginRight: '10px' }} {...props}>
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <SearchInput style={{marginTop: '0', marginBottom: '0'}} onChange={(e: any) => e.target.value = ''} onFocus={open} />
         </SearchWrapper>
       );
       break;
     case 'icon':
       opener = (
-        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        
         <ButtonIcon
           // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
           background={theme.header.icons.background}
@@ -152,7 +152,7 @@ const SearchOpener = ({
       break;
     default:
       console.error(`Provided show component '${method}' is not supported. Use 'icon' or 'input'.`);
-      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      
       opener = <div></div>;
   }
   return opener;
@@ -169,7 +169,7 @@ const HelpButton = ({
     help.focus();
   };
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <ButtonIcon
       // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
       hoverStroke={theme.header.icons.hover}
@@ -185,7 +185,7 @@ const HelpButton = ({
 const RssIcon = (iconBaseProps: any) => {
   if (config.features.rss && config.features.rss.enabled && config.features.rss.showIcon) {
     return (
-      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      
       <Rss
         className={hiddenMobile}
         {...iconBaseProps}
@@ -213,9 +213,9 @@ const MobileMenuToggle = styled(({
 }: any) => {
   const theme = useTheme();
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <div className={className} {...props}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <ButtonIcon
         title={'Open menu'}
         // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
@@ -257,7 +257,7 @@ export const Header = ({
   show,
   toggleFullscreenMode
 }: any) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   <StaticQuery
     query={graphql`
       query headerTitleQuery {
@@ -306,7 +306,7 @@ export const Header = ({
         stroke: theme.header.icons.stroke,
       };
       const DarkModeButton = config.features.darkMode.enabled ? (
-        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        
         <DarkModeSwitch
           {...iconBaseProps}
           // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
@@ -327,73 +327,73 @@ export const Header = ({
         setShowSearch(false);
       });
       return (
-        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        
         <>
           {config.features.fullScreenMode.enabled &&
           config.features.fullScreenMode.enabled === true ? (
-            // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            
             <FullScreenHeader show={!show} css={hiddenMobile}>
-              {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+              
               <FullScreenClose toggle={toggleFullscreenMode} />
               {DarkModeButton}
             </FullScreenHeader>
           ) : (
             ''
           )}
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <HeaderWrapper show={show}>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+            
             <Logo link={logoLink} img={logoImg} title={headerTitle} />
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+            
             <TopNavigation css={hiddenMobile}>
-              {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+              
               <Navigation links={headerLinks} />
             </TopNavigation>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+            
             <ButtonsWrapper>
               {isSearchEnabled ? (
-                // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                
                 <>
-                  {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+                  
                   <SearchOpener open={open} forcedComponent={'icon'} css={visibleTablet} />
-                  {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+                  
                   <SearchOpener open={open} css={hiddenTablet} />
                 </>
               ) : null}
               {helpUrl && helpUrl.length > 0 ? (
-                // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                
                 <HelpButton css={hiddenMobile} helpUrl={helpUrl} />
               ) : (
                 ''
               )}
-              {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+              
               <SocialButtonsWrapper css={hiddenMobile}>
                 {SocialButtons(iconBaseProps, config.social)}
               </SocialButtonsWrapper>
-              {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+              
               <RssIcon {...iconBaseProps} />
               {config.features.fullScreenMode.enabled &&
               config.features.fullScreenMode.enabled === true ? (
-                // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+                
                 <FullScreenEnter toggle={toggleFullscreenMode} css={hiddenMobile} />
               ) : (
                 ''
               )}
               {DarkModeButton}
-              {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+              
               <MobileMenuToggle toggle={toggleMenuOpen} open={menuOpen} />
             </ButtonsWrapper>
 
             {isMobile() ? (
-              // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+              
               <MobileNavigation css={visibleMobile} show={menuOpen}>
-                {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+                
                 <Sidebar location={location} show={true} />
 
-                {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+                
                 <Navigation links={headerLinks} />
 
-                {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+                
                 <SocialButtonsWrapper css={visibleMobile}>
                   {SocialButtons(iconBaseProps, config.social)}
                 </SocialButtonsWrapper>

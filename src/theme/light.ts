@@ -1,17 +1,17 @@
-// @ts-expect-error ts-migrate(2613) FIXME: Module '"/home/fro/code/template/src/theme/colors"... Remove this comment to see the full error message
-import defaultColors from './colors';
+import { colors as defaultColors } from './colors';
+import { IColors, IThemeColors } from './ITheme';
 
-export const light = {
-  colors: {
-    ...defaultColors,
-    primary: defaultColors.blue,
-    primaryDark: defaultColors.blueDark,
-    font: '#333334',
-    fontDark: '#121213',
-    background: '#F5F7F9',
-    mainBackground: '#fefefe',
-    border: '#DBDDDF',
-    hover: defaultColors.blue,
-    shadow: defaultColors.gray + '33',
-  }
+const lightColors: IThemeColors = {
+  ...defaultColors,
+  primary: defaultColors.blue,
+  primaryDark: defaultColors.blueDark,
+  font: '#333334',
+  fontDark: '#121213',
+  background: '#F5F7F9',
+  mainBackground: '#fefefe',
+  border: '#DBDDDF',
+  hover: defaultColors.blue,
+  shadow: defaultColors.gray + '33',
 };
+
+export const light: IColors = { colors: lightColors };

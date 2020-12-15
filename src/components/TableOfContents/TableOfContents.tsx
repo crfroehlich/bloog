@@ -82,9 +82,9 @@ const ListItem = styled(({
   ...props
 }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <li className={className}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <a href={props.to} {...props}>
         {children}
       </a>
@@ -105,9 +105,9 @@ const TocTitle = styled(({
   className
 }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <span className={className}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <AlignRight size={15} />
       Contents
     </span>
@@ -139,7 +139,7 @@ const buildToC = (item: any, items: any, maxDepth: any, depth: any) => {
         : '#';
       const title = emoji.emojify(innerItem.title);
       let listItem = (
-        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        
         <ListItem key={`${items.length}_${i}`} to={`#${itemId}`} level={depth}>
           {title}
         </ListItem>
@@ -196,7 +196,7 @@ export const TableOfContents = ({
   className,
   location
 }: any) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   <StaticQuery
     query={graphql`
       query {
@@ -246,11 +246,11 @@ export const TableOfContents = ({
           }
         };
         return (
-          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          
           <Sidebar show={show} className={className} css={scrollbar}>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+            
             <TocTitle>Contents</TocTitle>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+            
             <Scrollspy
               // @ts-expect-error ts-migrate(2769) FIXME: No overload matches this call.
               ref={scrollspyRef}

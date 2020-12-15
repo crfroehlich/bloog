@@ -31,7 +31,7 @@ const PreviousNextWrapper = styled.div`
 const Arrow = styled(({
   className,
   arrow
-// @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+
 }: any) => <div className={className}>{arrow.render({color: ''})}</div>)`
   display: block;
   margin: 0;
@@ -82,16 +82,16 @@ const ContentWrapper = styled(({
   title
 }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <div className={className}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <Label>
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <span>{label}</span>
       </Label>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <Title>
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <span>{emoji.emojify(title)}</span>
       </Title>
     </div>
@@ -112,11 +112,11 @@ const LeftButton = ({
   label
 }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <Button url={url}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <Arrow arrow={ChevronLeft} />
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <ContentWrapper title={title} label={label} css={{ textAlign: 'right' }} />
     </Button>
   );
@@ -128,11 +128,11 @@ const RightButton = ({
   label
 }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <Button url={url}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <ContentWrapper title={title} label={label} />
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <Arrow arrow={ChevronRight} />
     </Button>
   );
@@ -144,7 +144,7 @@ const Button = styled(({
   children
 }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <Link to={url ? url : '#'} className={className}>
       {children}
     </Link>
@@ -258,15 +258,15 @@ export const PreviousNext = ({
   // @ts-expect-error ts-migrate(2339) FIXME: Property 'path' does not exist on type '{}'.
   const nextLabel = `${conf.nextName} ${next.path ? conf.pathDivider + next.path : ''}`;
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <PreviousNextWrapper>
       {/* @ts-expect-error ts-migrate(2532) FIXME: Object is possibly 'undefined'. */}
       {currentIndex >= 0 ? (
-        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        
         <>
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <LeftButton url={previous.url} title={previous.title} label={previousLabel} />
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <RightButton url={next.url} title={next.title} label={nextLabel} />
         </>
       ) : null}

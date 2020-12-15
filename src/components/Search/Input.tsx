@@ -19,9 +19,9 @@ const SearchIcon = styled(Search)`
 `;
 
 const CleanSearch = styled(({ ...props }) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   <div {...props} role={'button'} aria-label="clean search">
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    
     <Trash />
   </div>
 ))`
@@ -117,9 +117,9 @@ export const SidebarSearchInput = ({
   showClean,
   ...props
 }: any) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   <SidebarSearchInputWrapper>
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    
     <SearchInput search={search} inputRef={inputRef} showClean={showClean} {...props} />
   </SidebarSearchInputWrapper>
 );
@@ -151,11 +151,11 @@ export const SearchInput = ({
   };
 
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <Form css={shadowAround(theme)} onSubmit={preventSubmit} style={style} >
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <SearchIcon />
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <Input
         ref={inputRef}
         className={'searchInput '}
@@ -170,7 +170,7 @@ export const SearchInput = ({
         }}
         {...props}
       />
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       {showClean ? <CleanSearch onClick={clean} /> : ''}
     </Form>
   );

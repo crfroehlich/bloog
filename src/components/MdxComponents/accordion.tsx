@@ -63,15 +63,15 @@ export const Accordion = ({
   const theme = useTheme();
   // @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
   const color = encodeURIComponent(theme.colors.primary); // replace # to not follow uri as usual
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   const closed = renderToStaticMarkup(<ChevronDown size={22} color={color} />);
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   const open = renderToStaticMarkup(<ChevronUp size={22} color={color} />);
   const triggerWhenOpen = titleWhenOpen ? titleWhenOpen : title;
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <AccordionWrapper theme={theme} openImg={open} closedImg={closed}>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <Collapsible
         lazyRender={true}
         trigger={emojiTools.emojify(title)}

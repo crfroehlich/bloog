@@ -23,7 +23,7 @@ export const Icon = ({ ...props }) => {
   };
   const margin = props.margin || '5px';
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <span
       // @ts-expect-error ts-migrate(2322) FIXME: Type '{ children: any; css: { margin: string; svg:... Remove this comment to see the full error message
       css={{

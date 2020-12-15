@@ -40,11 +40,11 @@ export const ImageCard = ({
   const imgWidth = width ? width : '50%';
   const imgHeight = width ? width : '50%';
   return (
-      // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+      
       <ImageCardWrapper width={imgWidth} height={imgHeight}>
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <Image src={src} />
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <Text>{children}</Text>
       </ImageCardWrapper>
   );

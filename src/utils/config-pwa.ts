@@ -40,7 +40,7 @@ const setIconsType = (icons: any) => {
   });
 };
 
-export const postProcessConfig = (config: any) => {
+export const processPwa = (config: any) => {
   const manifest = { ...config.pwa.manifest };
   manifest.name = calculateValue(manifest.name, config.metadata.name);
   manifest.short_name = calculateValue(manifest.short_name, shortNameFromMetadata(config.metadata));

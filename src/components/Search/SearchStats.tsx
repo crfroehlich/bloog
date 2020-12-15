@@ -19,12 +19,12 @@ export const SearchStats = ({
   hits,
   processingTimeMS
 }: any) => (
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   <StatsWrapper css={paddingLeftRight}>
     Found
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    
     <Token> {hits}</Token> results in
-    {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+    
     <Token> {processingTimeMS}</Token> ms
   </StatsWrapper>
 );

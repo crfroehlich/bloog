@@ -34,23 +34,23 @@ const ContentTreeGroup = styled(({
   const emojified = emoji.emojify(title);
   return (
     // {...item}
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <div className={className}>
       {title ? (
-        // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+        
         <>
-          {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+          
           <span>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+            
             {icon ? <img src={icon} alt={`group ${emojified}`} loading={'lazy'} /> : null}{' '}
             {emojified}
           </span>
         </>
       ) : null}
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <ul>
         {children.map((child: any,i: any) => (
-          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          
           <ContentTreeNode
             key={`${child.url}_${i}`}
             toggle={toggle}

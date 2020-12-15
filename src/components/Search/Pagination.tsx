@@ -16,7 +16,7 @@ const Button = styled(({
     refine(page);
   };
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <button href="#" onClick={changePage} {...props}>
       {children}
     </button>
@@ -97,16 +97,16 @@ export const Pagination = ({
   const previousPage = currentPage > 1 ? currentPage - 1 : 1;
   const nextPage = currentPage === pagesToShow ? currentPage : currentPage + 1;
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <PagesListWrapper>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <PagesList>
         {showPrevious ? (
-          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          
           <li style={{ marginRight: leftRightMargin }}>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+            
             <Button show={currentPage > 1} refine={refine} page={previousPage}>
-              {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+              
               <ChevronLeft />
             </Button>
           </li>
@@ -116,9 +116,9 @@ export const Pagination = ({
           const isCurrent = currentPage === page;
 
           return (
-            // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+            
             <li key={`${index}_${Date.now()}`}>
-              {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+              
               <Button refine={refine} page={page} isCurrent={isCurrent}>
                 {page}
               </Button>
@@ -126,11 +126,11 @@ export const Pagination = ({
           );
         })}
         {showNext ? (
-          // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+          
           <li style={{ marginLeft: leftRightMargin }}>
-            {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+            
             <Button show={currentPage !== pagesToShow} refine={refine} page={nextPage}>
-              {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+              
               <ChevronRight />
             </Button>
           </li>

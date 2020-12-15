@@ -2,8 +2,9 @@
 import defaultColors from './colors';
 import colorfn from 'color';
 import { increaseIntensivity, decreaseIntensivity, grayscaleCompatible } from '../utils/colors';
+import { IBaseTheme, IContent, IEditOnRepo, IHeader, IHighlights, IJargon, INavigationSidebar, IPageLayout, IPreviousNext, IScrollTop, ISearch, ITable, ITableOfContents, IThemeColors, ITransitions } from './ITheme';
 
-const colors = {
+const colors: IThemeColors = {
   ...defaultColors,
 
   primary: defaultColors.red,
@@ -18,20 +19,20 @@ const colors = {
   shadow: defaultColors.gray + '33',
 };
 
-const pageLayout = {
+const pageLayout: IPageLayout = {
   leftWidth: '318px',
   leftMargin: '30px',
   rightWidth: '',
   rightMargin: '',
 };
 
-const transitions = {
+const transitions: ITransitions = {
   hover: 'all .5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s',
   hoverFast: 'all .3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s',
   hoverColor: 'color .5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s',
 };
 
-const content = (colors: any) => ({
+const content = (colors: IThemeColors): IContent => ({
   background: colors.mainBackground,
   border: colors.border,
   font: colors.font,
@@ -44,7 +45,7 @@ const content = (colors: any) => ({
   }
 });
 
-const navigationSidebar = (colors: any) => ({
+const navigationSidebar = (colors: IThemeColors): INavigationSidebar => ({
   backgroundSecondary: colors.background,
   backgroundPrimary: colors.background,
   border: colors.border,
@@ -71,7 +72,7 @@ const navigationSidebar = (colors: any) => ({
   }
 });
 
-const header = (colors: any) => ({
+const header = (colors: IThemeColors): IHeader => ({
   background: colors.background,
   shadow: colors.shadow,
 
@@ -91,7 +92,7 @@ const header = (colors: any) => ({
   }
 });
 
-const search = (colors: any) => ({
+const search = (colors: IThemeColors): ISearch => ({
   background: colors.background,
 
   mark: {
@@ -120,7 +121,7 @@ const search = (colors: any) => ({
   }
 });
 
-const editOnRepo = (colors: any) => ({
+const editOnRepo = (colors: IThemeColors): IEditOnRepo => ({
   background: colors.background,
   border: colors.border,
   hover: colors.hover,
@@ -131,14 +132,14 @@ const editOnRepo = (colors: any) => ({
   }
 });
 
-const jargon = (colors: any) => ({
+const jargon = (colors: IThemeColors): IJargon => ({
   background: colors.background,
   border: colors.border,
   font: colors.font,
   shadow: colors.shadow
 });
 
-const highlights = (colors: any) => ({
+const highlights = (colors: IThemeColors): IHighlights => ({
   warning: {
     border: colors.orange,
     background: colors.orangeLight,
@@ -164,7 +165,7 @@ const highlights = (colors: any) => ({
   }
 });
 
-const table = (colors: any) => ({
+const table = (colors: IThemeColors): ITable => ({
   header: {
     background: colors.primary,
     font: increaseIntensivity(colorfn(colors.primary).negate().grayscale(), 0.5),
@@ -176,7 +177,7 @@ const table = (colors: any) => ({
   border: colors.border
 });
 
-const tableOfContents = (colors: any) => ({
+const tableOfContents = (colors: IThemeColors): ITableOfContents => ({
   background: colors.mainBackground,
 
   font: {
@@ -188,7 +189,7 @@ const tableOfContents = (colors: any) => ({
   border: colors.border
 });
 
-const previousNext = (colors: any) => ({
+const previousNext = (colors: IThemeColors): IPreviousNext => ({
   background: colors.mainBackground,
   hover: colors.primary,
   font: colors.font,
@@ -197,25 +198,25 @@ const previousNext = (colors: any) => ({
   shadow: colors.shadow
 });
 
-const scrollTop = (colors: any) => ({
+const scrollTop = (colors: IThemeColors): IScrollTop => ({
   background: colors.primary,
   hover: increaseIntensivity(colors.primary, 0.15),
   arrow: colorfn(colors.primary).negate().grayscale().lighten(0.4).rgb().string()
 });
 
-export const base = {
+export const base: IBaseTheme = {
   colors: colors,
-  layout: pageLayout,
-  transitions: transitions,
-  header: header,
-  search: search,
-  navigationSidebar: navigationSidebar,
   content: content,
   editOnRepo: editOnRepo,
-  jargon: jargon,
+  header: header,
   highlights: highlights,
-  table: table,
-  tableOfContents: tableOfContents,
+  jargon: jargon,
+  layout: pageLayout,
+  navigationSidebar: navigationSidebar,
   previousNext: previousNext,
   scrollTop: scrollTop,
+  search: search,
+  table: table,
+  tableOfContents: tableOfContents,
+  transitions: transitions,
 };

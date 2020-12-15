@@ -1,4 +1,6 @@
-const colors = {
+import { IDefaultColors } from "./ITheme";
+
+export const colors: IDefaultColors = {
   blue: '#0066CC',
   blueLight: '#CDDFF5',
   blueDark: '#264D99',
@@ -17,5 +19,3 @@ const colors = {
   grayLight: '#AEAEAE',
   grayDark: '#3B4656',
 };
-
-export const defaultColors = colors;

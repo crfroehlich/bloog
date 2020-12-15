@@ -1,0 +1,55 @@
+---
+extends:
+  - 'airbnb-base'
+  - 'plugin:@typescript-eslint/recommended'
+  - 'plugin:import/errors'
+  - 'plugin:import/typescript'
+  - 'plugin:import/warnings'
+  - 'plugin:jsx-a11y/recommended'
+  - 'plugin:prettier/recommended'
+  - 'plugin:react/recommended'
+  - 'plugin:sonarjs/recommended'
+  - 'prettier'
+  - 'prettier/@typescript-eslint'
+  - 'prettier/react'
+plugins:
+  - '@typescript-eslint'
+  - 'import'
+  - 'jsx-a11y'
+  - 'react'
+  - sonarjs
+  - markdown
+  - 'react-hooks'
+settings:
+  react:
+    version: detect
+rules:
+  '@typescript-eslint/no-use-before-define':
+    - error
+  import/extensions: 0
+  import/prefer-default-export: 'off'
+  lines-between-class-members:
+    - error
+    - always
+  no-use-before-define: 'off'
+  prettier/prettier: 'error'
+  react/prop-types: 0
+  react/react-in-jsx-scope: 'off'
+  react-hooks/rules-of-hooks: 'error' #Checks rules of Hooks
+  react-hooks/exhaustive-deps: 'warn' #Checks effect dependencies
+  'jsx-a11y/click-events-have-key-events': 0
+  key-spacing:
+    - 2 
+    - align: value
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaVersion: 11
+  sourceType: module
+  ecmaFeatures:
+    jsx: true
+env:
+  es6: true
+  browser: true
+  node: true
+globals:
+  graphql: false

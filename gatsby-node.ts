@@ -1,10 +1,9 @@
-// @ts-expect-error ts-migrate(2451) FIXME: Cannot redeclare block-scoped variable 'path'.
-const path = require('path');
-const { startCase } = require('lodash');
-const chokidar = require(`chokidar`);
-const { touch } = require('./src/utils/fileUtils');
+import path from 'path';
+import { startCase } from 'lodash';
+import chokidar from 'chokidar';
+import { touch } from './src/utils/fileUtils';
 
-exports.createSchemaCustomization = ({
+export const createSchemaCustomization = ({
   actions
 }: any) => {
   const { createTypes } = actions;
@@ -43,7 +42,7 @@ exports.createSchemaCustomization = ({
   createTypes(typeDefs);
 };
 
-exports.createPages = ({
+export const createPages = ({
   graphql,
   actions
 }: any) => {
@@ -92,7 +91,7 @@ exports.createPages = ({
   });
 };
 
-exports.onCreateWebpackConfig = ({
+export const onCreateWebpackConfig = ({
   actions
 }: any) => {
   actions.setWebpackConfig({
@@ -106,7 +105,7 @@ exports.onCreateWebpackConfig = ({
   });
 };
 
-exports.onCreateBabelConfig = ({
+export const onCreateBabelConfig = ({
   actions
 }: any) => {
   actions.setBabelPlugin({
@@ -114,7 +113,7 @@ exports.onCreateBabelConfig = ({
   });
 };
 
-exports.onCreateNode = ({
+export const onCreateNode = ({
   node,
   getNode,
   actions
@@ -149,7 +148,7 @@ exports.onCreateNode = ({
   }
 };
 
-exports.onPreBootstrap = () => {
+export const onPreBootstrap = () => {
   const watcher = chokidar.watch('./config', {
     ignored: ['jargon*'],
   });

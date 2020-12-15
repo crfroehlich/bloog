@@ -62,13 +62,13 @@ const EditButton = styled(({
   text
 }: any) => {
   return (
-    // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+    
     <Edit>
-      {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+      
       <Link className={className} to={link} css={shadowAround} target={'_blank'}>
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <img src={icon} alt={'Git Repository'} loading={'lazy'} /> 
-        {/* @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message */}
+        
         <span>{text}</span>
       </Link>
     </Edit>
@@ -130,6 +130,6 @@ export const EditOnRepo = ({ repoType, branch, location, path }: Props) => {
     default:
       console.log(`Repository type ${repoType} is not supported by edit on repo feature`);
   }
-  // @ts-expect-error ts-migrate(17004) FIXME: Cannot use JSX unless the '--jsx' flag is provided... Remove this comment to see the full error message
+  
   return <EditButton icon={icon} link={link} text={text} />;
 };
