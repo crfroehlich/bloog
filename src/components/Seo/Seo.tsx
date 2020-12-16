@@ -1,7 +1,5 @@
 import { Helmet } from 'react-helmet';
-import { getConf } from '../../utils';
-
-const config = getConf();
+import config from '../../../.config';
 
 type Props = {
     frontmatter: any;

@@ -72,7 +72,7 @@
     "skipLibCheck": true,                     /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": ["config/**/*", "plugins/**/*", "src/**/*"],
+  "include": ["plugins/**/*", "src/**/*"],
   "exclude": [
     "__generated__",
     ".cache",

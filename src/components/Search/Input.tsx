@@ -4,10 +4,8 @@ import { shadowAround } from '../../styles/styles';
 import { useTheme } from '@emotion/react';
 import { Search, Trash } from 'react-feather';
 import { useDebounce } from '../../utils/useDebounce';
-import { getConf } from '../../utils';
+import config from '../../../.config';
 import { onMobile } from '../../styles/responsive';
-
-const config = getConf();
 
 const SearchIcon = styled(Search)`
   width: 1.2em;

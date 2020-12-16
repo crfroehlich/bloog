@@ -1,7 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby';
-import { getConf } from '../../utils';
-
-const config = getConf();
+import config from '../../../.config';
 
 export const getNavigationData = () => {
   const { allMdx } = useStaticQuery(graphql`

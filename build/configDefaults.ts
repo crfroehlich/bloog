@@ -1,4 +1,4 @@
-export const config: IConfig = {
+export const configDefaults: IConfig = {
   metadata: {
     description: '',
     favicon: '/assets/favicon.png',
@@ -17,7 +17,6 @@ export const config: IConfig = {
     logo: '',
     logoLink: '/',
     helpUrl: '',
-    links: [],
   },
   sidebar: {
     enabled: true,
@@ -260,7 +259,7 @@ interface Header {
   logo:     string;
   logoLink: string;
   helpUrl:  string;
-  links:    any[];
+  links?:   { link: string; text: string; external: string; }[];
 }
 
 interface Metadata {

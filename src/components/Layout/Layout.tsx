@@ -10,14 +10,12 @@ import {
   ThemeProvider,
 } from '..';
 
-import { getConf } from '../../utils';
+import config from '../../../.config';
 import React, { useRef, useEffect, useState } from 'react';
 import { Slide } from 'react-reveal';
 import { hiddenMobile, hiddenTablet } from '../../styles/styles';
 import { onMobile, onTablet } from '../../styles/responsive';
 import 'css';
-
-const config = getConf();
 
 const Wrapper = styled.div`
   display: flex;

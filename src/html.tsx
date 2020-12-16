@@ -1,8 +1,6 @@
 import React from 'react';
-import { getConf } from '..';
+import config from '../.config';
 import { scrollbar } from './styles';
-
-const config = getConf();
 
 type Props = {
     htmlAttributes?: any;

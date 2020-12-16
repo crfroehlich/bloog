@@ -1,6 +1,6 @@
 import { readYamlOrJson } from './fileUtils';
 
-const jargonData = readYamlOrJson(__dirname + '/../../config/jargon.yml');
+const jargonData = readYamlOrJson('build/jargon.yml');
 
 const validateProperty = (entry: any, property: any, key: any) => {
   const value = entry[property];

@@ -6,7 +6,7 @@ const Token = styled.span`
 `;
 
 const StatsWrapper = styled.p`
-  color: ${(props) => props.theme.search.fond.base};
+  color: ${(props) => props.theme.search.fond?.base};
   font-size: 11px;
   text-align: right;
   margin-top: 10px;

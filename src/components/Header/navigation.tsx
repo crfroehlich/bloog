@@ -59,7 +59,7 @@ export const Navigation = styled(({
       height: 3px;
       bottom: 0;
       left: 0;
-      background: ${(props) => props.theme.header.font.hover};
+      background: ${(props) => props.theme.header.fond?.hover};
       visibility: hidden;
       border-radius: 4px;
       transform: scaleX(0);
@@ -73,14 +73,14 @@ export const Navigation = styled(({
     a {
       font-family: 'Roboto';
       position: relative;
-      color: ${(props) => props.theme.header.font.base};
+      color: ${(props) => props.theme.header.fond?.base};
       font-size: 16px;
       font-weight: 500;
       line-height: 1em;
       opacity: 1;
       padding: 10px 15px;
       &:hover {
-        color: ${(props) => props.theme.header.font.hover};
+        color: ${(props) => props.theme.header.fond?.hover};
       }
     }
   }

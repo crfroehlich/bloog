@@ -1,14 +1,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { getConf } from '../../utils';
 import { ContentTree } from './ContentTree';
 import { Links } from './Links';
 import { PoweredBy } from './PoweredBy';
 import { getNavigationData } from '../Navigation';
 import { scrollbar } from '../../styles/styles';
 import { onMobile } from '../../styles/responsive';
-
-const config = getConf();
+import config from '../../../.config';
 
 const SidebarWrapper = styled.div`
   margin-left: ${(props) => props.theme.layout.leftMargin};

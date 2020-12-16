@@ -1,15 +1,7 @@
-import fs from 'fs';
 import { merge, cloneDeep } from 'lodash';
-import { config as defaults, IConfig } from '../../config';
+import { configDefaults, IConfig } from './configDefaults';
 import { readYamlOrJson } from './fileUtils';
-import { processPwa } from './config-pwa';
-
-export const generate = (path: any, config: any) => {
-  const generated = `export const generatedConfig = ${JSON.stringify(config, undefined, 2)};`;
-  fs.writeFile(path, generated, (err) => {
-    if (err) return console.log(err);
-  });
-};
+import { processPwa } from '../src/utils/config-pwa';
 
 const readEnvOrDefault = (name: any, def: any) => {
   let value = process.env[name];
@@ -24,7 +16,7 @@ class ConfigReader {
 
 class FileReader extends ConfigReader {
   getPath() {
-    return readEnvOrDefault('CONFIG_PATH', __dirname + '/../../config/config.yml');
+    return readEnvOrDefault('CONFIG_PATH', 'build/config.yml');
   }
 
   read() {
@@ -100,12 +92,12 @@ class EnvReader extends ConfigReader {
   }
  
   read() {
-    this.readObject(defaults, this.config, '');
+    this.readObject(configDefaults, this.config, '');
     return null;
   }
   
   readConfig() {
-    this.readObject(defaults, this.config, '');
+    this.readObject(configDefaults, this.config, '');
     return this.config;
   }
 }
@@ -114,7 +106,7 @@ class EnvReader extends ConfigReader {
 export const read = (): IConfig => {
   const fileConfig = new FileReader().read();
   const envConfig = new EnvReader().readConfig();
-  const def = cloneDeep(defaults);
+  const def = cloneDeep(configDefaults);
 
   let config = merge(def, fileConfig);
   config = merge(config, envConfig);
@@ -127,11 +119,11 @@ const postProcessConfig = (config: any) => {
     processPwa(config);
   }
 
-  config.sidebar.groups.sort(function (a: any, b: any) {
+  config.sidebar.groups.sort((a: any, b: any) => {
     // ASC  -> a.length - b.length
     // DESC -> b.length - a.length
     let byOrder = a.order > b.order ? 1 : a.order > b.order ? -1 : 0;
-    return byOrder === 0 ? b.path.length - a.path.length : byOrder;
+    return byOrder === 0 ? b.path?.length || 0 - a.path?.length || 0 : byOrder;
   });
 };
 

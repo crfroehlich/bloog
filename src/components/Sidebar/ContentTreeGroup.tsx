@@ -1,10 +1,8 @@
 import React from 'react';
 import { ContentTreeNode } from './ContentTreeNode';
-import { getConf } from '../../utils';
 import styled from '@emotion/styled';
 import { emojiTools } from '../../utils/emoji';
-
-const config = getConf();
+import config from '../../../.config';
 
 export const ContentTreeGroup = styled(({
   className,
@@ -69,7 +67,7 @@ export const ContentTreeGroup = styled(({
     letter-spacing: 1.2px;
     text-transform: uppercase;
     position: relative;
-    color: ${(props) => props.theme.navigationSidebar.font.group};
+    color: ${(props) => props.theme.navigationSidebar.fond?.group};
   }
   > span {
     margin-bottom: 5px;

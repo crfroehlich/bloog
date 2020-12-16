@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
-import { getConf } from '../../utils';
+import config from '../../../.config';
 import { Logo } from './logo';
 import { Navigation } from './navigation';
 import { ButtonIcon, DarkModeSwitch, SearchInput, Sidebar } from '..';
@@ -14,7 +14,6 @@ import { hiddenMobile, visibleMobile, visibleTablet, hiddenTablet } from '../../
 import { onMobile, onTablet, isMobile } from '../../styles/responsive';
 import { FullScreenClose, FullScreenEnter, FullScreenHeader } from './fullscreen';
 
-const config = getConf();
 const isSearchEnabled = true;
 
 const SearchWrapper = styled.div`

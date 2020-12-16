@@ -8,9 +8,7 @@ export const ScrollTop = styled(({
   className
 }: any) => {
   return (
-    
     <div className={className} onClick={scrollToTop} role={'button'} tabIndex={0}>
-      
       <Arrow />
     </div>
   );

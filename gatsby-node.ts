@@ -1,7 +1,7 @@
 import path from 'path';
 import { startCase } from 'lodash';
 import chokidar from 'chokidar';
-import { touch } from './src/utils/fileUtils';
+import { touch } from './build/fileUtils';
 
 export const createSchemaCustomization = ({
   actions
@@ -35,7 +35,7 @@ export const createSchemaCustomization = ({
     }
     type HeaderLinks {
       text: String!
-      link: String!
+      link: String
       external: Boolean
     }
   `;
@@ -95,6 +95,9 @@ export const onCreateWebpackConfig = ({
   actions
 }: any) => {
   actions.setWebpackConfig({
+    node: {
+      fs: 'empty',
+    },
     resolve: {
       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
       alias: {

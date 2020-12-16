@@ -2,13 +2,11 @@ import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
 import { AlignRight } from 'react-feather';
-import { getConf } from '../../utils';
 import Scrollspy from 'react-scrollspy';
 import { sleep } from '../../utils/utils';
 import { scrollbar } from '../../styles/styles';
 import emoji from '../../utils/emoji';
-
-const config = getConf();
+import config from '../../../.config';
 
 const Sidebar = styled(({ show, ...props }) => (<aside {...props} />))`
   background-color: ${(props: any) => props.theme.tableOfContents.background};
@@ -32,7 +30,7 @@ const Sidebar = styled(({ show, ...props }) => (<aside {...props} />))`
       font-weight: 500;
       line-height: 1.5;
       padding: 5px 24px 5px 16px;
-      color: ${(props: any) => props.theme.tableOfContents.font.base};
+      color: ${(props: any) => props.theme.tableOfContents.fond?.base};
       text-decoration: none;
       display: block;
       position: relative;
@@ -42,15 +40,15 @@ const Sidebar = styled(({ show, ...props }) => (<aside {...props} />))`
 
     &:hover {
       a {
-        border-left-color: ${(props: any) => props.theme.tableOfContents.font.hover};
-        color: ${(props: any) => props.theme.tableOfContents.font.hover} !important;
+        border-left-color: ${(props: any) => props.theme.tableOfContents.fond?.hover};
+        color: ${(props: any) => props.theme.tableOfContents.fond?.hover} !important;
       }
     }
   }
   .currentItem {
     a {
-      border-left: 2px solid ${(props: any) => props.theme.tableOfContents.font.current} !important;
-      color: ${(props: any) => props.theme.tableOfContents.font.current} !important;
+      border-left: 2px solid ${(props: any) => props.theme.tableOfContents.fond?.current} !important;
+      color: ${(props: any) => props.theme.tableOfContents.fond?.current} !important;
     }
   }
 `;
@@ -102,7 +100,7 @@ const TocTitle = styled(({
   letter-spacing: 1.2px;
   padding: 7px 24px 7px 16px;
   border-left: 1px solid ${(props) => props.theme.tableOfContents.border};
-  color: ${(props) => props.theme.tableOfContents.font.base};
+  color: ${(props) => props.theme.tableOfContents.fond?.base};
   display: flex;
   align-items: center;
   svg {

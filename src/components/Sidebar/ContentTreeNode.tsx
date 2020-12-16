@@ -1,14 +1,12 @@
 import React from 'react';
 import { OpenedSvg } from '../../images/opened';
 import { ClosedSvg } from '../../images/closed';
-import { getConf } from '../../utils';
 import { Link } from '..';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { emojiTools as emoji } from '../../utils/emoji';
-
-const config = getConf();
+import config from '../../../.config';
 
 // If you want to have a css call based on props, create a function that returns a css call like this
 // let dynamicStyle = (props) => css`color: ${props.color}`
@@ -22,7 +20,7 @@ const activeNode = (theme: any) => css`
   button {
     padding: 7px 23px 7px 17px;
     background-color: ${theme.navigationSidebar.row.active};
-    color: ${theme.navigationSidebar.font.active} !important;
+    color: ${theme.navigationSidebar.fond?.active} !important;
   }
 `;
 
@@ -36,7 +34,7 @@ const ContentLink = styled(({
     {children}
   </Link>
 ))`
-  color: ${(props) => props.theme.navigationSidebar.font.base};
+  color: ${(props) => props.theme.navigationSidebar.fond?.base};
   flex: 1;
   font-size: 14px;
   font-weight: 500;
@@ -105,9 +103,9 @@ const NestedContentTreeNode = styled(
   flex: 100%;
   li {
     margin-left: 16px;
-    border-left: 1px solid ${(props) => props.theme.navigationSidebar.font.nested};
+    border-left: 1px solid ${(props) => props.theme.navigationSidebar.fond?.nested};
     a {
-      color: ${(props) => props.theme.navigationSidebar.font.nested};
+      color: ${(props) => props.theme.navigationSidebar.fond?.nested};
     }
   }
 `;
@@ -132,7 +130,7 @@ const NodeCollapseButton = styled(({
   cursor: pointer;
   padding: 0 25px 0 10px;
   svg path {
-    fill: ${(props) => props.theme.navigationSidebar.font.base};
+    fill: ${(props) => props.theme.navigationSidebar.fond?.base};
   }
   &:hover {
     svg path {

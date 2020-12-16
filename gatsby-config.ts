@@ -1,12 +1,13 @@
 require('dotenv').config();
+import { writeFileSync } from 'fs';
 import { getSearchPlugins } from './src/utils/search';
-import { read, generate } from './src/utils/config';
+import { getConf } from './build/configLoader';
 import path from 'path';
 import { emojiTools as emoji } from './src/utils/emoji';
 import { orderBy } from 'lodash';
 
-const config = read();
-generate(__dirname + '/.generated.config.ts', config);
+const config = getConf();
+writeFileSync('.config.js', `export default ${JSON.stringify(config)}`);
 
 const plugins: Array<string | { resolve: string, options: any }> = [
   'gatsby-plugin-loadable-components-ssr',
@@ -84,7 +85,7 @@ const plugins: Array<string | { resolve: string, options: any }> = [
         'gatsby-remark-copy-linked-files',
         {
           resolve: 'gatsby-remark-jargon',
-          options: { jargon: require('./src/utils/jargon-config.ts') },
+          options: { jargon: require('./build/jargon-config.ts') },
         },
         {
           resolve: `gatsby-remark-embed-snippet`,
@@ -122,7 +123,6 @@ const plugins: Array<string | { resolve: string, options: any }> = [
     resolve: 'gatsby-plugin-root-import',
     options: {
       '~': path.join(__dirname, 'src'),
-      config: path.join(__dirname, '.generated.config.ts'),
       images: path.join(__dirname, 'src/images'),
       styles: path.join(__dirname, 'src/styles'),
       css: path.join(__dirname, 'src/styles/main.css'),

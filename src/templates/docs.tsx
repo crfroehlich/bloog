@@ -3,11 +3,9 @@ import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import styled from '@emotion/styled';
 import { Layout, EditOnRepo, PreviousNext, Seo } from '..';
-import { getConf } from '..';
 import { emojiTools as emoji } from '../utils/emoji';
 import { onMobile, onTablet } from '../styles/responsive';
-
-const config = getConf();
+import config from '../../.config';
 
 const Title = styled.h1`
   font-size: 24pt

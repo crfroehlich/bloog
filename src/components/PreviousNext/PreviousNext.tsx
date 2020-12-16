@@ -3,12 +3,10 @@ import { Link } from '..';
 import styled from '@emotion/styled';
 import { emojiTools as emoji } from '../../utils/emoji';
 import { navigate } from 'gatsby';
-import { getConf } from '../../utils';
 import { ChevronLeft, ChevronRight } from 'react-feather'
 import { calculateFlatNavigation, getNavigationData } from '../Navigation';
 import { onMobile } from '../../styles/responsive';
-
-const config = getConf();
+import config from '../../../.config';
 
 const conf = {
   pathDivider: ' — ',
@@ -176,13 +174,15 @@ const Button = styled(({
     }
   }
 `;
-
-const calculatePreviousNext = (nav: any, index: any): { url, title, path }[] => {
-  let nextInfo;
-  let previousInfo;
+interface Nav {
+  url?: string; title?: string; path?: string; groupName?: string;
+}
+const calculatePreviousNext = (nav: any, index: any): Nav[] => {
+  let nextInfo: Nav = {};
+  let previousInfo: Nav = {};
   let currentIndex = index;
-  const set = (nav: any, info: any) => {
-    if (nav) {
+  const set = (nav: Nav, info: Nav) => {
+    if (nav?.url && info != undefined) {
       info.url = nav.url;
       info.title = nav.title;
       info.path = emoji.emojify(nav.groupName);
@@ -190,13 +190,13 @@ const calculatePreviousNext = (nav: any, index: any): { url, title, path }[] => 
   };
   if (currentIndex === undefined) {
     // index
-    if (nav[0]) {
+    if (nav && nav[0]) {
       nextInfo.url = nav[0].url;
       nextInfo.title = nav[0].title;
       nextInfo.path = nav[0].groupName;
     }
-    previousInfo.url = null;
-    previousInfo.title = null;
+    previousInfo.url = undefined;
+    previousInfo.title = undefined;
     currentIndex = -1;
   } else {
     const next = nav[currentIndex + 1] ? nav[currentIndex + 1] : null;

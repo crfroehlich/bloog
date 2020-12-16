@@ -30,7 +30,7 @@ const logoStyle = (theme: any) => css`
     height: auto;
     font-size: 26px;
     line-height: 1.5;
-    color: ${theme.header.font.base};
+    color: ${theme.header.fond?.base};
     ${onTablet} {
       font-size: 21px;
     }

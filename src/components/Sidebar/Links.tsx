@@ -26,17 +26,17 @@ const Link = styled(({
   list-style: none;
   a {
     font-size: 14px;
-    color: ${(props) => props.theme.navigationSidebar.font.base};
+    color: ${(props) => props.theme.navigationSidebar.fond?.base};
     text-decoration: none;
     font-weight: ${({ level }) => (level === 0 ? 700 : 400)};
     padding: 0.45rem 0 0.45rem 16px;
     button svg * {
-      color: ${(props) => props.theme.navigationSidebar.font.base};
+      color: ${(props) => props.theme.navigationSidebar.fond?.base};
     }
     &:hover {
-      color: ${(props) => props.theme.navigationSidebar.font.hover};
+      color: ${(props) => props.theme.navigationSidebar.fond?.hover};
       button svg * {
-        color: ${(props) => props.theme.navigationSidebar.font.hover};
+        color: ${(props) => props.theme.navigationSidebar.fond?.hover};
       }
     }
     button {

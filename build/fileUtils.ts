@@ -1,4 +1,4 @@
-import { readFileSync, close, open, utimes } from 'fs';
+const { readFileSync, close, open, utimes } = require('fs');
 import yaml from 'js-yaml';
 import path from 'path';
 

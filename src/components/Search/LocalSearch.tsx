@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { HitsWrapper } from './Hits';
-import { getConf } from '../../utils';
 import { SearchInput } from './SearchInput';
 import { PageHit } from './PageHit';
 import { SearchStatus } from './SearchStatus';
@@ -8,8 +7,8 @@ import { SearchPagination } from './SearchPagination';
 import { Stats } from './Stats';
 import { useFlexSearch } from 'react-use-flexsearch';
 import { graphql, useStaticQuery } from 'gatsby';
+import config from '../../../.config';
 
-const config = getConf();
 const Results = ({ q }: any) => <SearchStatus noHits={true} searching={false} query={q} />;
 
 const getPerformance = () => {
