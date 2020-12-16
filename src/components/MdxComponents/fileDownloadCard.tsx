@@ -4,7 +4,6 @@ import { useTheme } from '@emotion/react';
 import { Download } from 'react-feather';
 import { emojiTools as emoji } from '../../utils/emoji';
 import { decreaseIntensivity } from '../../utils/colors';
-// @ts-expect-error ts-migrate(6142) FIXME: Module './card' was resolved to '/home/fro/code/te... Remove this comment to see the full error message
 import { Card } from './card';
 
 const DownloadCard = styled(Card)`
@@ -12,7 +11,7 @@ const DownloadCard = styled(Card)`
   flex-direction: row;
   align-items: center;
   &:hover {
-    border: 1px solid ${(props) => props.theme.colors.primary};
+    border: 1px solid ${(props: any) => props.theme.colors.primary};
   }
 `;
 
@@ -39,19 +38,14 @@ export const FileDownloadCard = ({
   title,
   url
 }: any) => {
-  const theme = useTheme();
+  const theme: any = useTheme();
   const splitted = url.split('/')
   const filename = splitted[splitted.length - 1]
   return (
-    
     <a href={url} download>
-      
       <DownloadCard title={`Download file ${filename}`}>
-        
         <Download color={theme.colors.primary} size={23} />
-        
         <Title>{emoji.emojify(title)}</Title>
-        
         <DownloadPath>{filename}</DownloadPath>
       </DownloadCard>
     </a>

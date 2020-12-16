@@ -1,7 +1,6 @@
 // import Link from "../Link";
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-expect-error ts-migrate(2305) FIXME: Module '".."' has no exported member 'Link'.
 import { Link } from '..';
 import { css } from '@emotion/react';
 import { useTheme } from '@emotion/react';
@@ -69,15 +68,10 @@ export const Logo = styled(({
   split[last] = split[last] + '</strong>';
   const title2 = split.join(' ');
   return (
-    
     <div className={className}>
-      
       <LogoWrapper>
-        
         <Link to={link} css={logoStyle(theme)}>
-          
           <img css={{display: 'inline-block'}} src={img} alt={'logo'} loading={'lazy'} />
-          
           <span css={{display: 'inline-block'}} dangerouslySetInnerHTML={{ __html: title2 }} />
         </Link>
       </LogoWrapper>

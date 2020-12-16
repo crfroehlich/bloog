@@ -1,5 +1,4 @@
 import React from 'react';
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../Hits' was resolved to '/home/fro/code/t... Remove this comment to see the full error message
 import { Hit } from '../Hits';
 import { emojiTools as emoji } from '../../../utils/emoji';
 import styled from '@emotion/styled';
@@ -18,12 +17,12 @@ const onReversed = (str: any, func: any) => {
 }
 
 const Highlight = styled.span`
-background-color: ${(props) => props.theme.
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
-search.mark.background};
-color: ${(props) => props.theme.
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
-search.mark.font};
+  background-color: ${(props) => props.theme.
+  // @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
+  search.mark.background};
+  color: ${(props) => props.theme.
+  // @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
+  search.mark.font};
 `;
 
 const highlight = (query: any, text: any, maxWords: any) => {
@@ -41,14 +40,11 @@ const highlight = (query: any, text: any, maxWords: any) => {
   afterText = trim_words(afterText, boundary);
   afterText = emoji.emojify(afterText);
   
-  return <>
-    
+  return <div>
     <span>{beforeText}</span>
-    
     <Highlight>{emoji.emojify(query)}</Highlight>
-    
     <span>{afterText}</span>
-  </>
+  </div>
 }
 
 export const PageHit = ({
@@ -57,9 +53,7 @@ export const PageHit = ({
   maxWords
 }: any) => {
   return (
-    
     <li>
-      
       <Hit
         slug={hit.slug}
         title={emoji.emojify(hit.title)}

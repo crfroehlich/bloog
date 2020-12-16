@@ -3,13 +3,11 @@ import styled from '@emotion/styled';
 import React, { useRef } from 'react';
 import { X } from 'react-feather';
 import loadable from '@loadable/component';
-
 import { onMobile } from '../../styles/responsive';
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../../styles/styles' was resolved to '/hom... Remove this comment to see the full error message
 import { visibleMobile } from '../../styles/styles';
 
 // @ts-expect-error ts-migrate(6142) FIXME: Module './localsearch/LocalSearch' was resolved to... Remove this comment to see the full error message
-const LocalSearch = loadable(() => import('./localsearch/LocalSearch'))
+const LoadableLocalSearch = loadable<LocalSearch>(() => import('./localsearch/LocalSearch'))
 
 const SearchWrapper = styled.div`
   display: flex;
@@ -20,10 +18,8 @@ const SearchWrapper = styled.div`
   -webkit-overflow-scrolling: touch;
 `;
 
-const SearchSidebarWrapper = styled.div`
-  display: block; //${(props) => (props.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'show' does not exist on type '{ theme?: ... Remove this comment to see the full error message
-show ? 'block' : 'none')};
+const SearchSidebarWrapper = styled(({ ...props }) => (<div {...props} />))`
+  display: block; //${(props) => (props.show ? 'block' : 'none')};
   z-index: 20;
   height: 100vh;
   position: fixed;
@@ -71,19 +67,13 @@ colors.hover};
 // @ts-expect-error ts-migrate(2339) FIXME: Property 'onVisibleChange' does not exist on type ... Remove this comment to see the full error message
 export const SearchSidebar = React.forwardRef(({ onVisibleChange, closeSelf, ...props }, ref) => {
   return (
-    
     <SearchSidebarWrapper {...props} ref={ref}>
-      
       <SearchWrapper {...props}>
-        
         <CloseSearch css={visibleMobile} onClick={closeSelf}>
-          
           <X />
-          
           <span css={{marginLeft: '5px'}}>Close</span>
         </CloseSearch>
-          
-          <LocalSearch inputRef={ref} />
+        <LoadableLocalSearch inputRef={ref} />
       </SearchWrapper>
     </SearchSidebarWrapper>
   );

@@ -1,12 +1,12 @@
 import React from 'react';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module './contentTreeNode' or its corr... Remove this comment to see the full error message
-import ContentTreeNode from './contentTreeNode';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
-import config from 'config';
+import { ContentTreeNode } from './ContentTreeNode';
+import { getConf } from '../../utils';
 import styled from '@emotion/styled';
-import emoji from '../../utils/emoji';
+import { emojiTools } from '../../utils/emoji';
 
-const ContentTreeGroup = styled(({
+const config = getConf();
+
+export const ContentTreeGroup = styled(({
   className,
   treeState,
   title,
@@ -31,26 +31,19 @@ const ContentTreeGroup = styled(({
       [url]: !treeState.collapsed[url],
     });
   };
-  const emojified = emoji.emojify(title);
+  const emojified = emojiTools.emojify(title);
   return (
     // {...item}
     
     <div className={className}>
       {title ? (
-        
-        <>
-          
-          <span>
-            
-            {icon ? <img src={icon} alt={`group ${emojified}`} loading={'lazy'} /> : null}{' '}
-            {emojified}
-          </span>
-        </>
-      ) : null}
-      
+        <span>
+          {icon ? <img src={icon} alt={`group ${emojified}`} loading={'lazy'} /> : <div />}{' '}
+          {emojified}
+        </span>
+      ) : <div />}
       <ul>
         {children.map((child: any,i: any) => (
-          
           <ContentTreeNode
             key={`${child.url}_${i}`}
             toggle={toggle}
@@ -88,5 +81,3 @@ const ContentTreeGroup = styled(({
     }
   }
 `;
-
-export default ContentTreeGroup;

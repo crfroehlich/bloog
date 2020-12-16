@@ -1,11 +1,12 @@
 import { useStaticQuery, graphql } from 'gatsby';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
-import config from 'config';
+import { getConf } from '../../utils';
+
+const config = getConf();
 
 export const getNavigationData = () => {
   const { allMdx } = useStaticQuery(graphql`
     query NavigationQuery {
-      allMdx(filter: {fields: {draft: {ne: true}}}) {
+      allMdx {
         edges {
           node {
             fields {
@@ -37,7 +38,7 @@ const createUnassignedGroup = () => {
   };
 };
 
-const calculateTreeDataForData = (contentData: any) => {
+const calculateTreeDataForData = (contentData: any): any[] => {
   let navigationItems = contentData
     .map((data: any) => data.node)
     .map((node: any) => {
@@ -62,7 +63,7 @@ const calculateTreeDataForData = (contentData: any) => {
       };
     });
 
-  navigationItems.sort(function (a: any, b: any) {
+  navigationItems.sort((a, b) => {
     let aIdx = config.sidebar.forcedNavOrder.indexOf(a.url);
     let bIdx = config.sidebar.forcedNavOrder.indexOf(b.url);
     const forcedOrder = aIdx - bIdx;
@@ -78,11 +79,11 @@ const calculateTreeDataForData = (contentData: any) => {
   };
   navigationItems.forEach((data: any) => {
     let isChild = false;
-    let parent = null;
+    let parent;
     data.parent.every((p: any) => {
       parent = navigationItems.find((d: any) => d.url === p);
       if (parent) {
-        parent.children.push(data);
+        parent?.children?.push(data);
         isChild = true;
         data.parent = parent.url;
         return false;
@@ -90,14 +91,12 @@ const calculateTreeDataForData = (contentData: any) => {
       return true;
     });
     if (parent) {
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'title' does not exist on type 'never'.
       data.parent = parent.title;
     } else {
       data.parent = null;
     }
     if (!isChild) {
       // assume first level of navigation entry URL may be ID (path) of a group
-      // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
       let group = result[data.url.split('/')[1].toLowerCase()];
       if (group == null) {
         group = group ? group : getGroup(data.url);
@@ -112,7 +111,6 @@ const calculateTreeDataForData = (contentData: any) => {
             id: group ? group.path.replace(/^\//, '').toLowerCase() : null,
             children: [],
           };
-          // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
           result[group.id] = group;
         }
       }
@@ -125,14 +123,12 @@ const calculateTreeDataForData = (contentData: any) => {
       group.children.push(data);
     }
   });
-  // @ts-expect-error ts-migrate(2741) FIXME: Property '__root' is missing in type '{ title: str... Remove this comment to see the full error message
-  result = Object.values(result);
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'sort' does not exist on type '{ __root: ... Remove this comment to see the full error message
-  result.sort(function (a: any, b: any) {
+  let ret = Object.values(result);
+  ret.sort(function (a: any, b: any) {
     const ordered = a.order - b.order;
     return ordered !== 0 ? ordered : a.title.localeCompare(b.title);
   });
-  return result;
+  return ret;
 };
 
 export const calculateNavigation = (edges: any) => {
@@ -161,7 +157,6 @@ const flat = (parent: any, acc: any) => {
 export const calculateFlatNavigation = (edges: any) => {
   const navigation = calculateNavigation(edges);
   const acc: any = [];
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'forEach' does not exist on type '{ __roo... Remove this comment to see the full error message
   navigation.children.forEach((group: any) => {
     flat(group, acc)
   })

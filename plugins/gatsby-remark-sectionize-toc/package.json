@@ -5,8 +5,9 @@
   "version": "0.1.0",
   "dependencies": {
     "remark": "12.0.1",
-    "unist-util-find-after": "^3.0.0"
+    "unist-util-find-after": "^3.0.0",
+    "typescript": "4.1.3"
   },
   "license": "MIT",
-  "main": "index.js"
+  "main": "index.ts"
 }

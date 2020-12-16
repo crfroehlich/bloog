@@ -1,9 +1,5 @@
-/* eslint-disable no-case-declarations */
-import React from 'react';
 import styled from '@emotion/styled';
-// @ts-expect-error ts-migrate(2305) FIXME: Module '".."' has no exported member 'Link'.
 import { Link } from '..';
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../../styles/styles' was resolved to '/hom... Remove this comment to see the full error message
 import { shadowAround } from '../../styles/styles';
 import { onTablet, onMobile } from '../../styles/responsive';
 
@@ -55,20 +51,17 @@ editOnRepo.font.hover};
   }
 `;
 
-const EditButton = styled(({
-  className,
-  icon,
-  link,
-  text
-}: any) => {
+const EditButton = styled((props) => {
+  const {
+    className,
+    icon,
+    link,
+    text
+  } = props;
   return (
-    
     <Edit>
-      
       <Link className={className} to={link} css={shadowAround} target={'_blank'}>
-        
         <img src={icon} alt={'Git Repository'} loading={'lazy'} /> 
-        
         <span>{text}</span>
       </Link>
     </Edit>

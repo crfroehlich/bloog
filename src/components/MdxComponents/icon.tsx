@@ -1,4 +1,3 @@
-import React from 'react';
 import * as Icons from 'react-feather';
 import { useTheme } from '@emotion/react';
 
@@ -10,7 +9,6 @@ export const Icon = ({ ...props }) => {
     .split('-')
     .map(capitalize)
     .reduce((acc: any, value: any) => (acc += value), '');
-  // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
   const icon = Icons[name];
   if (!icon) {
     return '';
@@ -23,9 +21,7 @@ export const Icon = ({ ...props }) => {
   };
   const margin = props.margin || '5px';
   return (
-    
     <span
-      // @ts-expect-error ts-migrate(2322) FIXME: Type '{ children: any; css: { margin: string; svg:... Remove this comment to see the full error message
       css={{
         margin: '0 ' + margin,
         svg: {

@@ -83,7 +83,6 @@ export const Jargon = ({
 }: any) => {
   const theme = useTheme();
   return (
-    
     <JargonWrapper theme={theme} {...props}>
       {children}
     </JargonWrapper>

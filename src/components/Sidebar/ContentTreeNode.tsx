@@ -1,17 +1,14 @@
 import React from 'react';
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../../images/opened' was resolved to '/hom... Remove this comment to see the full error message
-import OpenedSvg from '../../images/opened';
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../../images/closed' was resolved to '/hom... Remove this comment to see the full error message
-import ClosedSvg from '../../images/closed';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
-import { config } from 'config';
-// @ts-expect-error ts-migrate(2305) FIXME: Module '".."' has no exported member 'Link'.
+import { OpenedSvg } from '../../images/opened';
+import { ClosedSvg } from '../../images/closed';
+import { getConf } from '../../utils';
 import { Link } from '..';
 import { css } from '@emotion/react';
-
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { emojiTools as emoji } from '../../utils/emoji';
+
+const config = getConf();
 
 // If you want to have a css call based on props, create a function that returns a css call like this
 // let dynamicStyle = (props) => css`color: ${props.color}`
@@ -144,7 +141,7 @@ const NodeCollapseButton = styled(({
   }
 `;
 
-const ContentTreeNode = ({
+export const ContentTreeNode = ({
   className,
   toggle,
   collapsed,
@@ -193,4 +190,3 @@ const ContentTreeNode = ({
     </>
   );
 };
-export default ContentTreeNode;

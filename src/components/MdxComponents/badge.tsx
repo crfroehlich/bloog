@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import colorFn from 'color';
 import { useTheme } from '@emotion/react';
@@ -32,8 +31,8 @@ export const Badge = ({
 
   const foreground =
     colorFn(background).luminosity() < 0.5 ? 'rgba(255,255,255,0.95)' : 'rgba(0,0,0,0.95)';
+
   return (
-    
     <BadgeWrapper foreground={foreground} background={background} {...props}>
       {children}
     </BadgeWrapper>

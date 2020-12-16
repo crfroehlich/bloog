@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
-// @ts-expect-error ts-migrate(6142) FIXME: Module './card' was resolved to '/home/fro/code/te... Remove this comment to see the full error message
 import { Card } from './card';
 import { onMobile } from '../../styles/responsive';
 
@@ -40,11 +39,8 @@ export const ImageCard = ({
   const imgWidth = width ? width : '50%';
   const imgHeight = width ? width : '50%';
   return (
-      
       <ImageCardWrapper width={imgWidth} height={imgHeight}>
-        
         <Image src={src} />
-        
         <Text>{children}</Text>
       </ImageCardWrapper>
   );

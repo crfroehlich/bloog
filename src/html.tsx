@@ -1,8 +1,8 @@
 import React from 'react';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
-import { config } from 'config';
-// @ts-expect-error ts-migrate(2305) FIXME: Module '"./styles"' has no exported member 'scroll... Remove this comment to see the full error message
+import { getConf } from '..';
 import { scrollbar } from './styles';
+
+const config = getConf();
 
 type Props = {
     htmlAttributes?: any;
@@ -49,7 +49,7 @@ export default class HTML extends React.Component<Props> {
         <body css={scrollbar} {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
           
-          <div key={`body`} id="___gatsby" dangerouslySetInnerHTML={{ __html: this.props.body }} />
+          <div key={`body`} id="___gatsby" dangerouslySetInnerHTML={{ __html: this.props.body || '' }} />
           {this.props.postBodyComponents}
         </body>
       </html>

@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../../styles/styles' was resolved to '/hom... Remove this comment to see the full error message
 import { shadowAround } from '../../styles/styles';
 import { useTheme } from '@emotion/react';
 import { Search, Trash } from 'react-feather';
-// @ts-expect-error ts-migrate(2613) FIXME: Module '"/home/fro/code/template/src/utils/useDebo... Remove this comment to see the full error message
-import useDebounce from '../../utils/useDebounce';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
-import config from 'config';
-// @ts-expect-error ts-migrate(6142) FIXME: Module './styles' was resolved to '/home/fro/code/... Remove this comment to see the full error message
-import { marginLeftRight } from './styles';
+import { useDebounce } from '../../utils/useDebounce';
+import { getConf } from '../../utils';
 import { onMobile } from '../../styles/responsive';
+
+const config = getConf();
 
 const SearchIcon = styled(Search)`
   width: 1.2em;
@@ -19,9 +16,7 @@ const SearchIcon = styled(Search)`
 `;
 
 const CleanSearch = styled(({ ...props }) => (
-  
   <div {...props} role={'button'} aria-label="clean search">
-    
     <Trash />
   </div>
 ))`
@@ -117,9 +112,7 @@ export const SidebarSearchInput = ({
   showClean,
   ...props
 }: any) => (
-  
   <SidebarSearchInputWrapper>
-    
     <SearchInput search={search} inputRef={inputRef} showClean={showClean} {...props} />
   </SidebarSearchInputWrapper>
 );
@@ -151,11 +144,8 @@ export const SearchInput = ({
   };
 
   return (
-    
     <Form css={shadowAround(theme)} onSubmit={preventSubmit} style={style} >
-      
       <SearchIcon />
-      
       <Input
         ref={inputRef}
         className={'searchInput '}
@@ -170,7 +160,6 @@ export const SearchInput = ({
         }}
         {...props}
       />
-      
       {showClean ? <CleanSearch onClick={clean} /> : ''}
     </Form>
   );

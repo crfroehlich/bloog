@@ -36,16 +36,8 @@ stroke};
   }
 `;
 
-type Props = {
-    background?: string;
-    hoverFill?: string;
-    hoverStroke?: string;
-    fill?: string;
-    stroke?: string;
-    icon: any;
-};
-
-export const ButtonIcon = ({ icon, ...props }: Props) => {
+export const ButtonIcon = (props) => {
+  const { icon } = props;
   return (
     
     <ButtonIconWrapper {...props} role={'button'} tabIndex={0}>

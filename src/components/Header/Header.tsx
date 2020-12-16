@@ -1,27 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
-import { config } from 'config';
-// @ts-expect-error ts-migrate(6142) FIXME: Module './logo' was resolved to '/home/fro/code/te... Remove this comment to see the full error message
+import { getConf } from '../../utils';
 import { Logo } from './logo';
-// @ts-expect-error ts-migrate(6142) FIXME: Module './navigation' was resolved to '/home/fro/c... Remove this comment to see the full error message
 import { Navigation } from './navigation';
-// @ts-expect-error ts-migrate(2305) FIXME: Module '".."' has no exported member 'ButtonIcon'.
 import { ButtonIcon, DarkModeSwitch, SearchInput, Sidebar } from '..';
 import { HelpCircle, Menu, Search } from 'react-feather';
 import { useTheme } from '@emotion/react';
 import { social as SocialButtons } from './social';
-// @ts-expect-error ts-migrate(2305) FIXME: Module '"../Buttons"' has no exported member 'Rss'... Remove this comment to see the full error message
 import { Rss } from '../Buttons';
 import { globalHistory } from '@reach/router';
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../../styles/styles' was resolved to '/hom... Remove this comment to see the full error message
 import { hiddenMobile, visibleMobile, visibleTablet, hiddenTablet } from '../../styles/styles';
 import { onMobile, onTablet, isMobile } from '../../styles/responsive';
-// @ts-expect-error ts-migrate(6142) FIXME: Module './fullscreen' was resolved to '/home/fro/c... Remove this comment to see the full error message
 import { FullScreenClose, FullScreenEnter, FullScreenHeader } from './fullscreen';
 
-const isSearchEnabled = config.features.search && config.features.search.enabled;
+const config = getConf();
+const isSearchEnabled = true;
 
 const SearchWrapper = styled.div`
   padding-left: 20px;
@@ -44,16 +38,14 @@ header.border};
   }
 `;
 
-const HeaderWrapper = styled.header`
+const HeaderWrapper = styled(({ show, ...props }) => (<header {...props} />))`
   background-color: ${(props) => props.theme.  
 // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
 header.background};
   border-radius: 0;
   margin-bottom: 0;
   border: 0;
-  display: ${(props) => (props.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'show' does not exist on type '{ theme?: ... Remove this comment to see the full error message
-show ? 'flex' : 'none')};
+  display: ${(props) => (props.show ? 'flex' : 'none')};
   align-items: center;
   box-shadow: 0 3px 8px 0 ${(props) => props.theme.  
 // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
@@ -126,16 +118,13 @@ const SearchOpener = ({
   switch (method.toLowerCase()) {
     case 'input':
       opener = (
-        
         <SearchWrapper css={hiddenMobile} style={{ marginRight: '10px' }} {...props}>
-          
           <SearchInput style={{marginTop: '0', marginBottom: '0'}} onChange={(e: any) => e.target.value = ''} onFocus={open} />
         </SearchWrapper>
       );
       break;
     case 'icon':
       opener = (
-        
         <ButtonIcon
           // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
           background={theme.header.icons.background}
@@ -152,7 +141,6 @@ const SearchOpener = ({
       break;
     default:
       console.error(`Provided show component '${method}' is not supported. Use 'icon' or 'input'.`);
-      
       opener = <div></div>;
   }
   return opener;
@@ -165,11 +153,9 @@ const HelpButton = ({
   const theme = useTheme();
   const open = () => {
     const help = window.open(helpUrl, '_blank');
-    // @ts-expect-error ts-migrate(2531) FIXME: Object is possibly 'null'.
-    help.focus();
+    help?.focus();
   };
   return (
-    
     <ButtonIcon
       // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
       hoverStroke={theme.header.icons.hover}
@@ -185,7 +171,6 @@ const HelpButton = ({
 const RssIcon = (iconBaseProps: any) => {
   if (config.features.rss && config.features.rss.enabled && config.features.rss.showIcon) {
     return (
-      
       <Rss
         className={hiddenMobile}
         {...iconBaseProps}
@@ -197,10 +182,8 @@ const RssIcon = (iconBaseProps: any) => {
   return null;
 };
 
-const MobileNavigation = styled.div`
-  display: ${(props) => (props.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'show' does not exist on type '{ theme?: ... Remove this comment to see the full error message
-show ? 'flex' : 'none')} !important;
+const MobileNavigation = styled(({ show, ...props }) => (<div {...props} />))`
+  display: ${(props) => (props.show ? 'flex' : 'none')} !important;
   flex-basis: 100%;
   flex-direction: column;
 `;
@@ -213,9 +196,7 @@ const MobileMenuToggle = styled(({
 }: any) => {
   const theme = useTheme();
   return (
-    
     <div className={className} {...props}>
-      
       <ButtonIcon
         title={'Open menu'}
         // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
@@ -257,7 +238,6 @@ export const Header = ({
   show,
   toggleFullscreenMode
 }: any) => (
-  
   <StaticQuery
     query={graphql`
       query headerTitleQuery {
@@ -327,13 +307,10 @@ export const Header = ({
         setShowSearch(false);
       });
       return (
-        
         <>
           {config.features.fullScreenMode.enabled &&
           config.features.fullScreenMode.enabled === true ? (
-            
             <FullScreenHeader show={!show} css={hiddenMobile}>
-              
               <FullScreenClose toggle={toggleFullscreenMode} />
               {DarkModeButton}
             </FullScreenHeader>
@@ -342,26 +319,18 @@ export const Header = ({
           )}
           
           <HeaderWrapper show={show}>
-            
             <Logo link={logoLink} img={logoImg} title={headerTitle} />
-            
             <TopNavigation css={hiddenMobile}>
-              
               <Navigation links={headerLinks} />
             </TopNavigation>
-            
             <ButtonsWrapper>
               {isSearchEnabled ? (
-                
                 <>
-                  
                   <SearchOpener open={open} forcedComponent={'icon'} css={visibleTablet} />
-                  
                   <SearchOpener open={open} css={hiddenTablet} />
                 </>
               ) : null}
               {helpUrl && helpUrl.length > 0 ? (
-                
                 <HelpButton css={hiddenMobile} helpUrl={helpUrl} />
               ) : (
                 ''
@@ -370,30 +339,20 @@ export const Header = ({
               <SocialButtonsWrapper css={hiddenMobile}>
                 {SocialButtons(iconBaseProps, config.social)}
               </SocialButtonsWrapper>
-              
               <RssIcon {...iconBaseProps} />
               {config.features.fullScreenMode.enabled &&
               config.features.fullScreenMode.enabled === true ? (
-                
                 <FullScreenEnter toggle={toggleFullscreenMode} css={hiddenMobile} />
               ) : (
                 ''
               )}
               {DarkModeButton}
-              
               <MobileMenuToggle toggle={toggleMenuOpen} open={menuOpen} />
             </ButtonsWrapper>
-
             {isMobile() ? (
-              
               <MobileNavigation css={visibleMobile} show={menuOpen}>
-                
                 <Sidebar location={location} show={true} />
-
-                
                 <Navigation links={headerLinks} />
-
-                
                 <SocialButtonsWrapper css={visibleMobile}>
                   {SocialButtons(iconBaseProps, config.social)}
                 </SocialButtonsWrapper>

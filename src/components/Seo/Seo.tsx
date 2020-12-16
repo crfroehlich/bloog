@@ -1,7 +1,7 @@
-import React from 'react';
 import { Helmet } from 'react-helmet';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
-import { config } from 'config';
+import { getConf } from '../../utils';
+
+const config = getConf();
 
 type Props = {
     frontmatter: any;

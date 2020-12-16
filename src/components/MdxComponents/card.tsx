@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../../styles/styles' was resolved to '/hom... Remove this comment to see the full error message
 import { shadowAround } from '../../styles/styles';
 
 const CardWrapper = styled.div`
@@ -17,6 +16,5 @@ transitions.hover};
 `;
 
 export const Card = ({ ...props }) => {
-  
   return <CardWrapper css={shadowAround} {...props} />;
 };

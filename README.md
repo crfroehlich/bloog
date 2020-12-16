@@ -40,7 +40,6 @@ performance, make it more configurable and easier to start with.
 - rich-content and rich-text features like text formatting, graphs and diagrams,
   quotes, columnar layout, emojis, highlights, live code editor,
   syntax highlighting, external code snippets and many many more!
-- draft pages
 - Progressive Web App which can work offline
 - integration with Google Analytics
 - full screen mode

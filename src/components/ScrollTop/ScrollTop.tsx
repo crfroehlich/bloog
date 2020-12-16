@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import Arrow from 'images/up-arrow.inline.svg';
 import { onMobile, onTablet } from '../../styles/responsive';

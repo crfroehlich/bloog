@@ -3,10 +3,8 @@ import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { ArrowRight } from 'react-feather';
 import { emojiTools as emoji } from '../../utils/emoji';
-// @ts-expect-error ts-migrate(2305) FIXME: Module '"../Link"' has no exported member 'Link'.
 import { Link } from '../Link';
 import { decreaseIntensivity } from '../../utils/colors';
-// @ts-expect-error ts-migrate(6142) FIXME: Module './card' was resolved to '/home/fro/code/te... Remove this comment to see the full error message
 import { Card } from './card';
 
 const LinkCardWrapper = styled(Card)`
@@ -14,7 +12,7 @@ const LinkCardWrapper = styled(Card)`
   flex-direction: row;
   align-items: center;
   &:hover {
-    border: 1px solid ${(props) => props.theme.colors.primary};
+    border: 1px solid ${(props: any) => props.theme.colors.primary};
   }
 `;
 
@@ -37,22 +35,17 @@ colors.primary};
   flex: 1;
 `;
 
-export default ({
+export const LinkCard = ({
   title,
   url
 }: any) => {
-  const theme = useTheme();
+  const theme: any = useTheme();
   const path = url.replace(/(https:\/\/)|(http:\/\/)/, '');
   return (
-    
     <Link to={url}>
-      
       <LinkCardWrapper>
-        
         <ArrowRight color={theme.colors.primary} size={23} />
-        
         <Title>{emoji.emojify(title)}</Title>
-        
         <LinkPath>{path}</LinkPath>
       </LinkCardWrapper>
     </Link>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { css } from '@emotion/react';
 
 const spinner = css`
@@ -52,11 +51,8 @@ const spinner = css`
 `;
 
 export const Loader = ({ ...props }) => (
-  
   <div css={spinner} {...props}>
-    
     <div className={'double-bounce1'}></div>
-    
     <div className={'double-bounce2'}></div>
   </div>
 );

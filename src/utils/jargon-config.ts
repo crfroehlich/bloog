@@ -22,7 +22,6 @@ const getJargon = () => {
       long_description += ' - ' + long_name;
     }
     long_description += '</span> ' + entry.description;
-    // @ts-expect-error ts-migrate(7053) FIXME: Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
     jargon[key] = long_description;
   }
   return jargon;

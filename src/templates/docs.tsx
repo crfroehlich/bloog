@@ -1,14 +1,13 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'gats... Remove this comment to see the full error message
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import styled from '@emotion/styled';
-// @ts-expect-error ts-migrate(2305) FIXME: Module '".."' has no exported member 'Layout'.
 import { Layout, EditOnRepo, PreviousNext, Seo } from '..';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
-import { config } from 'config';
+import { getConf } from '..';
 import { emojiTools as emoji } from '../utils/emoji';
 import { onMobile, onTablet } from '../styles/responsive';
+
+const config = getConf();
 
 const Title = styled.h1`
   font-size: 24pt
@@ -142,7 +141,7 @@ export default class MDXRuntimeTest extends React.Component {
 
   render() {
     // @ts-expect-error ts-migrate(2339) FIXME: Property 'data' does not exist on type 'Readonly<{... Remove this comment to see the full error message
-    const { data } = this.props;
+    const { data, location } = this.props;
     if (!data) {
       return null;
     }
@@ -162,7 +161,7 @@ export default class MDXRuntimeTest extends React.Component {
       
       <Layout {...this.props}>
         
-        <Seo frontmatter={mdx.frontmatter} url={this.props.location.href} title={headTitle} />
+        <Seo frontmatter={mdx.frontmatter} url={location.href} title={headTitle} />
         
         <PageTitle>
           

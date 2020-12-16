@@ -6,9 +6,9 @@ import { emojiTools as emoji } from './src/utils/emoji';
 import { orderBy } from 'lodash';
 
 const config = read();
-generate(__dirname + '/.generated.config.js', config);
+generate(__dirname + '/.generated.config.ts', config);
 
-const plugins = [
+const plugins: Array<string | { resolve: string, options: any }> = [
   'gatsby-plugin-loadable-components-ssr',
   'gatsby-plugin-sitemap',
   'gatsby-plugin-pinterest',
@@ -17,17 +17,11 @@ const plugins = [
   {
     resolve: `gatsby-plugin-layout`,
     options: {
-      component: require.resolve(`./src/templates/docs.js`),
+      component: require.resolve(`./src/templates/docs.tsx`),
     },
   },
   'gatsby-plugin-emotion',
   'gatsby-plugin-remove-trailing-slashes',
-  {
-    resolve: require.resolve(`./plugins/gatsby-plugin-draft`),
-    options: {
-      publishDraft: config.features.publishDraft,
-    },
-  },
   'gatsby-transformer-sharp',
   {
     resolve: 'gatsby-plugin-react-svg',
@@ -90,7 +84,7 @@ const plugins = [
         'gatsby-remark-copy-linked-files',
         {
           resolve: 'gatsby-remark-jargon',
-          options: { jargon: require('./src/utils/jargon-config.js') },
+          options: { jargon: require('./src/utils/jargon-config.ts') },
         },
         {
           resolve: `gatsby-remark-embed-snippet`,
@@ -128,7 +122,7 @@ const plugins = [
     resolve: 'gatsby-plugin-root-import',
     options: {
       '~': path.join(__dirname, 'src'),
-      config: path.join(__dirname, '.generated.config.js'),
+      config: path.join(__dirname, '.generated.config.ts'),
       images: path.join(__dirname, 'src/images'),
       styles: path.join(__dirname, 'src/styles'),
       css: path.join(__dirname, 'src/styles/main.css'),
@@ -147,7 +141,6 @@ if (config.features.pageProgress && config.features.pageProgress.enabled) {
   plugins.push({
     resolve: 'gatsby-plugin-page-progress',
     options: {
-      // @ts-expect-error ts-migrate(2322) FIXME: Type '{ includePaths: any; excludePaths: any; heig... Remove this comment to see the full error message
       includePaths: config.features.pageProgress.includePaths,
       excludePaths: config.features.pageProgress.excludePaths,
       height: config.features.pageProgress.height,
@@ -203,7 +196,7 @@ if (config.features.rss && config.features.rss.enabled) {
           },
           query: `
           {
-            allMdx(filter: {fields: {draft: {ne: true}}}) {
+            allMdx {
               edges {
                 node {
                   excerpt
@@ -249,8 +242,7 @@ if (config.pwa && config.pwa.enabled && config.pwa.manifest) {
   plugins.push({
     resolve: 'gatsby-plugin-offline',
     options: {
-      // @ts-expect-error ts-migrate(2322) FIXME: Type '{ appendScript: string; }' is not assignable... Remove this comment to see the full error message
-      appendScript: require.resolve(`./src/custom-sw-code.js`),
+      appendScript: require.resolve(`./src/custom-sw-code.ts`),
     },
   });
   // plugins.push('gatsby-plugin-offline');

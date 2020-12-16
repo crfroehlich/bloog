@@ -1,7 +1,6 @@
 import { ExternalLink } from 'react-feather';
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-expect-error ts-migrate(2305) FIXME: Module '"../../styles"' has no exported member 'fl... Remove this comment to see the full error message
 import { flex, transparent } from '../../styles';
 
 const Link = styled(({

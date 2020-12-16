@@ -1,9 +1,8 @@
 import * as React from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/dracula';
-import Loadable from 'react-loadable';
-// @ts-expect-error ts-migrate(6142) FIXME: Module './loading' was resolved to '/home/fro/code... Remove this comment to see the full error message
-import { LoadingProvider } from './loading';
+// import Loadable from 'react-loadable';
+// import { LoadingProvider } from './loading';
 
 /** Removes the last token from a code example if it's empty. */
 function cleanTokens(tokens: any) {
@@ -20,101 +19,88 @@ function cleanTokens(tokens: any) {
   return tokens;
 }
 
-const LoadableComponent = Loadable({
-  // @ts-expect-error ts-migrate(6142) FIXME: Module './LiveProvider' was resolved to '/home/fro... Remove this comment to see the full error message
-  loader: () => import('./LiveProvider'),
-  loading: LoadingProvider,
-});
+// const LoadableComponent = Loadable({
+//   loader: () => import('./LiveProvider'),
+//   loading: LoadingProvider,
+// });
 
-// @ts-expect-error ts-migrate(7031) FIXME: Binding element 'code' implicitly has an 'any' typ... Remove this comment to see the full error message
 export const CodeBlock = ({ children: code, ...props }) => {
-  if (props['react-live']) {
-    
-    return <LoadableComponent code={code} />;
-  } else {
-    const lang = props.className ? props.className.split('-')[1] : null;
-    return (
-      
-      <Highlight {...defaultProps} code={code} language={lang ? lang : 'javascript'} theme={theme}>
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          
-          <pre className={className + ' pre'} style={style} p={3}>
-            {cleanTokens(tokens).map((line: any, i: any) => {
-              let lineClass = {};
+  // if (props['react-live']) {
+  //   return <LoadableComponent code={code} />;
+  // } else {
+  const lang = props.className ? props.className.split('-')[1] : null;
+  return (
+    <Highlight {...defaultProps} code={code} language={lang ? lang : 'javascript'} theme={theme}>
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <pre className={className + ' pre'} style={style}> {/* p={3} */}
+          {cleanTokens(tokens).map((line: any, i: any) => {
+            let lineClass = {};
+            let isDiff = false;
+            if (line[0] && line[0].content.length && line[0].content[0] === '+') {
+              lineClass = { backgroundColor: 'rgba(76, 175, 80, 0.2)' };
+              isDiff = true;
+            } else if (line[0] && line[0].content.length && line[0].content[0] === '-') {
+              lineClass = { backgroundColor: 'rgba(244, 67, 54, 0.2)' };
+              isDiff = true;
+            } else if (line[0] && line[0].content === '' && line[1] && line[1].content === '+') {
+              lineClass = { backgroundColor: 'rgba(76, 175, 80, 0.2)' };
+              isDiff = true;
+            } else if (line[0] && line[0].content === '' && line[1] && line[1].content === '-') {
+              lineClass = { backgroundColor: 'rgba(244, 67, 54, 0.2)' };
+              isDiff = true;
+            }
+            const lineProps = getLineProps({ line, key: i });
 
-              let isDiff = false;
+            lineProps.style = lineClass;
+            let splitToken;
 
-              if (line[0] && line[0].content.length && line[0].content[0] === '+') {
-                lineClass = { backgroundColor: 'rgba(76, 175, 80, 0.2)' };
-                isDiff = true;
-              } else if (line[0] && line[0].content.length && line[0].content[0] === '-') {
-                lineClass = { backgroundColor: 'rgba(244, 67, 54, 0.2)' };
-                isDiff = true;
-              } else if (line[0] && line[0].content === '' && line[1] && line[1].content === '+') {
-                lineClass = { backgroundColor: 'rgba(76, 175, 80, 0.2)' };
-                isDiff = true;
-              } else if (line[0] && line[0].content === '' && line[1] && line[1].content === '-') {
-                lineClass = { backgroundColor: 'rgba(244, 67, 54, 0.2)' };
-                isDiff = true;
-              }
-              const lineProps = getLineProps({ line, key: i });
+            return (
+              <div {...lineProps} key={`${line}_${i}`}>
+                {line.map((token: any, key: any) => {
+                  if (isDiff) {
+                    if (
+                      (key === 0 || key === 1) &&
+                      (token.content.charAt(0) === '+' || token.content.charAt(0) === '-')
+                    ) {
+                      if (token.content.length > 1) {
+                        splitToken = {
+                          types: ['template-string', 'string'],
+                          content: token.content.slice(1),
+                        };
+                        const firstChar = {
+                          types: ['operator'],
+                          content: token.content.charAt(0),
+                        };
 
-              lineProps.style = lineClass;
-              const diffStyle = {
-                userSelect: 'none',
-                MozUserSelect: '-moz-none',
-                WebkitUserSelect: 'none',
-              };
-
-              let splitToken;
-
-              return (
-                
-                <div {...lineProps} key={`${line}_${i}`}>
-                  {line.map((token: any, key: any) => {
-                    if (isDiff) {
-                      if (
-                        (key === 0 || key === 1) &&
-                        (token.content.charAt(0) === '+' || token.content.charAt(0) === '-')
-                      ) {
-                        if (token.content.length > 1) {
-                          splitToken = {
-                            types: ['template-string', 'string'],
-                            content: token.content.slice(1),
-                          };
-                          const firstChar = {
-                            types: ['operator'],
-                            content: token.content.charAt(0),
-                          };
-
-                          return (
-                            
-                            <React.Fragment key={`${token}_${key}`}>
-                              
-                              <span
-                                {...getTokenProps({ token: firstChar, key })}
-                                // @ts-expect-error ts-migrate(2322) FIXME: Type '{ userSelect: string; MozUserSelect: string;... Remove this comment to see the full error message
-                                style={diffStyle}
-                              />
-                              
-                              <span {...getTokenProps({ token: splitToken, key })} />
-                            </React.Fragment>
-                          );
-                        } else {
-                          
-                          return <span {...getTokenProps({ token, key })} style={diffStyle} />;
-                        }
+                        return (
+                          <React.Fragment key={`${token}_${key}`}>
+                            <span
+                              {...getTokenProps({ token: firstChar, key })}
+                              style={{
+                                userSelect: 'none',
+                                MozUserSelect: '-moz-none',
+                                WebkitUserSelect: 'none',
+                              }}
+                            />
+                            <span {...getTokenProps({ token: splitToken, key })} />
+                          </React.Fragment>
+                        );
+                      } else {
+                        return <span {...getTokenProps({ token, key })} style={{
+                          userSelect: 'none',
+                          MozUserSelect: '-moz-none',
+                          WebkitUserSelect: 'none',
+                        }} />;
                       }
                     }
-                    
-                    return <span {...getTokenProps({ token, key })} />;
-                  })}
-                </div>
-              );
-            })}
-          </pre>
-        )}
-      </Highlight>
-    );
-  }
+                  }
+                  return <span {...getTokenProps({ token, key })} />;
+                })}
+              </div>
+            );
+          })}
+        </pre>
+      )}
+    </Highlight>
+  );
 };

@@ -16,7 +16,6 @@ const Button = styled(({
     refine(page);
   };
   return (
-    
     <button href="#" onClick={changePage} {...props}>
       {children}
     </button>
@@ -97,16 +96,11 @@ export const Pagination = ({
   const previousPage = currentPage > 1 ? currentPage - 1 : 1;
   const nextPage = currentPage === pagesToShow ? currentPage : currentPage + 1;
   return (
-    
     <PagesListWrapper>
-      
       <PagesList>
         {showPrevious ? (
-          
           <li style={{ marginRight: leftRightMargin }}>
-            
             <Button show={currentPage > 1} refine={refine} page={previousPage}>
-              
               <ChevronLeft />
             </Button>
           </li>
@@ -116,9 +110,7 @@ export const Pagination = ({
           const isCurrent = currentPage === page;
 
           return (
-            
             <li key={`${index}_${Date.now()}`}>
-              
               <Button refine={refine} page={page} isCurrent={isCurrent}>
                 {page}
               </Button>
@@ -128,9 +120,7 @@ export const Pagination = ({
         {showNext ? (
           
           <li style={{ marginLeft: leftRightMargin }}>
-            
             <Button show={currentPage !== pagesToShow} refine={refine} page={nextPage}>
-              
               <ChevronRight />
             </Button>
           </li>

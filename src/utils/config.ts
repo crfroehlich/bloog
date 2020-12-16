@@ -1,12 +1,12 @@
 import fs from 'fs';
 import { merge, cloneDeep } from 'lodash';
-import { config as defaults } from '../../config';
+import { config as defaults, IConfig } from '../../config';
 import { readYamlOrJson } from './fileUtils';
 import { processPwa } from './config-pwa';
 
 export const generate = (path: any, config: any) => {
-  const generated = `export const generatedConfig = ${JSON.stringify(config, undefined, 4)};`;
-  fs.writeFile(path, generated, function (err) {
+  const generated = `export const generatedConfig = ${config};`;
+  fs.writeFile(path, generated, (err) => {
     if (err) return console.log(err);
   });
 };
@@ -107,7 +107,7 @@ class EnvReader extends ConfigReader {
 }
 
 
-export const read = () => {
+export const read = (): IConfig => {
   const fileConfig = new FileReader().read();
   const envConfig = new EnvReader().read();
   const def = cloneDeep(defaults);
@@ -130,3 +130,6 @@ const postProcessConfig = (config: any) => {
     return byOrder === 0 ? b.path.length - a.path.length : byOrder;
   });
 };
+
+let conf: IConfig;
+export const getConf = (): IConfig => conf = conf || read();

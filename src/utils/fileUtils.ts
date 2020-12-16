@@ -1,5 +1,4 @@
 import { readFileSync, close, open, utimes } from 'fs';
-// @ts-expect-error ts-migrate(7016) FIXME: Could not find a declaration file for module 'js-y... Remove this comment to see the full error message
 import yaml from 'js-yaml';
 import path from 'path';
 

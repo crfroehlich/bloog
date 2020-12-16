@@ -42,18 +42,15 @@ const Highlight = ({
   // @ts-expect-error ts-migrate(2339) FIXME: Property 'highlights' does not exist on type 'Them... Remove this comment to see the full error message
   const highlightColor = theme.highlights[color];
   return (
-    
     <HighlightWrapper
       background={highlightColor.background}
       border={highlightColor.border}
       font={highlightColor.font}
       {...props}
     >
-      
       <div css={{ marginRight: '16px', lineHeight: 0 }}>
         {icon.render({ color: highlightColor.border, size: 24 })}
       </div>
-      
       <div css={skipParagraph}>{children}</div>
     </HighlightWrapper>
   );

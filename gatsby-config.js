@@ -4,7 +4,7 @@ require('source-map-support').install();
 require('ts-node').register();
 
 const config = require('./gatsby-config.ts');
-config.gatsbyConfig.flags = { 
+config.flags = { 
   FAST_REFRESH: true,
   LAZY_IMAGES: true,
   PARALLEL_SOURCING: true, 

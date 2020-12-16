@@ -2,7 +2,6 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Maximize, Minimize } from 'react-feather';
 import { useTheme } from '@emotion/react';
-// @ts-expect-error ts-migrate(2305) FIXME: Module '".."' has no exported member 'ButtonIcon'.
 import { ButtonIcon } from '..';
 
 export const FullScreenEnter = styled(({
@@ -11,7 +10,6 @@ export const FullScreenEnter = styled(({
 }: any) => {
     const theme = useTheme();
     return (
-      
       <ButtonIcon
         title={'Enter fullscreen mode'}
         // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
@@ -28,10 +26,8 @@ export const FullScreenEnter = styled(({
     );
   })``;
   
-  export const FullScreenHeader = styled.div`
-  display: ${(props) => (props.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'show' does not exist on type '{ theme?: ... Remove this comment to see the full error message
-show ? 'flex' : 'none')};
+export const FullScreenHeader = styled(({ show, ...props }) => (<div {...props} />))`
+  display: ${(props) => (props.show ? 'flex' : 'none')};
   position: fixed;
   justify-content: flex-end;
   align-items: center;
@@ -45,17 +41,14 @@ show ? 'flex' : 'none')};
 header.background};
   `;
   
-  export const FullScreenClose = styled(({
+export const FullScreenClose = styled(({
     className,
     toggle
   }: any) => {
     const theme = useTheme();
     return (
-      
       <div className={className} onClick={toggle}>
-        
-        <span css={{marginRight: '6px'}}>Close full mode</span>
-        
+        <span style={{marginRight: '6px'}}>Close full mode</span>
         <ButtonIcon
           title={'Close fullscreen mode'}
           // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.

@@ -1,20 +1,16 @@
 import React from 'react';
 import styled from '@emotion/styled';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
-import { config } from 'config';
-// @ts-expect-error ts-migrate(6142) FIXME: Module './ContentTree' was resolved to '/home/fro/... Remove this comment to see the full error message
+import { getConf } from '../../utils';
 import { ContentTree } from './ContentTree';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module './links' or its corresponding ... Remove this comment to see the full error message
-import { Links } from './links';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module './poweredBy' or its correspond... Remove this comment to see the full error message
-import { PoweredBy } from './poweredBy';
-// @ts-expect-error ts-migrate(2305) FIXME: Module '"../Navigation"' has no exported member 'g... Remove this comment to see the full error message
+import { Links } from './Links';
+import { PoweredBy } from './PoweredBy';
 import { getNavigationData } from '../Navigation';
-// @ts-expect-error ts-migrate(6142) FIXME: Module '../../styles/styles' was resolved to '/hom... Remove this comment to see the full error message
 import { scrollbar } from '../../styles/styles';
 import { onMobile } from '../../styles/responsive';
 
-const Sidebar = styled.div`
+const config = getConf();
+
+const SidebarWrapper = styled.div`
   margin-left: ${(props) => props.theme.  
 // @ts-expect-error ts-migrate(2339) FIXME: Property 'layout' does not exist on type 'Theme'.
 layout.leftMargin};
@@ -28,7 +24,7 @@ layout.leftMargin};
   }
 `;
 
-const SidebarMain = styled.div`
+const SidebarMain = styled(({ ...props }) => (<div {...props} />))`
   overflow-y: auto;
   width: 100%;
   margin: 0;
@@ -61,7 +57,7 @@ const NavigationWrapper = styled(({
     
     <aside className={className}>
       
-      <Sidebar>{children}</Sidebar>
+      <SidebarWrapper>{children}</SidebarWrapper>
     </aside>
   );
 })`
@@ -135,43 +131,32 @@ const Divider = styled((props: any) => <div {...props}>
   }
 `;
 
-export const ContentNavigation = ({
+export const Sidebar = ({
   show,
   className,
   location
 }: any) => {
   const edges = getNavigationData();
   return (
-    
     <NavigationWrapper className={className} show={show}>
-      
-      <SidebarMain css={scrollbar}>
-        
+      <SidebarMain style={{...scrollbar}}>
         <ContentTree edges={edges} location={location} />
         {config.sidebar.links && config.sidebar.links.length > 0 ? (
-          
-          <>
-            
+          <div>
             <Divider />
-            
             <Links links={config.sidebar.links} />
-          </>
-        ) : null}
+          </div>
+        ) : <div />}
       </SidebarMain>
       {config.sidebar.poweredBy && config.sidebar.poweredBy.name ? (
-        
-        <>
-          
           <PoweredByWrapper>
-            
             <PoweredBy
               trademark={config.sidebar.poweredBy.trademark}
               name={config.sidebar.poweredBy.name}
               link={config.sidebar.poweredBy.link}
             />
           </PoweredByWrapper>
-        </>
-      ) : null}
+      ) : <div />}
     </NavigationWrapper>
   );
 };

@@ -17,6 +17,7 @@
   "version": "1.0.1",
   "dependencies": {
     "@babel/plugin-proposal-export-default-from": "7.12.1",
+    "@emotion/babel-plugin": "^11.1.2",
     "@emotion/css": "^11.0.0",
     "@emotion/react": "^11.1.2",
     "@emotion/styled": "^11.0.0",
@@ -148,6 +149,7 @@
     "prettier-plugin-organize-imports": "^1.1.1",
     "pretty-quick": "^3.1.0",
     "prism-react-renderer": "1.1.1",
+    "puppeteer": "^5.5.0",
     "sorted-json": "^0.2.6",
     "ts-migrate": "^0.1.11",
     "ts-migrate-plugins": "^0.1.11",

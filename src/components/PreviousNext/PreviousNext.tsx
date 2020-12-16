@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react';
-// @ts-expect-error ts-migrate(2305) FIXME: Module '".."' has no exported member 'Link'.
 import { Link } from '..';
 import styled from '@emotion/styled';
 import { emojiTools as emoji } from '../../utils/emoji';
 import { navigate } from 'gatsby';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module 'config' or its corresponding t... Remove this comment to see the full error message
-import { config } from 'config';
+import { getConf } from '../../utils';
 import { ChevronLeft, ChevronRight } from 'react-feather'
-
-// @ts-expect-error ts-migrate(2305) FIXME: Module '"../Navigation"' has no exported member 'c... Remove this comment to see the full error message
 import { calculateFlatNavigation, getNavigationData } from '../Navigation';
 import { onMobile } from '../../styles/responsive';
+
+const config = getConf();
 
 const conf = {
   pathDivider: ' — ',
@@ -181,9 +179,9 @@ const Button = styled(({
   }
 `;
 
-const calculatePreviousNext = (nav: any, index: any) => {
-  const nextInfo = {};
-  const previousInfo = {};
+const calculatePreviousNext = (nav: any, index: any): { url, title }[] => {
+  let nextInfo;
+  let previousInfo;
   let currentIndex = index;
   const set = (nav: any, info: any) => {
     if (nav) {
@@ -195,16 +193,11 @@ const calculatePreviousNext = (nav: any, index: any) => {
   if (currentIndex === undefined) {
     // index
     if (nav[0]) {
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'url' does not exist on type '{}'.
       nextInfo.url = nav[0].url;
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'title' does not exist on type '{}'.
       nextInfo.title = nav[0].title;
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'path' does not exist on type '{}'.
       nextInfo.path = nav[0].groupName;
     }
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'url' does not exist on type '{}'.
     previousInfo.url = null;
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'title' does not exist on type '{}'.
     previousInfo.title = null;
     currentIndex = -1;
   } else {
@@ -258,18 +251,13 @@ export const PreviousNext = ({
   // @ts-expect-error ts-migrate(2339) FIXME: Property 'path' does not exist on type '{}'.
   const nextLabel = `${conf.nextName} ${next.path ? conf.pathDivider + next.path : ''}`;
   return (
-    
     <PreviousNextWrapper>
-      {/* @ts-expect-error ts-migrate(2532) FIXME: Object is possibly 'undefined'. */}
       {currentIndex >= 0 ? (
-        
-        <>
-          
+        <div>
           <LeftButton url={previous.url} title={previous.title} label={previousLabel} />
-          
           <RightButton url={next.url} title={next.title} label={nextLabel} />
-        </>
-      ) : null}
+        </div>
+      ) : <div />}
     </PreviousNextWrapper>
   );
 };

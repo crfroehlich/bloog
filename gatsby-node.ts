@@ -52,7 +52,7 @@ export const createPages = ({
       graphql(
         `
           {
-            allMdx(filter: {fields: {draft: {ne: true}}}) {
+            allMdx {
               edges {
                 node {
                   fields {
@@ -71,7 +71,7 @@ export const createPages = ({
         }
         actions.createPage({
           path: `/404.html`,
-          component: path.join(process.cwd(), 'src/pages/404.js'),
+          component: path.join(process.cwd(), 'src/pages/404.tsx'),
         });
 
         // Create pages.
@@ -80,7 +80,7 @@ export const createPages = ({
         }: any) => {
           createPage({
             path: node.fields.slug ? node.fields.slug : '/',
-            component: path.resolve('./src/templates/docs.js'),
+            component: path.resolve('./src/templates/docs.tsx'),
             context: {
               id: node.fields.id,
             },
@@ -153,6 +153,6 @@ export const onPreBootstrap = () => {
     ignored: ['jargon*'],
   });
   watcher.on(`change`, () => {
-    touch('./gatsby-config.js');
+    touch('./gatsby-config.ts');
   });
 };

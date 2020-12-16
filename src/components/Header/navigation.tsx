@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from '@emotion/styled';
 import { onMobile } from '../../styles/responsive';
 
@@ -7,9 +6,7 @@ export const Navigation = styled(({
   links
 }: any) => {
   return (
-    
     <nav css={{display: 'flex'}}>
-      
       <ul className={className}>
         {links
           ? links.map((link: any, key: any) => {

@@ -131,7 +131,6 @@ features:
   toc:
     show: true
     depth: 3
-  publishDraft: false
   fullScreenMode:
     enabled: true
     hideHeader: false

@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module './contentTreeGroup' or its cor... Remove this comment to see the full error message
-import ContentTreeGroup from './contentTreeGroup';
-// @ts-expect-error ts-migrate(2305) FIXME: Module '".."' has no exported member 'calculateNav... Remove this comment to see the full error message
+import { ContentTreeGroup } from './ContentTreeGroup';
 import { calculateNavigation } from '..';
 
 export const ContentTree = ({
