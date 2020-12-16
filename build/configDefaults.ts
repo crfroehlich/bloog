@@ -4,10 +4,10 @@ export const configDefaults: IConfig = {
     favicon: '/assets/favicon.png',
     gaTrackingId: '',
     language: 'en',
-    name: 'BooGi',
+    name: 'HikingMyDesk',
     ogImage: '',
     pathPrefix: '/',
-    short_name: 'BooGi',
+    short_name: 'HikingMyDesk',
     siteImage: '',
     themeColor: '#',
     title: '',
@@ -34,8 +34,8 @@ export const configDefaults: IConfig = {
   pwa: {
     enabled: true, // disabling this will also remove the existing service worker.
     manifest: {
-      name: 'BooGi',
-      short_name: 'BooGi',
+      name: 'HikingMyDesk',
+      short_name: 'HikingMyDesk',
       start_url: '/',
       background_color: '#6b37bf',
       theme_color: '#6b37bf',
@@ -58,7 +58,7 @@ export const configDefaults: IConfig = {
   features: {
     editOnRepo: {
       editable: true,
-      location: 'https://github.com/filipowm/boogi',
+      location: 'https://github.com/filipowm/hmd',
       type: 'github',
     },
     search: {

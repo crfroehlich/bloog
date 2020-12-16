@@ -6,8 +6,8 @@ order: 999
 ```yaml
 ---
 metadata:
-  name: BooGi
-  short_name: BooGi
+  name: HikingMyDesk
+  short_name: HikingMyDesk
   description: Awesome GitBook-like documentation generator using Gatsby
   language: en
   pathPrefix: "/"
@@ -20,8 +20,8 @@ header:
   logoLink: "/"
   helpUrl: ""
   links:
-    - text: BooGi
-      link: https://github.com/filipowm/boogi
+    - text: HikingMyDesk
+      link: https://github.com/filipowm/hmd
       external: true
     - text: Gatsby
       link: https://www.gatsbyjs.org
@@ -53,8 +53,8 @@ sidebar:
       path: "/developing"
       title: ":computer: Developing"
   links:
-    - text: BooGi
-      link: https://github.com/filipowm/boogi
+    - text: HikingMyDesk
+      link: https://github.com/filipowm/hmd
     - text: React
       link: https://reactjs.org
   ignoreIndex: false
@@ -70,7 +70,7 @@ pwa:
     icon: "/assets/favicon.png"
 
 social:
-  github: https://github.com/filipowm/boogi
+  github: https://github.com/filipowm/hmd
   linkedin: https://www.linkedin.com/in/mateusz-filipowicz-437b4768/
 
 features:
@@ -78,7 +78,7 @@ features:
     enabled: true
     default: false
   editOnRepo:
-    location: https://github.com/filipowm/boogi
+    location: https://github.com/filipowm/hmd
     type: github
     editable: true
   mermaid:
@@ -111,7 +111,7 @@ features:
     ttl: 60
     matchRegex: "^/"
     outputPath: "/rss.xml"
-    generator: "boogi"
+    generator: "hmd"
   scrollTop: true
   search:
     enabled: true

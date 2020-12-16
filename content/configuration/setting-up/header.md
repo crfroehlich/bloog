@@ -29,8 +29,8 @@ header:
   logoLink: "/"
   helpUrl: "https://somehelp.mycompany.com"
   links:
-    - text: BooGi
-      link: https://github.com/filipowm/boogi
+    - text: HikingMyDesk
+      link: https://github.com/filipowm/hmd
       external: true
     - text: Another Link
       link: /somethinghere

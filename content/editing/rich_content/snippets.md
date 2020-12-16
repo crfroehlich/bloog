@@ -5,7 +5,7 @@ tocDepth: 2
 ---
 
 Crucial for any technical documentation is possibility to add code snippets
-with proper highlighting. BooGi supports various programming languages and 
+with proper highlighting. HikingMyDesk supports various programming languages and 
 syntaxes.
 
 To add code snippet, you can use:

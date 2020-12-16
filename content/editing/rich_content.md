@@ -3,7 +3,7 @@ title: "Rich content"
 order: 2
 ---
 
-BooGi, in addition to standard Markdown elements, offers additinal components
+HikingMyDesk, in addition to standard Markdown elements, offers additinal components
 which support you in building beautiful, rich pages. You can embed these
 components in the content of each page. It's simple -- really anyone can do it :smiley:
 

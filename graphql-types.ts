@@ -2181,7 +2181,7 @@ export type JsonQueryOperatorInput = {
   glob?: Maybe<Scalars['JSON']>;
 };
 
-export type LocalSearchBoogi = Node & {
+export type LocalSearchHmD = Node & {
   /** The name of the index. */
   name: Scalars['String'];
   /** The search engine used to create the index. */
@@ -2200,34 +2200,34 @@ export type LocalSearchBoogi = Node & {
   internal: Internal;
 };
 
-export type LocalSearchBoogiConnection = {
+export type LocalSearchHmDConnection = {
   totalCount: Scalars['Int'];
-  edges: Array<LocalSearchBoogiEdge>;
-  nodes: Array<LocalSearchBoogi>;
+  edges: Array<LocalSearchHmDEdge>;
+  nodes: Array<LocalSearchHmD>;
   pageInfo: PageInfo;
   distinct: Array<Scalars['String']>;
-  group: Array<LocalSearchBoogiGroupConnection>;
+  group: Array<LocalSearchHmDGroupConnection>;
 };
 
 
-export type LocalSearchBoogiConnectionDistinctArgs = {
-  field: LocalSearchBoogiFieldsEnum;
+export type LocalSearchHmDConnectionDistinctArgs = {
+  field: LocalSearchHmDFieldsEnum;
 };
 
 
-export type LocalSearchBoogiConnectionGroupArgs = {
+export type LocalSearchHmDConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
-  field: LocalSearchBoogiFieldsEnum;
+  field: LocalSearchHmDFieldsEnum;
 };
 
-export type LocalSearchBoogiEdge = {
-  next?: Maybe<LocalSearchBoogi>;
-  node: LocalSearchBoogi;
-  previous?: Maybe<LocalSearchBoogi>;
+export type LocalSearchHmDEdge = {
+  next?: Maybe<LocalSearchHmD>;
+  node: LocalSearchHmD;
+  previous?: Maybe<LocalSearchHmD>;
 };
 
-export type LocalSearchBoogiFieldsEnum = 
+export type LocalSearchHmDFieldsEnum = 
   | 'name'
   | 'engine'
   | 'index'
@@ -2321,7 +2321,7 @@ export type LocalSearchBoogiFieldsEnum =
   | 'internal___owner'
   | 'internal___type';
 
-export type LocalSearchBoogiFilterInput = {
+export type LocalSearchHmDFilterInput = {
   name?: Maybe<StringQueryOperatorInput>;
   engine?: Maybe<StringQueryOperatorInput>;
   index?: Maybe<StringQueryOperatorInput>;
@@ -2334,17 +2334,17 @@ export type LocalSearchBoogiFilterInput = {
   internal?: Maybe<InternalFilterInput>;
 };
 
-export type LocalSearchBoogiGroupConnection = {
+export type LocalSearchHmDGroupConnection = {
   totalCount: Scalars['Int'];
-  edges: Array<LocalSearchBoogiEdge>;
-  nodes: Array<LocalSearchBoogi>;
+  edges: Array<LocalSearchHmDEdge>;
+  nodes: Array<LocalSearchHmD>;
   pageInfo: PageInfo;
   field: Scalars['String'];
   fieldValue?: Maybe<Scalars['String']>;
 };
 
-export type LocalSearchBoogiSortInput = {
-  fields?: Maybe<Array<Maybe<LocalSearchBoogiFieldsEnum>>>;
+export type LocalSearchHmDSortInput = {
+  fields?: Maybe<Array<Maybe<LocalSearchHmDFieldsEnum>>>;
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
@@ -2843,8 +2843,8 @@ export type Query = {
   allSitePage: SitePageConnection;
   imageSharp?: Maybe<ImageSharp>;
   allImageSharp: ImageSharpConnection;
-  localSearchBoogi?: Maybe<LocalSearchBoogi>;
-  allLocalSearchBoogi: LocalSearchBoogiConnection;
+  localSearchHmD?: Maybe<LocalSearchHmD>;
+  allLocalSearchHmD: LocalSearchHmDConnection;
   gitCommit?: Maybe<GitCommit>;
   allGitCommit: GitCommitConnection;
   mdx?: Maybe<Mdx>;
@@ -3064,7 +3064,7 @@ export type QueryAllImageSharpArgs = {
 };
 
 
-export type QueryLocalSearchBoogiArgs = {
+export type QueryLocalSearchHmDArgs = {
   name?: Maybe<StringQueryOperatorInput>;
   engine?: Maybe<StringQueryOperatorInput>;
   index?: Maybe<StringQueryOperatorInput>;
@@ -3078,9 +3078,9 @@ export type QueryLocalSearchBoogiArgs = {
 };
 
 
-export type QueryAllLocalSearchBoogiArgs = {
-  filter?: Maybe<LocalSearchBoogiFilterInput>;
-  sort?: Maybe<LocalSearchBoogiSortInput>;
+export type QueryAllLocalSearchHmDArgs = {
+  filter?: Maybe<LocalSearchHmDFilterInput>;
+  sort?: Maybe<LocalSearchHmDSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -3822,9 +3822,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___cssPropOptimization'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
-  | 'pluginCreator___pluginOptions___extensions'
-  | 'pluginCreator___pluginOptions___lessBabel'
-  | 'pluginCreator___pluginOptions___mediaTypes'
   | 'pluginCreator___pluginOptions___trackingId'
   | 'pluginCreator___pluginOptions___head'
   | 'pluginCreator___pluginOptions___anonymize'
@@ -3839,6 +3836,14 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___height'
   | 'pluginCreator___pluginOptions___prependToBody'
   | 'pluginCreator___pluginOptions___color'
+  | 'pluginCreator___pluginOptions___appendScript'
+  | 'pluginCreator___pluginOptions___pathCheck'
+  | 'pluginCreator___pluginOptions___allExtensions'
+  | 'pluginCreator___pluginOptions___isTSX'
+  | 'pluginCreator___pluginOptions___jsxPragma'
+  | 'pluginCreator___pluginOptions___extensions'
+  | 'pluginCreator___pluginOptions___lessBabel'
+  | 'pluginCreator___pluginOptions___mediaTypes'
   | 'pluginCreator___pluginOptions___enabled'
   | 'pluginCreator___pluginOptions___showIcon'
   | 'pluginCreator___pluginOptions___title'
@@ -3879,11 +3884,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___lang'
   | 'pluginCreator___pluginOptions___legacy'
   | 'pluginCreator___pluginOptions___theme_color_in_head'
-  | 'pluginCreator___pluginOptions___appendScript'
-  | 'pluginCreator___pluginOptions___pathCheck'
-  | 'pluginCreator___pluginOptions___allExtensions'
-  | 'pluginCreator___pluginOptions___isTSX'
-  | 'pluginCreator___pluginOptions___jsxPragma'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
   | 'pluginCreator___ssrAPIs'
@@ -4084,9 +4084,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___cssPropOptimization'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
-  | 'pluginOptions___extensions'
-  | 'pluginOptions___lessBabel'
-  | 'pluginOptions___mediaTypes'
   | 'pluginOptions___trackingId'
   | 'pluginOptions___head'
   | 'pluginOptions___anonymize'
@@ -4101,6 +4098,14 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___height'
   | 'pluginOptions___prependToBody'
   | 'pluginOptions___color'
+  | 'pluginOptions___appendScript'
+  | 'pluginOptions___pathCheck'
+  | 'pluginOptions___allExtensions'
+  | 'pluginOptions___isTSX'
+  | 'pluginOptions___jsxPragma'
+  | 'pluginOptions___extensions'
+  | 'pluginOptions___lessBabel'
+  | 'pluginOptions___mediaTypes'
   | 'pluginOptions___enabled'
   | 'pluginOptions___showIcon'
   | 'pluginOptions___title'
@@ -4141,11 +4146,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___lang'
   | 'pluginOptions___legacy'
   | 'pluginOptions___theme_color_in_head'
-  | 'pluginOptions___appendScript'
-  | 'pluginOptions___pathCheck'
-  | 'pluginOptions___allExtensions'
-  | 'pluginOptions___isTSX'
-  | 'pluginOptions___jsxPragma'
   | 'nodeAPIs'
   | 'browserAPIs'
   | 'ssrAPIs'
@@ -4274,9 +4274,6 @@ export type SitePluginPluginOptions = {
   cssPropOptimization?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
-  extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
-  lessBabel?: Maybe<Scalars['Boolean']>;
-  mediaTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
   trackingId?: Maybe<Scalars['String']>;
   head?: Maybe<Scalars['Boolean']>;
   anonymize?: Maybe<Scalars['Boolean']>;
@@ -4291,6 +4288,14 @@ export type SitePluginPluginOptions = {
   height?: Maybe<Scalars['Int']>;
   prependToBody?: Maybe<Scalars['Boolean']>;
   color?: Maybe<Scalars['String']>;
+  appendScript?: Maybe<Scalars['String']>;
+  pathCheck?: Maybe<Scalars['Boolean']>;
+  allExtensions?: Maybe<Scalars['Boolean']>;
+  isTSX?: Maybe<Scalars['Boolean']>;
+  jsxPragma?: Maybe<Scalars['String']>;
+  extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
+  lessBabel?: Maybe<Scalars['Boolean']>;
+  mediaTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
   enabled?: Maybe<Scalars['Boolean']>;
   showIcon?: Maybe<Scalars['Boolean']>;
   title?: Maybe<Scalars['String']>;
@@ -4323,11 +4328,6 @@ export type SitePluginPluginOptions = {
   lang?: Maybe<Scalars['String']>;
   legacy?: Maybe<Scalars['Boolean']>;
   theme_color_in_head?: Maybe<Scalars['Boolean']>;
-  appendScript?: Maybe<Scalars['String']>;
-  pathCheck?: Maybe<Scalars['Boolean']>;
-  allExtensions?: Maybe<Scalars['Boolean']>;
-  isTSX?: Maybe<Scalars['Boolean']>;
-  jsxPragma?: Maybe<Scalars['String']>;
 };
 
 export type SitePluginPluginOptionsEngineOptions = {
@@ -4378,9 +4378,6 @@ export type SitePluginPluginOptionsFilterInput = {
   cssPropOptimization?: Maybe<BooleanQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
-  extensions?: Maybe<StringQueryOperatorInput>;
-  lessBabel?: Maybe<BooleanQueryOperatorInput>;
-  mediaTypes?: Maybe<StringQueryOperatorInput>;
   trackingId?: Maybe<StringQueryOperatorInput>;
   head?: Maybe<BooleanQueryOperatorInput>;
   anonymize?: Maybe<BooleanQueryOperatorInput>;
@@ -4395,6 +4392,14 @@ export type SitePluginPluginOptionsFilterInput = {
   height?: Maybe<IntQueryOperatorInput>;
   prependToBody?: Maybe<BooleanQueryOperatorInput>;
   color?: Maybe<StringQueryOperatorInput>;
+  appendScript?: Maybe<StringQueryOperatorInput>;
+  pathCheck?: Maybe<BooleanQueryOperatorInput>;
+  allExtensions?: Maybe<BooleanQueryOperatorInput>;
+  isTSX?: Maybe<BooleanQueryOperatorInput>;
+  jsxPragma?: Maybe<StringQueryOperatorInput>;
+  extensions?: Maybe<StringQueryOperatorInput>;
+  lessBabel?: Maybe<BooleanQueryOperatorInput>;
+  mediaTypes?: Maybe<StringQueryOperatorInput>;
   enabled?: Maybe<BooleanQueryOperatorInput>;
   showIcon?: Maybe<BooleanQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
@@ -4427,11 +4432,6 @@ export type SitePluginPluginOptionsFilterInput = {
   lang?: Maybe<StringQueryOperatorInput>;
   legacy?: Maybe<BooleanQueryOperatorInput>;
   theme_color_in_head?: Maybe<BooleanQueryOperatorInput>;
-  appendScript?: Maybe<StringQueryOperatorInput>;
-  pathCheck?: Maybe<BooleanQueryOperatorInput>;
-  allExtensions?: Maybe<BooleanQueryOperatorInput>;
-  isTSX?: Maybe<BooleanQueryOperatorInput>;
-  jsxPragma?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {
@@ -4676,7 +4676,7 @@ export type NavigationQueryQuery = { allMdx: { edges: Array<{ node: { fields?: M
 export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_1_Query = { localSearchBoogi?: Maybe<Pick<LocalSearchBoogi, 'index' | 'store'>> };
+export type Unnamed_1_Query = { localSearchHmD?: Maybe<Pick<LocalSearchHmD, 'index' | 'store'>> };
 
 export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
 

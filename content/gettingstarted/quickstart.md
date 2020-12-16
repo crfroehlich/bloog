@@ -7,23 +7,23 @@ order: 3
 
 1. Install NodeJS (newest 14+ recommended, minimal 12.18).
 2. Install Yarn: `npm install -g yarn`
-3. Install Boogi CLI: `npm install -g boogi-cli`
+3. Install HmD CLI: `npm install -g hmd-cli`
 
 These commands may require root rights, depending on your operating
 system and configuration.
 
 ## Quick start
 
-1. Initialize BooGi project in current directory:
+1. Initialize HikingMyDesk project in current directory:
    ```bash
-   boogi init
+   hmd init
    ```
-   Now wizard will guide you through core BooGi
+   Now wizard will guide you through core HikingMyDesk
    configuration.
 
 2. Run your app in development mode with live reload
    ```bash
-   boogi develop
+   hmd develop
    ```
    You can access your app on `localhost:8000`. Any changes
    applied will be automatically applied on running
@@ -31,27 +31,27 @@ system and configuration.
 
 3. Build you app package ready for deployment
    ```bash
-   boogi build
+   hmd build
    ```
    Built package will be available in `public` directory.
 
-## BooGi directory structure
+## HikingMyDesk directory structure
 
-Below is defined BooGi app directory structure.
+Below is defined HikingMyDesk app directory structure.
 **Important** This is applicable only for apps initialized and
-using BooGi CLI.
+using HikingMyDesk CLI.
 
 ```bash
-+-- .boogi.yml   # BooGi CLI configuration file
++-- .hmd.yml   # HikingMyDesk CLI configuration file
 +-- package.json # 
-+-- README.md    # Your BooGi app readme
++-- README.md    # Your HikingMyDesk app readme
 │
 +-- assets/      # Directory with static assets not used inside content (e.g. logo)
 │
-+-- config/      # Directory with BooGi app configuration
-│   +-- config.yml  # BooGi configuration file
++-- config/      # Directory with HikingMyDesk app configuration
+│   +-- config.yml  # HikingMyDesk configuration file
 │   +-- jargon.yml  # Jargon (abbrevations / definitions) configuration file
-│   +-- theme/      # Directory with BooGi app theme (look-and-feel) configuration
+│   +-- theme/      # Directory with HikingMyDesk app theme (look-and-feel) configuration
 │       +-- colors.js # Base colors configuration file
 │       +-- dark.js   # Dark theme configuration file
 │       +-- light.js  # Light theme configuration file

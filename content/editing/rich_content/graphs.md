@@ -3,8 +3,8 @@ title: "Graphs & diagrams"
 order: 3
 ---
 
-BooGi gives you powerful diagramming capabilities, allowing you to treat
-your graphs / diagrams as a code. To give such possibility, BooGi offers
+HikingMyDesk gives you powerful diagramming capabilities, allowing you to treat
+your graphs / diagrams as a code. To give such possibility, HikingMyDesk offers
 two diagramming "languages": [Mermaid](#mermaiddiagrams) and [Graphviz](#graphvizgraphs).
 Both process Mermaid process markdown code blocks to generate graphs during
 page build time.
@@ -30,7 +30,7 @@ To learn Mermaid syntax visit [this guide](https://mermaid-js.github.io/mermaid/
 _Diagrams_ section to find syntax you're looking for).
 </Info>
 
-Mermaid diagrams can be additionally configured in BooGi page config,
+Mermaid diagrams can be additionally configured in HikingMyDesk page config,
 as described in [features reference](/configuration/setting-up/features#mermaidgraphs).
 
 **Example:**

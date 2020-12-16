@@ -3,7 +3,7 @@ title: 'Page structure'
 order: 2
 ---
 
-Check BooGi page layout and how different components relate to each other 
+Check HikingMyDesk page layout and how different components relate to each other 
 and where they are placed.
 
 ### General page structure

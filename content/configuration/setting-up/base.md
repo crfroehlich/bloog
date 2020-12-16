@@ -3,7 +3,7 @@ title: 'Base configuration'
 order: 0
 ---
 
-While creating your own BooGi-based page, you should first set up
+While creating your own HikingMyDesk-based page, you should first set up
 metadata. It defines core information about your page required for
 it to work, its identification and SEO.
 
@@ -28,7 +28,7 @@ Metadata base configuration can be set in `config.yaml` under `metadata` key.
 metadata:
   name: Your Docs Name
   short_name: YDN
-  description: This is awesome page based on BooGi
+  description: This is awesome page based on HikingMyDesk
   url: https://myapp.com
   language: en
   pathPrefix: /

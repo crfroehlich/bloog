@@ -3,7 +3,7 @@ title: "Running Locally"
 order: 1
 ---
 
-If you want to develop BooGi or use plain Gatsby for your BooGi app
+If you want to develop HikingMyDesk or use plain Gatsby for your HikingMyDesk app
 development, then you can follow this guide.
 
 ## Download dependencies
@@ -17,12 +17,12 @@ yarn
 ```
 gatsby develop
 ```
-This will run BooGi on port 8000 on localhost.
+This will run HikingMyDesk on port 8000 on localhost.
 
 ## Build and run docker image locally
 
 ```
-docker build -t boogi -f docker/Dockerfile .
-docker run -dp 80:80 boogi
+docker build -t hmd -f docker/Dockerfile .
+docker run -dp 80:80 hmd
 ```
-This will run BooGi on port 80 on localhost.
+This will run HikingMyDesk on port 80 on localhost.

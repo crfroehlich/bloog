@@ -1,44 +1,44 @@
 ---
-title: "BooGi CLI"
+title: "HikingMyDesk CLI"
 order: 4
 ---
 
 <Tip>
 
-**BooGi CLI is a recommended way of working with BooGi apps**.
+**HikingMyDesk CLI is a recommended way of working with HikingMyDesk apps**.
 However, if you need full control over your app, what comes with
 a cost of significantly increased complexity, you can
 still use Gatsby CLI.
 
 </Tip>
 
-CLI for BooGi used to speed up and simplify development
-of BooGi-based apps.
+CLI for HikingMyDesk used to speed up and simplify development
+of HikingMyDesk-based apps.
 
 ## :label: Requirements
 
 - NodeJS in version _12.13_ or higher
 - Yarn (`npm install -g yarn`)
-- BooGi CLI `npm install -g boogi-cli`
+- HikingMyDesk CLI `npm install -g hmd-cli`
 
 ## :book: Guide
 
 
 ### App structure
 
-BooGi CLI is creating following directory structure
+HikingMyDesk CLI is creating following directory structure
 
 ```bash
-+-- .boogi.yml   # BooGi CLI configuration file
++-- .hmd.yml   # HikingMyDesk CLI configuration file
 +-- package.json # 
-+-- README.md    # Your BooGi app readme
++-- README.md    # Your HikingMyDesk app readme
 │
 +-- assets/      # Directory with static assets not used inside content (e.g. logo)
 │
-+-- config/      # Directory with BooGi app configuration
-│   +-- config.yml  # BooGi configuration file
++-- config/      # Directory with HikingMyDesk app configuration
+│   +-- config.yml  # HikingMyDesk configuration file
 │   +-- jargon.yml  # Jargon (abbrevations / definitions) configuration file
-│   +-- theme/      # Directory with BooGi app theme (look-and-feel) configuration
+│   +-- theme/      # Directory with HikingMyDesk app theme (look-and-feel) configuration
 │       +-- colors.js # Base colors configuration file
 │       +-- dark.js   # Dark theme configuration file
 │       +-- light.js  # Light theme configuration file
@@ -49,16 +49,16 @@ BooGi CLI is creating following directory structure
 +-- snippets/ # Directory with external code snippets, which can be embedded in content
 ```
 
-### boogi init
+### hmd init
 
-Initialize BooGi app in a given path. This gives a way to easily and quickly
-start a BooGi project.
+Initialize HikingMyDesk app in a given path. This gives a way to easily and quickly
+start a HikingMyDesk project.
 
 ```
-boogi init [path] [-f|--full] [--skip|--skip-config] [-d|--debug]
+hmd init [path] [-f|--full] [--skip|--skip-config] [-d|--debug]
 ```
 
-`path` - path where BooGi project will be initialized. Defaults to current directory.
+`path` - path where HikingMyDesk project will be initialized. Defaults to current directory.
 
 `-f`, `--full` - use full (advanced) configuration wizard. Guides you through most of available configuration options.
 
@@ -66,13 +66,13 @@ boogi init [path] [-f|--full] [--skip|--skip-config] [-d|--debug]
 
 `-d`, `--debug` - enable debugging mode.
 
-### boogi develop
+### hmd develop
 
-Start BooGi development server on specified port (default 8000).
+Start HikingMyDesk development server on specified port (default 8000).
 The development server supports live (hot) reload on any changes.
 
 ```
-boogi develop [-p|--port] [-d|--debug]
+hmd develop [-p|--port] [-d|--debug]
 ```
 `-p`, `--port` - port on which development server will run. Defaults to `8000`.
 
@@ -81,13 +81,13 @@ boogi develop [-p|--port] [-d|--debug]
 **Note** Changes done to `config/jargon.yml` will not be reloaded.
 To apply changes to jargon you must restart server.
 
-### boogi build
+### hmd build
 
-Build BooGi project. Deployment-ready package will be created
+Build HikingMyDesk project. Deployment-ready package will be created
 in `public` directory.
 
 ```
-boogi build [-a|--archive] [-d|--debug]
+hmd build [-a|--archive] [-d|--debug]
 ```
 
 `-a`, `--archive` - archive (zip) result directory. `public.zip` file will be created
@@ -95,13 +95,13 @@ with your built app.
 
 `-d`, `--debug` - enable debugging mode.
 
-### boogi clean
+### hmd clean
 
-Wipe the local BooGi environment including built assets and cache.
+Wipe the local HikingMyDesk environment including built assets and cache.
 Useful in case of issues while running `build` or `develop` commands.
 
 ```
-boogi clean
+hmd clean
 ```
 
 ## :construction_worker: Roadmap

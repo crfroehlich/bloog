@@ -39,7 +39,7 @@ const buildLocalsearchPluginConfig = (conf: any) => {
         engineOptions: conf.localSearchEngine,
         query: query(8000),
         normalizer: transformer,
-        name: 'Boogi',
+        name: 'HmD',
         ref: 'id',
         index: ['title', 'description', 'excerpt', 'slug'],
         store: ['id', 'slug', 'title', 'description', 'excerpt'],

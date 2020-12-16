@@ -3,7 +3,7 @@ title: "Abbreviations"
 order: 2
 ---
 
-BooGi offers creating inline definitions of 
+HikingMyDesk offers creating inline definitions of 
 popular jargon used. This is a good way to define abbreviations / terms
 used in your company / area / profession.
 
@@ -30,12 +30,12 @@ saas:
   long_name: Software as a Service
   description: Software licensing and delivery model in which software is licensed
     on a subscription basis and is centrally hosted and managed
-boogi:
-  name: BooGi
-  description: The best documentation tool in the space! Check it <a href="https://boogi.netlify.app">here</a>.
+hmd:
+  name: HikingMyDesk
+  description: The best documentation tool in the space! Check it <a href="https://hmd.netlify.app">here</a>.
 ```
 
-<Warning>When under development mode, you must restart BooGi to apply new jargon configuration.</Warning>
+<Warning>When under development mode, you must restart HikingMyDesk to apply new jargon configuration.</Warning>
 
 ## Usage
 
@@ -47,9 +47,9 @@ Then in markdown wrap word defined as key (`term_key`) above in `_` to use Jargo
 ```markdown
 You can use any _saas_ application.
 
-Try _BooGi_ -- you'll love it :heart: !
+Try _HmD_ -- you'll love it :heart: !
 ```  
 
 You can use any _saas_ application.
 
-Try _BooGi_ -- you'll love it :heart: !
+Try _HmD_ -- you'll love it :heart: !

@@ -49,9 +49,9 @@ const search = (query: any, index: any, store: any, page: any) => {
 };
 
 export const LocalSearch = ({ inputRef, ...props }) => {
-  const { localSearchBoogi: { index, store } } = useStaticQuery(graphql`
+  const { localSearchHmD: { index, store } } = useStaticQuery(graphql`
     query {
-      localSearchBoogi {
+      localSearchHmD {
         index
         store
       }

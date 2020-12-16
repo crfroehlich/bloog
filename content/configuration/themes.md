@@ -3,23 +3,23 @@ title: "Themes / styling"
 order: 3
 ---
 
-Themes is a way to customize BooGi app to meet your branding 
+Themes is a way to customize HikingMyDesk app to meet your branding 
 and desired look-and-feel. You can change color of nearly **every**
 component on the page.
 
-BooGi offers two themes: light and dark. By both themes are used.
+HikingMyDesk offers two themes: light and dark. By both themes are used.
 To disable dark mode, set `features.darkMode.enabled=false`
 in `config.yml`.
 
 Theme configuration is stored in `light.js` and `dark.js` files
-for light and dark theme respectively. Additionally, BooGi
+for light and dark theme respectively. Additionally, HikingMyDesk
 offers a way to change basic colors used on the site. Default colors
 definition is stored in `colors.js` file. All these files are in
-`config/theme` directory of your BooGi app.
+`config/theme` directory of your HikingMyDesk app.
 
 ## Understanding theme setup
 
-When using BooGi CLI, by default [minimal](#minimal) minimal configuration
+When using HikingMyDesk CLI, by default [minimal](#minimal) minimal configuration
 will be present in configuration files.
 
 You can use any CSS-compatible color format: HEX, RGB, RGBA, HSL, HSLA.
@@ -35,7 +35,7 @@ For full list of properties check [full](#full) configuration
 reference.
 
 If you don't want go deep into each object configuration, you can
-apply minimal configuratin to customize BooGi app to your needs.
+apply minimal configuratin to customize HikingMyDesk app to your needs.
 Check [minimal configuration reference](#minimal) for an example.
 
 You can change any single parameter -- there is no need to change whole 
@@ -56,10 +56,10 @@ an object of base colors, defined in the same file as `colors`.
 
 ### Using color library
 
-BooGi uses `color` - a JavaScript library for immutable color conversion 
+HikingMyDesk uses `color` - a JavaScript library for immutable color conversion 
 and manipulation with support for CSS color strings. It uses it to automatically
 calculate values of some properties based on the default colors used. Thanks to it
-you don't need to care about each single color on the page -- BooGi will do it for you.
+you don't need to care about each single color on the page -- HikingMyDesk will do it for you.
 Check [this site](https://github.com/Qix-/color) for details about `color` library.
 
 You can use `color` library in your theme definition. For example:
@@ -113,8 +113,8 @@ export default {
 
 Reference below presents full theme configuration for all fields.
 It contains also example of using `color` library.
-If you're interested in actual BooGi base configuration, check
-https://github.com/filipowm/BooGi/blob/develop/src/theme/base.js .
+If you're interested in actual HikingMyDesk base configuration, check
+https://github.com/filipowm/HikingMyDesk/blob/develop/src/theme/base.js .
 It contains full definition of the default light theme.
 
 ```javascript

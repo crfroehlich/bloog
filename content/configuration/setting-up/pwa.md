@@ -7,7 +7,7 @@ showToc: true
 <Tip>
 
 We recommend setting up PWA, which **greatly improves
-user experience** of your BooGi page.
+user experience** of your HikingMyDesk page.
 </Tip>
 
 A Progressive Web App (PWA) is a web app that uses modern web capabilities 
@@ -15,7 +15,7 @@ to deliver an app-like experience to users. These apps meet certain requirements
 (see below), are deployed to servers, accessible through URLs, and indexed 
 by search engines (optionally).
 
-To be considered a Progressive Web App, BooGi-based pages:
+To be considered a Progressive Web App, HikingMyDesk-based pages:
 
 * **Progressive** - Work for every user, regardless of browser choice.
 
@@ -102,7 +102,7 @@ Below is a set of allowed properties of `pwa.manifest.display` property.
 
 ```yaml
 metadata:
-  name: My Awesome BooGi site
+  name: My Awesome HikingMyDesk site
   siteImage: /assets/myapp.png
   pathPrefix: /
   theme_color: '#0066cc'
@@ -114,9 +114,9 @@ pwa:
 
 ```yaml
 metadata:
-  name: My Awesome BooGi site
+  name: My Awesome HikingMyDesk site
   short_name: BooPWA
-  description: This is my PWA-enabled BooGi site
+  description: This is my PWA-enabled HikingMyDesk site
   language: en
   pathPrefix: /
   theme_color: '#0066cc'

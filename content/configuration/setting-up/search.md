@@ -4,7 +4,7 @@ order: 5
 tocDepth: 3
 ---
 
-BooGi comes with a content search capabilities. It takes care of indexing
+HikingMyDesk comes with a content search capabilities. It takes care of indexing
 content during page build time and makes indexed data accessible
 in Search UI.
 
@@ -67,7 +67,7 @@ It does not need any external service to work, index is created during build tim
 and whole searching is done on the client (browser).
 
 To make LocalSearch work there is no additional configuration needed then
-setting up BooGi :smiley:
+setting up HikingMyDesk :smiley:
 
 ## Tuning engine
 
@@ -98,7 +98,7 @@ Algolia is a _SaaS_ search engine, offering full-text search, capable of deliver
 real-time results. Algolia’s powerful API lets you quickly and seamlessly index content
 and implement search within your websites.
 
-Algolia offers great free tier, which may be sufficient for plenty of pages using BooGi.
+Algolia offers great free tier, which may be sufficient for plenty of pages using HikingMyDesk.
 For more details on Algolia follow its [documentation](https://www.algolia.com/doc/).
 
 ## Setting up Algolia
@@ -120,7 +120,7 @@ between your applications via the top-left dropdown menu.
 
 After creating application, open it to further configure it.
 Go to **API Keys** tab in Application' dashboard and note down
-**Application ID** which will be required later on when configuring _BooGi_.
+**Application ID** which will be required later on when configuring _HmD_.
 
 ### Creating an index
 
@@ -172,7 +172,7 @@ to decide which approach will fit you better.
 approach, because search quota is defined per whole application, thus each
 application has separate quota.</Tip>
 
-# Setting up BooGi
+# Setting up HikingMyDesk
 
 <Warning>
 

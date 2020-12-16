@@ -33,7 +33,7 @@ To set up Edit on Repo, configure following in `config.yml` (under `features` ke
 ```yaml
 features:
   editOnRepo:
-    location: https://github.com/filipowm/boogi # URL to Git repository
+    location: https://github.com/filipowm/hmd # URL to Git repository
     type: github # type of Git repository. Only github, gitlab and bitbucket are supported.
     editable: true # whether every page is editable by default. This can be configured per page setting up 'editable' property in frontmatter
 ```
@@ -65,7 +65,7 @@ Additional configuration options passed in `features.mermaid.options` can be che
 
 ## Page progress indicator
 
-Add a page progress indicator to your BooGi website. The progress bar moves as
+Add a page progress indicator to your HikingMyDesk website. The progress bar moves as
 you scroll down the page. Users can know how far they’ve read into an article or page.
 
 To set up Page Progress, configure following in `config.yml` (under `features` key).
@@ -103,7 +103,7 @@ features:
 
 ## Propagating Netlify environment variables
 
-When you deploy BooGi-based page on Netlify, you can take benefit
+When you deploy HikingMyDesk-based page on Netlify, you can take benefit
 of automated propagation of some Netlify environment configuration,
 such as page URL (especially useful for branch or pull request deployments)
 and page location in code repository (e.g. Github).
@@ -119,7 +119,7 @@ features:
 
 ## RSS feed
 
-BooGi offers creation of _RSS_ feeds. It allows users and applications 
+HikingMyDesk offers creation of _RSS_ feeds. It allows users and applications 
 to access updates to websites in a standardized, computer-readable format.
 
 To set up RSS feed, configure following in `config.yml` (under `features` key).
@@ -137,7 +137,7 @@ features:
     ttl: 60 # number of minutes that indicates how long a channel can be cached before refreshing from the source
     matchRegex: "^/" # regex specifying for which paths (pages) RSS should be created. Defaults to whole page.
     outputPath: "/rss.xml" # path under which feed will be accessible
-    generator: "boogi" # indication of the program used to generate the channel
+    generator: "hmd" # indication of the program used to generate the channel
 ```
 
 ## Scroll to Top button
@@ -152,11 +152,11 @@ features:
 
 ## Search
 
-BooGi offers great content search capabilities. For details visit [search](/configuration/settingup/search)
+HikingMyDesk offers great content search capabilities. For details visit [search](/configuration/settingup/search)
 
 ## Page metadata
 
-BooGi can display page metadata (latest editor, last edit date) on every page below
+HikingMyDesk can display page metadata (latest editor, last edit date) on every page below
 the page title. To set it up globally configure following in `config.yml`:
 
 ```yaml

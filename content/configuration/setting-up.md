@@ -32,7 +32,7 @@ header:
 
 Some configuration may be either sensitive (like Algolia API keys) or is per-environment.
 To set such properties, you can make use of environment variables
-to pass configuration to BooGi / Gatsby while building your project.
+to pass configuration to HikingMyDesk / Gatsby while building your project.
 
 Each and every configuration property in `config.yml` can also be
 passed in environment variable.

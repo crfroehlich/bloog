@@ -47,8 +47,8 @@ sidebar:
       title: ":writing_hand: Editing Content"
   ignoreIndex: false
   links:
-    - text: BooGi
-      link: https://github.com/filipowm/boogi
+    - text: HikingMyDesk
+      link: https://github.com/filipowm/hmd
   poweredBy:
     trademark: "/assets/gatsby.png"
     name: GatsbyJS
