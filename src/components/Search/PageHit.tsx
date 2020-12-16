@@ -2,6 +2,9 @@ import React from 'react';
 import { Hit } from './Hits';
 import { emojiTools as emoji } from '../../utils/emoji';
 import styled from '@emotion/styled';
+import { getTheme } from '../../theme';
+
+const { search } = getTheme();
 
 const trim_words = (str: any, numWords: any) => {
   const expString = str.split(/\s+/,numWords);
@@ -17,8 +20,8 @@ const onReversed = (str: any, func: any) => {
 }
 
 const Highlight = styled.span`
-  background-color: ${(props) => props.theme.  search.mark.background};
-  color: ${(props) => props.theme.search.mark.font};
+  background-color: ${search.mark?.background};
+  color: ${search.mark?.font};
 `;
 
 const highlight = (query: any, text: any, maxWords: any) => {

@@ -3,6 +3,10 @@ import { ContentTreeNode } from './ContentTreeNode';
 import styled from '@emotion/styled';
 import { emojiTools } from '../../utils/emoji';
 import config from '../../../.config';
+import { Empty } from '../Empty';
+import { getTheme } from '../../theme';
+
+const { navigationSidebar } = getTheme();
 
 export const ContentTreeGroup = styled(({
   className,
@@ -36,10 +40,10 @@ export const ContentTreeGroup = styled(({
     <div className={className}>
       {title ? (
         <span>
-          {icon ? <img src={icon} alt={`group ${emojified}`} loading={'lazy'} /> : <div />}{' '}
+          {icon ? <img src={icon} alt={`group ${emojified}`} loading={'lazy'} /> : <Empty />}{' '}
           {emojified}
         </span>
-      ) : <div />}
+      ) : <Empty />}
       <ul>
         {children.map((child: any,i: any) => (
           <ContentTreeNode
@@ -67,7 +71,7 @@ export const ContentTreeGroup = styled(({
     letter-spacing: 1.2px;
     text-transform: uppercase;
     position: relative;
-    color: ${(props) => props.theme.navigationSidebar.fond?.group};
+    color: ${navigationSidebar.fond?.group};
   }
   > span {
     margin-bottom: 5px;

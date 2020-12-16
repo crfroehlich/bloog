@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { useTheme } from '@emotion/react';
 import { AlertCircle, AlertOctagon, AlertTriangle } from 'react-feather';
 import { css } from '@emotion/react';
+import { getTheme } from '../../theme';
+
+const { highlights } = getTheme();
 
 const skipParagraph = css`
   .paragraph {
@@ -38,11 +40,10 @@ const Highlight = ({
   icon,
   ...props
 }: any) => {
-  const theme = useTheme();
-  const highlightColor = theme.highlights[color];
+  const highlightColor = highlights[color];
   return (
     <HighlightWrapper
-      background={highlightColor.background}
+      background={highlightColor?.background}
       border={highlightColor.border}
       font={highlightColor.font}
       {...props}
@@ -56,24 +57,24 @@ const Highlight = ({
 };
 
 export const Highlights = {
-  Warning: (props: any) => Highlight({
+  Warning: () => Highlight({
     color: 'warning',
     icon: AlertTriangle,
-    ...props,
+    ...highlights.warning,
   }),
-  Error: (props: any) => Highlight({
+  Error: () => Highlight({
     color: 'error',
     icon: AlertOctagon,
-    ...props,
+    ...highlights.error,
   }),
-  Info: (props: any) => Highlight({
+  Info: () => Highlight({
     color: 'info',
     icon: AlertCircle,
-    ...props,
+    ...highlights.info,
   }),
-  Tip: (props: any) => Highlight({
+  Tip: () => Highlight({
     color: 'tip',
     icon: AlertCircle,
-    ...props,
+    ...highlights.tip,
   }),
 };

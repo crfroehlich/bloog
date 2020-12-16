@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { marginLeftRight } from './styles';
 import { Loader as Loading } from '../Loader';
+import { Empty } from '../Empty';
 
 const queryToken = css`
   font-weight: bold;
@@ -39,6 +40,6 @@ export const SearchStatus = ({
       </StatusWrapper>
     </div>
   ) : (
-    <div />
+    <Empty />
   );
 };

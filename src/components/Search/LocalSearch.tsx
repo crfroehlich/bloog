@@ -8,6 +8,7 @@ import { Stats } from './Stats';
 import { useFlexSearch } from 'react-use-flexsearch';
 import { graphql, useStaticQuery } from 'gatsby';
 import config from '../../../.config';
+import { Empty } from '../Empty';
 
 const Results = ({ q }: any) => <SearchStatus noHits={true} searching={false} query={q} />;
 
@@ -47,19 +48,16 @@ const search = (query: any, index: any, store: any, page: any) => {
   };
 };
 
-export const LocalSearch = (props) => {
-  const { localSearchBoogi: { index, store } } = useStaticQuery(
-    graphql`
+export const LocalSearch = ({ inputRef, ...props }) => {
+  const { localSearchBoogi: { index, store } } = useStaticQuery(graphql`
     query {
       localSearchBoogi {
         index
         store
       }
     }
-    `,
+  `,
   );
-
-  const { inputRef } = props;
   const [query, setQuery] = useState([]);
   const [focus, setFocus] = useState(false);
   const [page, setPage] = useState(1);
@@ -80,21 +78,17 @@ export const LocalSearch = (props) => {
       />
       <div style={{ flex: '1' }}>
         {showResults && config.features.search.showStats ? (
-          
           <Stats
             nbHits={searchResult.nbHits}
             processingTimeMS={searchResult.processingTimeMS}
           />
-        ) : null}
+        ) : <Empty />}
         {showResults && searchResult && searchResult.hits.length === 0 ? (
-          
           <Results q={query} />
-        ) : null}
-        
+        ) : <Empty />}
         <HitsWrapper>
           <ul>
             {searchResult.hits.map((hit: any,i: any) => (
-              
               <PageHit
                 key={`${hit.slug}_${i}`}
                 hit={hit}
@@ -116,7 +110,7 @@ export const LocalSearch = (props) => {
           nbPages={searchResult.pages}
           currentPage={page}
         />
-      ) : <div />}
+      ) : <Empty />}
     </div>
   );
 }

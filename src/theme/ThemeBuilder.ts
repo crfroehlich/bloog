@@ -1,6 +1,4 @@
-import { base } from './base';
-import { light as lightTheme } from './light';
-import { dark as darkTheme } from './dark';
+import { base, compiledTheme } from './base';
 import { cloneDeep, merge } from 'lodash';
 import { IEmotionTheme, IThemeColors } from './ITheme';
 
@@ -38,13 +36,11 @@ class ThemeBuilder {
 }
 
 export const dark = new ThemeBuilder(base)
-  .applyColors(darkTheme.colors)
+  .applyColors(compiledTheme.colors)
   .initialize()
-  .applyTheme(darkTheme)
+  .applyTheme(compiledTheme)
   .get();
 
-export const light = new ThemeBuilder(base)
-  .applyColors(lightTheme.colors)
-  .initialize()
-  .applyTheme(lightTheme)
-  .get();
+export const light = dark;
+
+export const getTheme = () => dark;

@@ -1,10 +1,13 @@
 /* eslint-disable react/display-name */
 import styled from '@emotion/styled';
-import React, { useRef } from 'react';
+import React from 'react';
 import { X } from 'react-feather';
 import loadable from '@loadable/component';
 import { onMobile } from '../../styles/responsive';
 import { visibleMobile } from '../../styles/styles';
+import { getTheme } from '../../theme';
+
+const { colors } = getTheme();
 
 const LoadableLocalSearch = loadable(() => import('./LocalSearch'))
 
@@ -17,7 +20,7 @@ const SearchWrapper = styled.div`
   -webkit-overflow-scrolling: touch;
 `;
 
-const SearchSidebarWrapper = styled(({ ...props }) => (<div {...props} />))`
+const SearchSidebarWrapper = styled(({ inputRef, ...props }) => (<div {...props} />))`
   display: block; //${(props) => (props.show ? 'block' : 'none')};
   z-index: 20;
   height: 100vh;
@@ -27,7 +30,7 @@ const SearchSidebarWrapper = styled(({ ...props }) => (<div {...props} />))`
   top: 0;
   width: 480px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
-  background: ${(props) => props.theme.colors.background};
+  background: ${colors?.background};
   ${onMobile} {
     width: 100%;
   }
@@ -40,30 +43,29 @@ const CloseSearch = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 3px 8px 0 ${(props) => props.theme.colors.shadow};
-  border-bottom: 1px solid ${(props) => props.theme.colors.border};
+  box-shadow: 0 3px 8px 0 ${colors.shadow};
+  border-bottom: 1px solid ${colors.border};
   svg {
     width: 1.2em;
   }
   &:hover {
-    color: ${(props) => props.theme.colors.hover};
+    color: ${colors.hover};
     svg {
-      stroke: ${(props) => props.theme.colors.hover};
+      stroke: ${colors.hover};
     }
   }
 `;
 
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'onVisibleChange' does not exist on type ... Remove this comment to see the full error message
-export const SearchSidebar = React.forwardRef(({ onVisibleChange, closeSelf, ...props }, ref) => {
+export const SearchSidebar = ({ onVisibleChange, closeSelf, inputRef, ...props }) => {
   return (
-    <SearchSidebarWrapper {...props} ref={ref}>
+    <SearchSidebarWrapper {...props} inputRef={inputRef}>
       <SearchWrapper {...props}>
         <CloseSearch css={visibleMobile} onClick={closeSelf}>
           <X />
           <span css={{marginLeft: '5px'}}>Close</span>
         </CloseSearch>
-        <LoadableLocalSearch inputRef={ref} />
+        <LoadableLocalSearch inputRef={inputRef} />
       </SearchWrapper>
     </SearchSidebarWrapper>
   );
-});
+};

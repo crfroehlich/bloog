@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
 import { onMobile, onTablet } from '../../styles/responsive';
+import { ChevronUp } from 'react-feather';
+import { getTheme } from '../../theme';
 
-const Arrow = require('../../images/up_arrow.svg');
+const { scrollTop, transitions } = getTheme();
 const scrollToTop = () => window.scrollTo(0, 0);
 
 export const ScrollTop = styled(({
@@ -9,11 +11,11 @@ export const ScrollTop = styled(({
 }: any) => {
   return (
     <div className={className} onClick={scrollToTop} role={'button'} tabIndex={0}>
-      <Arrow />
+      <ChevronUp />
     </div>
   );
 })`
-  background-color: ${(props) => props.theme.scrollTop.background};
+  background-color: ${scrollTop?.background};
   width: 35px;
   height: 35px;
   position: fixed;
@@ -22,16 +24,16 @@ export const ScrollTop = styled(({
   right: 50px;
   cursor: pointer;
   z-index: 10;
-  transition: ${(props) => props.theme.transitions.hover};
+  transition: ${transitions.hover};
   ${onTablet} {
-    background-color: ${(props) => props.theme.scrollTop.background + 'bc'};
+    background-color: ${scrollTop?.background + 'bc'};
   }
   ${onMobile} {
     bottom: 25px;
     right: 25px;
     width: 30px;
     height: 30px;
-    background-color: ${(props) => props.theme.scrollTop.background + '9b'};
+    background-color: ${scrollTop?.background + '9b'};
   }
   svg {
     width: 50%;
@@ -42,10 +44,10 @@ export const ScrollTop = styled(({
     right: 0;
     bottom: 0;
     path {
-      fill: ${(props) => props.theme.scrollTop.arrow};
+      fill: ${scrollTop.arrow};
     }
   }
   &:hover {
-    background: ${(props) => props.theme.scrollTop.hover};
+    background: ${scrollTop.hover};
   }
 `;

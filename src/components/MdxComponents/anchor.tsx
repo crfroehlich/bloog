@@ -1,15 +1,14 @@
 import { anchor } from '../../styles/styles';
-import { useTheme } from '@emotion/react';
-import { Link } from '..';
+import { Link, Empty } from '..';
 
 export const AnchorTag = ({ children: link, ...props }) => {
   if (link) {
     return (
-      <Link to={props.href} css={anchor(useTheme())}>
+      <Link to={props.href} css={anchor()}>
         {link}
       </Link>
     );
   } else {
-    return <div />;
+    return <Empty />;
   }
 };

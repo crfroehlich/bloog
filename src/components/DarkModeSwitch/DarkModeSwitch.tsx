@@ -13,6 +13,5 @@ type Props = {
 };
 
 export const DarkModeSwitch = ({ isDarkThemeActive, toggleActiveTheme, ...props }: Props) => {
-  const img = isDarkThemeActive ? NightImage : DayImage;
-  return <ButtonIcon icon={img} onClick={toggleActiveTheme} title={'Switch theme'} {...props} />;
+  return <ButtonIcon icon={NightImage} onClick={toggleActiveTheme} title={'Switch theme'} {...props} />;
 };

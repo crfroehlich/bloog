@@ -2,6 +2,10 @@ import styled from '@emotion/styled';
 import { Link } from '..';
 import { shadowAround } from '../../styles/styles';
 import { onTablet, onMobile } from '../../styles/responsive';
+import { getTheme } from '../../theme';
+import { processPwa } from 'src/utils/config-pwa';
+
+const { transitions, editOnRepo } = getTheme();
 
 const Edit = styled('div')`
   text-align: right;
@@ -25,16 +29,16 @@ const Edit = styled('div')`
     align-items: center;
     min-width: 175px;
     outline: none;
-    transition: ${(props) => props.theme.transitions.hover};
-    border: 1px solid ${(props) => props.theme.editOnRepo.border};
+    transition: ${() => transitions.hover};
+    border: 1px solid ${() => editOnRepo.border};
     border-radius: 4px;
-    color: ${(props) => props.theme.editOnRepo.fond?.base};
-    background-color: ${(props) => props.theme.editOnRepo.background};
+    color: ${() => editOnRepo.fond!.base};
+    background-color: ${() => editOnRepo.background};
     height: 30px;
     padding: 5px 16px;
     &:hover {
-      background-color: ${(props) => props.theme.editOnRepo.hover};
-      color: ${(props) => props.theme.editOnRepo.fond?.hover};
+      background-color: ${() => editOnRepo.hover};
+      color: ${() => editOnRepo.fond?.hover};
     }
   }
 `;
@@ -76,14 +80,13 @@ const EditButton = styled((props) => {
 
 const rootDir = 'content';
 
-type Props = {
-    repoType: string;
-    branch: string;
-    location: string;
-    path: string;
-};
-
-export const EditOnRepo = ({ repoType, branch, location, path }: Props) => {
+export const EditOnRepo = (props) => {
+  const {
+    repoType,
+    branch,
+    location,
+    path,
+  } = props;
   let icon = null;
   let link = `${location}/${path}`;
   let text = 'Edit on ';

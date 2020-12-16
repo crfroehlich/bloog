@@ -45,7 +45,7 @@ export const processPwa = (config: any) => {
   manifest.short_name = calculateValue(manifest.short_name, shortNameFromMetadata(config.metadata));
   manifest.description = calculateValue(manifest.description, config.metadata.description);
   manifest.start_url = calculateValue(manifest.start_url, config.metadata.pathPrefix);
-  manifest.background_color = calculateValue(manifest.background_color, config.metadata.themeColor);
+  manifest.background_color = calculateValue(manifest?.background_color, config.metadata.themeColor);
   manifest.theme_color = calculateValue(manifest.theme_color, config.metadata.themeColor);
   manifest.cache_busting_mode = 'none'; // enforce, because required to work with gatsby-plugin-offline
   const icon = calculateValue(manifest.icon, config.metadata.siteImage);

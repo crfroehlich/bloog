@@ -1,21 +1,22 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Maximize, Minimize } from 'react-feather';
-import { useTheme } from '@emotion/react';
 import { ButtonIcon } from '..';
+import { getTheme } from '../../theme';
+
+const { header, colors, transitions } = getTheme();
 
 export const FullScreenEnter = styled(({
   toggle,
   ...props
 }: any) => {
-    const theme = useTheme();
     return (
       <ButtonIcon
         title={'Enter fullscreen mode'}
-        background={theme.header.icons.background}
-        hoverStroke={theme.header.icons.hover}
+        background={header.icons.background}
+        hoverStroke={header.icons.hover}
         fill={'transparent'}
-        stroke={theme.header.icons.stroke}
+        stroke={header.icons.stroke}
         icon={Maximize}
         onClick={toggle}
         {...props}
@@ -33,39 +34,38 @@ export const FullScreenHeader = styled(({ show, ...props }) => (<div {...props} 
   width: 100%;
   z-index: 10;
   top: 0;
-  background-color: ${(props) => props.theme.header.background};
+  background-color: ${() => header.background};
   `;
   
 export const FullScreenClose = styled(({
     className,
     toggle
   }: any) => {
-    const theme = useTheme();
     return (
       <div className={className} onClick={toggle}>
         <span style={{marginRight: '6px'}}>Close full mode</span>
         <ButtonIcon
           title={'Close fullscreen mode'}
           
-          background={theme.header.icons.background}
+          background={header.icons?.background}
           
-          hoverStroke={theme.header.icons.hover}
+          hoverStroke={header.icons.hover}
           fill={'transparent'}
           
-          stroke={theme.header.icons.stroke}
+          stroke={header.icons.stroke}
           icon={Minimize}
         />
       </div>
     );
   })`
   display: flex;
-  transition: ${(props) => props.theme.transitions.hover};
+  transition: ${() => transitions.hover};
   cursor: pointer;
   align-items: center;
   font-size: 10pt;
   margin-right: 10px;
   &:hover{
-    color: ${(props) => props.theme.colors.hover};
+    color: ${() => colors.hover};
   }
   `;
   

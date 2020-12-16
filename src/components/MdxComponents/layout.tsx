@@ -32,7 +32,6 @@ export const Layout = ({
 }: any) => {
   let space = spacing || 'medium';
   return (
-    
     <LayoutEl className={'spacing-' + space} {...props}>
       {children}
     </LayoutEl>

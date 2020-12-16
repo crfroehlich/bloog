@@ -22,7 +22,7 @@ export const getNavigationData = () => {
   return allMdx.edges;
 };
 
-const getGroup = function (url: any) {
+const getGroup = function (url: string) {
   return url ? config.sidebar.groups.find((group: any) => url.startsWith(group.path)) : null;
 };
 

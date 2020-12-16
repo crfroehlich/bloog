@@ -16,6 +16,9 @@ import { Slide } from 'react-reveal';
 import { hiddenMobile, hiddenTablet } from '../../styles/styles';
 import { onMobile, onTablet } from '../../styles/responsive';
 import 'css';
+import { getTheme } from '../../theme';
+
+const { contend } = getTheme();
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,7 +36,7 @@ const Content = styled('main')`
   flex-grow: 1;
   flex-direction: column;
   padding: 50px 70px;
-  background-color: ${(props) => props.theme.contend.background};
+  background-color: ${() => contend.background};
 
   ${onTablet} {
     padding: 30px;
@@ -89,7 +92,7 @@ export const Layout = ({
 
   return (
     
-    <ThemeProvider ref={themeProviderRef} darkModeConfig={config.features.darkMode}>
+    <ThemeProvider refs={themeProviderRef} darkModeConfig={config.features.darkMode}>
       <div
         css={{
           zIndex: 20,
@@ -98,7 +101,7 @@ export const Layout = ({
         }}
       >
         <Slide right delay={0} duration={400} when={showSearch}>
-          <SearchSidebar ref={searchSidebarRef} {...{closeSelf: closeSearch, onVisibleChange: setSearchVisible}} />
+          <SearchSidebar inputRef={searchSidebarRef} {...{closeSelf: closeSearch, onVisibleChange: setSearchVisible}} />
         </Slide>
       </div>
       

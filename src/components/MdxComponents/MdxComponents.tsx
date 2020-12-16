@@ -13,7 +13,6 @@ import { Jargon } from './jargon';
 import { Layout } from './layout';
 import { LinkCard } from './linkCard';
 import { blockquote, pre, table, list } from '../../styles/styles';
-import { useTheme } from '@emotion/react';
 import { emojiTools as emoji } from '../../utils/emoji';
 
 const idFromHeader = (props: any) => {
@@ -36,7 +35,7 @@ const Header = (level: any, props: any) => {
 const Table = ({...props}) => (
   <div css={{ display: 'grid' }}>
     <div css={{ overflowX: 'auto' }}>
-      <table css={table(useTheme())} {...props} />
+      <table css={table()} {...props} />
     </div>
   </div>
 );
@@ -69,8 +68,8 @@ export const MdxComponents = {
   h5: (props: any) => Header(5, props),
   h6: (props: any) => Header(6, props),
   section: (props: any) => Section(props),
-  blockquote: (props: any) => <blockquote css={blockquote(useTheme())} {...props} />,
-  p: (props: any) => <p className="paragraph" {...props} />,
+  blockquote: (props: any) => <blockquote css={blockquote()} {...props} />,
+  p: (props: any) => <article className="paragraph" {...props} />,
   pre: (props: any) => <pre css={pre} {...props} />,
   table: (props: any) => <Table {...props}/>,
   em: emphasis,

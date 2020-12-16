@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { shadowAround } from '../../styles/styles';
-import { useTheme } from '@emotion/react';
 import { Search, Trash } from 'react-feather';
 import { useDebounce } from '../../utils/useDebounce';
 import config from '../../../.config';
 import { onMobile } from '../../styles/responsive';
+import { getTheme } from '../../theme';
+
+const { colors, transitions } = getTheme();
 
 const SearchIcon = styled(Search)`
   width: 1.2em;
@@ -25,7 +27,7 @@ const CleanSearch = styled(({ ...props }) => (
   }
   &:hover {
     svg {
-      stroke: ${(props) => props.theme.colors.primary};
+      stroke: ${colors.primary};
     }
   }
 `;
@@ -34,7 +36,7 @@ const Input = styled.input`
   outline: none;
   border: none;
   font-size: 1em;
-  transition: ${(props) => props.theme.transitions.hover};
+  transition: ${transitions.hover};
   border-radius: 1px;
   padding-left: 10px;
   background-color: transparent;
@@ -42,7 +44,7 @@ const Input = styled.input`
   border-width: 0 !important;
   &,
   ::placeholder {
-    color: ${(props) => props.theme.colors.gray};
+    color: ${colors.gray};
   }
 `;
 
@@ -62,28 +64,28 @@ const Form = styled.form`
   background-color: rgba(223,225,235, .4);
   border: 1px solid rgba(223,225,235, 1)
   &, *, input::placeholder, svg {
-    transition: ${(props) => props.theme.transitions.hover};
+    transition: ${transitions.hover};
   }
   &:focus, &:visited, &:hover, &:focus-within  {
     outline: none;
     background-color: transparent;
     input, input::placeholder{
-      color: ${(props) => props.theme.colors.grayDark};
+      color: ${colors.grayDark};
     }
     svg {
-      stroke: ${(props) => props.theme.colors.grayDark};
+      stroke: ${colors.grayDark};
     }
   }
   
   svg {
-    stroke: ${(props) => props.theme.colors.grayLight};
+    stroke: ${colors.grayLight};
   }
 `;
 
 const SidebarSearchInputWrapper = styled.div`
 position: sticky;
 top: 0;
-background: ${(props) => props.theme.colors.background};
+background: ${colors?.background};
 width: 100%;
 padding: 0 24px;
 `;
@@ -106,7 +108,6 @@ export const SearchInput = ({
   style,
   ...props
 }: any) => {
-  const theme = useTheme();
   const preventSubmit = (e: any) => {
     e.preventDefault();
   };
@@ -126,7 +127,7 @@ export const SearchInput = ({
   };
 
   return (
-    <Form css={shadowAround(theme)} onSubmit={preventSubmit} style={style} >
+    <Form css={shadowAround()} onSubmit={preventSubmit} style={style} >
       <SearchIcon />
       <Input
         ref={inputRef}

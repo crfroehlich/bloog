@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { useTheme } from '@emotion/react';
 import { Card } from './card';
 import { onMobile } from '../../styles/responsive';
 
@@ -35,9 +34,8 @@ export const ImageCard = ({
   height,
   src
 }: any) => {
-  const theme = useTheme();
   const imgWidth = width ? width : '50%';
-  const imgHeight = width ? width : '50%';
+  const imgHeight = height ? height : '50%';
   return (
       <ImageCardWrapper width={imgWidth} height={imgHeight}>
         <Image src={src} />

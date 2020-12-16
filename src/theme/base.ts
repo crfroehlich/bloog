@@ -1,21 +1,40 @@
-import { colors as defaultColors } from './colors';
 import colorfn from 'color';
 import { increaseIntensivity, decreaseIntensivity, grayscaleCompatible } from '../utils/colors';
-import { IBaseTheme, IContent, IHeader, IHighlights, INavigationSidebar, IPageLayout, IScrollTop, ISearch, ITable, IThemeColors, ITransitions } from './ITheme';
+import { IBaseTheme, IContent, IEmotionTheme, IHeader, IHighlights, INavigationSidebar, IPageLayout, IScrollTop, ISearch, ITable, IThemeColors, ITransitions } from './ITheme';
 
-const colors: IThemeColors = {
-  ...defaultColors,
+const baseColors = {
+  blueDark: '#264D99',
+  gray: '#5C6975',
+  red: '#E40046',
+}
 
-  primary: defaultColors.red,
-  primaryDark: defaultColors.blueDark,
-  fontLight: '#efefef',
+const themeColors = {
+  background: '#29282A',
+  black: '#000000',
+  blue: '#0066CC',
+  blueDark: baseColors.blueDark,
+  blueLight: '#CDDFF5',
+  border: '#323234',
   font: '#dddddd',
   fontDark: '#8a8a8a',
-  background: '#29282A',
+  fontLight: '#efefef',
+  gray: '#5C6975',
+  grayDark: '#3B4656',
+  grayLight: '#AEAEAE',
+  green: '#00965E',
+  greenLight: '#D0EBE1',
+  hover: baseColors.red,
   mainBackground: '#1E1E1F',
-  border: '#323234',
-  hover: defaultColors.red,
-  shadow: defaultColors.gray + '33',
+  orange: '#ED8B00',
+  orangeLight: '#FBE9D0',
+  primary: baseColors.red,
+  primaryDark: baseColors.blueDark,
+  red: baseColors.red,
+  redLight: '#FAD0DD',
+  shadow: baseColors.gray + '33',
+  violet: '#A05EB5',
+  white: '#FFFFFF',
+  yellow: '#FFC72C',
 };
 
 const pageLayout: IPageLayout = {
@@ -31,180 +50,180 @@ const transitions: ITransitions = {
   hoverColor: 'color .5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s',
 };
 
-const contend = (colors: IThemeColors): IContent => ({
-  background: colors.mainBackground,
-  border: colors.border,
-  font: colors.font,
-  titleFont: increaseIntensivity(colors.font, 0.15),
+const contend = (): IContent => ({
+  background: themeColors.mainBackground,
+  border: themeColors.border,
+  font: themeColors.font,
+  titleFont: increaseIntensivity(themeColors.font, 0.15),
 
   code: {
-    border: colors.border,
-    font: colors.fontDark,
-    background: colors.background,
+    border: themeColors.border,
+    font: themeColors.fontDark,
+    background: themeColors?.background,
   }
 });
 
-const navigationSidebar = (colors: IThemeColors): INavigationSidebar => ({
-  backgroundSecondary: colors.background,
-  backgroundPrimary: colors.background,
-  border: colors.border,
+const navigationSidebar = (): INavigationSidebar => ({
+  backgroundSecondary: themeColors.background,
+  backgroundPrimary: themeColors.background,
+  border: themeColors.border,
 
   row: {
-    hover: colors.border,
-    active: colorfn(colors.white).mix(colorfn(colors.background)).whiten(3.5).hex(),
-    activeBorder: colors.border,
-    collapseHover: colors.hover,
+    hover: themeColors.border,
+    active: colorfn(themeColors.white).mix(colorfn(themeColors.background)).whiten(3.5).hex(),
+    activeBorder: themeColors.border,
+    collapseHover: themeColors.hover,
   },
 
   fond: {
-    group: decreaseIntensivity(colors.font, 0.25),
-    base: colors.font,
-    nested: decreaseIntensivity(colors.font, 0.25),
-    active: colors.primary,
-    hover: colors.primary,
+    group: decreaseIntensivity(themeColors.font, 0.25),
+    base: themeColors.font,
+    nested: decreaseIntensivity(themeColors.font, 0.25),
+    active: themeColors.primary,
+    hover: themeColors.primary,
   },
 
   poweredBy: {
-    font: colors.grayLight,
-    background: colors.border,
-    hover: colors.primary,
+    font: themeColors.grayLight,
+    background: themeColors.border,
+    hover: themeColors.primary,
   }
 });
 
-const header = (colors: IThemeColors): IHeader => ({
-  background: colors.background,
-  shadow: colors.shadow,
+const header = (): IHeader => ({
+  background: themeColors.background,
+  shadow: themeColors.shadow,
 
   fond: {
-    base: colors.primary,
-    hover: colorfn(colors.primary).negate().hex(),
+    base: themeColors.primary,
+    hover: colorfn(themeColors.primary).negate().hex(),
   },
 
-  border: colors.border,
+  border: themeColors.border,
 
   icons: {
-    background: colors.background,
-    shadow: colors.shadow,
-    fill: decreaseIntensivity(colors.background, 0.4),
-    stroke: decreaseIntensivity(colors.background, 0.4),
-    hover: colors.primary,
+    background: themeColors.background,
+    shadow: themeColors.shadow,
+    fill: decreaseIntensivity(themeColors.background, 0.4),
+    stroke: decreaseIntensivity(themeColors.background, 0.4),
+    hover: themeColors.primary,
   }
 });
 
-const search = (colors: IThemeColors): ISearch => ({
-  background: colors.background,
+const search = (): ISearch => ({
+  background: themeColors.background,
 
   mark: {
-    font: colors.font,
-    background: colors.primary,
+    font: themeColors.font,
+    background: themeColors.primary,
   },
 
   fond: {
-    base: colors.font,
-    hover: colors.font,
-    highlight: colors.fontDark,
+    base: themeColors.font,
+    hover: themeColors.font,
+    highlight: themeColors.fontDark,
   },
 
-  hover: colors.border,
-  border: colors.border,
+  hover: themeColors.border,
+  border: themeColors.border,
 
   pagination: {
-    background: colors.mainBackground,
-    border: colors.border,
-    font: colors.font,
-    hover: colors.border,
+    background: themeColors.mainBackground,
+    border: themeColors.border,
+    font: themeColors.font,
+    hover: themeColors.border,
     currend: {
-      background: colors.primary,
-      font: grayscaleCompatible(colors.primary),
+      background: themeColors.primary,
+      font: grayscaleCompatible(themeColors.primary),
     },
   }
 });
 
-const editOnRepo = (colors: IThemeColors): IContent => ({
-  background: colors.background,
-  border: colors.border,
-  hover: colors.hover,
+const editOnRepo = (): IContent => ({
+  background: themeColors.background,
+  border: themeColors.border,
+  hover: themeColors.hover,
 
   fond: {
-    base: colors.font,
-    hover: grayscaleCompatible(colors.hover),
+    base: themeColors.font,
+    hover: grayscaleCompatible(themeColors.hover),
   }
 });
 
-const jargon = (colors: IThemeColors): IContent => ({
-  background: colors.background,
-  border: colors.border,
-  font: colors.font,
-  shadow: colors.shadow
+const jargon = (): IContent => ({
+  background: themeColors.background,
+  border: themeColors.border,
+  font: themeColors.font,
+  shadow: themeColors.shadow
 });
 
-const highlights = (colors: IThemeColors): IHighlights => ({
+const highlights = (): IHighlights => ({
   warning: {
-    border: colors.orange,
-    background: colors.orangeLight,
-    font: colors.fontDark,
+    border: themeColors.orange,
+    background: themeColors.orangeLight,
+    font: themeColors.fontDark,
   },
 
   error: {
-    border: colors.red,
-    background: colors.redLight,
-    font: colors.fontDark,
+    border: themeColors.red,
+    background: themeColors.redLight,
+    font: themeColors.fontDark,
   },
 
   info: {
-    border: colors.blue,
-    background: colors.blueLight,
-    font: colors.fontDark,
+    border: themeColors.blue,
+    background: themeColors.blueLight,
+    font: themeColors.fontDark,
   },
 
   tip: {
-    border: colors.green,
-    background: colors.greenLight,
-    font: colors.fontDark,
+    border: themeColors.green,
+    background: themeColors.greenLight,
+    font: themeColors.fontDark,
   }
 });
 
-const table = (colors: IThemeColors): ITable => ({
+const table = (): ITable => ({
   header: {
-    background: colors.primary,
-    font: increaseIntensivity(colorfn(colors.primary).negate().grayscale(), 0.5),
+    background: themeColors.primary,
+    font: increaseIntensivity(colorfn(themeColors.primary).negate().grayscale(), 0.5),
   },
 
-  oddRow: colors.mainBackground,
-  evenRow: colors.background,
-  rowHover: colors.hover + '3d',
-  border: colors.border
+  oddRow: themeColors.mainBackground,
+  evenRow: themeColors.background,
+  rowHover: themeColors.hover + '3d',
+  border: themeColors.border
 });
 
-const tableOfContents = (colors: IThemeColors): IContent => ({
-  background: colors.mainBackground,
+const tableOfContents = (): IContent => ({
+  background: themeColors.mainBackground,
 
   fond: {
-    base: decreaseIntensivity(colors.font, 0.15),
-    hover: colors.primary,
-    current: colors.primary,
+    base: decreaseIntensivity(themeColors.font, 0.15),
+    hover: themeColors.primary,
+    current: themeColors.primary,
   },
 
-  border: colors.border
+  border: themeColors.border
 });
 
-const previousNext = (colors: IThemeColors): IContent => ({
-  background: colors.mainBackground,
-  hover: colors.primary,
-  font: colors.font,
-  fontLabel: decreaseIntensivity(colors.font, 0.45),
-  border: colors.border,
-  shadow: colors.shadow
+const previousNext = (): IContent => ({
+  background: themeColors.mainBackground,
+  hover: themeColors.primary,
+  font: themeColors.font,
+  fontLabel: decreaseIntensivity(themeColors.font, 0.45),
+  border: themeColors.border,
+  shadow: themeColors.shadow
 });
 
-const scrollTop = (colors: IThemeColors): IScrollTop => ({
-  background: colors.primary,
-  hover: increaseIntensivity(colors.primary, 0.15),
-  arrow: colorfn(colors.primary).negate().grayscale().lighten(0.4).rgb().string()
+const scrollTop = (): IScrollTop => ({
+  background: themeColors.primary,
+  hover: increaseIntensivity(themeColors.primary, 0.15),
+  arrow: colorfn(themeColors.primary).negate().grayscale().lighten(0.4).rgb().string()
 });
 
 export const base: IBaseTheme = {
-  colors,
+  colors: themeColors,
   contend,
   editOnRepo,
   header,
@@ -219,3 +238,20 @@ export const base: IBaseTheme = {
   tableOfContents,
   transitions,
 };
+
+export const compiledTheme: IEmotionTheme = {
+  colors: themeColors,
+  contend: contend(),
+  editOnRepo: editOnRepo(),
+  header: header(),
+  highlights: highlights(),
+  jargon: jargon(),
+  layout: pageLayout,
+  navigationSidebar: navigationSidebar(),
+  previousNext: previousNext(),
+  scrollTop: scrollTop(),
+  search: search(),
+  table: table(),
+  tableOfContents: tableOfContents(),
+  transitions,
+}

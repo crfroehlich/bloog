@@ -3,6 +3,9 @@ import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { paddingLeftRight } from './styles';
+import { getTheme } from '../../theme';
+
+const { search } = getTheme();
 
 const topBottomPadding = css`
   padding-top: 20px;
@@ -27,29 +30,29 @@ export const HitsWrapper = styled.div`
   //   max-width: 500px;
   // }
   > * + * {
-    border-top: 2px solid ${(props) => props.theme.search.border};
+    border-top: 2px solid ${search.border};
   }
   li {
     ${topBottomPadding};
     ${paddingLeftRight};
     &:hover {
-      background-color: ${(props) => props.theme.search.hover};
-      color: ${(props) => props.theme.search.fond?.hover};
+      background-color: ${search.hover};
+      color: ${search.fond?.hover};
     }
   }
   li + li {
-    border-top: 1px solid ${(props) => props.theme.search.border};
+    border-top: 1px solid ${search.border};
   }
   * {
     margin-top: 0;
-    color: ${(props) => props.theme.search.fond?.base};
+    color: ${search.fond?.base};
   }
   ul {
     list-style: none;
   }
   mark {
-    color: ${(props) => props.theme.search.mark.font};
-    background: ${(props) => props.theme.search.mark.background};
+    color: ${search.mark.font};
+    background: ${search.mark?.background};
   }
 `;
 
@@ -71,11 +74,8 @@ export const Hit = ({
   title,
   details
 }: any) => (
-  
   <Link to={slug}>
-    
     <HitTitle>{title}</HitTitle>
-    
     <HitDetails>{details}</HitDetails>
   </Link>
 );

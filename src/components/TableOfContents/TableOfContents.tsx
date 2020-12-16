@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
 import { AlignRight } from 'react-feather';
 import Scrollspy from 'react-scrollspy';
@@ -7,9 +7,12 @@ import { sleep } from '../../utils/utils';
 import { scrollbar } from '../../styles/styles';
 import emoji from '../../utils/emoji';
 import config from '../../../.config';
+import { getTheme } from '../../theme';
+
+const { tableOfContents, transitions } = getTheme();
 
 const Sidebar = styled(({ show, ...props }) => (<aside {...props} />))`
-  background-color: ${(props: any) => props.theme.tableOfContents.background};
+  background-color: ${tableOfContents?.background};
   display: ${(props) => props.show ? 'block' : 'none'};
   min-width: 260px;
   height: 100vh;
@@ -30,25 +33,25 @@ const Sidebar = styled(({ show, ...props }) => (<aside {...props} />))`
       font-weight: 500;
       line-height: 1.5;
       padding: 5px 24px 5px 16px;
-      color: ${(props: any) => props.theme.tableOfContents.fond?.base};
+      color: ${tableOfContents.fond?.base};
       text-decoration: none;
       display: block;
       position: relative;
-      border-left: 1px solid ${(props: any) => props.theme.tableOfContents.border};
-      transition: ${(props: any) => props.theme.transitions.hover};
+      border-left: 1px solid ${tableOfContents.border};
+      transition: ${transitions.hover};
     }
 
     &:hover {
       a {
-        border-left-color: ${(props: any) => props.theme.tableOfContents.fond?.hover};
-        color: ${(props: any) => props.theme.tableOfContents.fond?.hover} !important;
+        border-left-color: ${tableOfContents.fond?.hover};
+        color: ${tableOfContents.fond?.hover} !important;
       }
     }
   }
   .currentItem {
     a {
-      border-left: 2px solid ${(props: any) => props.theme.tableOfContents.fond?.current} !important;
-      color: ${(props: any) => props.theme.tableOfContents.fond?.current} !important;
+      border-left: 2px solid ${tableOfContents.fond?.current} !important;
+      color: ${tableOfContents.fond?.current} !important;
     }
   }
 `;
@@ -62,9 +65,7 @@ const ListItem = styled(({
   ...props
 }: any) => {
   return (
-    
     <li className={className}>
-      
       <a href={props.to} {...props}>
         {children}
       </a>
@@ -99,8 +100,8 @@ const TocTitle = styled(({
   text-transform: uppercase;
   letter-spacing: 1.2px;
   padding: 7px 24px 7px 16px;
-  border-left: 1px solid ${(props) => props.theme.tableOfContents.border};
-  color: ${(props) => props.theme.tableOfContents.fond?.base};
+  border-left: 1px solid ${tableOfContents.border};
+  color: ${tableOfContents.fond?.base};
   display: flex;
   align-items: center;
   svg {
@@ -171,76 +172,66 @@ const tocItemsEqual = (items: any, targetItems: any) => {
   return true;
 };
 
-export const TableOfContents = ({
-  show,
-  className,
-  location
-}: any) => (
-  
-  <StaticQuery
-    query={graphql`
-      query {
-        allMdx {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              tableOfContents
+export const TableOfContents = (props) => {
+  const {
+    show,
+    className,
+    location
+  } = props;
+  const allMdx = useStaticQuery(graphql`
+    query {
+      allMdx {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            tableOfContents
 
-              frontmatter {
-                showToc
-                tocDepth
-              }
+            frontmatter {
+              showToc
+              tocDepth
             }
           }
         }
       }
-    `}
-    render={({ allMdx }) => {
-      const finalNavItems = generateToCItems(allMdx, location);
-      if (finalNavItems.length > 0) {
-        let ids = finalNavItems.map((item) => {
-          return item.props.to.substr(1);
-        });
-        const scrollspyRef: any = React.createRef();
-        const refresh = () => {
-          // This function is a workaround for a problem when scrollspy items get updated.
-          // In such case props are updated properly, but state is kept stale causing
-          // scrollspy to not follow content properly. To fix it, we need to manually
-          // trigger scrollspy reinitialization when its props change.
-          if (
-            scrollspyRef.current &&
-            !tocItemsEqual(scrollspyRef.current.props.items, scrollspyRef.current.state.targetItems)
-          ) {
-            sleep(200).then(() => {
-              if (scrollspyRef.current) {
-                scrollspyRef.current._initFromProps();
-              } else {
-                refresh();
-              }
-            });
-          }
-        };
-        return (
-          
-          <Sidebar show={show} className={className} css={scrollbar}>
-            
-            <TocTitle>Contents</TocTitle>
-            
-            <Scrollspy
-              ref={scrollspyRef}
-              onUpdate={refresh}
-              items={ids}
-              currentClassName={'currentItem'}
-            >
-              {finalNavItems}
-            </Scrollspy>
-          </Sidebar>
-        );
-      } else {
-        return null;
-      }
-    }}
-  />
-);
+    }
+  `);
+    
+  const finalNavItems = generateToCItems(allMdx, location);
+  let ids = finalNavItems.map((item) => {
+    return item.props.to.substr(1);
+  });
+  const scrollspyRef: any = React.createRef();
+  const refresh = () => {
+    // This function is a workaround for a problem when scrollspy items get updated.
+    // In such case props are updated properly, but state is kept stale causing
+    // scrollspy to not follow content properly. To fix it, we need to manually
+    // trigger scrollspy reinitialization when its props change.
+    if (
+      scrollspyRef.current &&
+      !tocItemsEqual(scrollspyRef.current.props.items, scrollspyRef.current.state.targetItems)
+    ) {
+      sleep(200).then(() => {
+        if (scrollspyRef.current) {
+          scrollspyRef.current._initFromProps();
+        } else {
+          refresh();
+        }
+      });
+    }
+  };
+  return (
+    <Sidebar show={show} className={className} css={scrollbar}>
+      <TocTitle>Contents</TocTitle>
+      <Scrollspy
+        ref={scrollspyRef}
+        onUpdate={refresh}
+        items={ids}
+        currentClassName={'currentItem'}
+      >
+        {finalNavItems}
+      </Scrollspy>
+    </Sidebar>
+  );
+}

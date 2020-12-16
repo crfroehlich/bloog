@@ -4,23 +4,26 @@ import { ClosedSvg } from '../../images/closed';
 import { Link } from '..';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { useTheme } from '@emotion/react';
 import { emojiTools as emoji } from '../../utils/emoji';
 import config from '../../../.config';
+import { Empty } from '../Empty';
+import { getTheme } from '../../theme';
+
+const { navigationSidebar, transitions } = getTheme();
 
 // If you want to have a css call based on props, create a function that returns a css call like this
 // let dynamicStyle = (props) => css`color: ${props.color}`
 // It can be called directly with props or interpolated in a styled call like this
 // let SomeComponent = styled('div')`${dynamicStyle}`
 
-const activeNode = (theme: any) => css`
-  border: 1px solid ${theme.navigationSidebar.row.activeBorder};
+const activeNode = () => css`
+  border: 1px solid ${navigationSidebar.row.activeBorder};
   border-right: none;
   > a,
   button {
     padding: 7px 23px 7px 17px;
-    background-color: ${theme.navigationSidebar.row.active};
-    color: ${theme.navigationSidebar.fond?.active} !important;
+    background-color: ${navigationSidebar.row.active};
+    color: ${navigationSidebar.fond?.active} !important;
   }
 `;
 
@@ -34,7 +37,7 @@ const ContentLink = styled(({
     {children}
   </Link>
 ))`
-  color: ${(props) => props.theme.navigationSidebar.fond?.base};
+  color: ${navigationSidebar.fond?.base};
   flex: 1;
   font-size: 14px;
   font-weight: 500;
@@ -65,12 +68,12 @@ const NodeContent = styled(({
   justify-content: space-between;
   > a,
   > button {
-    transition: ${(props) => props.theme.transitions.hover};
+    transition: ${transitions.hover};
   }
   &:hover {
     > a,
     > button {
-      background-color: ${(props) => props.theme.navigationSidebar.row.hover};
+      background-color: ${navigationSidebar.row.hover};
     }
   }
 `;
@@ -103,9 +106,9 @@ const NestedContentTreeNode = styled(
   flex: 100%;
   li {
     margin-left: 16px;
-    border-left: 1px solid ${(props) => props.theme.navigationSidebar.fond?.nested};
+    border-left: 1px solid ${navigationSidebar.fond?.nested};
     a {
-      color: ${(props) => props.theme.navigationSidebar.fond?.nested};
+      color: ${navigationSidebar.fond?.nested};
     }
   }
 `;
@@ -130,11 +133,11 @@ const NodeCollapseButton = styled(({
   cursor: pointer;
   padding: 0 25px 0 10px;
   svg path {
-    fill: ${(props) => props.theme.navigationSidebar.fond?.base};
+    fill: ${navigationSidebar.fond?.base};
   }
   &:hover {
     svg path {
-      fill: ${(props) => props.theme.navigationSidebar.row.collapseHover};
+      fill: ${navigationSidebar.row.collapseHover};
     }
   }
 `;
@@ -157,34 +160,26 @@ export const ContentTreeNode = ({
   const collapse = () => {
     toggle(url);
   };
-  const theme = useTheme();
   let isCollapsed = collapsed[url];
   const text = emoji.emojify(title);
   return (
-    
-    <>
-      
+    <div>
       <NodeContent
         text={text}
         link={url}
         className={className}
-        css={active ? activeNode(theme) : ''}
+        css={active ? activeNode() : ''}
       >
         {title && hasChildren ? (
-          
-          <>
-            
-            <NodeCollapseButton isCollapsed={isCollapsed} collapse={collapse} />
-          </>
-        ) : null}
+          <NodeCollapseButton isCollapsed={isCollapsed} collapse={collapse} />
+        ) : <Empty />}
       </NodeContent>
 
       {!isCollapsed ? (
-        
         <NestedContentTreeNode collapsed={collapsed} location={location} setCollapsed={toggle}>
           {children}
         </NestedContentTreeNode>
-      ) : null}
-    </>
+      ) : <Empty />}
+    </div>
   );
 };

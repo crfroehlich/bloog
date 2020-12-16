@@ -2,6 +2,10 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { ChevronLeft, ChevronRight } from 'react-feather';
 import { onMobile } from '../../styles/responsive';
+import { Empty } from '../Empty';
+import { getTheme } from '../../theme';
+
+const { search, colors, transitions } = getTheme();
 
 const Button = styled(({
   refine,
@@ -25,27 +29,27 @@ const Button = styled(({
   height: 32px;
   visibility: ${(props) => (props.show || props.show === undefined ? 'visible' : 'hidden')};
   vertical-align: middle;
-  transition: ${(props) => props.theme.transitions.hover};
+  transition: ${transitions.hover};
   background-color: ${(props) =>
     props.isCurrent
-      ? props.theme.search.pagination.current.background
-      : props.theme.search.pagination.background};
-  border: 1px solid ${(props) => props.theme.search.pagination.border};
+      ? search.pagination.currend?.background
+      : search.pagination?.background};
+  border: 1px solid ${search.pagination.border};
 
   color: ${(props) =>
     props.isCurrent
-      ? props.theme.search.pagination.current.font
-      : props.theme.search.pagination.font};
+      ? search.pagination.currend?.font
+      : search.pagination.font};
   border-radius: 4px;
-  box-shadow: 0 0 4px 0 ${(props) => props.theme.colors.border};
+  box-shadow: 0 0 4px 0 ${colors.border};
   font-size: 1em;
   cursor: inherit;
   &:hover {
-    background-color: ${(props) => props.theme.search.pagination.hover};
-    color: ${(props) => props.theme.search.pagination.fontHover};
+    background-color: ${search.pagination.hover};
+    color: ${search.pagination.fontHover};
   }
   svg {
-    stroke: ${(props) => props.theme.search.pagination.font};
+    stroke: ${search.pagination.font};
     vertical-align: middle;
   }
 `;
@@ -67,13 +71,13 @@ const PagesList = styled.ul`
 `;
 
 const PagesListWrapper = styled.div`
-  border-top: 1px solid ${(props) => props.theme.search.pagination.border};
-  background: ${(props) => props.theme.colors.background};
+  border-top: 1px solid ${search.pagination.border};
+  background: ${colors?.background};
   width: 100%;
   display: flex;
   position: sticky;
   bottom: 0;
-  box-shadow: 0 -2px 4px 0 ${(props) => props.theme.colors.shadow};
+  box-shadow: 0 -2px 4px 0 ${colors.shadow};
 `;
 
 const leftRightMargin = '12px';
@@ -98,11 +102,10 @@ export const Pagination = ({
               <ChevronLeft />
             </Button>
           </li>
-        ) : null}
+        ) : <Empty />}
         {new Array(pagesToShow).fill(null).map((_, index) => {
           const page = index + 1;
           const isCurrent = currentPage === page;
-
           return (
             <li key={`${index}_${Date.now()}`}>
               <Button refine={refine} page={page} isCurrent={isCurrent}>
@@ -112,14 +115,13 @@ export const Pagination = ({
           );
         })}
         {showNext ? (
-          
           <li style={{ marginLeft: leftRightMargin }}>
             <Button show={currentPage !== pagesToShow} refine={refine} page={nextPage}>
               <ChevronRight />
             </Button>
           </li>
         ) : (
-          ''
+          <Empty />
         )}
       </PagesList>
     </PagesListWrapper>

@@ -1,12 +1,15 @@
 import styled from '@emotion/styled';
 import { paddingLeftRight } from './styles';
+import { getTheme } from '../../theme';
+
+const { search } = getTheme();
 
 const Token = styled.span`
   font-weight: bold;
 `;
 
 const StatsWrapper = styled.p`
-  color: ${(props) => props.theme.search.fond?.base};
+  color: ${search.fond?.base};
   font-size: 11px;
   text-align: right;
   margin-top: 10px;

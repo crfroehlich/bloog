@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from '..';
+import { Link, Empty } from '..';
 import styled from '@emotion/styled';
 import { emojiTools as emoji } from '../../utils/emoji';
 import { navigate } from 'gatsby';
@@ -7,6 +7,9 @@ import { ChevronLeft, ChevronRight } from 'react-feather'
 import { calculateFlatNavigation, getNavigationData } from '../Navigation';
 import { onMobile } from '../../styles/responsive';
 import config from '../../../.config';
+import { getTheme } from '../../theme';
+
+const { previousNext } = getTheme();
 
 const conf = {
   pathDivider: ' — ',
@@ -26,8 +29,7 @@ const PreviousNextWrapper = styled.div`
 
 const Arrow = styled(({
   className,
-  arrow
-
+  arrow,
 }: any) => <div className={className}>{arrow.render({color: ''})}</div>)`
   display: block;
   margin: 0;
@@ -35,12 +37,11 @@ const Arrow = styled(({
   font-size: 16pt;
   transition: color 200ms ease 0s;
   padding: 16px;
-  
   ${onMobile} {
     padding: 6px;
   }
   svg {
-    stroke: ${(props) => props.theme.previousNext.font};
+    stroke: ${previousNext.font};
   }
 `;
 
@@ -49,7 +50,6 @@ const Title = styled.div`
   margin: 0;
   padding: 0;
   transition: color 200ms ease 0s;
-
   span {
     font-size: 16px;
     line-height: 1.5;
@@ -61,8 +61,7 @@ const Label = styled.div`
   display: block;
   margin: 0;
   padding: 0;
-  color: ${(props) => props.theme.previousNext.fontLabel};
-
+  color: ${previousNext.fontLabel};
   span {
     font-size: 12px;
     line-height: 1.625;
@@ -76,16 +75,11 @@ const ContentWrapper = styled(({
   title
 }: any) => {
   return (
-    
     <div className={className}>
-      
       <Label>
-        
         <span>{label}</span>
       </Label>
-      
       <Title>
-        
         <span>{emoji.emojify(title)}</span>
       </Title>
     </div>
@@ -106,11 +100,8 @@ const LeftButton = ({
   label
 }: any) => {
   return (
-    
     <Button url={url}>
-      
       <Arrow arrow={ChevronLeft} />
-      
       <ContentWrapper title={title} label={label} css={{ textAlign: 'right' }} />
     </Button>
   );
@@ -122,11 +113,8 @@ const RightButton = ({
   label
 }: any) => {
   return (
-    
     <Button url={url}>
-      
       <ContentWrapper title={title} label={label} />
-      
       <Arrow arrow={ChevronRight} />
     </Button>
   );
@@ -138,7 +126,6 @@ const Button = styled(({
   children
 }: any) => {
   return (
-    
     <Link to={url ? url : '#'} className={className}>
       {children}
     </Link>
@@ -155,22 +142,22 @@ const Button = styled(({
   flex-direction: row;
   align-items: center;
   place-self: stretch;
-  color: ${(props) => props.theme.previousNext.font};
-  background-color: ${(props) => props.theme.previousNext.background};
+  color: ${previousNext.font};
+  background-color: ${previousNext?.background};
   border-radius: 4px;
-  border: 1px solid ${(props) => props.theme.previousNext.border};
+  border: 1px solid ${previousNext.border};
   transition: border 200ms ease 0s;
-  box-shadow: ${(props) => props.theme.previousNext.shadow} 0 3px 8px;
+  box-shadow: ${previousNext.shadow} 0 3px 8px;
   text-decoration: none;
   visibility: ${(props) => props.url ? 'visible' : 'hidden'};
   opacity: ${(props) => props.url ? 1 : 0};
 
   &:hover {
-    color: ${(props) => props.theme.previousNext.hover};
+    color: ${previousNext.hover};
     text-decoration: none;
-    border: 1px solid ${(props) => props.theme.previousNext.hover};
+    border: 1px solid ${previousNext.hover};
     svg * {
-      stroke: ${(props) => props.theme.previousNext.hover};
+      stroke: ${previousNext.hover};
     }
   }
 `;
@@ -251,7 +238,7 @@ export const PreviousNext = ({
           <LeftButton url={previous.url} title={previous.title} label={previousLabel} />
           <RightButton url={next.url} title={next.title} label={nextLabel} />
         </div>
-      ) : <div />}
+      ) : <Empty />}
     </PreviousNextWrapper>
   );
 };

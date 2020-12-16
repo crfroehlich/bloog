@@ -9,11 +9,10 @@ export const ContentTree = ({
   const [treeData] = useState(() => calculateNavigation(edges));
   const [collapsed, setCollapsed] = useState({});
   
-  return <>
+  return <div>
     {treeData.children.map((group: any, i: any) => {
       const key = group.path ? group.path : Math.random().toString(36).substring(2);
       return (
-        
         <ContentTreeGroup
           treeState={{ collapsed: collapsed, setCollapsed: setCollapsed }}
           key={`${key}_${i}`}
@@ -22,7 +21,7 @@ export const ContentTree = ({
         />
       );
     })}
-  </>;
+  </div>;
 };
 
 export default ContentTree;

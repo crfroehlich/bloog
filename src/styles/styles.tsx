@@ -1,5 +1,9 @@
 import { css } from '@emotion/react';
 import { onMobile, onTablet } from './responsive';
+import { getTheme } from '../theme';
+
+const { colors, transitions } = getTheme();
+const tbl = getTheme().table;
 
 export const show = css`
   display: block;
@@ -32,25 +36,25 @@ export const transparent = css`
   outline: none;
 `;
 
-export const shadowAround = (theme: any) => css`
-  box-shadow: 0 0 6px 0 ${theme.colors.shadow};
+export const shadowAround = () => css`
+  box-shadow: 0 0 6px 0 ${colors.shadow};
 `;
 
-export const blockquote = (theme: any) => css`
+export const blockquote = () => css`
   font-size: 1.4em;
   width: 100%;
   margin: 30px auto;
   font-style: italic;
-  color: ${theme.colors.font};
+  color: ${colors.font};
   padding: 14px 25px 14px 75px;
-  border-left: 8px solid ${theme.colors.primary};
+  border-left: 8px solid ${colors.primary};
   line-height: 1.6;
   position: relative;
-  background: ${theme.colors.border};
+  background: ${colors.border};
 
   &::before {
     content: '\\201C';
-    color: ${theme.colors.primary};
+    color: ${colors.primary};
     font-size: 4em;
     position: absolute;
     left: 10px;
@@ -78,17 +82,17 @@ export const pre = css`
   }
 `;
 
-export const anchor = (theme: any) => css`
+export const anchor = () => css`
   transition: color 0.15s;
-  color: ${theme.colors.primary};
+  color: ${colors.primary};
   &:hover {
-    color: ${theme.colors.primaryDark};
+    color: ${colors.primaryDark};
   }
 `;
 
-export const table = (theme: any) => css`
+export const table = () => css`
   padding: 0;
-  border: 1px solid ${theme.table.border};
+  border: 1px solid ${tbl.border};
   border-radius: 4px;
   border-spacing: 0;
   overflow-wrap: normal;
@@ -96,8 +100,8 @@ export const table = (theme: any) => css`
     white-space: pre;
   }
   thead {
-    background-color: ${theme.table.header.background};
-    color: ${theme.table.header.font};
+    background-color: ${tbl.header?.background};
+    color: ${tbl.header.font};
     tr {
       font-weight: bold;
       text-align: left;
@@ -115,17 +119,17 @@ export const table = (theme: any) => css`
   }
 
   tbody tr {
-    transition: ${theme.transitions.hover};
-    border-top: 1px solid ${theme.table.primary};
+    transition: ${transitions.hover};
+    border-top: 1px solid ${colors.primary};
     margin: 0;
     padding: 0;
 
     &:nth-of-type(even) {
-      background-color: ${theme.table.evenRow};
+      background-color: ${tbl.evenRow};
     }
 
     &:nth-of-type(odd) {
-      background-color: ${theme.table.oddRow};
+      background-color: ${tbl.oddRow};
     }
 
     &:last-child {
@@ -144,7 +148,7 @@ export const table = (theme: any) => css`
   }
 
   tbody tr:hover {
-    background-color: ${theme.table.rowHover};
+    background-color: ${tbl.rowHover};
   }
 
   th :first-of-type,

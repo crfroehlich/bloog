@@ -1,7 +1,9 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
-import { IBaseTheme } from 'src';
+import { getTheme } from '../../theme';
+
+const transitions = getTheme().transitions;
 
 const ButtonIconWrapper = styled('div')`
   display: flex;
@@ -9,7 +11,7 @@ const ButtonIconWrapper = styled('div')`
   padding: 4px;
   outline: none;
 
-  background-color: ${(props: any) => props.background};
+  background-color: ${(props: any) => props?.background};
   border-radius: 50%;
   cursor: pointer;
   &:hover {
@@ -19,7 +21,7 @@ const ButtonIconWrapper = styled('div')`
     }
   }
   svg {
-    transition: ${(props) => props.theme.transitions.hover};
+    transition: ${() => transitions.hover};
     fill: ${(props: any) => props.fill};
     stroke: ${(props: any) => props.stroke};
   }

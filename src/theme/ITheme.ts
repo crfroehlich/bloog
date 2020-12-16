@@ -58,6 +58,7 @@ export interface IContent {
   fond?:          IContent;
   font?:          string;
   fontLabel?:     string;
+  fontHover?:     string;
   group?:         string;
   highlight?:     string;
   hover?:         string;
@@ -107,18 +108,18 @@ export interface IScrollTop extends IContent {
 
 export interface IBaseTheme {
   colors:             IThemeColors;
-  contend:            (colors: IThemeColors) => IContent;
-  editOnRepo:         (colors: IThemeColors) => IContent;
-  header:             (colors: IThemeColors) => IHeader;
-  highlights:         (colors: IThemeColors) => IHighlights;
-  jargon:             (colors: IThemeColors) => IContent;
+  contend:            () => IContent;
+  editOnRepo:         () => IContent;
+  header:             () => IHeader;
+  highlights:         () => IHighlights;
+  jargon:             () => IContent;
   layout:             IPageLayout;
-  navigationSidebar:  (colors: IThemeColors) => INavigationSidebar;
-  previousNext:       (colors: IThemeColors) => IContent;
-  scrollTop:          (colors: IThemeColors) => IScrollTop;
-  search:             (colors: IThemeColors) => ISearch;
-  table:              (colors: IThemeColors) => ITable;
-  tableOfContents:    (colors: IThemeColors) => IContent;
+  navigationSidebar:  () => INavigationSidebar;
+  previousNext:       () => IContent;
+  scrollTop:          () => IScrollTop;
+  search:             () => ISearch;
+  table:              () => ITable;
+  tableOfContents:    () => IContent;
   transitions:        ITransitions;
 }
 

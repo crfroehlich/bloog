@@ -1,22 +1,24 @@
 import * as Icons from 'react-feather';
-import { useTheme } from '@emotion/react';
+import { Empty } from '..';
+import { getTheme } from '../../theme';
+
+const { colors } = getTheme();
 
 const capitalize = (text: any) => text.charAt(0).toUpperCase() + text.slice(1);
 
 export const Icon = ({ ...props }) => {
-  const theme = useTheme();
   let name = props.name
     .split('-')
     .map(capitalize)
     .reduce((acc: any, value: any) => (acc += value), '');
   const icon = Icons[name];
   if (!icon) {
-    return '';
+    return <Empty />;
   }
 
   const config = {
     size: props.size || 22,
-    color: props.color || theme.colors.font,
+    color: props.color || colors.font,
   };
   const margin = props.margin || '5px';
   return (

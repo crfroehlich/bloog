@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import styled from '@emotion/styled';
@@ -6,12 +6,16 @@ import { Layout, EditOnRepo, PreviousNext, Seo } from '..';
 import { emojiTools as emoji } from '../utils/emoji';
 import { onMobile, onTablet } from '../styles/responsive';
 import config from '../../.config';
+import { Empty } from '../components/Empty';
+import { getTheme } from '../theme';
+
+const { contend, colors } = getTheme();
 
 const Title = styled.h1`
   font-size: 24pt
   line-height: 1.5;
   font-weight: 500;
-  border-left: 2px solid ${(props) => props.theme.colors.primary};
+  border-left: 2px solid ${colors.primary};
   padding: 0 16px;
   flex: 1;
   margin-top: 0;
@@ -28,8 +32,8 @@ const PageTitle = styled.div`
   flex-flow: wrap;
   align-items: center;
   padding-bottom: 30px;
-  border-bottom: 1px solid ${(props) => props.theme.contend.border};
-  color: ${(props) => props.theme.contend.titleFont};
+  border-bottom: 1px solid ${contend.border};
+  color: ${contend.titleFont};
   ${onMobile} {
     padding: 15px;
     margin-bottom: 0;
@@ -45,15 +49,15 @@ const TitleWrapper = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  color: ${(props) => props.theme.contend.font};
+  color: ${contend.font};
   flex: 1;
   code {
-    background: ${(props) => props.theme.contend.code?.background};
-    border: 1px solid ${(props) => props.theme.contend.code?.border};
+    background: ${contend.code?.background};
+    border: 1px solid ${contend.code?.border};
     border-radius: 4px;
     padding: 2px 6px;
     font-size: 0.9375em;
-    color: ${(props) => props.theme.contend.code?.font};
+    color: ${contend.code?.font};
     // overflow-wrap: break-word;
   }
   section {
@@ -80,8 +84,7 @@ const ReadingTime = styled(({
   className,
   time
 }: any) => (
-  
-  <span className={className}>Reading time: {time} min</span>
+    <span className={className}>Reading time: {time} min</span>
 ))`
   font-style: italic;
   font-size: 12px;
@@ -93,18 +96,13 @@ const LastUpdated = styled(({
   name
 }: any) => {
   return (
-    
     <span className={className}>
       Last update:{' '}
-      
       <i>
-        
         <b>{time}</b>
       </i>{' '}
       by
-      
       <i>
-        
         <b> {name}</b>
       </i>
     </span>
@@ -114,95 +112,83 @@ const LastUpdated = styled(({
   display: block;
 `;
 
-export default class MDXRuntimeTest extends React.Component {
-  componentDidMount() {
+export const DocPage = (props) => {
+  useEffect(() => {
     if (window.location.hash) {
       const element = document.getElementById(window.location.hash.substring(1));
       element?.scrollIntoView(true);
     }
+  });
+
+  const { data, location } = props as any;
+  if (!data) {
+    return null;
   }
+  const {
+    mdx,
+    site: {
+      siteMetadata: { docsLocation, docsLocationType, editable },
+    },
+    gitBranch,
+  } = data;
 
-  render() {
-    const { data, location } = this.props as any;
-    if (!data) {
-      return null;
-    }
-    const {
-      mdx,
-      site: {
-        siteMetadata: { docsLocation, docsLocationType, editable },
-      },
-      gitBranch,
-    } = data;
+  // meta tags
+  const metaTitle = mdx.frontmatter.metaTitle;
+  const docTitle = emoji.emojify(mdx.fields.title);
+  const headTitle = metaTitle ? metaTitle : emoji.clean(docTitle);
 
-    // meta tags
-    const metaTitle = mdx.frontmatter.metaTitle;
-    const docTitle = emoji.emojify(mdx.fields.title);
-    const headTitle = metaTitle ? metaTitle : emoji.clean(docTitle);
-    return (
-      
-      <Layout {...this.props}>
-        
-        <Seo frontmatter={mdx.frontmatter} url={location.href} title={headTitle} />
-        
-        <PageTitle>
-          
-          <TitleWrapper>
-            
-            <Title>{docTitle}</Title>
-            {docsLocation && ((editable && mdx.frontmatter.editable !== false) || mdx.frontmatter.editable === true) ? (
-              
-              <EditOnRepo
-                location={docsLocation}
-                branch={gitBranch.name}
-                path={mdx.parent.relativePath}
-                repoType={docsLocationType}
+  return (
+    <Layout {...props}>
+      <Seo frontmatter={mdx.frontmatter} url={location.href} title={headTitle} />
+      <PageTitle>
+        <TitleWrapper>
+          <Title>{docTitle}</Title>
+          {docsLocation && ((editable && mdx.frontmatter.editable !== false) || mdx.frontmatter.editable === true) ? (
+            <EditOnRepo
+              location={docsLocation}
+              branch={gitBranch.name}
+              path={mdx.parent.relativePath}
+              repoType={docsLocationType}
+            />
+          ) : (
+            <Empty />
+          )}
+        </TitleWrapper>
+        {(config.features.showMetadata === true && mdx.frontmatter.showMetadata !== false) ||
+        mdx.frontmatter.showMetadata === true ? (
+          <div css={{ display: 'block' }}>
+            {mdx.parent.fields ? (
+              <LastUpdated
+                time={mdx.parent.fields.gitLogLatestDate}
+                name={mdx.parent.fields.gitLogLatestAuthorName}
+                email={mdx.parent.fields.gitLogLatestAuthorEmail}
               />
             ) : (
-              ''
+              <Empty />
             )}
-          </TitleWrapper>
-          {(config.features.showMetadata === true && mdx.frontmatter.showMetadata !== false) ||
-          mdx.frontmatter.showMetadata === true ? (
-            
-            <div css={{ display: 'block' }}>
-              {mdx.parent.fields ? (
-                
-                <LastUpdated
-                  time={mdx.parent.fields.gitLogLatestDate}
-                  name={mdx.parent.fields.gitLogLatestAuthorName}
-                  email={mdx.parent.fields.gitLogLatestAuthorEmail}
-                />
-              ) : (
-                ''
-              )}
-              
-              <ReadingTime time={mdx.timeToRead * 2} />
-            </div>
-          ) : (
-            ''
-          )}
-        </PageTitle>
-        
-        <ContentWrapper>
-          
-          <MDXRenderer>{mdx.body}</MDXRenderer>
-        </ContentWrapper>
-        {(config.features.previousNext.enabled === true &&
-          mdx.frontmatter.showPreviousNext !== false) ||
-        mdx.frontmatter.showPreviousNext ? (
-          
-          <div css={{ padding: '30px 0' }}>
-            
-            <PreviousNext mdx={mdx} />
+            <ReadingTime time={mdx.timeToRead * 2} />
           </div>
         ) : (
-          ''
+          <Empty />
         )}
-      </Layout>
-    );
-  }
+      </PageTitle>
+      <ContentWrapper>
+        <MDXRenderer>{mdx.body}</MDXRenderer>
+      </ContentWrapper>
+      {(config.features.previousNext.enabled === true &&
+        mdx.frontmatter.showPreviousNext !== false) ||
+      mdx.frontmatter.showPreviousNext ? (
+        <div css={{ padding: '30px 0' }}>
+          <PreviousNext mdx={mdx} />
+        </div>
+      ) : (
+        <Empty />
+      )}
+    </Layout>
+  );
 }
+
+export default DocPage;
 
 export const pageQuery = graphql`
   query($id: String!) {

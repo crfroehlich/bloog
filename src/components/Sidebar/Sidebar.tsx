@@ -7,9 +7,13 @@ import { getNavigationData } from '../Navigation';
 import { scrollbar } from '../../styles/styles';
 import { onMobile } from '../../styles/responsive';
 import config from '../../../.config';
+import { Empty } from '../Empty';
+import { getTheme } from '../../theme';
+
+const { layout, navigationSidebar } = getTheme();
 
 const SidebarWrapper = styled.div`
-  margin-left: ${(props) => props.theme.layout.leftMargin};
+  margin-left: ${layout.leftMargin};
   height: 100%;
   display: flex;
   overflow-y: hidden;
@@ -20,7 +24,7 @@ const SidebarWrapper = styled.div`
   }
 `;
 
-const SidebarMain = styled(({ ...props }) => (<div {...props} />))`
+const SidebarMain = styled.div`
   overflow-y: auto;
   width: 100%;
   margin: 0;
@@ -40,7 +44,7 @@ const PoweredByWrapper = styled.div`
   display: block;
   padding: 0;
   position: relative;
-  box-shadow: 0 -7px 10px -5px ${(props) => props.theme.navigationSidebar.backgroundPrimary};
+  box-shadow: 0 -7px 10px -5px ${navigationSidebar?.backgroundPrimary};
 `;
 
 const NavigationWrapper = styled(({
@@ -48,9 +52,7 @@ const NavigationWrapper = styled(({
   children
 }: any) => {
   return (
-    
     <aside className={className}>
-      
       <SidebarWrapper>{children}</SidebarWrapper>
     </aside>
   );
@@ -58,62 +60,61 @@ const NavigationWrapper = styled(({
   display: ${(props) => props.show ? 'block' : 'none'};
   height: 100vh;
   top: 0;
-  flex: 0 0 ${(props) => props.theme.layout.leftWidth};
-  background: ${(props) => props.theme.navigationSidebar.backgroundPrimary};
+  flex: 0 0 ${layout.leftWidth};
+  background: ${navigationSidebar?.backgroundPrimary};
   background: linear-gradient(
-    ${(props) => props.theme.navigationSidebar.backgroundPrimary},
-    ${(props) => props.theme.navigationSidebar.backgroundSecondary}
+    ${navigationSidebar?.backgroundPrimary},
+    ${navigationSidebar?.backgroundSecondary}
   );
   /* Safari 4-5, Chrome 1-9 */
   background: linear-gradient(
-    ${(props) => props.theme.navigationSidebar.backgroundPrimary},
-    ${(props) => props.theme.navigationSidebar.backgroundSecondary}
+    ${navigationSidebar?.backgroundPrimary},
+    ${navigationSidebar?.backgroundSecondary}
   );
   background: -webkit-gradient(
     linear,
     0% 0%,
     0% 100%,
-    from(${(props) => props.theme.navigationSidebar.backgroundPrimary}),
-    to(${(props) => props.theme.navigationSidebar.backgroundSecondary})
+    from(${navigationSidebar?.backgroundPrimary}),
+    to(${navigationSidebar?.backgroundSecondary})
   );
   /* Safari 5.1, Chrome 10+ */
   background: -webkit-linear-gradient(
     top,
-    ${(props) => props.theme.navigationSidebar.backgroundPrimary},
-    ${(props) => props.theme.navigationSidebar.backgroundSecondary}
+    ${navigationSidebar?.backgroundPrimary},
+    ${navigationSidebar?.backgroundSecondary}
   );
   /* Firefox 3.6+ */
   background: -moz-linear-gradient(
     top,
-    ${(props) => props.theme.navigationSidebar.backgroundPrimary},
-    ${(props) => props.theme.navigationSidebar.backgroundSecondary}
+    ${navigationSidebar?.backgroundPrimary},
+    ${navigationSidebar?.backgroundSecondary}
   );
   /* IE 10 */
   background: -ms-linear-gradient(
     top,
-    ${(props) => props.theme.navigationSidebar.backgroundPrimary},
-    ${(props) => props.theme.navigationSidebar.backgroundSecondary}
+    ${navigationSidebar?.backgroundPrimary},
+    ${navigationSidebar?.backgroundSecondary}
   );
   /* Opera 11.10+ */
   background: -o-linear-gradient(
     top,
-    ${(props) => props.theme.navigationSidebar.backgroundPrimary},
-    ${(props) => props.theme.navigationSidebar.backgroundSecondary}
+    ${navigationSidebar?.backgroundPrimary},
+    ${navigationSidebar?.backgroundSecondary}
   );
-  border-right: 1px solid ${(props) => props.theme.navigationSidebar.border};
+  border-right: 1px solid ${navigationSidebar.border};
   position: sticky;
   ${onMobile} {
     width: 100%;
     height: auto;
     border-right: none;
     position: relative;
-    background: ${(props) => props.theme.navigationSidebar.backgroundPrimary};
+    background: ${navigationSidebar?.backgroundPrimary};
   }
 `;
 
 
 const Divider = styled((props: any) => <div {...props}>
-  
   <hr />
 </div>)`
   padding: 0.5rem 0;
@@ -121,7 +122,7 @@ const Divider = styled((props: any) => <div {...props}>
     margin: 0;
     padding: 0;
     border: 0;
-    border-bottom: 1px solid ${(props) => props.theme.navigationSidebar.border};
+    border-bottom: 1px solid ${navigationSidebar.border};
   }
 `;
 
@@ -133,14 +134,14 @@ export const Sidebar = ({
   const edges = getNavigationData();
   return (
     <NavigationWrapper className={className} show={show}>
-      <SidebarMain style={{...scrollbar}}>
+      <SidebarMain css={{...scrollbar}}>
         <ContentTree edges={edges} location={location} />
         {config.sidebar.links && config.sidebar.links.length > 0 ? (
           <div>
             <Divider />
             <Links links={config.sidebar.links} />
           </div>
-        ) : <div />}
+        ) : <Empty />}
       </SidebarMain>
       {config.sidebar.poweredBy && config.sidebar.poweredBy.name ? (
           <PoweredByWrapper>
@@ -150,7 +151,7 @@ export const Sidebar = ({
               link={config.sidebar.poweredBy.link}
             />
           </PoweredByWrapper>
-      ) : <div />}
+      ) : <Empty />}
     </NavigationWrapper>
   );
 };

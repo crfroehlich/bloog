@@ -16,7 +16,6 @@ import {
 
 const SocialButton = (props) => {
   const { link } = props;
-  // const theme = useTheme();
   return (
     <Link to={link} target={'_blank'} rel={'noopener noreferrer'}>
       <ButtonIcon {...props} />

@@ -1,6 +1,7 @@
 export * from './Buttons';
 export * from './DarkModeSwitch';
 export * from './EditOnRepo';
+export * from './Empty';
 export * from './Header';
 export * from './Layout';
 export * from './Link';
