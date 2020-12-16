@@ -1,6 +1,6 @@
 import React from 'react';
-import { Hit } from '../Hits';
-import { emojiTools as emoji } from '../../../utils/emoji';
+import { Hit } from './Hits';
+import { emojiTools as emoji } from '../../utils/emoji';
 import styled from '@emotion/styled';
 
 const trim_words = (str: any, numWords: any) => {
@@ -17,12 +17,8 @@ const onReversed = (str: any, func: any) => {
 }
 
 const Highlight = styled.span`
-  background-color: ${(props) => props.theme.
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
-  search.mark.background};
-  color: ${(props) => props.theme.
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
-  search.mark.font};
+  background-color: ${(props) => props.theme.  search.mark.background};
+  color: ${(props) => props.theme.search.mark.font};
 `;
 
 const highlight = (query: any, text: any, maxWords: any) => {

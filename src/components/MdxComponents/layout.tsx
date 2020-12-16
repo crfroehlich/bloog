@@ -3,12 +3,8 @@ import styled from '@emotion/styled';
 
 const LayoutEl = styled.div`
   display: flex;
-  flex-direction: ${(props) => props.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'direction' does not exist on type '{ the... Remove this comment to see the full error message
-direction || 'row'};
-  align-items: ${(props) => props.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'align' does not exist on type '{ theme?:... Remove this comment to see the full error message
-align};
+  flex-direction: ${(props: any) => props.direction || 'row'};
+  align-items: ${(props: any) => props.align};
   &.spacing-xlarge > * {
     margin: 64px 64px 64px 0;
   }

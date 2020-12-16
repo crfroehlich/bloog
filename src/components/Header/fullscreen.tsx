@@ -12,12 +12,9 @@ export const FullScreenEnter = styled(({
     return (
       <ButtonIcon
         title={'Enter fullscreen mode'}
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
         background={theme.header.icons.background}
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
         hoverStroke={theme.header.icons.hover}
         fill={'transparent'}
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
         stroke={theme.header.icons.stroke}
         icon={Maximize}
         onClick={toggle}
@@ -36,9 +33,7 @@ export const FullScreenHeader = styled(({ show, ...props }) => (<div {...props} 
   width: 100%;
   z-index: 10;
   top: 0;
-  background-color: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
-header.background};
+  background-color: ${(props) => props.theme.header.background};
   `;
   
 export const FullScreenClose = styled(({
@@ -51,12 +46,12 @@ export const FullScreenClose = styled(({
         <span style={{marginRight: '6px'}}>Close full mode</span>
         <ButtonIcon
           title={'Close fullscreen mode'}
-          // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+          
           background={theme.header.icons.background}
-          // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+          
           hoverStroke={theme.header.icons.hover}
           fill={'transparent'}
-          // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+          
           stroke={theme.header.icons.stroke}
           icon={Minimize}
         />

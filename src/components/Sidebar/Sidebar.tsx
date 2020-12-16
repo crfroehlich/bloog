@@ -11,9 +11,7 @@ import { onMobile } from '../../styles/responsive';
 const config = getConf();
 
 const SidebarWrapper = styled.div`
-  margin-left: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'layout' does not exist on type 'Theme'.
-layout.leftMargin};
+  margin-left: ${(props) => props.theme.layout.leftMargin};
   height: 100%;
   display: flex;
   overflow-y: hidden;
@@ -44,9 +42,7 @@ const PoweredByWrapper = styled.div`
   display: block;
   padding: 0;
   position: relative;
-  box-shadow: 0 -7px 10px -5px ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'navigationSidebar' does not exist on typ... Remove this comment to see the full error message
-navigationSidebar.backgroundPrimary};
+  box-shadow: 0 -7px 10px -5px ${(props) => props.theme.navigationSidebar.backgroundPrimary};
 `;
 
 const NavigationWrapper = styled(({

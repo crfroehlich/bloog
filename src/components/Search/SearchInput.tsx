@@ -1,5 +1,5 @@
 import React from 'react';
-import { SidebarSearchInput } from '..';
+import { SidebarSearchInput } from '.';
 export const SearchInput = (({
   refine,
   ...rest

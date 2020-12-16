@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import Arrow from 'images/up-arrow.inline.svg';
 import { onMobile, onTablet } from '../../styles/responsive';
 
+const Arrow = require('../../images/up_arrow.svg');
 const scrollToTop = () => window.scrollTo(0, 0);
 
 export const ScrollTop = styled(({

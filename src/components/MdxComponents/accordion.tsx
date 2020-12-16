@@ -50,7 +50,6 @@ export const Accordion = ({
   ...props
 }: any) => {
   const theme = useTheme();
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
   const color = encodeURIComponent(theme.colors.primary); // replace # to not follow uri as usual
   const closed = renderToStaticMarkup(<ChevronDown size={22} color={color} />);
   const open = renderToStaticMarkup(<ChevronUp size={22} color={color} />);

@@ -27,43 +27,29 @@ export const HitsWrapper = styled.div`
   //   max-width: 500px;
   // }
   > * + * {
-    border-top: 2px solid ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
-search.border};
+    border-top: 2px solid ${(props) => props.theme.search.border};
   }
   li {
     ${topBottomPadding};
     ${paddingLeftRight};
     &:hover {
-      background-color: ${(props) => props.theme.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
-search.hover};
-      color: ${(props) => props.theme.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
-search.font.hover};
+      background-color: ${(props) => props.theme.search.hover};
+      color: ${(props) => props.theme.search.fond?.hover};
     }
   }
   li + li {
-    border-top: 1px solid ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
-search.border};
+    border-top: 1px solid ${(props) => props.theme.search.border};
   }
   * {
     margin-top: 0;
-    color: ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
-search.font.base};
+    color: ${(props) => props.theme.search.fond?.base};
   }
   ul {
     list-style: none;
   }
   mark {
-    color: ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
-search.mark.font};
-    background: ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
-search.mark.background};
+    color: ${(props) => props.theme.search.mark.font};
+    background: ${(props) => props.theme.search.mark.background};
   }
 `;
 

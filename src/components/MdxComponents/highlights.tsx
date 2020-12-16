@@ -39,7 +39,6 @@ const Highlight = ({
   ...props
 }: any) => {
   const theme = useTheme();
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'highlights' does not exist on type 'Them... Remove this comment to see the full error message
   const highlightColor = theme.highlights[color];
   return (
     <HighlightWrapper

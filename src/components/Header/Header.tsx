@@ -24,7 +24,7 @@ const SearchWrapper = styled.div`
   min-width: 200px;
   max-width: 280px;
   border-left: 1px solid ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+
 header.border};
   ${onTablet} {
     padding-left: 0;
@@ -40,7 +40,7 @@ header.border};
 
 const HeaderWrapper = styled(({ show, ...props }) => (<header {...props} />))`
   background-color: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+
 header.background};
   border-radius: 0;
   margin-bottom: 0;
@@ -48,10 +48,10 @@ header.background};
   display: ${(props) => (props.show ? 'flex' : 'none')};
   align-items: center;
   box-shadow: 0 3px 8px 0 ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+
 header.shadow};
   border-bottom: 1px solid ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+
 header.border};
   padding: 10px 0;
   position: relative;
@@ -126,12 +126,12 @@ const SearchOpener = ({
     case 'icon':
       opener = (
         <ButtonIcon
-          // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+          
           background={theme.header.icons.background}
-          // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+          
           hoverStroke={theme.header.icons.hover}
           fill={'transparent'}
-          // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+          
           stroke={theme.header.icons.stroke}
           icon={Search}
           onClick={open}
@@ -157,9 +157,9 @@ const HelpButton = ({
   };
   return (
     <ButtonIcon
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+      
       hoverStroke={theme.header.icons.hover}
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+      
       stroke={theme.header.icons.stroke}
       icon={HelpCircle}
       onClick={open}
@@ -199,12 +199,12 @@ const MobileMenuToggle = styled(({
     <div className={className} {...props}>
       <ButtonIcon
         title={'Open menu'}
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+        
         background={theme.header.icons.background}
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+        
         hoverStroke={theme.header.icons.hover}
         fill={'transparent'}
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+        
         stroke={open === true ? theme.header.icons.hover : theme.header.icons.stroke}
         icon={Menu}
         onClick={toggle}
@@ -278,20 +278,20 @@ export const Header = ({
 
       const theme = useTheme();
       const iconBaseProps = {
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+        
         background: theme.header.icons.background,
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+        
         hoverStroke: theme.header.icons.hover,
-        // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+        
         stroke: theme.header.icons.stroke,
       };
       const DarkModeButton = config.features.darkMode.enabled ? (
         
         <DarkModeSwitch
           {...iconBaseProps}
-          // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+          
           hoverFill={theme.header.icons.hover}
-          // @ts-expect-error ts-migrate(2339) FIXME: Property 'header' does not exist on type 'Theme'.
+          
           fill={theme.header.icons.fill}
           isDarkThemeActive={darkMode}
           toggleActiveTheme={() => {

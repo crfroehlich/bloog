@@ -1,6 +1,7 @@
 
 import React from 'react';
 import styled from '@emotion/styled';
+import { IBaseTheme } from 'src';
 
 const ButtonIconWrapper = styled('div')`
   display: flex;
@@ -8,31 +9,19 @@ const ButtonIconWrapper = styled('div')`
   padding: 4px;
   outline: none;
 
-  background-color: ${(props) => props.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'background' does not exist on type '{ th... Remove this comment to see the full error message
-background};
+  background-color: ${(props: any) => props.background};
   border-radius: 50%;
   cursor: pointer;
   &:hover {
     svg {
-      fill: ${(props) => props.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'hoverFill' does not exist on type '{ the... Remove this comment to see the full error message
-hoverFill};
-      stroke: ${(props) => props.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'hoverStroke' does not exist on type '{ t... Remove this comment to see the full error message
-hoverStroke};
+      fill: ${(props: any) => props.hoverFill};
+      stroke: ${(props: any) => props.hoverStroke};
     }
   }
   svg {
-    transition: ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'transitions' does not exist on type 'The... Remove this comment to see the full error message
-transitions.hover};
-    fill: ${(props) => props.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'fill' does not exist on type '{ theme?: ... Remove this comment to see the full error message
-fill};
-    stroke: ${(props) => props.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'stroke' does not exist on type '{ theme?... Remove this comment to see the full error message
-stroke};
+    transition: ${(props) => props.theme.transitions.hover};
+    fill: ${(props: any) => props.fill};
+    stroke: ${(props: any) => props.stroke};
   }
 `;
 

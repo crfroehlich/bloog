@@ -1,8 +1,7 @@
-// @ts-expect-error ts-migrate(2613) FIXME: Module '"/home/fro/code/template/src/theme/colors"... Remove this comment to see the full error message
-import defaultColors from './colors';
+import { colors as defaultColors } from './colors';
 import colorfn from 'color';
 import { increaseIntensivity, decreaseIntensivity, grayscaleCompatible } from '../utils/colors';
-import { IBaseTheme, IContent, IEditOnRepo, IHeader, IHighlights, IJargon, INavigationSidebar, IPageLayout, IPreviousNext, IScrollTop, ISearch, ITable, ITableOfContents, IThemeColors, ITransitions } from './ITheme';
+import { IBaseTheme, IContent, IHeader, IHighlights, INavigationSidebar, IPageLayout, IScrollTop, ISearch, ITable, IThemeColors, ITransitions } from './ITheme';
 
 const colors: IThemeColors = {
   ...defaultColors,
@@ -32,7 +31,7 @@ const transitions: ITransitions = {
   hoverColor: 'color .5s cubic-bezier(0.25, 0.8, 0.25, 1) 0s',
 };
 
-const content = (colors: IThemeColors): IContent => ({
+const contend = (colors: IThemeColors): IContent => ({
   background: colors.mainBackground,
   border: colors.border,
   font: colors.font,
@@ -57,7 +56,7 @@ const navigationSidebar = (colors: IThemeColors): INavigationSidebar => ({
     collapseHover: colors.hover,
   },
 
-  font: {
+  fond: {
     group: decreaseIntensivity(colors.font, 0.25),
     base: colors.font,
     nested: decreaseIntensivity(colors.font, 0.25),
@@ -76,7 +75,7 @@ const header = (colors: IThemeColors): IHeader => ({
   background: colors.background,
   shadow: colors.shadow,
 
-  font: {
+  fond: {
     base: colors.primary,
     hover: colorfn(colors.primary).negate().hex(),
   },
@@ -100,7 +99,7 @@ const search = (colors: IThemeColors): ISearch => ({
     background: colors.primary,
   },
 
-  font: {
+  fond: {
     base: colors.font,
     hover: colors.font,
     highlight: colors.fontDark,
@@ -114,25 +113,25 @@ const search = (colors: IThemeColors): ISearch => ({
     border: colors.border,
     font: colors.font,
     hover: colors.border,
-    current: {
+    currend: {
       background: colors.primary,
       font: grayscaleCompatible(colors.primary),
     },
   }
 });
 
-const editOnRepo = (colors: IThemeColors): IEditOnRepo => ({
+const editOnRepo = (colors: IThemeColors): IContent => ({
   background: colors.background,
   border: colors.border,
   hover: colors.hover,
 
-  font: {
+  fond: {
     base: colors.font,
     hover: grayscaleCompatible(colors.hover),
   }
 });
 
-const jargon = (colors: IThemeColors): IJargon => ({
+const jargon = (colors: IThemeColors): IContent => ({
   background: colors.background,
   border: colors.border,
   font: colors.font,
@@ -177,10 +176,10 @@ const table = (colors: IThemeColors): ITable => ({
   border: colors.border
 });
 
-const tableOfContents = (colors: IThemeColors): ITableOfContents => ({
+const tableOfContents = (colors: IThemeColors): IContent => ({
   background: colors.mainBackground,
 
-  font: {
+  fond: {
     base: decreaseIntensivity(colors.font, 0.15),
     hover: colors.primary,
     current: colors.primary,
@@ -189,7 +188,7 @@ const tableOfContents = (colors: IThemeColors): ITableOfContents => ({
   border: colors.border
 });
 
-const previousNext = (colors: IThemeColors): IPreviousNext => ({
+const previousNext = (colors: IThemeColors): IContent => ({
   background: colors.mainBackground,
   hover: colors.primary,
   font: colors.font,
@@ -205,18 +204,18 @@ const scrollTop = (colors: IThemeColors): IScrollTop => ({
 });
 
 export const base: IBaseTheme = {
-  colors: colors,
-  content: content,
-  editOnRepo: editOnRepo,
-  header: header,
-  highlights: highlights,
-  jargon: jargon,
+  colors,
+  contend,
+  editOnRepo,
+  header,
+  highlights,
+  jargon,
   layout: pageLayout,
-  navigationSidebar: navigationSidebar,
-  previousNext: previousNext,
-  scrollTop: scrollTop,
-  search: search,
-  table: table,
-  tableOfContents: tableOfContents,
-  transitions: transitions,
+  navigationSidebar,
+  previousNext,
+  scrollTop,
+  search,
+  table,
+  tableOfContents,
+  transitions,
 };

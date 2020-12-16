@@ -2,8 +2,8 @@ export interface IThemeColors extends IDefaultColors {
   background:     string;
   border:         string;
   font:           string;
-  fontDark?:       string;
-  fontLight?:      string;
+  fontDark?:      string;
+  fontLight?:     string;
   hover:          string;
   mainBackground: string;
   primary:        string;
@@ -30,208 +30,112 @@ export interface IDefaultColors {
   yellow:      string;
 }
 
-export interface IColors {
-  colors: IThemeColors;
-}
-
-export interface IPageLayout {
+export interface IPageLayout extends IContent {
   leftMargin:  string;
   leftWidth:   string;
   rightMargin: string;
   rightWidth:  string;
 }
 
-export interface ITransitions {
-  hover:      string;
+export interface ITransitions extends IContent {
   hoverFast:  string;
   hoverColor: string;
 }
 
 export interface IContent {
-  background:   string;
-  border:       string;
-  font:         string;
-  titleFont:    string;
-
-  code: {
-    background: string;
-    border:     string;
-    font?:      string;
-  }
+  active?:        string;
+  activeBorder?:  string;
+  align?:         string;
+  background?:    string;
+  base?:          string;
+  border?:        string;
+  code?:          IContent;
+  collapseHover?: string;
+  currend?:       IContent;
+  current?:       string;
+  direction?:     string;
+  fill?:          string;
+  fond?:          IContent;
+  font?:          string;
+  fontLabel?:     string;
+  group?:         string;
+  highlight?:     string;
+  hover?:         string;
+  hoverFill?:     string;
+  hoverStroke?:   string;
+  nested?:        string;
+  shadow?:        string;
+  show?:          boolean;
+  stroke?:        string;
+  titleFont?:     string;
 }
 
-export interface INavigationSidebar {
-  backgroundSecondary: string;
+export interface INavigationSidebar extends IContent {
   backgroundPrimary:   string;
-  border:              string;
-
-  row: {
-    active:            string;
-    activeBorder:      string;
-    collapseHover:     string;
-    hover:             string;
-  };
-
-  font: {
-    active:            string;
-    base:              string;
-    group:             string;
-    hover:             string;
-    nested:            string;
-  };
-
-  poweredBy: {
-    background:        string;
-    font:              string;
-    hover:             string;
-  }
+  backgroundSecondary: string;
+  poweredBy:           IContent;
+  row:                 IContent;
 }
 
-export interface IHeader {
-  background:   string;
-  shadow:       string;
-
-  font: {
-    base:       string;
-    hover:      string;
-  };
-
-  border:       string;
-
-  icons: {
-    background: string;
-    fill:       string;
-    hover:      string;
-    shadow:     string;
-    stroke:     string;
-  }
+export interface IHeader extends IContent {
+  icons:          IContent;
 }
 
-export interface ISearch {
-  background:     string;
-
-  mark: {
-    background:   string;
-    font:         string;
-  };
-
-  font: {
-    base:         string;
-    highlight?:   string;
-    hover:        string;
-  };
-
-  hover:          string;
-  border:         string;
-
-  pagination: {
-    background:   string;
-    border:       string;
-    current: {
-      background: string;
-      font:       string;
-    };
-    font:         string;
-    hover:        string;
-  }
+export interface ISearch extends IContent {
+  mark:           IContent;
+  pagination:     IContent;
+  fond:           IContent;
 }
 
-export interface IEditOnRepo {
-  background: string;
-  border:     string;
-  hover:      string;
-
-  font: {
-    base:     string;
-    hover:    string;
-  }
+export interface IHighlights extends IContent {
+  error:          IContent;
+  info:           IContent;
+  tip:            IContent;
+  warning:        IContent;
 }
 
-export interface IJargon {
-  background: string;
-  border:     string;
-  font:       string;
-  shadow:     string;
+export interface ITable extends IContent {
+  evenRow:        string;
+  header:         IContent;
+  oddRow:         string;
+  rowHover:       string;
 }
 
-export interface IHighlights {
-  warning: {
-    border:     string;
-    background: string;
-    font?:      string;
-  };
-
-  error: {
-    border:     string;
-    background: string;
-    font?:      string;
-  };
-
-  info: {
-    border:     string;
-    background: string;
-    font?:      string;
-  };
-
-  tip: {
-    border:     string;
-    background: string;
-    font?:      string;
-  }
-}
-
-export interface ITable {
-  header: {
-    background: string;
-    font:       string;
-  };
-
-  border:       string;
-  evenRow:      string;
-  oddRow:       string;
-  rowHover:     string;
-}
-
-export interface ITableOfContents {
-  background: string;
-
-  font: {
-    base:     string;
-    hover:    string;
-    current:  string;
-  };
-
-  border:     string;
-}
-
-export interface IPreviousNext {
-  background: string;
-  hover:      string;
-  font:       string;
-  fontLabel:  string;
-  border:     string;
-  shadow:     string;
-}
-
-export interface IScrollTop {
-  background: string;
-  hover:      string;
-  arrow:      string;
+export interface IScrollTop extends IContent {
+  arrow:          string;
 }
 
 export interface IBaseTheme {
   colors:             IThemeColors;
-  content:            (colors: IThemeColors) => IContent;
-  editOnRepo:         (colors: IThemeColors) => IEditOnRepo;
+  contend:            (colors: IThemeColors) => IContent;
+  editOnRepo:         (colors: IThemeColors) => IContent;
   header:             (colors: IThemeColors) => IHeader;
   highlights:         (colors: IThemeColors) => IHighlights;
-  jargon:             (colors: IThemeColors) => IJargon;
+  jargon:             (colors: IThemeColors) => IContent;
   layout:             IPageLayout;
   navigationSidebar:  (colors: IThemeColors) => INavigationSidebar;
-  previousNext:       (colors: IThemeColors) => IPreviousNext;
+  previousNext:       (colors: IThemeColors) => IContent;
   scrollTop:          (colors: IThemeColors) => IScrollTop;
   search:             (colors: IThemeColors) => ISearch;
   table:              (colors: IThemeColors) => ITable;
-  tableOfContents:    (colors: IThemeColors) => ITableOfContents;
+  tableOfContents:    (colors: IThemeColors) => IContent;
   transitions:        ITransitions;
 }
+
+export interface IEmotionTheme {
+  colors:             IThemeColors;
+  contend:            IContent;
+  editOnRepo:         IContent;
+  header:             IHeader;
+  highlights:         IHighlights;
+  jargon:             IContent;
+  layout:             IPageLayout;
+  navigationSidebar:  INavigationSidebar;
+  previousNext:       IContent;
+  scrollTop:          IScrollTop;
+  search:             ISearch;
+  table:              ITable;
+  tableOfContents:    IContent;
+  transitions:        ITransitions;
+}
+

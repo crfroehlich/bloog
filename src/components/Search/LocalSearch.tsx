@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { HitsWrapper } from '../Hits';
-import { getConf } from '../../../utils';
+import { HitsWrapper } from './Hits';
+import { getConf } from '../../utils';
 import { SearchInput } from './SearchInput';
 import { PageHit } from './PageHit';
-import { SearchStatus } from '../SearchStatus';
+import { SearchStatus } from './SearchStatus';
 import { SearchPagination } from './SearchPagination';
 import { Stats } from './Stats';
 import { useFlexSearch } from 'react-use-flexsearch';
@@ -48,7 +48,7 @@ const search = (query: any, index: any, store: any, page: any) => {
   };
 };
 
-export const localSearch = (props) => {
+export const LocalSearch = (props) => {
   const { localSearchBoogi: { index, store } } = useStaticQuery(
     graphql`
     query {
@@ -121,3 +121,5 @@ export const localSearch = (props) => {
     </div>
   );
 }
+
+export default LocalSearch;

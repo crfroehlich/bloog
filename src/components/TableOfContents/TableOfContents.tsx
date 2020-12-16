@@ -205,7 +205,7 @@ export const TableOfContents = ({
         let ids = finalNavItems.map((item) => {
           return item.props.to.substr(1);
         });
-        const scrollspyRef = React.createRef();
+        const scrollspyRef: any = React.createRef();
         const refresh = () => {
           // This function is a workaround for a problem when scrollspy items get updated.
           // In such case props are updated properly, but state is kept stale causing
@@ -213,12 +213,10 @@ export const TableOfContents = ({
           // trigger scrollspy reinitialization when its props change.
           if (
             scrollspyRef.current &&
-            // @ts-expect-error ts-migrate(2571) FIXME: Object is of type 'unknown'.
             !tocItemsEqual(scrollspyRef.current.props.items, scrollspyRef.current.state.targetItems)
           ) {
             sleep(200).then(() => {
               if (scrollspyRef.current) {
-                // @ts-expect-error ts-migrate(2571) FIXME: Object is of type 'unknown'.
                 scrollspyRef.current._initFromProps();
               } else {
                 refresh();
@@ -233,7 +231,6 @@ export const TableOfContents = ({
             <TocTitle>Contents</TocTitle>
             
             <Scrollspy
-              // @ts-expect-error ts-migrate(2769) FIXME: No overload matches this call.
               ref={scrollspyRef}
               onUpdate={refresh}
               items={ids}

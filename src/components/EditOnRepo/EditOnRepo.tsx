@@ -25,28 +25,16 @@ const Edit = styled('div')`
     align-items: center;
     min-width: 175px;
     outline: none;
-    transition: ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'transitions' does not exist on type 'The... Remove this comment to see the full error message
-transitions.hover};
-    border: 1px solid ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'editOnRepo' does not exist on type 'Them... Remove this comment to see the full error message
-editOnRepo.border};
+    transition: ${(props) => props.theme.transitions.hover};
+    border: 1px solid ${(props) => props.theme.editOnRepo.border};
     border-radius: 4px;
-    color: ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'editOnRepo' does not exist on type 'Them... Remove this comment to see the full error message
-editOnRepo.font.base};
-    background-color: ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'editOnRepo' does not exist on type 'Them... Remove this comment to see the full error message
-editOnRepo.background};
+    color: ${(props) => props.theme.editOnRepo.fond?.base};
+    background-color: ${(props) => props.theme.editOnRepo.background};
     height: 30px;
     padding: 5px 16px;
     &:hover {
-      background-color: ${(props) => props.theme.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'editOnRepo' does not exist on type 'Them... Remove this comment to see the full error message
-editOnRepo.hover};
-      color: ${(props) => props.theme.      
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'editOnRepo' does not exist on type 'Them... Remove this comment to see the full error message
-editOnRepo.font.hover};
+      background-color: ${(props) => props.theme.editOnRepo.hover};
+      color: ${(props) => props.theme.editOnRepo.fond?.hover};
     }
   }
 `;

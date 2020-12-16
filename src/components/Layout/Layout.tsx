@@ -35,9 +35,7 @@ const Content = styled('main')`
   flex-grow: 1;
   flex-direction: column;
   padding: 50px 70px;
-  background-color: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'content' does not exist on type 'Theme'.
-content.background};
+  background-color: ${(props) => props.theme.contend.background};
 
   ${onTablet} {
     padding: 30px;

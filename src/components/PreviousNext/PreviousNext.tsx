@@ -63,9 +63,7 @@ const Label = styled.div`
   display: block;
   margin: 0;
   padding: 0;
-  color: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'previousNext' does not exist on type 'Th... Remove this comment to see the full error message
-previousNext.fontLabel};
+  color: ${(props) => props.theme.previousNext.fontLabel};
 
   span {
     font-size: 12px;
@@ -179,7 +177,7 @@ const Button = styled(({
   }
 `;
 
-const calculatePreviousNext = (nav: any, index: any): { url, title }[] => {
+const calculatePreviousNext = (nav: any, index: any): { url, title, path }[] => {
   let nextInfo;
   let previousInfo;
   let currentIndex = index;
@@ -213,12 +211,10 @@ const setArrowNavigation = (previous: any, next: any) => {
   useEffect(() => {
     document.onkeydown = (e) => {
       e = e || window.event;
-      // @ts-expect-error ts-migrate(2367) FIXME: This condition will always return 'false' since th... Remove this comment to see the full error message
-      if (e.keyCode == '37' && previous.url) {
+      if (e.keyCode == 37 && previous.url) {
         // left arrow
         navigate(previous.url);
-      // @ts-expect-error ts-migrate(2367) FIXME: This condition will always return 'false' since th... Remove this comment to see the full error message
-      } else if (e.keyCode == '39' && next.url) {
+      } else if (e.keyCode == 39 && next.url) {
         // right arrow
         navigate(next.url);
       }
@@ -244,11 +240,9 @@ export const PreviousNext = ({
   if (config.features.previousNext.arrowKeyNavigation === true) {
     setArrowNavigation(previous, next);
   }
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'path' does not exist on type '{}'.
   const previousLabel = `${previous.path ? previous.path + conf.pathDivider : ''} ${
     conf.previousName
   }`;
-  // @ts-expect-error ts-migrate(2339) FIXME: Property 'path' does not exist on type '{}'.
   const nextLabel = `${conf.nextName} ${next.path ? conf.pathDivider + next.path : ''}`;
   return (
     <PreviousNextWrapper>

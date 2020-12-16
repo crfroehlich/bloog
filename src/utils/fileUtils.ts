@@ -12,8 +12,7 @@ export const touch = (path: any) => {
           close(fd, (err) => (err ? reject(err) : resolve(fd)));
         });
       }
-      // @ts-expect-error ts-migrate(2794) FIXME: Expected 1 arguments, but got 0. Did you forget to... Remove this comment to see the full error message
-      resolve();
+      resolve(time);
     });
   });
 };

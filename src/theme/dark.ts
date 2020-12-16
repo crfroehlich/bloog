@@ -1,5 +1,5 @@
 import { colors as defaultColors } from './colors';
-import { IColors, IThemeColors } from './ITheme';
+import { IBaseTheme, IThemeColors } from './ITheme';
 
 const darkColors: IThemeColors = {
   ...defaultColors,
@@ -14,4 +14,4 @@ const darkColors: IThemeColors = {
   shadow: defaultColors.gray + '33',
 };
 
-export const dark: IColors = { colors: darkColors };
+export const dark: Partial<IBaseTheme> = { colors: darkColors };

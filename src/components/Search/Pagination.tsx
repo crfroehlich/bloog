@@ -67,19 +67,13 @@ const PagesList = styled.ul`
 `;
 
 const PagesListWrapper = styled.div`
-  border-top: 1px solid ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
-search.pagination.border};
-  background: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.background};
+  border-top: 1px solid ${(props) => props.theme.search.pagination.border};
+  background: ${(props) => props.theme.colors.background};
   width: 100%;
   display: flex;
   position: sticky;
   bottom: 0;
-  box-shadow: 0 -2px 4px 0 ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.shadow};
+  box-shadow: 0 -2px 4px 0 ${(props) => props.theme.colors.shadow};
 `;
 
 const leftRightMargin = '12px';

@@ -53,3 +53,4 @@ env:
   node: true
 globals:
   graphql: false
+  workbox: false

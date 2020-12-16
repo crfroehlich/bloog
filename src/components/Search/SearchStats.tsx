@@ -6,9 +6,7 @@ const Token = styled.span`
 `;
 
 const StatsWrapper = styled.p`
-  color: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'search' does not exist on type 'Theme'.
-search.font.base};
+  color: ${(props) => props.theme.search.fond.base};
   font-size: 11px;
   text-align: right;
   margin-top: 10px;

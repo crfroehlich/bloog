@@ -11,14 +11,12 @@ const DownloadCard = styled(Card)`
   flex-direction: row;
   align-items: center;
   &:hover {
-    border: 1px solid ${(props: any) => props.theme.colors.primary};
+    border: 1px solid ${(props) => props.theme.colors.primary};
   }
 `;
 
 const DownloadPath = styled.div`
-  color: ${(props) => decreaseIntensivity(props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.fontLight, 0.25)};
+  color: ${(props) => decreaseIntensivity(props.theme.colors.fontLight, 0.25)};
   font-size: 9pt;
   padding-left: 16px;
   text-align: right;
@@ -26,9 +24,7 @@ colors.fontLight, 0.25)};
 
 const Title = styled.div`
   padding: 0 14px;
-  color: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.primary};
+  color: ${(props) => props.theme.colors.primary};
   font-size: 12pt;
   font-weight: 500;
   flex: 1;
@@ -38,7 +34,7 @@ export const FileDownloadCard = ({
   title,
   url
 }: any) => {
-  const theme: any = useTheme();
+  const theme = useTheme();
   const splitted = url.split('/')
   const filename = splitted[splitted.length - 1]
   return (

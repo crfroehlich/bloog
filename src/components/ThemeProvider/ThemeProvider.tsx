@@ -13,11 +13,14 @@ export const ThemeProvider = ({darkModeConfig, ...props}) => {
     if (!darkModeConfig.enabled) {
       return false;
     }
-    // @ts-expect-error ts-migrate(2345) FIXME: Argument of type 'string | null' is not assignable... Remove this comment to see the full error message
-    let isDarkThemeActive = JSON.parse(window.localStorage.getItem('isDarkThemeActive'));
-    if (isDarkThemeActive == null) {
-      isDarkThemeActive =
-        window.matchMedia('(prefers-color-scheme: dark)').matches || darkModeConfig.default;
+    let isDarkThemeActive = true;
+    let json = window.localStorage.getItem('isDarkThemeActive');
+    if(json) {
+      isDarkThemeActive = JSON.parse(json);
+      if (isDarkThemeActive == null) {
+        isDarkThemeActive =
+          window.matchMedia('(prefers-color-scheme: dark)').matches || darkModeConfig.default;
+      }
     }
     setState({ isDarkThemeActive });
     return isDarkThemeActive;

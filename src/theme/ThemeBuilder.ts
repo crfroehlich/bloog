@@ -2,16 +2,16 @@ import { base } from './base';
 import { light as lightTheme } from './light';
 import { dark as darkTheme } from './dark';
 import { cloneDeep, merge } from 'lodash';
-import { IBaseTheme, IColors, IThemeColors } from './ITheme';
+import { IEmotionTheme, IThemeColors } from './ITheme';
 
 class ThemeBuilder {
-  result: IBaseTheme;
+  result: IEmotionTheme;
 
   constructor(base: any) {
     this.result = cloneDeep(base);
   }
 
-  applyColors(colors: IThemeColors) {
+  applyColors(colors?: IThemeColors) {
     this.result['colors'] = merge(this.result.colors, colors);
     return this;
   }

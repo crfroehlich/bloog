@@ -13,9 +13,7 @@ const Title = styled.h1`
   font-size: 24pt
   line-height: 1.5;
   font-weight: 500;
-  border-left: 2px solid ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'colors' does not exist on type 'Theme'.
-colors.primary};
+  border-left: 2px solid ${(props) => props.theme.colors.primary};
   padding: 0 16px;
   flex: 1;
   margin-top: 0;
@@ -32,12 +30,8 @@ const PageTitle = styled.div`
   flex-flow: wrap;
   align-items: center;
   padding-bottom: 30px;
-  border-bottom: 1px solid ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'content' does not exist on type 'Theme'.
-content.border};
-  color: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'content' does not exist on type 'Theme'.
-content.titleFont};
+  border-bottom: 1px solid ${(props) => props.theme.contend.border};
+  color: ${(props) => props.theme.contend.titleFont};
   ${onMobile} {
     padding: 15px;
     margin-bottom: 0;
@@ -53,23 +47,15 @@ const TitleWrapper = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  color: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'content' does not exist on type 'Theme'.
-content.font};
+  color: ${(props) => props.theme.contend.font};
   flex: 1;
   code {
-    background: ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'content' does not exist on type 'Theme'.
-content.code.background};
-    border: 1px solid ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'content' does not exist on type 'Theme'.
-content.code.border};
+    background: ${(props) => props.theme.contend.code?.background};
+    border: 1px solid ${(props) => props.theme.contend.code?.border};
     border-radius: 4px;
     padding: 2px 6px;
     font-size: 0.9375em;
-    color: ${(props) => props.theme.    
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'content' does not exist on type 'Theme'.
-content.code.font};
+    color: ${(props) => props.theme.contend.code?.font};
     // overflow-wrap: break-word;
   }
   section {
@@ -134,14 +120,12 @@ export default class MDXRuntimeTest extends React.Component {
   componentDidMount() {
     if (window.location.hash) {
       const element = document.getElementById(window.location.hash.substring(1));
-      // @ts-expect-error ts-migrate(2531) FIXME: Object is possibly 'null'.
-      element.scrollIntoView(true);
+      element?.scrollIntoView(true);
     }
   }
 
   render() {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'data' does not exist on type 'Readonly<{... Remove this comment to see the full error message
-    const { data, location } = this.props;
+    const { data, location } = this.props as any;
     if (!data) {
       return null;
     }

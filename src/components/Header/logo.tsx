@@ -47,9 +47,7 @@ const logoStyle = (theme: any) => css`
 `;
 
 const LogoWrapper = styled.div`
-  margin-left: ${(props) => props.theme.  
-// @ts-expect-error ts-migrate(2339) FIXME: Property 'layout' does not exist on type 'Theme'.
-layout.leftMargin};
+  margin-left: ${(props) => props.theme.layout.leftMargin};
   ${onMobile} {
     margin-left: 10px;
   }

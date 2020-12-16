@@ -5,7 +5,7 @@ import { readYamlOrJson } from './fileUtils';
 import { processPwa } from './config-pwa';
 
 export const generate = (path: any, config: any) => {
-  const generated = `export const generatedConfig = ${config};`;
+  const generated = `export const generatedConfig = ${JSON.stringify(config, undefined, 2)};`;
   fs.writeFile(path, generated, (err) => {
     if (err) return console.log(err);
   });
@@ -34,11 +34,12 @@ class FileReader extends ConfigReader {
 }
 
 class EnvReader extends ConfigReader {
+  config = {};
+
   readArray(key: any) {
-    const value = this.readValue(key);
+    const value = `${this.readValue(key)}`;
     if (value) {
-      // @ts-expect-error ts-migrate(2339) FIXME: Property 'split' does not exist on type 'string | ... Remove this comment to see the full error message
-      return value.split(',').map(String.trim);
+      return value.split(',').map(s => s.trim());
     }
     return value;
   }
@@ -97,19 +98,22 @@ class EnvReader extends ConfigReader {
       }
     }
   }
-
-  // @ts-expect-error ts-migrate(2416) FIXME: Property 'read' in type 'EnvReader' is not assigna... Remove this comment to see the full error message
+ 
   read() {
-    const config = {};
-    this.readObject(defaults, config, '');
-    return config;
+    this.readObject(defaults, this.config, '');
+    return null;
+  }
+  
+  readConfig() {
+    this.readObject(defaults, this.config, '');
+    return this.config;
   }
 }
 
 
 export const read = (): IConfig => {
   const fileConfig = new FileReader().read();
-  const envConfig = new EnvReader().read();
+  const envConfig = new EnvReader().readConfig();
   const def = cloneDeep(defaults);
 
   let config = merge(def, fileConfig);
