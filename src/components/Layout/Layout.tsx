@@ -13,7 +13,7 @@ import {
 import config from '../../../.config';
 import React, { useRef, useEffect, useState } from 'react';
 import { Slide } from 'react-reveal';
-import { hiddenMobile, hiddenTablet } from '../../styles/styles';
+import { hiddenMobile, hiddenTablet, table } from '../../styles/styles';
 import { onMobile, onTablet } from '../../styles/responsive';
 import 'css';
 import { getTheme } from '../../theme';
@@ -78,10 +78,17 @@ function actOnClose(ref: any, onClose: any) {
   }, [ref]);
 }
 
-export const Layout = ({
-  children,
-  location
-}: any) => {
+export const Layout = (props) => {
+  const {
+    children,
+    data,
+    location,
+  } = props;
+
+  let tableOfContents = [];
+  if(data?.mdx?.tableOfContents?.items?.length > 0) {
+    tableOfContents = data.mdx.tableOfContents.items;
+  }
   const [showSearch, setShowSearch] = useState(false);
   const [searchVisible, setSearchVisible] = useState(false);
   const [fullscreenMode, setFullScreenMode] = useState(false);
@@ -120,7 +127,7 @@ export const Layout = ({
         <Wrapper>
           <Sidebar show={! (config.features.fullScreenMode.hideSidebar && fullscreenMode)} location={location} css={hiddenMobile} />
           <Content>{children}</Content>
-          <TableOfContents show={! (config.features.fullScreenMode.hideToc && fullscreenMode)} location={location} css={hiddenTablet} />
+          <TableOfContents toc={tableOfContents} show={! (config.features.fullScreenMode.hideToc && fullscreenMode)} location={location} css={hiddenTablet} />
         </Wrapper>
       </MDXProvider>
     </ThemeProvider>

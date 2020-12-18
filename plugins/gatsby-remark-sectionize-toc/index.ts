@@ -7,8 +7,10 @@ const transform = (tree: any, maxDepth: any) => {
   const maxTocDepth = maxDepth ? maxDepth : MAX_HEADING_DEPTH;
   const visitFunction = sectionize(maxTocDepth);
   for (let depth = MAX_HEADING_DEPTH; depth > 0; depth--) {
+    console.log(tree)
     visit(tree, (node: any) => node.type === 'heading' && node.depth === depth, visitFunction);
   }
+  return tree;
 };
 
 const sectionize = (maxTocDepth: any) => {
@@ -50,5 +52,7 @@ export const sectionizeToc = ({
   const maxDepth = markdownNode.frontmatter.tocDepth
     ? markdownNode.frontmatter.tocDepth
     : pluginOptions.maxDepth;
-  transform(markdownAST, maxDepth);
+  const tree = transform(markdownAST, maxDepth);
+  console.log(tree);
+  return tree;
 };

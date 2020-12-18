@@ -25,7 +25,7 @@ const SearchWrapper = styled.div`
   position: relative;
   min-width: 200px;
   max-width: 280px;
-  border-left: 1px solid ${() => header.border};
+  border-left: 1px solid ${header.border};
   ${onTablet} {
     padding-left: 0;
   }
@@ -39,14 +39,14 @@ const SearchWrapper = styled.div`
 `;
 
 const HeaderWrapper = styled(({ show, ...props }) => (<header {...props} />))`
-  background-color: ${() => header.background};
+  background-color: ${header.background};
   border-radius: 0;
   margin-bottom: 0;
   border: 0;
   display: ${(props) => (props.show ? 'flex' : 'none')};
   align-items: center;
-  box-shadow: 0 3px 8px 0 ${() => header.shadow};
-  border-bottom: 1px solid ${() => header.border};
+  box-shadow: 0 3px 8px 0 ${header.shadow};
+  border-bottom: 1px solid ${header.border};
   padding: 10px 0;
   position: relative;
   overflow: hidden;

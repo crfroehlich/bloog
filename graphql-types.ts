@@ -3822,6 +3822,9 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___cssPropOptimization'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___path'
+  | 'pluginCreator___pluginOptions___extensions'
+  | 'pluginCreator___pluginOptions___lessBabel'
+  | 'pluginCreator___pluginOptions___mediaTypes'
   | 'pluginCreator___pluginOptions___trackingId'
   | 'pluginCreator___pluginOptions___head'
   | 'pluginCreator___pluginOptions___anonymize'
@@ -3836,14 +3839,21 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___height'
   | 'pluginCreator___pluginOptions___prependToBody'
   | 'pluginCreator___pluginOptions___color'
+  | 'pluginCreator___pluginOptions___engine'
+  | 'pluginCreator___pluginOptions___engineOptions___encode'
+  | 'pluginCreator___pluginOptions___engineOptions___tokenize'
+  | 'pluginCreator___pluginOptions___engineOptions___threshold'
+  | 'pluginCreator___pluginOptions___engineOptions___resolution'
+  | 'pluginCreator___pluginOptions___engineOptions___depth'
+  | 'pluginCreator___pluginOptions___query'
+  | 'pluginCreator___pluginOptions___ref'
+  | 'pluginCreator___pluginOptions___index'
+  | 'pluginCreator___pluginOptions___store'
   | 'pluginCreator___pluginOptions___appendScript'
   | 'pluginCreator___pluginOptions___pathCheck'
   | 'pluginCreator___pluginOptions___allExtensions'
   | 'pluginCreator___pluginOptions___isTSX'
   | 'pluginCreator___pluginOptions___jsxPragma'
-  | 'pluginCreator___pluginOptions___extensions'
-  | 'pluginCreator___pluginOptions___lessBabel'
-  | 'pluginCreator___pluginOptions___mediaTypes'
   | 'pluginCreator___pluginOptions___enabled'
   | 'pluginCreator___pluginOptions___showIcon'
   | 'pluginCreator___pluginOptions___title'
@@ -3856,21 +3866,11 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___outputPath'
   | 'pluginCreator___pluginOptions___generator'
   | 'pluginCreator___pluginOptions___language'
-  | 'pluginCreator___pluginOptions___query'
   | 'pluginCreator___pluginOptions___feeds'
   | 'pluginCreator___pluginOptions___feeds___query'
   | 'pluginCreator___pluginOptions___feeds___output'
   | 'pluginCreator___pluginOptions___feeds___match'
   | 'pluginCreator___pluginOptions___feeds___title'
-  | 'pluginCreator___pluginOptions___engine'
-  | 'pluginCreator___pluginOptions___engineOptions___encode'
-  | 'pluginCreator___pluginOptions___engineOptions___tokenize'
-  | 'pluginCreator___pluginOptions___engineOptions___threshold'
-  | 'pluginCreator___pluginOptions___engineOptions___resolution'
-  | 'pluginCreator___pluginOptions___engineOptions___depth'
-  | 'pluginCreator___pluginOptions___ref'
-  | 'pluginCreator___pluginOptions___index'
-  | 'pluginCreator___pluginOptions___store'
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
   | 'pluginCreator___pluginOptions___background_color'
@@ -4084,6 +4084,9 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___cssPropOptimization'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
+  | 'pluginOptions___extensions'
+  | 'pluginOptions___lessBabel'
+  | 'pluginOptions___mediaTypes'
   | 'pluginOptions___trackingId'
   | 'pluginOptions___head'
   | 'pluginOptions___anonymize'
@@ -4098,14 +4101,21 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___height'
   | 'pluginOptions___prependToBody'
   | 'pluginOptions___color'
+  | 'pluginOptions___engine'
+  | 'pluginOptions___engineOptions___encode'
+  | 'pluginOptions___engineOptions___tokenize'
+  | 'pluginOptions___engineOptions___threshold'
+  | 'pluginOptions___engineOptions___resolution'
+  | 'pluginOptions___engineOptions___depth'
+  | 'pluginOptions___query'
+  | 'pluginOptions___ref'
+  | 'pluginOptions___index'
+  | 'pluginOptions___store'
   | 'pluginOptions___appendScript'
   | 'pluginOptions___pathCheck'
   | 'pluginOptions___allExtensions'
   | 'pluginOptions___isTSX'
   | 'pluginOptions___jsxPragma'
-  | 'pluginOptions___extensions'
-  | 'pluginOptions___lessBabel'
-  | 'pluginOptions___mediaTypes'
   | 'pluginOptions___enabled'
   | 'pluginOptions___showIcon'
   | 'pluginOptions___title'
@@ -4118,21 +4128,11 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___outputPath'
   | 'pluginOptions___generator'
   | 'pluginOptions___language'
-  | 'pluginOptions___query'
   | 'pluginOptions___feeds'
   | 'pluginOptions___feeds___query'
   | 'pluginOptions___feeds___output'
   | 'pluginOptions___feeds___match'
   | 'pluginOptions___feeds___title'
-  | 'pluginOptions___engine'
-  | 'pluginOptions___engineOptions___encode'
-  | 'pluginOptions___engineOptions___tokenize'
-  | 'pluginOptions___engineOptions___threshold'
-  | 'pluginOptions___engineOptions___resolution'
-  | 'pluginOptions___engineOptions___depth'
-  | 'pluginOptions___ref'
-  | 'pluginOptions___index'
-  | 'pluginOptions___store'
   | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
   | 'pluginOptions___background_color'
@@ -4274,6 +4274,9 @@ export type SitePluginPluginOptions = {
   cssPropOptimization?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
+  extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
+  lessBabel?: Maybe<Scalars['Boolean']>;
+  mediaTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
   trackingId?: Maybe<Scalars['String']>;
   head?: Maybe<Scalars['Boolean']>;
   anonymize?: Maybe<Scalars['Boolean']>;
@@ -4288,14 +4291,17 @@ export type SitePluginPluginOptions = {
   height?: Maybe<Scalars['Int']>;
   prependToBody?: Maybe<Scalars['Boolean']>;
   color?: Maybe<Scalars['String']>;
+  engine?: Maybe<Scalars['String']>;
+  engineOptions?: Maybe<SitePluginPluginOptionsEngineOptions>;
+  query?: Maybe<Scalars['String']>;
+  ref?: Maybe<Scalars['String']>;
+  index?: Maybe<Array<Maybe<Scalars['String']>>>;
+  store?: Maybe<Array<Maybe<Scalars['String']>>>;
   appendScript?: Maybe<Scalars['String']>;
   pathCheck?: Maybe<Scalars['Boolean']>;
   allExtensions?: Maybe<Scalars['Boolean']>;
   isTSX?: Maybe<Scalars['Boolean']>;
   jsxPragma?: Maybe<Scalars['String']>;
-  extensions?: Maybe<Array<Maybe<Scalars['String']>>>;
-  lessBabel?: Maybe<Scalars['Boolean']>;
-  mediaTypes?: Maybe<Array<Maybe<Scalars['String']>>>;
   enabled?: Maybe<Scalars['Boolean']>;
   showIcon?: Maybe<Scalars['Boolean']>;
   title?: Maybe<Scalars['String']>;
@@ -4308,13 +4314,7 @@ export type SitePluginPluginOptions = {
   outputPath?: Maybe<Scalars['String']>;
   generator?: Maybe<Scalars['String']>;
   language?: Maybe<Scalars['String']>;
-  query?: Maybe<Scalars['String']>;
   feeds?: Maybe<Array<Maybe<SitePluginPluginOptionsFeeds>>>;
-  engine?: Maybe<Scalars['String']>;
-  engineOptions?: Maybe<SitePluginPluginOptionsEngineOptions>;
-  ref?: Maybe<Scalars['String']>;
-  index?: Maybe<Array<Maybe<Scalars['String']>>>;
-  store?: Maybe<Array<Maybe<Scalars['String']>>>;
   short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
   background_color?: Maybe<Scalars['String']>;
@@ -4378,6 +4378,9 @@ export type SitePluginPluginOptionsFilterInput = {
   cssPropOptimization?: Maybe<BooleanQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
+  extensions?: Maybe<StringQueryOperatorInput>;
+  lessBabel?: Maybe<BooleanQueryOperatorInput>;
+  mediaTypes?: Maybe<StringQueryOperatorInput>;
   trackingId?: Maybe<StringQueryOperatorInput>;
   head?: Maybe<BooleanQueryOperatorInput>;
   anonymize?: Maybe<BooleanQueryOperatorInput>;
@@ -4392,14 +4395,17 @@ export type SitePluginPluginOptionsFilterInput = {
   height?: Maybe<IntQueryOperatorInput>;
   prependToBody?: Maybe<BooleanQueryOperatorInput>;
   color?: Maybe<StringQueryOperatorInput>;
+  engine?: Maybe<StringQueryOperatorInput>;
+  engineOptions?: Maybe<SitePluginPluginOptionsEngineOptionsFilterInput>;
+  query?: Maybe<StringQueryOperatorInput>;
+  ref?: Maybe<StringQueryOperatorInput>;
+  index?: Maybe<StringQueryOperatorInput>;
+  store?: Maybe<StringQueryOperatorInput>;
   appendScript?: Maybe<StringQueryOperatorInput>;
   pathCheck?: Maybe<BooleanQueryOperatorInput>;
   allExtensions?: Maybe<BooleanQueryOperatorInput>;
   isTSX?: Maybe<BooleanQueryOperatorInput>;
   jsxPragma?: Maybe<StringQueryOperatorInput>;
-  extensions?: Maybe<StringQueryOperatorInput>;
-  lessBabel?: Maybe<BooleanQueryOperatorInput>;
-  mediaTypes?: Maybe<StringQueryOperatorInput>;
   enabled?: Maybe<BooleanQueryOperatorInput>;
   showIcon?: Maybe<BooleanQueryOperatorInput>;
   title?: Maybe<StringQueryOperatorInput>;
@@ -4412,13 +4418,7 @@ export type SitePluginPluginOptionsFilterInput = {
   outputPath?: Maybe<StringQueryOperatorInput>;
   generator?: Maybe<StringQueryOperatorInput>;
   language?: Maybe<StringQueryOperatorInput>;
-  query?: Maybe<StringQueryOperatorInput>;
   feeds?: Maybe<SitePluginPluginOptionsFeedsFilterListInput>;
-  engine?: Maybe<StringQueryOperatorInput>;
-  engineOptions?: Maybe<SitePluginPluginOptionsEngineOptionsFilterInput>;
-  ref?: Maybe<StringQueryOperatorInput>;
-  index?: Maybe<StringQueryOperatorInput>;
-  store?: Maybe<StringQueryOperatorInput>;
   short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
   background_color?: Maybe<StringQueryOperatorInput>;
@@ -4678,22 +4678,14 @@ export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 export type Unnamed_1_Query = { localSearchHmD?: Maybe<Pick<LocalSearchHmD, 'index' | 'store'>> };
 
-export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type Unnamed_2_Query = { allMdx: { edges: Array<{ node: (
-        Pick<Mdx, 'tableOfContents'>
-        & { fields?: Maybe<Pick<MdxFields, 'slug'>>, frontmatter?: Maybe<Pick<MdxFrontmatter, 'showToc' | 'tocDepth'>> }
-      ) }> } };
-
-export type Unnamed_3_QueryVariables = Exact<{
+export type Unnamed_2_QueryVariables = Exact<{
   id: Scalars['String'];
 }>;
 
 
-export type Unnamed_3_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'docsLocation' | 'docsLocationType' | 'editable'>> }>, mdx?: Maybe<(
+export type Unnamed_2_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'docsLocation' | 'docsLocationType' | 'editable'>> }>, mdx?: Maybe<(
     Pick<Mdx, 'body' | 'tableOfContents' | 'timeToRead'>
-    & { fields?: Maybe<Pick<MdxFields, 'id' | 'title' | 'slug'>>, parent?: Maybe<(
+    & { fields?: Maybe<Pick<MdxFields, 'id' | 'title' | 'slug'>>, wordCount?: Maybe<Pick<MdxWordCount, 'paragraphs' | 'sentences' | 'words'>>, parent?: Maybe<(
       Pick<File, 'relativePath'>
       & { fields?: Maybe<Pick<Fields, 'gitLogLatestAuthorName' | 'gitLogLatestAuthorEmail' | 'gitLogLatestDate'>> }
     )>, frontmatter?: Maybe<Pick<MdxFrontmatter, 'metaTitle' | 'showMetadata' | 'editable' | 'showPreviousNext' | 'showToc'>> }

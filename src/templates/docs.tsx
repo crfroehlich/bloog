@@ -120,9 +120,9 @@ export const DocPage = (props) => {
     }
   });
 
-  const { data, location } = props as any;
+  const { data, location } = props;
   if (!data) {
-    return null;
+    return <Empty />;
   }
   const {
     mdx,
@@ -207,8 +207,13 @@ export const pageQuery = graphql`
         slug
       }
       body
-      tableOfContents
+      tableOfContents(maxDepth: 10)
       timeToRead
+      wordCount {
+        paragraphs
+        sentences
+        words
+      }
       parent {
         ... on File {
           relativePath

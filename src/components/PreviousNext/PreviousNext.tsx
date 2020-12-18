@@ -234,10 +234,10 @@ export const PreviousNext = ({
   return (
     <PreviousNextWrapper>
       {currentIndex >= 0 ? (
-        <div>
+        <>
           <LeftButton url={previous.url} title={previous.title} label={previousLabel} />
           <RightButton url={next.url} title={next.title} label={nextLabel} />
-        </div>
+        </>
       ) : <Empty />}
     </PreviousNextWrapper>
   );

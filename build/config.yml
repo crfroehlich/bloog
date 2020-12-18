@@ -1,8 +1,8 @@
 ---
 metadata:
-  name: HikingMyDesk
-  short_name: HmDgMyDesk
-  description: HmDgMyDesk - awesome GitBook-like documentation generator using Gatsby
+  name: Hiking My Desk
+  short_name: hiking-my-desk
+  description: One Man's Journey to Hike a Desk, Possibly His Own
   language: en
   pathPrefix: '/'
   siteImage:
@@ -10,17 +10,11 @@ metadata:
   themeColor: '#ff0000'
 header:
   enabled: true
-  logo: '/assets/code.svg'
+  logo: '/assets/logo.svg'
   logoLink: '/'
   helpUrl: ''
   links:
-    - text: HmDgMyDesk
-      link: https://github.com/filipowm/hmd
-      external: true
-    - text: Gatsby
-      link: https://www.gatsbyjs.org
-      external: true
-    - text: Docs
+    - text: Home
       link: '/'
       external: false
 sidebar:
@@ -46,34 +40,25 @@ sidebar:
     - order: 5
       path: '/developing'
       title: ':computer: Developing'
-  links:
-    - text: HmDgMyDesk
-      link: https://github.com/filipowm/hmd
-    - text: React
-      link: https://reactjs.org
   ignoreIndex: false
-  poweredBy:
-    trademark: '/assets/gatsby.png'
-    name: GatsbyJS
-    link: https://www.gatsbyjs.org
 pwa:
   enabled: true
   manifest:
     display: standalone
     crossOrigin: anonymous
-    icon: '/assets/favicon.png'
+    icon: '/assets/favicon.svg'
 
 social:
-  github: https://github.com/filipowm/hmd
-  linkedin: https://www.linkedin.com/in/mateusz-filipowicz-437b4768/
-  twitter: twitter url
+  github: https://github.com/crfroehlich/blog
+  linkedin: https://www.linkedin.com/in/christopher.froehlich
+  twitter: https://twitter.com/tquestingbeast
 
 features:
   darkMode:
     enabled: true
     default: false
   editOnRepo:
-    location: https://github.com/filipowm/hmd
+    location: https://github.com/crfroehlich/blog
     type: github
     editable: true
   mermaid:
@@ -96,11 +81,11 @@ features:
     arrowKeyNavigation: true
   rss:
     enabled: true
-    title: HmDgMyDesk Docs
+    title: Hiking My Desk Feed
     showIcon: false
-    copyright: '2020, Mateusz Filipowicz'
-    webMaster: 'Mateusz Filipowicz'
-    managingEditor: 'Mateusz Filipowicz'
+    copyright: '2020, Public Domain'
+    webMaster: 'CRF'
+    managingEditor: 'CRF'
     categories:
       - Docs as Code
       - GatsbyJS

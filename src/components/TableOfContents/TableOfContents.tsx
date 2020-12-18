@@ -109,9 +109,9 @@ const TocTitle = styled(({
   }
 `;
 
-const buildToC = (item: any, items: any, maxDepth: any, depth: any) => {
-  if (item.items) {
-    item.items.forEach((innerItem: any, i: any) => {
+const buildToC = (toc: any, items: any, maxDepth: any, depth: any) => {
+  if (toc) {
+    toc.forEach((innerItem: any, i: any) => {
       if (depth > maxDepth) {
         return;
       }
@@ -131,28 +131,27 @@ const buildToC = (item: any, items: any, maxDepth: any, depth: any) => {
   }
 };
 
+const isCurrentPage = (slug: any, location: any) => slug === location.pathname || config.metadata.pathPrefix + slug === location.pathname;
+
 const generateToCItems = (allMdx: any, location: any) => {
   let finalNavItems: any = [];
-  const isCurrentPage = (slug: any) => slug === location.pathname || config.metadata.pathPrefix + slug === location.pathname;
-  const showToc = (showToc: any) => (config.features.toc.show === true && showToc !== false) || showToc === true;
-
-  if (allMdx.edges !== undefined && allMdx.edges.length > 0) {
-    allMdx.edges.every((item: any) => {
-      let innerItems: any = [];
-      if (item !== undefined) {
-        if (isCurrentPage(item.node.fields.slug) && showToc(item.node.frontmatter.showToc)) {
-          const maxDepth = item.node.frontmatter.tocDepth
-            ? item.node.frontmatter.tocDepth
-            : config.features.toc.depth;
-          buildToC(item.node.tableOfContents, innerItems, maxDepth, 1);
+  if (allMdx.edges?.length > 0) {
+    allMdx.edges
+      .filter((item: any) => isCurrentPage(item?.node?.fields?.slug, location))
+      .every((item: any) => {
+        let innerItems: any = [];
+        
+        const maxDepth = item.node.frontmatter.tocDepth
+          ? item.node.frontmatter.tocDepth
+          : config.features.toc.depth;
+        buildToC(item.node.tableOfContents, innerItems, maxDepth, 1);
+        
+        if (innerItems.length > 0) {
+          finalNavItems = innerItems;
+          return false;
         }
-      }
-      if (innerItems.length > 0) {
-        finalNavItems = innerItems;
-        return false;
-      }
-      return true;
-    });
+        return true;
+      });
   }
   return finalNavItems;
 };
@@ -176,31 +175,17 @@ export const TableOfContents = (props) => {
   const {
     show,
     className,
-    location
+    location,
+    toc,
   } = props;
-  const allMdx = useStaticQuery(graphql`
-    query {
-      allMdx {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            tableOfContents
-
-            frontmatter {
-              showToc
-              tocDepth
-            }
-          }
-        }
-      }
-    }
-  `);
+  
     
-  const finalNavItems = generateToCItems(allMdx, location);
-  let ids = finalNavItems.map((item) => {
-    return item.props.to.substr(1);
+  //const finalNavItems = generateToCItems(allMdx, location);
+  const finalNavItems = [];
+  buildToC(toc, finalNavItems, 10, 1);
+  console.log(['final nav items', finalNavItems, toc])
+  let ids = finalNavItems.map((item: any) => {
+    return item.to.substr(1);
   });
   const scrollspyRef: any = React.createRef();
   const refresh = () => {

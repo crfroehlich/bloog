@@ -1,7 +1,7 @@
 export const configDefaults: IConfig = {
   metadata: {
     description: '',
-    favicon: '/assets/favicon.png',
+    favicon: '/assets/favicon.svg',
     gaTrackingId: '',
     language: 'en',
     name: 'HikingMyDesk',
@@ -58,7 +58,7 @@ export const configDefaults: IConfig = {
   features: {
     editOnRepo: {
       editable: true,
-      location: 'https://github.com/filipowm/hmd',
+      location: 'https://github.com/crfroehlich/blog',
       type: 'github',
     },
     search: {

@@ -67,7 +67,7 @@ const plugins: Array<string | { resolve: string, options: any }> = [
         },
         'gatsby-remark-graphviz',
         {
-          resolve: require.resolve(`./plugins/gatsby-remark-sectionize-toc`),
+          resolve: require.resolve(`./plugins/gatsby-remark-sectionize-toc/index.ts`),
           options: {
             maxDepth: config.features.toc.depth,
           },

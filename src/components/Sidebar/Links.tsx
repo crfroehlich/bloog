@@ -11,20 +11,30 @@ const Link = styled(({
   to,
   text
 }: any) => {
-  return (
-    
-    <li className={className}>
-      
-      <a href={to} target={'_blank'} css={flex} rel={'noreferrer'}>
-        {text}
-        
-        <button css={transparent}>
-          
-          <ExternalLink size={14} />
-        </button>
-      </a>
-    </li>
-  );
+  try {
+    if(to?.length > 0) {
+      return (
+        <li className={className}>
+          <a href={to} target={'_blank'} css={flex} rel={'noreferrer'}>
+            {text}
+            <button css={transparent}>
+              <ExternalLink size={14} />
+            </button>
+          </a>
+        </li>
+      );
+    } else {
+      return (
+        <li className={className}>
+          {text}
+        </li>
+      );
+    }
+  } catch(e) {
+    console.log(e)
+    console.log(to);
+    throw e; 
+  }
 })`
   list-style: none;
   a {

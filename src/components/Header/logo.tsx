@@ -49,7 +49,7 @@ const logoStyle = () => css`
 `;
 
 const LogoWrapper = styled.div`
-  margin-left: ${() => layout.leftMargin};
+  margin-left: ${layout.leftMargin};
   ${onMobile} {
     margin-left: 10px;
   }
@@ -77,10 +77,10 @@ export const Logo = styled(({
     </div>
   );
 })`
-  min-width: ${() => layout.leftWidth};
+  min-width: ${layout.leftWidth};
   display: flex;
   align-items: center;
-  border-right: 1px solid ${() => header.border};
+  border-right: 1px solid ${header.border};
   ${onMobile} {
     border-right: none;
     min-width: auto;

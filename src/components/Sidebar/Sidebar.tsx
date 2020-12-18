@@ -136,7 +136,7 @@ export const Sidebar = ({
     <NavigationWrapper className={className} show={show}>
       <SidebarMain css={{...scrollbar}}>
         <ContentTree edges={edges} location={location} />
-        {config.sidebar.links && config.sidebar.links.length > 0 ? (
+        {config.sidebar.links?.length > 0 ? (
           <div>
             <Divider />
             <Links links={config.sidebar.links} />

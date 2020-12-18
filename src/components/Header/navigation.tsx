@@ -3,7 +3,7 @@ import { onMobile } from '../../styles/responsive';
 import { Empty } from '../Empty';
 import { getTheme } from '../../theme';
 
-const { header, colors, transitions } = getTheme();
+const { header } = getTheme();
 
 export const Navigation = styled(({
   className,
@@ -17,9 +17,7 @@ export const Navigation = styled(({
               const openRule = link.external ? '_blank' : '_self';
               if (link.link !== '' && link.text !== '') {
                 return (
-                  
                   <li key={`${key}_${link}`}>
-                    
                     <a
                       href={link.link}
                       target={openRule}
@@ -63,7 +61,7 @@ export const Navigation = styled(({
       height: 3px;
       bottom: 0;
       left: 0;
-      background: ${() => header.fond!.hover};
+      background: ${header.fond!.hover};
       visibility: hidden;
       border-radius: 4px;
       transform: scaleX(0);
@@ -77,14 +75,14 @@ export const Navigation = styled(({
     a {
       font-family: 'Roboto';
       position: relative;
-      color: ${() => header.fond!.base};
+      color: ${header.fond!.base};
       font-size: 16px;
       font-weight: 500;
       line-height: 1em;
       opacity: 1;
       padding: 10px 15px;
       &:hover {
-        color: ${() => header.fond!.hover};
+        color: ${header.fond!.hover};
       }
     }
   }
