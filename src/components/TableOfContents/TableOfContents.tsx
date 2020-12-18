@@ -56,14 +56,13 @@ const Sidebar = styled(({ show, ...props }) => (<aside {...props} />))`
   }
 `;
 
-// eslint-disable-next-line no-unused-vars
-const ListItem = styled(({
-  className,
-  active,
-  level,
-  children,
-  ...props
-}: any) => {
+const getFontWeight = (level: number): number => ((level+1)*1000)-300;
+
+const ListItem = styled((props) => {
+  const {
+    className,
+    children,
+  } = props;
   return (
     <li className={className}>
       <a href={props.to} {...props}>
@@ -73,8 +72,8 @@ const ListItem = styled(({
   );
 })`
   a {
-    font-weight: ${({ level }) => (level === 0 ? 700 : 400)};
-    padding-left: ${(props) => (props.level || 0) * 0.85}rem !important;
+    font-weight: ${getFontWeight};
+    padding-left: ${(props) => (props.level+1) * 0.85}rem !important;
     svg {
       float: right;
       margin-right: 1rem;
@@ -86,9 +85,9 @@ const TocTitle = styled(({
   className
 }: any) => {
   return (
-    
+
     <span className={className}>
-      
+
       <AlignRight size={15} />
       Contents
     </span>
@@ -109,51 +108,26 @@ const TocTitle = styled(({
   }
 `;
 
-const buildToC = (toc: any, items: any, maxDepth: any, depth: any) => {
-  if (toc) {
+const buildToC = (toc: any[], items: any[], maxDepth: number, depth: number) => {
+  if (toc?.length > 0) {
     toc.forEach((innerItem: any, i: any) => {
       if (depth > maxDepth) {
         return;
       }
       const itemId = innerItem.title
-        ? emoji.clean(innerItem.title).replace(/\s+/g, '').toLowerCase()
+        ? `#h-${emoji.clean(innerItem.title).replace(/\s+/g, '').toLowerCase()}`
         : '#';
       const title = emoji.emojify(innerItem.title);
       let listItem = (
-        
-        <ListItem key={`${items.length}_${i}`} to={`#${itemId}`} level={depth}>
+
+        <ListItem key={`${itemId}`} to={`${itemId}`} level={depth}>
           {title}
         </ListItem>
       );
       items.push(listItem);
-      buildToC(innerItem, items, maxDepth, depth + 1);
+      buildToC(innerItem.items, items, maxDepth, depth + 1);
     });
   }
-};
-
-const isCurrentPage = (slug: any, location: any) => slug === location.pathname || config.metadata.pathPrefix + slug === location.pathname;
-
-const generateToCItems = (allMdx: any, location: any) => {
-  let finalNavItems: any = [];
-  if (allMdx.edges?.length > 0) {
-    allMdx.edges
-      .filter((item: any) => isCurrentPage(item?.node?.fields?.slug, location))
-      .every((item: any) => {
-        let innerItems: any = [];
-        
-        const maxDepth = item.node.frontmatter.tocDepth
-          ? item.node.frontmatter.tocDepth
-          : config.features.toc.depth;
-        buildToC(item.node.tableOfContents, innerItems, maxDepth, 1);
-        
-        if (innerItems.length > 0) {
-          finalNavItems = innerItems;
-          return false;
-        }
-        return true;
-      });
-  }
-  return finalNavItems;
 };
 
 const tocItemsEqual = (items: any, targetItems: any) => {
@@ -178,14 +152,11 @@ export const TableOfContents = (props) => {
     location,
     toc,
   } = props;
-  
-    
-  //const finalNavItems = generateToCItems(allMdx, location);
+
   const finalNavItems = [];
-  buildToC(toc, finalNavItems, 10, 1);
-  console.log(['final nav items', finalNavItems, toc])
+  buildToC(toc, finalNavItems, 10, 0);
   let ids = finalNavItems.map((item: any) => {
-    return item.to.substr(1);
+    return item.props.to.substr(1);
   });
   const scrollspyRef: any = React.createRef();
   const refresh = () => {
