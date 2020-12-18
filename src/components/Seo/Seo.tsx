@@ -2,9 +2,9 @@ import { Helmet } from 'react-helmet';
 import config from '../../../.config';
 
 type Props = {
-    frontmatter: any;
-    title: string;
-    url: string;
+  frontmatter: any;
+  title: string;
+  url: string;
 };
 
 export const Seo = ({ frontmatter, title, url }: Props) => {

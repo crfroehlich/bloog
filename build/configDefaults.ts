@@ -73,11 +73,11 @@ export const configDefaults: IConfig = {
       hitsPerPage: 10,
       showStats: true,
       localSearchEngine: {
-        encode: "advanced",
-        tokenize: "full",
+        encode: 'advanced',
+        tokenize: 'full',
         threshold: 2,
         resolution: 30,
-        depth: 20
+        depth: 20,
       },
       pagination: {
         enabled: true,
@@ -132,31 +132,31 @@ export const configDefaults: IConfig = {
       enabled: false,
       hideHeader: true,
       hideToc: true,
-      hideSidebar: true
-    }
+      hideSidebar: true,
+    },
   },
 };
 
 export interface IConfig {
   metadata: Metadata;
-  header:   Header;
-  sidebar:  Sidebar;
-  pwa:      Pwa;
-  social:   Social;
+  header: Header;
+  sidebar: Sidebar;
+  pwa: Pwa;
+  social: Social;
   features: Features;
 }
 
 interface Features {
-  editOnRepo:     EditOnRepo;
-  search:         Search;
-  toc:            Toc;
-  previousNext:   PreviousNext;
-  scrollTop:      boolean;
-  showMetadata:   boolean;
-  pageProgress:   PageProgress;
-  mermaid:        Mermaid;
-  rss:            RSS;
-  darkMode:       DarkMode;
+  editOnRepo: EditOnRepo;
+  search: Search;
+  toc: Toc;
+  previousNext: PreviousNext;
+  scrollTop: boolean;
+  showMetadata: boolean;
+  pageProgress: PageProgress;
+  mermaid: Mermaid;
+  rss: RSS;
+  darkMode: DarkMode;
   fullScreenMode: FullScreenMode;
 }
 
@@ -168,149 +168,149 @@ interface DarkMode {
 interface EditOnRepo {
   editable: boolean;
   location: string;
-  type:     string;
+  type: string;
 }
 
 interface FullScreenMode {
-  enabled:     boolean;
-  hideHeader:  boolean;
-  hideToc:     boolean;
+  enabled: boolean;
+  hideHeader: boolean;
+  hideToc: boolean;
   hideSidebar: boolean;
 }
 
 interface Mermaid {
   language: string;
-  theme:    string;
-  options:  any;
-  width:    number;
-  height:   number;
+  theme: string;
+  options: any;
+  width: number;
+  height: number;
 }
 
 interface PoweredBy {
-  name:       string;
-  link:       string;
-  trademark:  string;
+  name: string;
+  link: string;
+  trademark: string;
 }
 
 interface PageProgress {
-  color:         string;
-  enabled:       boolean;
-  excludePaths:  string[];
-  height:        number;
-  includePaths:  string[];
+  color: string;
+  enabled: boolean;
+  excludePaths: string[];
+  height: number;
+  includePaths: string[];
   prependToBody: boolean;
 }
 
 interface PreviousNext {
-  enabled:            boolean;
+  enabled: boolean;
   arrowKeyNavigation: boolean;
 }
 
 interface RSS {
-  enabled:        boolean;
-  showIcon:       boolean;
-  title:          string;
-  copyright:      string;
-  webMaster:      string;
+  enabled: boolean;
+  showIcon: boolean;
+  title: string;
+  copyright: string;
+  webMaster: string;
   managingEditor: string;
-  categories:     string[];
-  ttl:            string;
-  matchRegex:     string;
-  outputPath:     string;
-  generator:      string;
+  categories: string[];
+  ttl: string;
+  matchRegex: string;
+  outputPath: string;
+  generator: string;
 }
 
 interface Search {
-  enabled:           boolean;
-  indexName:         string;
-  excerptSize:       number;
-  engine:            string;
-  placeholder:       string;
-  startComponent:    string;
-  debounceTime:      number;
-  snippetLength:     number;
-  hitsPerPage:       number;
-  showStats:         boolean;
+  enabled: boolean;
+  indexName: string;
+  excerptSize: number;
+  engine: string;
+  placeholder: string;
+  startComponent: string;
+  debounceTime: number;
+  snippetLength: number;
+  hitsPerPage: number;
+  showStats: boolean;
   localSearchEngine: LocalSearchEngine;
-  pagination:        Pagination;
+  pagination: Pagination;
 }
 
 interface LocalSearchEngine {
-  encode:     string;
-  tokenize:   string;
-  threshold:  number;
+  encode: string;
+  tokenize: string;
+  threshold: number;
   resolution: number;
-  depth:      number;
+  depth: number;
 }
 
 interface Pagination {
-  enabled:      boolean;
-  totalPages:   number;
-  showNext:     boolean;
+  enabled: boolean;
+  totalPages: number;
+  showNext: boolean;
   showPrevious: boolean;
 }
 
 interface Toc {
-  show:  boolean;
+  show: boolean;
   depth: number;
 }
 
 interface Header {
-  logo:     string;
+  logo: string;
   logoLink: string;
-  helpUrl:  string;
-  links?:   { link: string; text: string; external: string; }[];
+  helpUrl: string;
+  links?: { link: string; text: string; external: string }[];
 }
 
 interface Metadata {
-  description:  string;
-  favicon:      string;
+  description: string;
+  favicon: string;
   gaTrackingId: string;
-  language:     string;
-  name:         string;
-  ogImage:      string;
-  pathPrefix:   string;
-  short_name:   string;
-  siteImage:    string;
-  themeColor:   string;
-  title:        string;
-  url:          string;
+  language: string;
+  name: string;
+  ogImage: string;
+  pathPrefix: string;
+  short_name: string;
+  siteImage: string;
+  themeColor: string;
+  title: string;
+  url: string;
 }
 
 interface Pwa {
-  enabled:  boolean;
+  enabled: boolean;
   manifest: Manifest;
 }
 
 interface Manifest {
-  name:             string;
-  short_name:       string;
-  start_url:        string;
+  name: string;
+  short_name: string;
+  start_url: string;
   background_color: string;
-  theme_color:      string;
-  display:          string;
-  crossOrigin:      string;
+  theme_color: string;
+  display: string;
+  crossOrigin: string;
 }
 
 interface Sidebar {
-  enabled:        boolean;
-  ignoreIndex:    boolean;
+  enabled: boolean;
+  ignoreIndex: boolean;
   forcedNavOrder: any[];
-  expanded:       any[];
-  groups:         any[];
-  links:          any[];
-  poweredBy:      PoweredBy;
+  expanded: any[];
+  groups: any[];
+  links: any[];
+  poweredBy: PoweredBy;
 }
 
 interface Social {
   facebook: string;
-  github:   string;
-  gitlab:   string;
+  github: string;
+  gitlab: string;
   linkedin: string;
-  mail:     string;
-  gmail:    string;
-  slack:    string;
-  twich:    string;
-  twitter:  string;
-  youtube:  string;
+  mail: string;
+  gmail: string;
+  slack: string;
+  twich: string;
+  twitter: string;
+  youtube: string;
 }

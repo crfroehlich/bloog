@@ -1,8 +1,6 @@
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
+import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 
-export const ReactLiveProvider = ({
-  code
-}: any) => {
+export const ReactLiveProvider = ({ code }: any) => {
   return (
     <LiveProvider code={code}>
       <LiveEditor />

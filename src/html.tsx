@@ -1,9 +1,9 @@
 import config from '../.config';
-import { scrollbar } from './styles';
 import { Empty } from './components/Empty';
+import { scrollbar } from './styles';
 
 export const HTML = (props) => {
-  const { 
+  const {
     htmlAttributes,
     headComponents,
     bodyAttributes,
@@ -20,17 +20,21 @@ export const HTML = (props) => {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         {config.metadata.ogImage ? (
           <meta property="og:image" content={config.metadata.ogImage} />
-        ) : <Empty />}
-        
+        ) : (
+          <Empty />
+        )}
+
         <meta property="twitter:card" content="summary_large_image" />
         {config.metadata.ogImage ? (
-          
           <meta property="twitter:image" content={config.metadata.ogImage} />
-        ) : <Empty />}
+        ) : (
+          <Empty />
+        )}
         {config.metadata.favicon ? (
-          
           <link rel="shortcut icon" type="image/svg" href={config.metadata.favicon} />
-        ) : <Empty />}
+        ) : (
+          <Empty />
+        )}
         <noscript key="noscript"></noscript>
         {headComponents}
       </head>

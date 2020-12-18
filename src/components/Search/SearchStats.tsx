@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { paddingLeftRight } from './styles';
 import { getTheme } from '../../theme';
+import { paddingLeftRight } from './styles';
 
 const { search } = getTheme();
 
@@ -15,10 +15,7 @@ const StatsWrapper = styled.p`
   margin-top: 10px;
 `;
 
-export const SearchStats = ({
-  hits,
-  processingTimeMS
-}: any) => (
+export const SearchStats = ({ hits, processingTimeMS }: any) => (
   <StatsWrapper css={paddingLeftRight}>
     Found
     <Token> {hits}</Token> results in

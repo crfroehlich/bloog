@@ -1,9 +1,8 @@
-
-import React from 'react';
 import styled from '@emotion/styled';
+import React from 'react';
 import { getTheme } from '../../theme';
 
-const transitions = getTheme().transitions;
+const { transitions } = getTheme();
 
 const ButtonIconWrapper = styled('div')`
   display: flex;
@@ -30,7 +29,6 @@ const ButtonIconWrapper = styled('div')`
 export const ButtonIcon = (props) => {
   const { icon } = props;
   return (
-    
     <ButtonIconWrapper {...props} role={'button'} tabIndex={0}>
       {/* not defining color as a workaround to use css styling instead */}
       {icon.render({ color: '' })}

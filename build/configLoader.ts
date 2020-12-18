@@ -1,11 +1,11 @@
-import { merge, cloneDeep } from 'lodash';
+import { cloneDeep, merge } from 'lodash';
+import { processPwa } from '../src/utils/config-pwa';
 import { configDefaults, IConfig } from './configDefaults';
 import { readYamlOrJson } from './fileUtils';
-import { processPwa } from '../src/utils/config-pwa';
 
 const readEnvOrDefault = (name: any, def: any) => {
-  let value = process.env[name];
-  return value ? value : def ? def : null;
+  const value = process.env[name];
+  return value || def || null;
 };
 
 class ConfigReader {
@@ -31,7 +31,7 @@ class EnvReader extends ConfigReader {
   readArray(key: any) {
     const value = `${this.readValue(key)}`;
     if (value) {
-      return value.split(',').map(s => s.trim());
+      return value.split(',').map((s) => s.trim());
     }
     return value;
   }
@@ -42,9 +42,11 @@ class EnvReader extends ConfigReader {
       try {
         if (value === 'true') {
           return true;
-        } else if (value === 'false') {
+        }
+        if (value === 'false') {
           return false;
-        } else if (typeof value === 'number') {
+        }
+        if (typeof value === 'number') {
           return parseFloat(value);
         }
         return value;
@@ -64,7 +66,7 @@ class EnvReader extends ConfigReader {
   }
 
   readObject(obj: any, config: any, prefix: any) {
-    for (let [key, value] of Object.entries(obj)) {
+    for (const [key, value] of Object.entries(obj)) {
       const newPrefix = this.generatePrefix(prefix, key);
       if (
         typeof value === 'string' ||
@@ -90,18 +92,17 @@ class EnvReader extends ConfigReader {
       }
     }
   }
- 
+
   read() {
     this.readObject(configDefaults, this.config, '');
     return null;
   }
-  
+
   readConfig() {
     this.readObject(configDefaults, this.config, '');
     return this.config;
   }
 }
-
 
 export const read = (): IConfig => {
   const fileConfig = new FileReader().read();
@@ -122,10 +123,10 @@ const postProcessConfig = (config: any) => {
   config.sidebar.groups.sort((a: any, b: any) => {
     // ASC  -> a.length - b.length
     // DESC -> b.length - a.length
-    let byOrder = a.order > b.order ? 1 : a.order > b.order ? -1 : 0;
+    const byOrder = a.order > b.order ? 1 : a.order > b.order ? -1 : 0;
     return byOrder === 0 ? b.path?.length || 0 - a.path?.length || 0 : byOrder;
   });
 };
 
 let conf: IConfig;
-export const getConf = (): IConfig => conf = conf || read();
+export const getConf = (): IConfig => (conf = conf || read());

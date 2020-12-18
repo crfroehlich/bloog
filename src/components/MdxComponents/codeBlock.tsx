@@ -1,6 +1,6 @@
-import * as React from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/dracula';
+import * as React from 'react';
 // import Loadable from 'react-loadable';
 // import { LoadingProvider } from './loading';
 
@@ -30,9 +30,11 @@ export const CodeBlock = ({ children: code, ...props }) => {
   // } else {
   const lang = props.className ? props.className.split('-')[1] : null;
   return (
-    <Highlight {...defaultProps} code={code} language={lang ? lang : 'javascript'} theme={theme}>
+    <Highlight {...defaultProps} code={code} language={lang || 'javascript'} theme={theme}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className + ' pre'} style={style}> {/* p={3} */}
+        <pre className={`${className} pre`} style={style}>
+          {' '}
+          {/* p={3} */}
           {cleanTokens(tokens).map((line: any, i: any) => {
             let lineClass = {};
             let isDiff = false;
@@ -85,13 +87,17 @@ export const CodeBlock = ({ children: code, ...props }) => {
                             <span {...getTokenProps({ token: splitToken, key })} />
                           </React.Fragment>
                         );
-                      } else {
-                        return <span {...getTokenProps({ token, key })} style={{
-                          userSelect: 'none',
-                          MozUserSelect: '-moz-none',
-                          WebkitUserSelect: 'none',
-                        }} />;
                       }
+                      return (
+                        <span
+                          {...getTokenProps({ token, key })}
+                          style={{
+                            userSelect: 'none',
+                            MozUserSelect: '-moz-none',
+                            WebkitUserSelect: 'none',
+                          }}
+                        />
+                      );
                     }
                   }
                   return <span {...getTokenProps({ token, key })} />;

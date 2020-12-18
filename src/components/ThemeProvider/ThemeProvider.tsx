@@ -1,5 +1,5 @@
-import React from 'react';
 import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
+import React from 'react';
 import { dark } from '../../theme/ThemeBuilder';
 
 export const ThemeProvider = (props) => {
@@ -9,4 +9,4 @@ export const ThemeProvider = (props) => {
       <EmotionThemeProvider theme={dark}>{children}</EmotionThemeProvider>
     </div>
   );
-}
+};

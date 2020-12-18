@@ -16,19 +16,25 @@ export const query = (excerptSize: any) => `{
     }
   }`;
 
-const flatten = (arr: any) => arr.map(({
-  node: { id, frontmatter: { title, description }, fields: { slug }, excerpt }
-}: any) => ({
-  id,
-  title,
-  description,
-  slug,
-  excerpt,
-}));
+const flatten = (arr: any) =>
+  arr.map(
+    ({
+      node: {
+        id,
+        frontmatter: { title, description },
+        fields: { slug },
+        excerpt,
+      },
+    }: any) => ({
+      id,
+      title,
+      description,
+      slug,
+      excerpt,
+    })
+  );
 
-const transformer = ({
-  data
-}: any) => flatten(data.allMdx.edges);
+const transformer = ({ data }: any) => flatten(data.allMdx.edges);
 
 const buildLocalsearchPluginConfig = (conf: any) => {
   return [

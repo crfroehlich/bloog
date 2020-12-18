@@ -1,19 +1,17 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import styled from '@emotion/styled';
+import React from 'react';
 import { AlignRight } from 'react-feather';
 import Scrollspy from 'react-scrollspy';
-import { sleep } from '../../utils/utils';
 import { scrollbar } from '../../styles/styles';
-import emoji from '../../utils/emoji';
-import config from '../../../.config';
 import { getTheme } from '../../theme';
+import emoji from '../../utils/emoji';
+import { sleep } from '../../utils/utils';
 
 const { tableOfContents, transitions } = getTheme();
 
-const Sidebar = styled(({ show, ...props }) => (<aside {...props} />))`
+const Sidebar = styled(({ show, ...props }) => <aside {...props} />)`
   background-color: ${tableOfContents?.background};
-  display: ${(props) => props.show ? 'block' : 'none'};
+  display: ${(props) => (props.show ? 'block' : 'none')};
   min-width: 260px;
   height: 100vh;
   overflow: auto;
@@ -56,13 +54,10 @@ const Sidebar = styled(({ show, ...props }) => (<aside {...props} />))`
   }
 `;
 
-const getFontWeight = (level: number): number => ((level+1)*1000)-300;
+const getFontWeight = (level: number): number => (level + 1) * 1000 - 300;
 
 const ListItem = styled((props) => {
-  const {
-    className,
-    children,
-  } = props;
+  const { className, children } = props;
   return (
     <li className={className}>
       <a href={props.to} {...props}>
@@ -73,7 +68,7 @@ const ListItem = styled((props) => {
 })`
   a {
     font-weight: ${getFontWeight};
-    padding-left: ${(props) => (props.level+1) * 0.85}rem !important;
+    padding-left: ${(props) => (props.level + 1) * 0.85}rem !important;
     svg {
       float: right;
       margin-right: 1rem;
@@ -81,13 +76,9 @@ const ListItem = styled((props) => {
   }
 `;
 
-const TocTitle = styled(({
-  className
-}: any) => {
+const TocTitle = styled(({ className }: any) => {
   return (
-
     <span className={className}>
-
       <AlignRight size={15} />
       Contents
     </span>
@@ -118,8 +109,7 @@ const buildToC = (toc: any[], items: any[], maxDepth: number, depth: number) => 
         ? `#h-${emoji.clean(innerItem.title).replace(/\s+/g, '').toLowerCase()}`
         : '#';
       const title = emoji.emojify(innerItem.title);
-      let listItem = (
-
+      const listItem = (
         <ListItem key={`${itemId}`} to={`${itemId}`} level={depth}>
           {title}
         </ListItem>
@@ -135,7 +125,7 @@ const tocItemsEqual = (items: any, targetItems: any) => {
   if (items == null || targetItems == null) return false;
   if (items.length != targetItems.length) return false;
 
-  for (var i = 0; i < items.length; ++i) {
+  for (let i = 0; i < items.length; ++i) {
     let target = targetItems[i];
     if (targetItems[i]) {
       target = target.id;
@@ -146,16 +136,11 @@ const tocItemsEqual = (items: any, targetItems: any) => {
 };
 
 export const TableOfContents = (props) => {
-  const {
-    show,
-    className,
-    location,
-    toc,
-  } = props;
+  const { show, className, location, toc } = props;
 
   const finalNavItems = [];
   buildToC(toc, finalNavItems, 10, 0);
-  let ids = finalNavItems.map((item: any) => {
+  const ids = finalNavItems.map((item: any) => {
     return item.props.to.substr(1);
   });
   const scrollspyRef: any = React.createRef();
@@ -180,14 +165,9 @@ export const TableOfContents = (props) => {
   return (
     <Sidebar show={show} className={className} css={scrollbar}>
       <TocTitle>Contents</TocTitle>
-      <Scrollspy
-        ref={scrollspyRef}
-        onUpdate={refresh}
-        items={ids}
-        currentClassName={'currentItem'}
-      >
+      <Scrollspy ref={scrollspyRef} onUpdate={refresh} items={ids} currentClassName={'currentItem'}>
         {finalNavItems}
       </Scrollspy>
     </Sidebar>
   );
-}
+};

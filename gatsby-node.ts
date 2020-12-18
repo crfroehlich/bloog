@@ -1,11 +1,9 @@
-import path from 'path';
-import { startCase } from 'lodash';
 import chokidar from 'chokidar';
+import { startCase } from 'lodash';
+import path from 'path';
 import { touch } from './build/fileUtils';
 
-export const createSchemaCustomization = ({
-  actions
-}: any) => {
+export const createSchemaCustomization = ({ actions }: any) => {
   const { createTypes } = actions;
 
   const typeDefs = `
@@ -42,10 +40,7 @@ export const createSchemaCustomization = ({
   createTypes(typeDefs);
 };
 
-export const createPages = ({
-  graphql,
-  actions
-}: any) => {
+export const createPages = ({ graphql, actions }: any) => {
   const { createPage } = actions;
   return new Promise((resolve, reject) => {
     resolve(
@@ -75,9 +70,7 @@ export const createPages = ({
         });
 
         // Create pages.
-        result.data.allMdx.edges.forEach(({
-          node
-        }: any) => {
+        result.data.allMdx.edges.forEach(({ node }: any) => {
           createPage({
             path: node.fields.slug ? node.fields.slug : '/',
             component: path.resolve('./src/templates/docs.tsx'),
@@ -91,9 +84,7 @@ export const createPages = ({
   });
 };
 
-export const onCreateWebpackConfig = ({
-  actions
-}: any) => {
+export const onCreateWebpackConfig = ({ actions }: any) => {
   actions.setWebpackConfig({
     node: {
       fs: 'empty',
@@ -108,19 +99,13 @@ export const onCreateWebpackConfig = ({
   });
 };
 
-export const onCreateBabelConfig = ({
-  actions
-}: any) => {
+export const onCreateBabelConfig = ({ actions }: any) => {
   actions.setBabelPlugin({
     name: '@babel/plugin-proposal-export-default-from',
   });
 };
 
-export const onCreateNode = ({
-  node,
-  getNode,
-  actions
-}: any) => {
+export const onCreateNode = ({ node, getNode, actions }: any) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === `Mdx`) {

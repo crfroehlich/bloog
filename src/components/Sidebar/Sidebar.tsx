@@ -1,14 +1,14 @@
-import React from 'react';
 import styled from '@emotion/styled';
+import React from 'react';
+import config from '../../../.config';
+import { onMobile } from '../../styles/responsive';
+import { scrollbar } from '../../styles/styles';
+import { getTheme } from '../../theme';
+import { Empty } from '../Empty';
+import { getNavigationData } from '../Navigation';
 import { ContentTree } from './ContentTree';
 import { Links } from './Links';
 import { PoweredBy } from './PoweredBy';
-import { getNavigationData } from '../Navigation';
-import { scrollbar } from '../../styles/styles';
-import { onMobile } from '../../styles/responsive';
-import config from '../../../.config';
-import { Empty } from '../Empty';
-import { getTheme } from '../../theme';
 
 const { layout, navigationSidebar } = getTheme();
 
@@ -47,17 +47,14 @@ const PoweredByWrapper = styled.div`
   box-shadow: 0 -7px 10px -5px ${navigationSidebar?.backgroundPrimary};
 `;
 
-const NavigationWrapper = styled(({
-  className,
-  children
-}: any) => {
+const NavigationWrapper = styled(({ className, children }: any) => {
   return (
     <aside className={className}>
       <SidebarWrapper>{children}</SidebarWrapper>
     </aside>
   );
 })`
-  display: ${(props) => props.show ? 'block' : 'none'};
+  display: ${(props) => (props.show ? 'block' : 'none')};
   height: 100vh;
   top: 0;
   flex: 0 0 ${layout.leftWidth};
@@ -113,10 +110,11 @@ const NavigationWrapper = styled(({
   }
 `;
 
-
-const Divider = styled((props: any) => <div {...props}>
-  <hr />
-</div>)`
+const Divider = styled((props: any) => (
+  <div {...props}>
+    <hr />
+  </div>
+))`
   padding: 0.5rem 0;
   hr {
     margin: 0;
@@ -126,32 +124,32 @@ const Divider = styled((props: any) => <div {...props}>
   }
 `;
 
-export const Sidebar = ({
-  show,
-  className,
-  location
-}: any) => {
+export const Sidebar = ({ show, className, location }: any) => {
   const edges = getNavigationData();
   return (
     <NavigationWrapper className={className} show={show}>
-      <SidebarMain css={{...scrollbar}}>
+      <SidebarMain css={{ ...scrollbar }}>
         <ContentTree edges={edges} location={location} />
         {config.sidebar.links?.length > 0 ? (
           <div>
             <Divider />
             <Links links={config.sidebar.links} />
           </div>
-        ) : <Empty />}
+        ) : (
+          <Empty />
+        )}
       </SidebarMain>
       {config.sidebar.poweredBy && config.sidebar.poweredBy.name ? (
-          <PoweredByWrapper>
-            <PoweredBy
-              trademark={config.sidebar.poweredBy.trademark}
-              name={config.sidebar.poweredBy.name}
-              link={config.sidebar.poweredBy.link}
-            />
-          </PoweredByWrapper>
-      ) : <Empty />}
+        <PoweredByWrapper>
+          <PoweredBy
+            trademark={config.sidebar.poweredBy.trademark}
+            name={config.sidebar.poweredBy.name}
+            link={config.sidebar.poweredBy.link}
+          />
+        </PoweredByWrapper>
+      ) : (
+        <Empty />
+      )}
     </NavigationWrapper>
   );
 };

@@ -1,34 +1,33 @@
 import styled from '@emotion/styled';
 import { onMobile } from '../../styles/responsive';
-import { Empty } from '../Empty';
 import { getTheme } from '../../theme';
+import { Empty } from '../Empty';
 
 const { header } = getTheme();
 
-export const Navigation = styled(({
-  className,
-  links
-}: any) => {
+export const Navigation = styled(({ className, links }: any) => {
   return (
-    <nav css={{display: 'flex'}}>
+    <nav css={{ display: 'flex' }}>
       <ul className={className}>
-        {links
-          ? links.map((link: any, key: any) => {
-              const openRule = link.external ? '_blank' : '_self';
-              if (link.link !== '' && link.text !== '') {
-                return (
-                  <li key={`${key}_${link}`}>
-                    <a
-                      href={link.link}
-                      target={openRule}
-                      rel="noopener"
-                      dangerouslySetInnerHTML={{ __html: link.text }}
-                    />
-                  </li>
-                );
-              }
-            })
-          : <Empty />}
+        {links ? (
+          links.map((link: any, key: any) => {
+            const openRule = link.external ? '_blank' : '_self';
+            if (link.link !== '' && link.text !== '') {
+              return (
+                <li key={`${key}_${link}`}>
+                  <a
+                    href={link.link}
+                    target={openRule}
+                    rel="noopener"
+                    dangerouslySetInnerHTML={{ __html: link.text }}
+                  />
+                </li>
+              );
+            }
+          })
+        ) : (
+          <Empty />
+        )}
       </ul>
     </nav>
   );

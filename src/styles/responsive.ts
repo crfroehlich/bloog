@@ -6,7 +6,7 @@ const breakpointsInt = {
 const breakpoints = {};
 
 Object.keys(breakpointsInt).map(function (key, index) {
-  breakpoints[key] = breakpointsInt[key] + 'px';
+  breakpoints[key] = `${breakpointsInt[key]}px`;
 });
 
 const mq = Object.values(breakpoints).map((bp) => `@media (max-width: ${bp})`);
@@ -17,7 +17,7 @@ const checkViewport = (maxValue: any) => {
     return vw <= maxValue;
   }
   return false;
-}; 
+};
 
 export const isMobile = () => {
   return checkViewport(breakpointsInt.small);

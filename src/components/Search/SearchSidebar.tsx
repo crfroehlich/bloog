@@ -1,15 +1,15 @@
 /* eslint-disable react/display-name */
 import styled from '@emotion/styled';
+import loadable from '@loadable/component';
 import React from 'react';
 import { X } from 'react-feather';
-import loadable from '@loadable/component';
 import { onMobile } from '../../styles/responsive';
 import { visibleMobile } from '../../styles/styles';
 import { getTheme } from '../../theme';
 
 const { colors } = getTheme();
 
-const LoadableLocalSearch = loadable(() => import('./LocalSearch'))
+const LoadableLocalSearch = loadable(() => import('./LocalSearch'));
 
 const SearchWrapper = styled.div`
   display: flex;
@@ -20,7 +20,7 @@ const SearchWrapper = styled.div`
   -webkit-overflow-scrolling: touch;
 `;
 
-const SearchSidebarWrapper = styled(({ inputRef, ...props }) => (<div {...props} />))`
+const SearchSidebarWrapper = styled(({ inputRef, ...props }) => <div {...props} />)`
   display: block; //${(props) => (props.show ? 'block' : 'none')};
   z-index: 20;
   height: 100vh;
@@ -62,7 +62,7 @@ export const SearchSidebar = ({ onVisibleChange, closeSelf, inputRef, ...props }
       <SearchWrapper {...props}>
         <CloseSearch css={visibleMobile} onClick={closeSelf}>
           <X />
-          <span css={{marginLeft: '5px'}}>Close</span>
+          <span css={{ marginLeft: '5px' }}>Close</span>
         </CloseSearch>
         <LoadableLocalSearch inputRef={inputRef} />
       </SearchWrapper>

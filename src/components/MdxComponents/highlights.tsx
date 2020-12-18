@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import { AlertCircle, AlertOctagon, AlertTriangle } from 'react-feather';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import React from 'react';
+import { AlertCircle, AlertOctagon, AlertTriangle } from 'react-feather';
 import { getTheme } from '../../theme';
 
 const { highlights } = getTheme();
@@ -17,11 +17,7 @@ const skipParagraph = css`
   }
 `;
 
-const HighlightWrapper = styled(({
-  className,
-  children
-}: any) => (
-  
+const HighlightWrapper = styled(({ className, children }: any) => (
   <div className={className}>{children}</div>
 ))`
   margin: 16px 0;
@@ -34,12 +30,7 @@ const HighlightWrapper = styled(({
   border-radius: 4px;
 `;
 
-const Highlight = ({
-  children,
-  color,
-  icon,
-  ...props
-}: any) => {
+const Highlight = ({ children, color, icon, ...props }: any) => {
   const highlightColor = highlights[color];
   return (
     <HighlightWrapper
@@ -57,24 +48,28 @@ const Highlight = ({
 };
 
 export const Highlights = {
-  Warning: () => Highlight({
-    color: 'warning',
-    icon: AlertTriangle,
-    ...highlights.warning,
-  }),
-  Error: () => Highlight({
-    color: 'error',
-    icon: AlertOctagon,
-    ...highlights.error,
-  }),
-  Info: () => Highlight({
-    color: 'info',
-    icon: AlertCircle,
-    ...highlights.info,
-  }),
-  Tip: () => Highlight({
-    color: 'tip',
-    icon: AlertCircle,
-    ...highlights.tip,
-  }),
+  Warning: () =>
+    Highlight({
+      color: 'warning',
+      icon: AlertTriangle,
+      ...highlights.warning,
+    }),
+  Error: () =>
+    Highlight({
+      color: 'error',
+      icon: AlertOctagon,
+      ...highlights.error,
+    }),
+  Info: () =>
+    Highlight({
+      color: 'info',
+      icon: AlertCircle,
+      ...highlights.info,
+    }),
+  Tip: () =>
+    Highlight({
+      color: 'tip',
+      icon: AlertCircle,
+      ...highlights.tip,
+    }),
 };

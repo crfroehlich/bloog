@@ -1,5 +1,5 @@
+import { Empty, Link } from '..';
 import { anchor } from '../../styles/styles';
-import { Link, Empty } from '..';
 
 export const AnchorTag = ({ children: link, ...props }) => {
   if (link) {
@@ -8,7 +8,6 @@ export const AnchorTag = ({ children: link, ...props }) => {
         {link}
       </Link>
     );
-  } else {
-    return <Empty />;
   }
+  return <Empty />;
 };

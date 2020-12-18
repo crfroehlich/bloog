@@ -1,12 +1,24 @@
 import colorfn from 'color';
-import { increaseIntensivity, decreaseIntensivity, grayscaleCompatible } from '../utils/colors';
-import { IBaseTheme, IContent, IEmotionTheme, IHeader, IHighlights, INavigationSidebar, IPageLayout, IScrollTop, ISearch, ITable, IThemeColors, ITransitions } from './ITheme';
+import { decreaseIntensivity, grayscaleCompatible, increaseIntensivity } from '../utils/colors';
+import {
+  IBaseTheme,
+  IContent,
+  IEmotionTheme,
+  IHeader,
+  IHighlights,
+  INavigationSidebar,
+  IPageLayout,
+  IScrollTop,
+  ISearch,
+  ITable,
+  ITransitions,
+} from './ITheme';
 
 const baseColors = {
   blueDark: '#264D99',
   gray: '#5C6975',
   red: '#E40046',
-}
+};
 
 const themeColors = {
   background: '#29282A',
@@ -31,7 +43,7 @@ const themeColors = {
   primaryDark: baseColors.blueDark,
   red: baseColors.red,
   redLight: '#FAD0DD',
-  shadow: baseColors.gray + '33',
+  shadow: `${baseColors.gray}33`,
   violet: '#A05EB5',
   white: '#FFFFFF',
   yellow: '#FFC72C',
@@ -60,7 +72,7 @@ const contend = (): IContent => ({
     border: themeColors.border,
     font: themeColors.fontDark,
     background: themeColors?.background,
-  }
+  },
 });
 
 const navigationSidebar = (): INavigationSidebar => ({
@@ -87,7 +99,7 @@ const navigationSidebar = (): INavigationSidebar => ({
     font: themeColors.grayLight,
     background: themeColors.border,
     hover: themeColors.primary,
-  }
+  },
 });
 
 const header = (): IHeader => ({
@@ -107,7 +119,7 @@ const header = (): IHeader => ({
     fill: decreaseIntensivity(themeColors.background, 0.4),
     stroke: decreaseIntensivity(themeColors.background, 0.4),
     hover: themeColors.primary,
-  }
+  },
 });
 
 const search = (): ISearch => ({
@@ -136,7 +148,7 @@ const search = (): ISearch => ({
       background: themeColors.primary,
       font: grayscaleCompatible(themeColors.primary),
     },
-  }
+  },
 });
 
 const editOnRepo = (): IContent => ({
@@ -147,14 +159,14 @@ const editOnRepo = (): IContent => ({
   fond: {
     base: themeColors.font,
     hover: grayscaleCompatible(themeColors.hover),
-  }
+  },
 });
 
 const jargon = (): IContent => ({
   background: themeColors.background,
   border: themeColors.border,
   font: themeColors.font,
-  shadow: themeColors.shadow
+  shadow: themeColors.shadow,
 });
 
 const highlights = (): IHighlights => ({
@@ -180,7 +192,7 @@ const highlights = (): IHighlights => ({
     border: themeColors.green,
     background: themeColors.greenLight,
     font: themeColors.fontDark,
-  }
+  },
 });
 
 const table = (): ITable => ({
@@ -191,8 +203,8 @@ const table = (): ITable => ({
 
   oddRow: themeColors.mainBackground,
   evenRow: themeColors.background,
-  rowHover: themeColors.hover + '3d',
-  border: themeColors.border
+  rowHover: `${themeColors.hover}3d`,
+  border: themeColors.border,
 });
 
 const tableOfContents = (): IContent => ({
@@ -204,7 +216,7 @@ const tableOfContents = (): IContent => ({
     current: themeColors.primary,
   },
 
-  border: themeColors.border
+  border: themeColors.border,
 });
 
 const previousNext = (): IContent => ({
@@ -213,13 +225,13 @@ const previousNext = (): IContent => ({
   font: themeColors.font,
   fontLabel: decreaseIntensivity(themeColors.font, 0.45),
   border: themeColors.border,
-  shadow: themeColors.shadow
+  shadow: themeColors.shadow,
 });
 
 const scrollTop = (): IScrollTop => ({
   background: themeColors.primary,
   hover: increaseIntensivity(themeColors.primary, 0.15),
-  arrow: colorfn(themeColors.primary).negate().grayscale().lighten(0.4).rgb().string()
+  arrow: colorfn(themeColors.primary).negate().grayscale().lighten(0.4).rgb().string(),
 });
 
 export const base: IBaseTheme = {
@@ -254,4 +266,4 @@ export const compiledTheme: IEmotionTheme = {
   table: table(),
   tableOfContents: tableOfContents(),
   transitions,
-}
+};

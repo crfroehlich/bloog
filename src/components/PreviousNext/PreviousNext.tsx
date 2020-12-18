@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import { Link, Empty } from '..';
 import styled from '@emotion/styled';
-import { emojiTools as emoji } from '../../utils/emoji';
 import { navigate } from 'gatsby';
-import { ChevronLeft, ChevronRight } from 'react-feather'
-import { calculateFlatNavigation, getNavigationData } from '../Navigation';
-import { onMobile } from '../../styles/responsive';
+import React, { useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'react-feather';
+import { Empty, Link } from '..';
 import config from '../../../.config';
+import { onMobile } from '../../styles/responsive';
 import { getTheme } from '../../theme';
+import { emojiTools as emoji } from '../../utils/emoji';
+import { calculateFlatNavigation, getNavigationData } from '../Navigation';
 
 const { previousNext } = getTheme();
 
@@ -27,10 +27,9 @@ const PreviousNextWrapper = styled.div`
   grid-template-columns: calc(50% - 12px) calc(50% - 12px);
 `;
 
-const Arrow = styled(({
-  className,
-  arrow,
-}: any) => <div className={className}>{arrow.render({color: ''})}</div>)`
+const Arrow = styled(({ className, arrow }: any) => (
+  <div className={className}>{arrow.render({ color: '' })}</div>
+))`
   display: block;
   margin: 0;
   flex: 0 0 auto;
@@ -69,11 +68,7 @@ const Label = styled.div`
   }
 `;
 
-const ContentWrapper = styled(({
-  className,
-  label,
-  title
-}: any) => {
+const ContentWrapper = styled(({ className, label, title }: any) => {
   return (
     <div className={className}>
       <Label>
@@ -94,11 +89,7 @@ const ContentWrapper = styled(({
   }
 `;
 
-const LeftButton = ({
-  url,
-  title,
-  label
-}: any) => {
+const LeftButton = ({ url, title, label }: any) => {
   return (
     <Button url={url}>
       <Arrow arrow={ChevronLeft} />
@@ -107,11 +98,7 @@ const LeftButton = ({
   );
 };
 
-const RightButton = ({
-  url,
-  title,
-  label
-}: any) => {
+const RightButton = ({ url, title, label }: any) => {
   return (
     <Button url={url}>
       <ContentWrapper title={title} label={label} />
@@ -120,13 +107,9 @@ const RightButton = ({
   );
 };
 
-const Button = styled(({
-  className,
-  url,
-  children
-}: any) => {
+const Button = styled(({ className, url, children }: any) => {
   return (
-    <Link to={url ? url : '#'} className={className}>
+    <Link to={url || '#'} className={className}>
       {children}
     </Link>
   );
@@ -149,8 +132,8 @@ const Button = styled(({
   transition: border 200ms ease 0s;
   box-shadow: ${previousNext.shadow} 0 3px 8px;
   text-decoration: none;
-  visibility: ${(props) => props.url ? 'visible' : 'hidden'};
-  opacity: ${(props) => props.url ? 1 : 0};
+  visibility: ${(props) => (props.url ? 'visible' : 'hidden')};
+  opacity: ${(props) => (props.url ? 1 : 0)};
 
   &:hover {
     color: ${previousNext.hover};
@@ -162,11 +145,14 @@ const Button = styled(({
   }
 `;
 interface Nav {
-  url?: string; title?: string; path?: string; groupName?: string;
+  url?: string;
+  title?: string;
+  path?: string;
+  groupName?: string;
 }
 const calculatePreviousNext = (nav: any, index: any): Nav[] => {
-  let nextInfo: Nav = {};
-  let previousInfo: Nav = {};
+  const nextInfo: Nav = {};
+  const previousInfo: Nav = {};
   let currentIndex = index;
   const set = (nav: Nav, info: Nav) => {
     if (nav?.url && info != undefined) {
@@ -209,9 +195,7 @@ const setArrowNavigation = (previous: any, next: any) => {
   }, [previous, next]);
 };
 
-export const PreviousNext = ({
-  mdx
-}: any) => {
+export const PreviousNext = ({ mdx }: any) => {
   const edges = getNavigationData();
   const navigation = calculateFlatNavigation(edges);
   let currentIndex;
@@ -238,7 +222,9 @@ export const PreviousNext = ({
           <LeftButton url={previous.url} title={previous.title} label={previousLabel} />
           <RightButton url={next.url} title={next.title} label={nextLabel} />
         </>
-      ) : <Empty />}
+      ) : (
+        <Empty />
+      )}
     </PreviousNextWrapper>
   );
 };

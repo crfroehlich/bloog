@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { paddingLeftRight } from './styles';
+import styled from '@emotion/styled';
+import { Link } from 'gatsby';
+import React from 'react';
 import { getTheme } from '../../theme';
+import { paddingLeftRight } from './styles';
 
 const { search } = getTheme();
 
@@ -69,11 +69,7 @@ const HitDetails = styled.div`
   font-size: 14px;
 `;
 
-export const Hit = ({
-  slug,
-  title,
-  details
-}: any) => (
+export const Hit = ({ slug, title, details }: any) => (
   <Link to={slug}>
     <HitTitle>{title}</HitTitle>
     <HitDetails>{details}</HitDetails>

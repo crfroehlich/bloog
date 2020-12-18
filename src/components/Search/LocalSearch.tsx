@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { HitsWrapper } from './Hits';
-import { SearchInput } from './SearchInput';
-import { PageHit } from './PageHit';
-import { SearchStatus } from './SearchStatus';
-import { SearchPagination } from './SearchPagination';
-import { Stats } from './Stats';
-import { useFlexSearch } from 'react-use-flexsearch';
 import { graphql, useStaticQuery } from 'gatsby';
+import React, { useState } from 'react';
+import { useFlexSearch } from 'react-use-flexsearch';
 import config from '../../../.config';
 import { Empty } from '../Empty';
+import { HitsWrapper } from './Hits';
+import { PageHit } from './PageHit';
+import { SearchInput } from './SearchInput';
+import { SearchPagination } from './SearchPagination';
+import { SearchStatus } from './SearchStatus';
+import { Stats } from './Stats';
 
 const Results = ({ q }: any) => <SearchStatus noHits={true} searching={false} query={q} />;
 
@@ -17,12 +17,12 @@ const getPerformance = () => {
     return window.performance;
   }
   return {
-    now: () => new Date().getMilliseconds()
-  }
-}
+    now: () => new Date().getMilliseconds(),
+  };
+};
 
 const calculatePage = (results: any, page: any) => {
-  const hitsPerPage = config.features.search.hitsPerPage;
+  const { hitsPerPage } = config.features.search;
   const startIdx = hitsPerPage * page - hitsPerPage;
   const endIdx = startIdx + hitsPerPage;
   return results.slice(startIdx, endIdx);
@@ -42,22 +42,23 @@ const search = (query: any, index: any, store: any, page: any) => {
   const processingTimeMS = (t2 - t1).toFixed(2);
   return {
     hits: pageHits,
-    nbHits: nbHits,
-    pages: pages,
-    processingTimeMS: processingTimeMS,
+    nbHits,
+    pages,
+    processingTimeMS,
   };
 };
 
 export const LocalSearch = ({ inputRef, ...props }) => {
-  const { localSearchHmD: { index, store } } = useStaticQuery(graphql`
+  const {
+    localSearchHmD: { index, store },
+  } = useStaticQuery(graphql`
     query {
       localSearchHmD {
         index
         store
       }
     }
-  `,
-  );
+  `);
   const [query, setQuery] = useState([]);
   const [focus, setFocus] = useState(false);
   const [page, setPage] = useState(1);
@@ -67,7 +68,7 @@ export const LocalSearch = ({ inputRef, ...props }) => {
 
   const searchResult = search(query, index, store, page);
   const showResults = query?.length > 1 && focus;
-  
+
   return (
     <div>
       <SearchInput
@@ -78,17 +79,18 @@ export const LocalSearch = ({ inputRef, ...props }) => {
       />
       <div style={{ flex: '1' }}>
         {showResults && config.features.search.showStats ? (
-          <Stats
-            nbHits={searchResult.nbHits}
-            processingTimeMS={searchResult.processingTimeMS}
-          />
-        ) : <Empty />}
+          <Stats nbHits={searchResult.nbHits} processingTimeMS={searchResult.processingTimeMS} />
+        ) : (
+          <Empty />
+        )}
         {showResults && searchResult && searchResult.hits.length === 0 ? (
           <Results q={query} />
-        ) : <Empty />}
+        ) : (
+          <Empty />
+        )}
         <HitsWrapper>
           <ul>
-            {searchResult.hits.map((hit: any,i: any) => (
+            {searchResult.hits.map((hit: any, i: any) => (
               <PageHit
                 key={`${hit.slug}_${i}`}
                 hit={hit}
@@ -99,9 +101,7 @@ export const LocalSearch = ({ inputRef, ...props }) => {
           </ul>
         </HitsWrapper>
       </div>
-      {showResults &&
-        searchResult.hits.length > 0 &&
-        config.features.search.pagination.enabled ? (
+      {showResults && searchResult.hits.length > 0 && config.features.search.pagination.enabled ? (
         <SearchPagination
           totalPages={config.features.search.pagination.totalPages}
           showPrevious={config.features.search.pagination.showPrevious}
@@ -110,9 +110,11 @@ export const LocalSearch = ({ inputRef, ...props }) => {
           nbPages={searchResult.pages}
           currentPage={page}
         />
-      ) : <Empty />}
+      ) : (
+        <Empty />
+      )}
     </div>
   );
-}
+};
 
 export default LocalSearch;

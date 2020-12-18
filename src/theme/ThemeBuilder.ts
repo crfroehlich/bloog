@@ -1,5 +1,5 @@
-import { base, compiledTheme } from './base';
 import { cloneDeep, merge } from 'lodash';
+import { base, compiledTheme } from './base';
 import { IEmotionTheme, IThemeColors } from './ITheme';
 
 class ThemeBuilder {
@@ -10,12 +10,12 @@ class ThemeBuilder {
   }
 
   applyColors(colors?: IThemeColors) {
-    this.result['colors'] = merge(this.result.colors, colors);
+    this.result.colors = merge(this.result.colors, colors);
     return this;
   }
 
   initialize() {
-    for (let [key, value] of Object.entries(this.result)) {
+    for (const [key, value] of Object.entries(this.result)) {
       if (typeof value === 'function') {
         this.result[key] = value(this.result.colors);
       } else {

@@ -1,6 +1,3 @@
-
-import { ButtonIcon } from './ButtonIcon';
-import { Link } from '..';
 import {
   Facebook as FB,
   GitHub as GH,
@@ -13,6 +10,8 @@ import {
   Twitter as TW,
   Youtube as YT,
 } from 'react-feather';
+import { Link } from '..';
+import { ButtonIcon } from './ButtonIcon';
 
 const SocialButton = (props) => {
   const { link } = props;
@@ -45,4 +44,4 @@ export const SocialButtons = {
   Twitch,
   Twitter,
   Youtube,
-}
+};

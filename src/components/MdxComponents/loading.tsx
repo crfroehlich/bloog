@@ -1,7 +1,4 @@
-export const LoadingProvider = ({
-  isLoading,
-  ...props
-}: any) => {
+export const LoadingProvider = ({ isLoading, ...props }: any) => {
   if (isLoading) {
     return <div>Loading...</div>;
   }

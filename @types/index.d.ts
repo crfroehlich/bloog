@@ -2,12 +2,13 @@
 
 import '@emotion/react';
 import { IEmotionTheme } from '../src';
+import React = require('react');
 
 declare module '@emotion/react' {
-  export interface Theme extends IEmotionTheme {};
+  export interface Theme extends IEmotionTheme {}
 }
 
-declare var workbox: any;
+declare let workbox: any;
 
 /* CSS MODULES */
 declare module '*.module.css' {
@@ -41,8 +42,7 @@ declare module '*.styl';
 declare module '*.yml';
 
 /* IMAGES */
-declare module "\*.svg" {
-  import React = require("react");
+declare module '*.svg' {
   export const ReactComponent: React.SFC<React.SVGProps<SVGSVGElement>>;
   const src: string;
   export default src;

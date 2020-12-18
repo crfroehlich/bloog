@@ -1,10 +1,10 @@
-import React from 'react';
 import styled from '@emotion/styled';
+import React from 'react';
 import { Download } from 'react-feather';
-import { emojiTools as emoji } from '../../utils/emoji';
-import { decreaseIntensivity } from '../../utils/colors';
-import { Card } from './card';
 import { getTheme } from '../../theme';
+import { decreaseIntensivity } from '../../utils/colors';
+import { emojiTools as emoji } from '../../utils/emoji';
+import { Card } from './card';
 
 const { colors } = getTheme();
 
@@ -32,12 +32,9 @@ const Title = styled.div`
   flex: 1;
 `;
 
-export const FileDownloadCard = ({
-  title,
-  url
-}: any) => {
-  const splitted = url.split('/')
-  const filename = splitted[splitted.length - 1]
+export const FileDownloadCard = ({ title, url }: any) => {
+  const splitted = url.split('/');
+  const filename = splitted[splitted.length - 1];
   return (
     <a href={url} download>
       <DownloadCard title={`Download file ${filename}`}>

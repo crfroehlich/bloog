@@ -1,15 +1,16 @@
-require('dotenv').config();
 import { writeFileSync } from 'fs';
-import { getSearchPlugins } from './src/utils/search';
-import { getConf } from './build/configLoader';
-import path from 'path';
-import { emojiTools as emoji } from './src/utils/emoji';
 import { orderBy } from 'lodash';
+import path from 'path';
+import { getConf } from './build/configLoader';
+import { emojiTools as emoji } from './src/utils/emoji';
+import { getSearchPlugins } from './src/utils/search';
+
+require('dotenv').config();
 
 const config = getConf();
 writeFileSync('.config.js', `export default ${JSON.stringify(config)}`);
 
-const plugins: Array<string | { resolve: string, options: any }> = [
+const plugins: Array<string | { resolve: string; options: any }> = [
   'gatsby-plugin-loadable-components-ssr',
   'gatsby-plugin-sitemap',
   'gatsby-plugin-pinterest',
@@ -164,12 +165,10 @@ if (config.features.rss && config.features.rss.enabled) {
       `,
       feeds: [
         {
-          serialize: ({
-            query: { site, allMdx }
-          }: any) => {
+          serialize: ({ query: { site, allMdx } }: any) => {
             const items = allMdx.edges.map((edge: any) => {
-              const frontmatter = edge.node.frontmatter;
-              const fields = edge.node.parent.fields;
+              const { frontmatter } = edge.node;
+              const { fields } = edge.node.parent;
               const rawTitle =
                 frontmatter.metaTitle && frontmatter.metaTitle.length > 0
                   ? frontmatter.metaTitle
@@ -179,11 +178,11 @@ if (config.features.rss && config.features.rss.enabled) {
               const author =
                 fields && fields.gitLogLatestAuthorName ? fields.gitLogLatestAuthorName : 'unknown';
               return {
-                title: title,
+                title,
                 description: frontmatter.description ? frontmatter.description : edge.node.excerpt,
-                date: date,
+                date,
                 url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                author: author,
+                author,
               };
             });
             return orderBy(items, ['date', 'title'], ['desc', 'asc']);
@@ -263,5 +262,5 @@ module.exports = {
     headerLinks: config.header.links,
     siteUrl: config.metadata.url,
   },
-  plugins: plugins,
+  plugins,
 };

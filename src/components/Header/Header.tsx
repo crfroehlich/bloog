@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
 import styled from '@emotion/styled';
+import { globalHistory } from '@reach/router';
+import { graphql, useStaticQuery } from 'gatsby';
+import React, { useState } from 'react';
+import { HelpCircle, Menu, Search } from 'react-feather';
+import { ButtonIcon, DarkModeSwitch, SearchInput, Sidebar } from '..';
 import config from '../../../.config';
+import { isMobile, onMobile, onTablet } from '../../styles/responsive';
+import { hiddenMobile, hiddenTablet, visibleMobile, visibleTablet } from '../../styles/styles';
+import { getTheme } from '../../theme';
+import { Rss } from '../Buttons';
+import { Empty } from '../Empty';
+import { FullScreenClose, FullScreenEnter, FullScreenHeader } from './fullscreen';
 import { Logo } from './logo';
 import { Navigation } from './navigation';
-import { ButtonIcon, DarkModeSwitch, SearchInput, Sidebar } from '..';
-import { HelpCircle, Menu, Search } from 'react-feather';
 import { social as SocialButtons } from './social';
-import { Rss } from '../Buttons';
-import { globalHistory } from '@reach/router';
-import { hiddenMobile, visibleMobile, visibleTablet, hiddenTablet } from '../../styles/styles';
-import { onMobile, onTablet, isMobile } from '../../styles/responsive';
-import { FullScreenClose, FullScreenEnter, FullScreenHeader } from './fullscreen';
-import { Empty } from '../Empty';
-import { getTheme } from '../../theme';
 
 const { header } = getTheme();
 
@@ -38,7 +38,7 @@ const SearchWrapper = styled.div`
   }
 `;
 
-const HeaderWrapper = styled(({ show, ...props }) => (<header {...props} />))`
+const HeaderWrapper = styled(({ show, ...props }) => <header {...props} />)`
   background-color: ${header.background};
   border-radius: 0;
   margin-bottom: 0;
@@ -100,19 +100,19 @@ const ButtonsWrapper = styled.div`
   }
 `;
 
-const SearchOpener = ({
-  open,
-  forcedComponent,
-  ...props
-}: any) => {
+const SearchOpener = ({ open, forcedComponent, ...props }: any) => {
   const method = forcedComponent || config.features.search.startComponent;
-  
+
   let opener = <Empty />;
   switch (method.toLowerCase()) {
     case 'input':
       opener = (
         <SearchWrapper css={hiddenMobile} style={{ marginRight: '10px' }} {...props}>
-          <SearchInput style={{marginTop: '0', marginBottom: '0'}} onChange={(e: any) => e.target.value = ''} onFocus={open} />
+          <SearchInput
+            style={{ marginTop: '0', marginBottom: '0' }}
+            onChange={(e: any) => (e.target.value = '')}
+            onFocus={open}
+          />
         </SearchWrapper>
       );
       break;
@@ -136,10 +136,7 @@ const SearchOpener = ({
   return opener;
 };
 
-const HelpButton = ({
-  helpUrl,
-  ...props
-}: any) => {
+const HelpButton = ({ helpUrl, ...props }: any) => {
   const open = () => {
     const help = window.open(helpUrl, '_blank');
     help?.focus();
@@ -169,18 +166,13 @@ const RssIcon = (iconBaseProps: any) => {
   return null;
 };
 
-const MobileNavigation = styled(({ show, ...props }) => (<div {...props} />))`
+const MobileNavigation = styled(({ show, ...props }) => <div {...props} />)`
   display: ${(props) => (props.show ? 'flex' : 'none')} !important;
   flex-basis: 100%;
   flex-direction: column;
 `;
 
-const MobileMenuToggle = styled(({
-  open,
-  toggle,
-  className,
-  ...props
-}: any) => {
+const MobileMenuToggle = styled(({ open, toggle, className, ...props }: any) => {
   return (
     <div className={className} {...props}>
       <ButtonIcon
@@ -214,12 +206,7 @@ const SocialButtonsWrapper = styled.div`
   }
 `;
 
-export const Header = ({
-  setShowSearch,
-  location,
-  show,
-  toggleFullscreenMode
-}: any) => {
+export const Header = ({ setShowSearch, location, show, toggleFullscreenMode }: any) => {
   const headerTitleQuery = useStaticQuery(graphql`
     query headerTitleQuery {
       site {
@@ -239,7 +226,7 @@ export const Header = ({
       }
     }
   `);
-  
+
   const {
     site: {
       siteMetadata: { headerTitle, helpUrl, logo, headerLinks },
@@ -253,7 +240,7 @@ export const Header = ({
     setShowSearch(true);
   };
   const [menuOpen, setMenuOpen] = useState(false);
-  
+
   const iconBaseProps = {
     background: header.icons?.background,
     hoverStroke: header.icons.hover,
@@ -277,8 +264,7 @@ export const Header = ({
   });
   return (
     <div>
-      {config.features.fullScreenMode.enabled &&
-      config.features.fullScreenMode.enabled === true ? (
+      {config.features.fullScreenMode.enabled && config.features.fullScreenMode.enabled === true ? (
         <FullScreenHeader show={!show} css={hiddenMobile}>
           <FullScreenClose toggle={toggleFullscreenMode} />
           {DarkModeButton}
@@ -286,7 +272,7 @@ export const Header = ({
       ) : (
         <Empty />
       )}
-      
+
       <HeaderWrapper show={show}>
         <Logo link={logoLink} img={logoImg} title={headerTitle} />
         <TopNavigation css={hiddenMobile}>
@@ -298,13 +284,15 @@ export const Header = ({
               <SearchOpener open={open} forcedComponent={'icon'} css={visibleTablet} />
               <SearchOpener open={open} css={hiddenTablet} />
             </div>
-          ) : <Empty />}
+          ) : (
+            <Empty />
+          )}
           {helpUrl && helpUrl.length > 0 ? (
             <HelpButton css={hiddenMobile} helpUrl={helpUrl} />
           ) : (
             <Empty />
           )}
-          
+
           <SocialButtonsWrapper css={hiddenMobile}>
             {SocialButtons(iconBaseProps, config.social)}
           </SocialButtonsWrapper>
@@ -332,4 +320,4 @@ export const Header = ({
       </HeaderWrapper>
     </div>
   );
-}
+};

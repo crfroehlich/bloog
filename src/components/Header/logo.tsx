@@ -1,8 +1,8 @@
 // import Link from "../Link";
-import React from 'react';
-import styled from '@emotion/styled';
-import { Link } from '..';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import React from 'react';
+import { Link } from '..';
 import { onMobile, onTablet } from '../../styles/responsive';
 import { getTheme } from '../../theme';
 
@@ -55,23 +55,18 @@ const LogoWrapper = styled.div`
   }
 `;
 
-export const Logo = styled(({
-  className,
-  link,
-  img,
-  title
-}: any) => {
-  let split = title.split(' ');
-  split[0] = '<strong>' + split[0];
+export const Logo = styled(({ className, link, img, title }: any) => {
+  const split = title.split(' ');
+  split[0] = `<strong>${split[0]}`;
   const last = split.length < 3 ? 0 : split.length - 2;
-  split[last] = split[last] + '</strong>';
+  split[last] = `${split[last]}</strong>`;
   const title2 = split.join(' ');
   return (
     <div className={className}>
       <LogoWrapper>
         <Link to={link} css={logoStyle()}>
-          <img css={{display: 'inline-block'}} src={img} alt={'logo'} loading={'lazy'} />
-          <span css={{display: 'inline-block'}} dangerouslySetInnerHTML={{ __html: title2 }} />
+          <img css={{ display: 'inline-block' }} src={img} alt={'logo'} loading={'lazy'} />
+          <span css={{ display: 'inline-block' }} dangerouslySetInnerHTML={{ __html: title2 }} />
         </Link>
       </LogoWrapper>
     </div>

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { shadowAround } from '../../styles/styles';
+import React, { useEffect, useState } from 'react';
 import { Search, Trash } from 'react-feather';
-import { useDebounce } from '../../utils/useDebounce';
 import config from '../../../.config';
 import { onMobile } from '../../styles/responsive';
+import { shadowAround } from '../../styles/styles';
 import { getTheme } from '../../theme';
+import { useDebounce } from '../../utils/useDebounce';
 
 const { colors, transitions } = getTheme();
 
@@ -22,7 +22,7 @@ const CleanSearch = styled(({ ...props }) => (
 ))`
   cursor: pointer;
   margin: 0 10px;
-  svg{
+  svg {
     width: 1.2em;
   }
   &:hover {
@@ -83,31 +83,20 @@ const Form = styled.form`
 `;
 
 const SidebarSearchInputWrapper = styled.div`
-position: sticky;
-top: 0;
-background: ${colors?.background};
-width: 100%;
-padding: 0 24px;
+  position: sticky;
+  top: 0;
+  background: ${colors?.background};
+  width: 100%;
+  padding: 0 24px;
 `;
 
-export const SidebarSearchInput = ({
-  search,
-  inputRef,
-  showClean,
-  ...props
-}: any) => (
+export const SidebarSearchInput = ({ search, inputRef, showClean, ...props }: any) => (
   <SidebarSearchInputWrapper>
     <SearchInput search={search} inputRef={inputRef} showClean={showClean} {...props} />
   </SidebarSearchInputWrapper>
 );
 
-export const SearchInput = ({
-  search,
-  inputRef,
-  showClean,
-  style,
-  ...props
-}: any) => {
+export const SearchInput = ({ search, inputRef, showClean, style, ...props }: any) => {
   const preventSubmit = (e: any) => {
     e.preventDefault();
   };
@@ -127,7 +116,7 @@ export const SearchInput = ({
   };
 
   return (
-    <Form css={shadowAround()} onSubmit={preventSubmit} style={style} >
+    <Form css={shadowAround()} onSubmit={preventSubmit} style={style}>
       <SearchIcon />
       <Input
         ref={inputRef}
@@ -136,7 +125,7 @@ export const SearchInput = ({
         placeholder={config.features.search.placeholder}
         aria-label="Search"
         onChange={(e) => {
-          const value = e.target.value;
+          const { value } = e.target;
           if (value && value.length > 0) {
             setSearchTerm(value);
           }

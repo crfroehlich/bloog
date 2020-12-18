@@ -17,11 +17,7 @@ const BadgeWrapper = styled.span`
   margin-right: 4px;
 `;
 
-export const Badge = ({
-  children,
-  color,
-  ...props
-}: any) => {
+export const Badge = ({ children, color, ...props }: any) => {
   const background = color || colors.primary;
   const foreground =
     colorFn(background).luminosity() < 0.5 ? 'rgba(255,255,255,0.95)' : 'rgba(0,0,0,0.95)';

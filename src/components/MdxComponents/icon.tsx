@@ -7,7 +7,7 @@ const { colors } = getTheme();
 const capitalize = (text: any) => text.charAt(0).toUpperCase() + text.slice(1);
 
 export const Icon = ({ ...props }) => {
-  let name = props.name
+  const name = props.name
     .split('-')
     .map(capitalize)
     .reduce((acc: any, value: any) => (acc += value), '');
@@ -24,7 +24,7 @@ export const Icon = ({ ...props }) => {
   return (
     <span
       css={{
-        margin: '0 ' + margin,
+        margin: `0 ${margin}`,
         svg: {
           verticalAlign: 'middle',
         },

@@ -1,4 +1,4 @@
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import config from '../../../.config';
 
 export const getNavigationData = () => {
@@ -37,15 +37,15 @@ const createUnassignedGroup = () => {
 };
 
 const calculateTreeDataForData = (contentData: any): any[] => {
-  let navigationItems = contentData
+  const navigationItems = contentData
     .map((data: any) => data.node)
     .map((node: any) => {
       let parts = node.fields.slug.substr(1).split('/');
       const label = parts.join('');
       parts = parts.splice(0, parts.length - 1);
-      let parents: any = [];
+      const parents: any = [];
       parts.forEach((part: any, index: any) => {
-        let v = '/' + part;
+        let v = `/${part}`;
         if (parents[index - 1]) {
           v = parents[index - 1] + v;
         }
@@ -53,7 +53,7 @@ const calculateTreeDataForData = (contentData: any): any[] => {
       });
       return {
         parent: parents.reverse(),
-        label: label,
+        label,
         url: node.fields.slug,
         children: [],
         title: node.fields.title,
@@ -62,8 +62,8 @@ const calculateTreeDataForData = (contentData: any): any[] => {
     });
 
   navigationItems.sort((a, b) => {
-    let aIdx = config.sidebar.forcedNavOrder.indexOf(a.url);
-    let bIdx = config.sidebar.forcedNavOrder.indexOf(b.url);
+    const aIdx = config.sidebar.forcedNavOrder.indexOf(a.url);
+    const bIdx = config.sidebar.forcedNavOrder.indexOf(b.url);
     const forcedOrder = aIdx - bIdx;
     if (forcedOrder !== 0) {
       return forcedOrder;
@@ -72,7 +72,7 @@ const calculateTreeDataForData = (contentData: any): any[] => {
     return frontOrder !== 0 ? frontOrder : a.label.localeCompare(b.label);
   });
 
-  let result = {
+  const result = {
     __root: createUnassignedGroup(),
   };
   navigationItems.forEach((data: any) => {
@@ -97,9 +97,9 @@ const calculateTreeDataForData = (contentData: any): any[] => {
       // assume first level of navigation entry URL may be ID (path) of a group
       let group = result[data.url.split('/')[1].toLowerCase()];
       if (group == null) {
-        group = group ? group : getGroup(data.url);
+        group = group || getGroup(data.url);
         if (!group) {
-          group = result['__root'];
+          group = result.__root;
         } else {
           group = {
             title: group ? group.title : '',
@@ -121,7 +121,7 @@ const calculateTreeDataForData = (contentData: any): any[] => {
       group.children.push(data);
     }
   });
-  let ret = Object.values(result);
+  const ret = Object.values(result);
   ret.sort(function (a: any, b: any) {
     const ordered = a.order - b.order;
     return ordered !== 0 ? ordered : a.title.localeCompare(b.title);
@@ -135,7 +135,7 @@ export const calculateNavigation = (edges: any) => {
         ({
           node: {
             fields: { slug },
-          }
+          },
         }: any) => slug !== '/'
       )
     : edges;
@@ -149,14 +149,14 @@ const flat = (parent: any, acc: any) => {
   parent.children.forEach((child: any) => {
     acc.push(child);
     flat(child, acc);
-  })
-}
+  });
+};
 
 export const calculateFlatNavigation = (edges: any) => {
   const navigation = calculateNavigation(edges);
   const acc: any = [];
   navigation.children.forEach((group: any) => {
-    flat(group, acc)
-  })
-  return acc;;
+    flat(group, acc);
+  });
+  return acc;
 };

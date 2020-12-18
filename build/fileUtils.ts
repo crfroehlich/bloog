@@ -1,6 +1,7 @@
-const { readFileSync, close, open, utimes } = require('fs');
 import yaml from 'js-yaml';
 import path from 'path';
+
+const { readFileSync, close, open, utimes } = require('fs');
 
 export const touch = (path: any) => {
   return new Promise((resolve, reject) => {
@@ -22,7 +23,8 @@ export const readYamlOrJson = (path: any) => {
     if (path.endsWith('.yml') || path.endsWith('.yaml')) {
       const fileContents = readFileSync(path, 'utf8');
       return yaml.safeLoad(fileContents);
-    } else if (path.endsWith('.json')) {
+    }
+    if (path.endsWith('.json')) {
       return require(path);
     }
     throw 'Config file must be either YAML or JSON';
@@ -34,5 +36,5 @@ export const readYamlOrJson = (path: any) => {
 
 export const rootDir = () => {
   const filename = require && require.main ? require.main.filename : '';
-  return path.dirname(filename)
+  return path.dirname(filename);
 };

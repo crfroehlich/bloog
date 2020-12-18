@@ -1,18 +1,14 @@
-import { ExternalLink } from 'react-feather';
-import React from 'react';
 import styled from '@emotion/styled';
+import React from 'react';
+import { ExternalLink } from 'react-feather';
 import { flex, transparent } from '../../styles';
 import { getTheme } from '../../theme';
 
 const { navigationSidebar } = getTheme();
 
-const Link = styled(({
-  className,
-  to,
-  text
-}: any) => {
+const Link = styled(({ className, to, text }: any) => {
   try {
-    if(to?.length > 0) {
+    if (to?.length > 0) {
       return (
         <li className={className}>
           <a href={to} target={'_blank'} css={flex} rel={'noreferrer'}>
@@ -23,17 +19,12 @@ const Link = styled(({
           </a>
         </li>
       );
-    } else {
-      return (
-        <li className={className}>
-          {text}
-        </li>
-      );
     }
-  } catch(e) {
-    console.log(e)
+    return <li className={className}>{text}</li>;
+  } catch (e) {
+    console.log(e);
     console.log(to);
-    throw e; 
+    throw e;
   }
 })`
   list-style: none;
@@ -59,14 +50,10 @@ const Link = styled(({
   }
 `;
 
-export const Links = ({
-  links
-}: any) => (
-  
+export const Links = ({ links }: any) => (
   <ul>
     {links.map((link: any, key: any) => {
       if (link.link !== '' && link.text !== '') {
-        
         return <Link key={`${key}_${link}`} to={link.link} text={link.text} />;
       }
     })}

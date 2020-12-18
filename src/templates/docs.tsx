@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import styled from '@emotion/styled';
 import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
-import styled from '@emotion/styled';
-import { Layout, EditOnRepo, PreviousNext, Seo } from '..';
-import { emojiTools as emoji } from '../utils/emoji';
-import { onMobile, onTablet } from '../styles/responsive';
+import React, { useEffect } from 'react';
+import { EditOnRepo, Layout, PreviousNext, Seo } from '..';
 import config from '../../.config';
 import { Empty } from '../components/Empty';
+import { onMobile, onTablet } from '../styles/responsive';
 import { getTheme } from '../theme';
+import { emojiTools as emoji } from '../utils/emoji';
 
 const { contend, colors } = getTheme();
 
@@ -80,21 +80,14 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const ReadingTime = styled(({
-  className,
-  time
-}: any) => (
-    <span className={className}>Reading time: {time} min</span>
+const ReadingTime = styled(({ className, time }: any) => (
+  <span className={className}>Reading time: {time} min</span>
 ))`
   font-style: italic;
   font-size: 12px;
 `;
 
-const LastUpdated = styled(({
-  className,
-  time,
-  name
-}: any) => {
+const LastUpdated = styled(({ className, time, name }: any) => {
   return (
     <span className={className}>
       Last update:{' '}
@@ -133,9 +126,9 @@ export const DocPage = (props) => {
   } = data;
 
   // meta tags
-  const metaTitle = mdx.frontmatter.metaTitle;
+  const { metaTitle } = mdx.frontmatter;
   const docTitle = emoji.emojify(mdx.fields.title);
-  const headTitle = metaTitle ? metaTitle : emoji.clean(docTitle);
+  const headTitle = metaTitle || emoji.clean(docTitle);
 
   return (
     <Layout {...props}>
@@ -143,7 +136,9 @@ export const DocPage = (props) => {
       <PageTitle>
         <TitleWrapper>
           <Title>{docTitle}</Title>
-          {docsLocation && ((editable && mdx.frontmatter.editable !== false) || mdx.frontmatter.editable === true) ? (
+          {docsLocation &&
+          ((editable && mdx.frontmatter.editable !== false) ||
+            mdx.frontmatter.editable === true) ? (
             <EditOnRepo
               location={docsLocation}
               branch={gitBranch.name}
@@ -186,7 +181,7 @@ export const DocPage = (props) => {
       )}
     </Layout>
   );
-}
+};
 
 export default DocPage;
 

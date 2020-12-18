@@ -1,1 +1,1 @@
-export const Empty = () => (<div></div>);
+export const Empty = () => <div></div>;

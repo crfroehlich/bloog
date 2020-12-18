@@ -1,0 +1,14 @@
+public
+.cache
+node_modules
+*DS_Store
+*.env
+
+.idea/
+.vscode/
+*.iml
+reduxcache*
+*.log
+.generated.config.ts
+
+.yarn/*

@@ -1,8 +1,8 @@
-import { workbox } from "../@types";
+import { workbox } from '../@types';
+
 workbox.routing.registerRoute(
   new RegExp('https:.*min.(css|js)'),
   new workbox.strategies.StaleWhileRevalidate({
     cacheName: 'cdn-cache',
   })
 );
-

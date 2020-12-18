@@ -14,9 +14,9 @@ const SocialButtonsBuilder = (baseProps: any) => {
           optConfig && optConfig.additionalProps ? optConfig.additionalProps : {};
         buttons.push(
           btn({
-            link: link,
+            link,
             key: `${name}-social`,
-            title: title,
+            title,
             ...iconBaseProps,
             ...additionalProps,
           })
@@ -26,8 +26,8 @@ const SocialButtonsBuilder = (baseProps: any) => {
   };
   const get = () => buttons;
   return {
-    get: get,
-    create: create,
+    get,
+    create,
   };
 };
 

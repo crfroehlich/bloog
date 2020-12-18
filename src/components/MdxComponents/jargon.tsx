@@ -1,5 +1,5 @@
-import React from 'react';
 import styled from '@emotion/styled';
+import React from 'react';
 import { getTheme } from '../../theme';
 
 const { colors, jargon } = getTheme();
@@ -63,13 +63,6 @@ const JargonWrapper = styled.em`
   }
 `;
 
-export const Jargon = ({
-  children,
-  ...props
-}: any) => {
-  return (
-    <JargonWrapper {...props}>
-      {children}
-    </JargonWrapper>
-  );
+export const Jargon = ({ children, ...props }: any) => {
+  return <JargonWrapper {...props}>{children}</JargonWrapper>;
 };

@@ -1,13 +1,13 @@
-import React from 'react';
-import { OpenedSvg } from '../../images/opened';
-import { ClosedSvg } from '../../images/closed';
-import { Link } from '..';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { emojiTools as emoji } from '../../utils/emoji';
+import React from 'react';
+import { Link } from '..';
 import config from '../../../.config';
-import { Empty } from '../Empty';
+import { ClosedSvg } from '../../images/closed';
+import { OpenedSvg } from '../../images/opened';
 import { getTheme } from '../../theme';
+import { emojiTools as emoji } from '../../utils/emoji';
+import { Empty } from '../Empty';
 
 const { navigationSidebar, transitions } = getTheme();
 
@@ -27,12 +27,7 @@ const activeNode = () => css`
   }
 `;
 
-const ContentLink = styled(({
-  className,
-  link,
-  children
-}: any) => (
-  
+const ContentLink = styled(({ className, link, children }: any) => (
   <Link to={link} className={className}>
     {children}
   </Link>
@@ -46,15 +41,8 @@ const ContentLink = styled(({
   border-radius: 1px;
 `;
 
-const NodeContent = styled(({
-  className,
-  text,
-  link,
-  children
-}: any) => (
-  
+const NodeContent = styled(({ className, text, link, children }: any) => (
   <li className={className}>
-    
     {text && <ContentLink link={link}>{text}</ContentLink>}
     {children}
   </li>
@@ -79,18 +67,11 @@ const NodeContent = styled(({
 `;
 
 const NestedContentTreeNode = styled(
-  ({
-    className,
-    location,
-    children,
-    setCollapsed,
-    collapsed
-  }: any) => (
-    //<Slide top>
-    
+  ({ className, location, children, setCollapsed, collapsed }: any) => (
+    // <Slide top>
+
     <ul className={className}>
-      {children.map((item: any,i: any) => (
-        
+      {children.map((item: any, i: any) => (
         <ContentTreeNode
           key={`${item.url}_${i}`}
           setCollapsed={setCollapsed}
@@ -101,7 +82,7 @@ const NestedContentTreeNode = styled(
       ))}
     </ul>
   )
-  //</Slide>
+  // </Slide>
 )`
   flex: 100%;
   li {
@@ -113,15 +94,9 @@ const NestedContentTreeNode = styled(
   }
 `;
 
-const NodeCollapseButton = styled(({
-  className,
-  isCollapsed,
-  collapse
-}: any) => {
+const NodeCollapseButton = styled(({ className, isCollapsed, collapse }: any) => {
   return (
-    
     <button onClick={collapse} aria-label="collapse" className={className}>
-      
       {!isCollapsed ? <OpenedSvg /> : <ClosedSvg />}
     </button>
   );
@@ -149,37 +124,36 @@ export const ContentTreeNode = ({
   url,
   title,
   location,
-  children
+  children,
 }: any) => {
   const hasChildren = children.length !== 0;
   const active =
     location &&
     (location.pathname === url ||
-      location.pathname === url + '/' ||
+      location.pathname === `${url}/` ||
       location.pathname === config.metadata.pathPrefix + url);
   const collapse = () => {
     toggle(url);
   };
-  let isCollapsed = collapsed[url];
+  const isCollapsed = collapsed[url];
   const text = emoji.emojify(title);
   return (
     <div>
-      <NodeContent
-        text={text}
-        link={url}
-        className={className}
-        css={active ? activeNode() : ''}
-      >
+      <NodeContent text={text} link={url} className={className} css={active ? activeNode() : ''}>
         {title && hasChildren ? (
           <NodeCollapseButton isCollapsed={isCollapsed} collapse={collapse} />
-        ) : <Empty />}
+        ) : (
+          <Empty />
+        )}
       </NodeContent>
 
       {!isCollapsed ? (
         <NestedContentTreeNode collapsed={collapsed} location={location} setCollapsed={toggle}>
           {children}
         </NestedContentTreeNode>
-      ) : <Empty />}
+      ) : (
+        <Empty />
+      )}
     </div>
   );
 };

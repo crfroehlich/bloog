@@ -1,20 +1,13 @@
-import React from 'react';
 import styled from '@emotion/styled';
+import React from 'react';
 import { ChevronLeft, ChevronRight } from 'react-feather';
 import { onMobile } from '../../styles/responsive';
-import { Empty } from '../Empty';
 import { getTheme } from '../../theme';
+import { Empty } from '../Empty';
 
 const { search, colors, transitions } = getTheme();
 
-const Button = styled(({
-  refine,
-  page,
-  show,
-  isCurrent,
-  children,
-  ...props
-}: any) => {
+const Button = styled(({ refine, page, show, isCurrent, children, ...props }: any) => {
   const changePage = (event: any) => {
     event.preventDefault();
     refine(page);
@@ -31,15 +24,10 @@ const Button = styled(({
   vertical-align: middle;
   transition: ${transitions.hover};
   background-color: ${(props) =>
-    props.isCurrent
-      ? search.pagination.currend?.background
-      : search.pagination?.background};
+    props.isCurrent ? search.pagination.currend?.background : search.pagination?.background};
   border: 1px solid ${search.pagination.border};
 
-  color: ${(props) =>
-    props.isCurrent
-      ? search.pagination.currend?.font
-      : search.pagination.font};
+  color: ${(props) => (props.isCurrent ? search.pagination.currend?.font : search.pagination.font)};
   border-radius: 4px;
   box-shadow: 0 0 4px 0 ${colors.border};
   font-size: 1em;
@@ -88,7 +76,7 @@ export const Pagination = ({
   currentPage,
   refine,
   showPrevious,
-  showNext
+  showNext,
 }: any) => {
   const pagesToShow = totalPages && nbPages > totalPages ? totalPages : nbPages;
   const previousPage = currentPage > 1 ? currentPage - 1 : 1;
@@ -102,7 +90,9 @@ export const Pagination = ({
               <ChevronLeft />
             </Button>
           </li>
-        ) : <Empty />}
+        ) : (
+          <Empty />
+        )}
         {new Array(pagesToShow).fill(null).map((_, index) => {
           const page = index + 1;
           const isCurrent = currentPage === page;

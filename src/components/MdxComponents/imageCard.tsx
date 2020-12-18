@@ -1,7 +1,7 @@
-import React from 'react';
 import styled from '@emotion/styled';
-import { Card } from './card';
+import React from 'react';
 import { onMobile } from '../../styles/responsive';
+import { Card } from './card';
 
 const ImageCardWrapper = styled(Card)`
   width: ${(props) => props.width};
@@ -13,33 +13,27 @@ const ImageCardWrapper = styled(Card)`
 `;
 
 const Image = styled.img`
-align-self: center;
-border-radius: 4px; 
+  align-self: center;
+  border-radius: 4px;
 `;
-
 
 const Text = styled.p`
-margin-top: 15px;
-& > p:first-of-type {
+  margin-top: 15px;
+  & > p:first-of-type {
     margin-top: 0;
-}
-& > p:last-child {
+  }
+  & > p:last-child {
     margin-bottom: 0;
-}
+  }
 `;
 
-export const ImageCard = ({
-  children,
-  width,
-  height,
-  src
-}: any) => {
-  const imgWidth = width ? width : '50%';
-  const imgHeight = height ? height : '50%';
+export const ImageCard = ({ children, width, height, src }: any) => {
+  const imgWidth = width || '50%';
+  const imgHeight = height || '50%';
   return (
-      <ImageCardWrapper width={imgWidth} height={imgHeight}>
-        <Image src={src} />
-        <Text>{children}</Text>
-      </ImageCardWrapper>
+    <ImageCardWrapper width={imgWidth} height={imgHeight}>
+      <Image src={src} />
+      <Text>{children}</Text>
+    </ImageCardWrapper>
   );
 };

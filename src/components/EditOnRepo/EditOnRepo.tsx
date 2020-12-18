@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 import { Link } from '..';
+import { onMobile, onTablet } from '../../styles/responsive';
 import { shadowAround } from '../../styles/styles';
-import { onTablet, onMobile } from '../../styles/responsive';
 import { getTheme } from '../../theme';
-import { processPwa } from 'src/utils/config-pwa';
 
 const { transitions, editOnRepo } = getTheme();
 
@@ -44,16 +43,11 @@ const Edit = styled('div')`
 `;
 
 const EditButton = styled((props) => {
-  const {
-    className,
-    icon,
-    link,
-    text
-  } = props;
+  const { className, icon, link, text } = props;
   return (
     <Edit>
       <Link className={className} to={link} css={shadowAround} target={'_blank'}>
-        <img src={icon} alt={'Git Repository'} loading={'lazy'} /> 
+        <img src={icon} alt={'Git Repository'} loading={'lazy'} />
         <span>{text}</span>
       </Link>
     </Edit>
@@ -81,12 +75,7 @@ const EditButton = styled((props) => {
 const rootDir = 'content';
 
 export const EditOnRepo = (props) => {
-  const {
-    repoType,
-    branch,
-    location,
-    path,
-  } = props;
+  const { repoType, branch, location, path } = props;
   let icon = null;
   let link = `${location}/${path}`;
   let text = 'Edit on ';
@@ -114,6 +103,6 @@ export const EditOnRepo = (props) => {
     default:
       console.log(`Repository type ${repoType} is not supported by edit on repo feature`);
   }
-  
+
   return <EditButton icon={icon} link={link} text={text} />;
 };

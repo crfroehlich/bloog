@@ -1,14 +1,11 @@
-import React from 'react';
 import styled from '@emotion/styled';
+import React from 'react';
 import { onMobile } from '../../styles/responsive';
 import { getTheme } from '../../theme';
 
 const { navigationSidebar, transitions } = getTheme();
 
-const Trademark = styled(({
-  className,
-  trademark
-}: any) => {
+const Trademark = styled(({ className, trademark }: any) => {
   return (
     <div className={className}>
       <img src={trademark} alt="powered by logo" loading={'lazy'} />
@@ -23,10 +20,7 @@ const Trademark = styled(({
     width: 25px;
   }
 `;
-const PoweredText = styled(({
-  className,
-  text
-}: any) => (
+const PoweredText = styled(({ className, text }: any) => (
   <div className={className}>
     <span>
       Powered By <b>{text}</b>
@@ -42,12 +36,7 @@ const PoweredText = styled(({
   }
 `;
 
-export const PoweredBy = styled(({
-  className,
-  trademark,
-  name,
-  link
-}: any) => (
+export const PoweredBy = styled(({ className, trademark, name, link }: any) => (
   <div css={{ margin: '0 auto', width: 'fit-content' }}>
     <a className={className} href={link} target="_blank" rel="noreferrer">
       <Trademark trademark={trademark} />

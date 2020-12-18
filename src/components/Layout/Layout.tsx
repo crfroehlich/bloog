@@ -1,21 +1,20 @@
 import styled from '@emotion/styled';
 import { MDXProvider } from '@mdx-js/react';
+import 'css';
+import React, { useEffect, useRef, useState } from 'react';
+import { Slide } from 'react-reveal';
 import {
   Header,
   MdxComponents,
-  SearchSidebar,
   ScrollTop,
+  SearchSidebar,
   Sidebar,
   TableOfContents,
   ThemeProvider,
 } from '..';
-
 import config from '../../../.config';
-import React, { useRef, useEffect, useState } from 'react';
-import { Slide } from 'react-reveal';
-import { hiddenMobile, hiddenTablet, table } from '../../styles/styles';
 import { onMobile, onTablet } from '../../styles/responsive';
-import 'css';
+import { hiddenMobile, hiddenTablet } from '../../styles/styles';
 import { getTheme } from '../../theme';
 
 const { contend } = getTheme();
@@ -79,14 +78,10 @@ function actOnClose(ref: any, onClose: any) {
 }
 
 export const Layout = (props) => {
-  const {
-    children,
-    data,
-    location,
-  } = props;
+  const { children, data, location } = props;
 
   let tableOfContents = [];
-  if(data?.mdx?.tableOfContents?.items?.length > 0) {
+  if (data?.mdx?.tableOfContents?.items?.length > 0) {
     tableOfContents = data.mdx.tableOfContents.items;
   }
   const [showSearch, setShowSearch] = useState(false);
@@ -98,7 +93,6 @@ export const Layout = (props) => {
   actOnClose(searchSidebarRef, closeSearch);
 
   return (
-    
     <ThemeProvider refs={themeProviderRef} darkModeConfig={config.features.darkMode}>
       <div
         css={{
@@ -108,26 +102,37 @@ export const Layout = (props) => {
         }}
       >
         <Slide right delay={0} duration={400} when={showSearch}>
-          <SearchSidebar inputRef={searchSidebarRef} {...{closeSelf: closeSearch, onVisibleChange: setSearchVisible}} />
+          <SearchSidebar
+            inputRef={searchSidebarRef}
+            {...{ closeSelf: closeSearch, onVisibleChange: setSearchVisible }}
+          />
         </Slide>
       </div>
-      
+
       <Header
-        show={! (config.features.fullScreenMode.hideHeader && fullscreenMode)}
+        show={!(config.features.fullScreenMode.hideHeader && fullscreenMode)}
         location={location}
         setShowSearch={setShowSearch}
         themeProvider={themeProviderRef}
         toggleFullscreenMode={() => setFullScreenMode(!fullscreenMode)}
       />
-      
+
       <MDXProvider components={MdxComponents}>
-        
         {config.features.scrollTop === true ? <ScrollTop /> : ''}
-        
+
         <Wrapper>
-          <Sidebar show={! (config.features.fullScreenMode.hideSidebar && fullscreenMode)} location={location} css={hiddenMobile} />
+          <Sidebar
+            show={!(config.features.fullScreenMode.hideSidebar && fullscreenMode)}
+            location={location}
+            css={hiddenMobile}
+          />
           <Content>{children}</Content>
-          <TableOfContents toc={tableOfContents} show={! (config.features.fullScreenMode.hideToc && fullscreenMode)} location={location} css={hiddenTablet} />
+          <TableOfContents
+            toc={tableOfContents}
+            show={!(config.features.fullScreenMode.hideToc && fullscreenMode)}
+            location={location}
+            css={hiddenTablet}
+          />
         </Wrapper>
       </MDXProvider>
     </ThemeProvider>

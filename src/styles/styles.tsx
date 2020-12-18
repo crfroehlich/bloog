@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
-import { onMobile, onTablet } from './responsive';
 import { getTheme } from '../theme';
+import { onMobile, onTablet } from './responsive';
 
 const { colors, transitions } = getTheme();
 const tbl = getTheme().table;
@@ -208,27 +208,27 @@ export const list = css`
 `;
 
 export const hiddenMobile = css`
-${onMobile} {
-  display: none;
-}
+  ${onMobile} {
+    display: none;
+  }
 `;
 
 export const hiddenTablet = css`
-${onTablet} {
-  display: none;
-}
+  ${onTablet} {
+    display: none;
+  }
 `;
 
 export const visibleMobile = css`
-display: none;
-${onMobile} {
-  display: flex;
-}
+  display: none;
+  ${onMobile} {
+    display: flex;
+  }
 `;
 
 export const visibleTablet = css`
-display: none;
-${onTablet} {
-  display: flex;
-}
+  display: none;
+  ${onTablet} {
+    display: flex;
+  }
 `;

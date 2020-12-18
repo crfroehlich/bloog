@@ -1,11 +1,11 @@
-import React from 'react';
 import styled from '@emotion/styled';
+import React from 'react';
 import { ArrowRight } from 'react-feather';
+import { getTheme } from '../../theme';
+import { decreaseIntensivity } from '../../utils/colors';
 import { emojiTools as emoji } from '../../utils/emoji';
 import { Link } from '../Link';
-import { decreaseIntensivity } from '../../utils/colors';
 import { Card } from './card';
-import { getTheme } from '../../theme';
 
 const { colors } = getTheme();
 
@@ -33,10 +33,7 @@ const Title = styled.div`
   flex: 1;
 `;
 
-export const LinkCard = ({
-  title,
-  url
-}: any) => {
+export const LinkCard = ({ title, url }: any) => {
   const path = url.replace(/(https:\/\/)|(http:\/\/)/, '');
   return (
     <Link to={url}>

@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { marginLeftRight } from './styles';
-import { Loader as Loading } from '../Loader';
+import styled from '@emotion/styled';
+import React from 'react';
 import { Empty } from '../Empty';
+import { Loader as Loading } from '../Loader';
+import { marginLeftRight } from './styles';
 
 const queryToken = css`
   font-weight: bold;
@@ -20,11 +20,7 @@ const StatusWrapper = styled.div`
   }
 `;
 
-export const SearchStatus = ({
-  searching,
-  noHits,
-  query
-}: any) => {
+export const SearchStatus = ({ searching, noHits, query }: any) => {
   let text = '';
   if (searching) {
     text = 'Searching...';

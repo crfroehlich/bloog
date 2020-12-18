@@ -1,5 +1,5 @@
-import React from 'react';
 import styled from '@emotion/styled';
+import React from 'react';
 
 const LayoutEl = styled.div`
   display: flex;
@@ -25,14 +25,10 @@ const LayoutEl = styled.div`
   }
 `;
 
-export const Layout = ({
-  children,
-  spacing,
-  ...props
-}: any) => {
-  let space = spacing || 'medium';
+export const Layout = ({ children, spacing, ...props }: any) => {
+  const space = spacing || 'medium';
   return (
-    <LayoutEl className={'spacing-' + space} {...props}>
+    <LayoutEl className={`spacing-${space}`} {...props}>
       {children}
     </LayoutEl>
   );

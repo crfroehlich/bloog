@@ -5140,10 +5140,14 @@ __metadata:
     eslint-config-airbnb-base: ^14.2.1
     eslint-config-prettier: 7.0.0
     eslint-plugin-import: 2.22.1
+    eslint-plugin-json: ^2.1.2
     eslint-plugin-jsx-a11y: 6.4.1
+    eslint-plugin-markdown: ^1.0.2
     eslint-plugin-prettier: 3.3.0
     eslint-plugin-react: 7.21.5
     eslint-plugin-react-hooks: ^4.2.0
+    eslint-plugin-sonarjs: latest
+    eslint-plugin-yaml: ^0.3.0
     gatsby: 2.29.1
     gatsby-cli: ^2.16.1
     gatsby-image: ^2.8.0
@@ -8171,6 +8175,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cli@npm:~1.0.0":
+  version: 1.0.1
+  resolution: "cli@npm:1.0.1"
+  dependencies:
+    exit: 0.1.2
+    glob: ^7.1.1
+  checksum: 9be5446fd13f5abcdbcde2ec07ad6e409c02cee01bb6682e92fa5d6c7a5ec6acd7a73390a4638f951b3556831196af48069eb8884a5d8e36f737cd49c1e08703
+  languageName: node
+  linkType: hard
+
 "clipboardy@npm:^2.3.0":
   version: 2.3.0
   resolution: "clipboardy@npm:2.3.0"
@@ -8550,6 +8564,15 @@ __metadata:
   version: 1.6.0
   resolution: "connect-history-api-fallback@npm:1.6.0"
   checksum: 298f60415d5f5480b76f98d8bf83737cae9f05921e3d3479452cae34ed3498fab35a1c4c8f19ca5b327bbbe759098f5f6e5fc097d829f607d0d642b075c93e21
+  languageName: node
+  linkType: hard
+
+"console-browserify@npm:1.1.x":
+  version: 1.1.0
+  resolution: "console-browserify@npm:1.1.0"
+  dependencies:
+    date-now: ^0.1.4
+  checksum: c11fbdb2e29cefa1115b79553d74f9bbdf22839eb1d637cfd602a5e67d81bcf3fa109bf26121f33029ee111b81a82481509273b900dd603e113d513acf01a77a
   languageName: node
   linkType: hard
 
@@ -9693,6 +9716,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"date-now@npm:^0.1.4":
+  version: 0.1.4
+  resolution: "date-now@npm:0.1.4"
+  checksum: 559af5771a48ce52e3387d289e8461244aff60d6736df45ea6c6f1d8aaecd5442804baadbcbfbe547946416af958c3bdd99029839f342b2d8afcfde028ff301f
+  languageName: node
+  linkType: hard
+
 "dayjs@npm:^1.8.14":
   version: 1.9.7
   resolution: "dayjs@npm:1.9.7"
@@ -10358,6 +10388,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"domhandler@npm:2.3":
+  version: 2.3.0
+  resolution: "domhandler@npm:2.3.0"
+  dependencies:
+    domelementtype: 1
+  checksum: c83d4b365ffd0fb592ff395ddc11c9c9554b3710aad7b13f1a5ebe96772d964d15c2ae443c5199a3d7a8f09401e9bd0f4b81c23c5930a813d6da212b5e8ea1cf
+  languageName: node
+  linkType: hard
+
 "domhandler@npm:^2.3.0":
   version: 2.4.2
   resolution: "domhandler@npm:2.4.2"
@@ -10376,7 +10415,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"domutils@npm:1.5.1":
+"domutils@npm:1.5, domutils@npm:1.5.1":
   version: 1.5.1
   resolution: "domutils@npm:1.5.1"
   dependencies:
@@ -10753,6 +10792,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"entities@npm:1.0":
+  version: 1.0.0
+  resolution: "entities@npm:1.0.0"
+  checksum: c93fddfd1ec3af220062afb2ad1266c2b5df56c2adc1f98a26f5af86ad16d2a569c7caeba06e3b861f06d41c64ef3fc275e5236f4c8a9621e6d228071ed67f20
+  languageName: node
+  linkType: hard
+
 "entities@npm:^1.1.1, entities@npm:~1.1.1":
   version: 1.1.2
   resolution: "entities@npm:1.1.2"
@@ -11105,6 +11151,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-json@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "eslint-plugin-json@npm:2.1.2"
+  dependencies:
+    lodash: ^4.17.19
+    vscode-json-languageservice: ^3.7.0
+  checksum: 1787c5e98883a6259f6534ac37d54ba6e7e9c83645769c8d409740a8ca17b8ba8eb645103c019402ee39b8c77f4cd11a5f4dffee20842f2859fd983a91ca2f7a
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-jsx-a11y@npm:6.4.1":
   version: 6.4.1
   resolution: "eslint-plugin-jsx-a11y@npm:6.4.1"
@@ -11144,6 +11200,17 @@ __metadata:
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7
   checksum: 3261972201e011625b373b9e924f8f05cd1c420d3157689a6b91e5864f42c812ef2d723673ddfac36171d91ee40bc5a1041018ad69b4b0aff0c1967333ff9302
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-markdown@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "eslint-plugin-markdown@npm:1.0.2"
+  dependencies:
+    object-assign: ^4.0.1
+    remark-parse: ^5.0.0
+    unified: ^6.1.2
+  checksum: fed8f897de63f61f44a4c4f0d91150f5498d0f93852c81378335332384f807004a1b953fe7fb211c817cfc06ef4dd4a5fbda41d251e7cdf4b64ae2a696a624b2
   languageName: node
   linkType: hard
 
@@ -11198,6 +11265,25 @@ __metadata:
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7
   checksum: a7123f6feb287ad7e15d36b1c9fda8f78a0f0d39b9ee2d6479a5f0ad0effb8f60f639ef7449cecabb711095060e487f0950b69478b22768547b909c0de4f3afd
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-sonarjs@npm:latest":
+  version: 0.5.0
+  resolution: "eslint-plugin-sonarjs@npm:0.5.0"
+  peerDependencies:
+    eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
+  checksum: c87c5f461e61cd471f03b03c10c5c962d5a954f124ba5602b85a05f80677e79e0c368b910f754e0595a706c4a261141e951fef3af41583e28b5f35b31a6ea094
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-yaml@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "eslint-plugin-yaml@npm:0.3.0"
+  dependencies:
+    js-yaml: ^3.14.0
+    jshint: ^2.11.1
+  checksum: 65032166dd60c25e5f5aacafbdfbb1098b1bd6595fb0c91105b8f323c004a3de2e34edfd28b6b091a9fbf6009090e57f84970667a83bdf347c85c9d04edb8f6f
   languageName: node
   linkType: hard
 
@@ -11653,6 +11739,13 @@ __metadata:
   version: 0.1.12
   resolution: "exif-parser@npm:0.1.12"
   checksum: e48036d0a30c5e617382a49b2e967d15926475c42f637c8cfe4750d4bf58a09c3c0251eae2e1b3d77669d19cd6b2be85d3856dabcdffb8c799c95de4051fbf66
+  languageName: node
+  linkType: hard
+
+"exit@npm:0.1.2, exit@npm:0.1.x":
+  version: 0.1.2
+  resolution: "exit@npm:0.1.2"
+  checksum: 64022f65df300964bb588a503ecbc582a2d2d4db12f777b64495e840274ec17a71099e5cdc06dc970aba9795d8bbb9ccb6ba016844fdbd6b74541f4fdb25f201
   languageName: node
   linkType: hard
 
@@ -15129,6 +15222,19 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"htmlparser2@npm:3.8.x":
+  version: 3.8.3
+  resolution: "htmlparser2@npm:3.8.3"
+  dependencies:
+    domelementtype: 1
+    domhandler: 2.3
+    domutils: 1.5
+    entities: 1.0
+    readable-stream: 1.1
+  checksum: 82a71d18df878312f50657239a7b598839d4e56fe3a105bf367f8c1a73c3e7003f532612e1ab9f33a26a4de48aba4732cf5d7a4699d26702c487afab90f5042c
+  languageName: node
+  linkType: hard
+
 "htmlparser2@npm:^3.3.0, htmlparser2@npm:^3.9.1":
   version: 3.10.1
   resolution: "htmlparser2@npm:3.10.1"
@@ -16877,6 +16983,24 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"jshint@npm:^2.11.1":
+  version: 2.12.0
+  resolution: "jshint@npm:2.12.0"
+  dependencies:
+    cli: ~1.0.0
+    console-browserify: 1.1.x
+    exit: 0.1.x
+    htmlparser2: 3.8.x
+    lodash: ~4.17.19
+    minimatch: ~3.0.2
+    shelljs: 0.3.x
+    strip-json-comments: 1.0.x
+  bin:
+    jshint: bin/jshint
+  checksum: 13b98ec84f688f38df731aa7ec7891cc855731470173a96c6f318ab330b20d940f1e2ce9be79b14f5d7e6f62a490f68b90a496b992ca7aaf716638b5442c5ba2
+  languageName: node
+  linkType: hard
+
 "json-buffer@npm:3.0.0":
   version: 3.0.0
   resolution: "json-buffer@npm:3.0.0"
@@ -16996,6 +17120,13 @@ fsevents@~2.1.2:
   bin:
     json5: lib/cli.js
   checksum: 957e4937106cf59975aa0281e68911534d65c8a25be5b4d3559aa55eba351ccab516a943a60ba33e461e4b8af749939986e311de910cbcfd197410b57d971741
+  languageName: node
+  linkType: hard
+
+"jsonc-parser@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "jsonc-parser@npm:3.0.0"
+  checksum: 36b9080a7e25f5052c7d551109c4ead564f3102d7ca0c5ee4a2f7debc18b2cd31896e0e369cfd1442d9d2d71fc1defaf094ba885bc9b43a6a3f2b3a9083fd2cb
   languageName: node
   linkType: hard
 
@@ -22217,6 +22348,18 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"readable-stream@npm:1.1":
+  version: 1.1.14
+  resolution: "readable-stream@npm:1.1.14"
+  dependencies:
+    core-util-is: ~1.0.0
+    inherits: ~2.0.1
+    isarray: 0.0.1
+    string_decoder: ~0.10.x
+  checksum: e4c30b6b8495c11fc83e1b5fcb03b378127d93c953413973a25500991d0bf2b2e158e329d0f56d294e24a61c7751b874570158f24f97ebacb8a5f2fdcc05a0ec
+  languageName: node
+  linkType: hard
+
 "readable-stream@npm:^3.0.6, readable-stream@npm:^3.1.1, readable-stream@npm:^3.4.0, readable-stream@npm:^3.6.0":
   version: 3.6.0
   resolution: "readable-stream@npm:3.6.0"
@@ -22662,6 +22805,29 @@ fsevents@~2.1.2:
     vfile-location: ^3.0.0
     xtend: ^4.0.1
   checksum: c1c1bde733599bc689a0e4b3cb7b720c09e6b0713ef19986a9e7525406887429bdf535a112e5939eb5133456fb81ee7a29f08f63c9702d0bb5c3592120670285
+  languageName: node
+  linkType: hard
+
+"remark-parse@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "remark-parse@npm:5.0.0"
+  dependencies:
+    collapse-white-space: ^1.0.2
+    is-alphabetical: ^1.0.0
+    is-decimal: ^1.0.0
+    is-whitespace-character: ^1.0.0
+    is-word-character: ^1.0.0
+    markdown-escapes: ^1.0.0
+    parse-entities: ^1.1.0
+    repeat-string: ^1.5.4
+    state-toggle: ^1.0.0
+    trim: 0.0.1
+    trim-trailing-lines: ^1.0.0
+    unherit: ^1.0.4
+    unist-util-remove-position: ^1.0.0
+    vfile-location: ^2.0.0
+    xtend: ^4.0.1
+  checksum: e5295c40efaf32b93fe1217c35c85be2c84e97ae4c1f1c25b9f8595f2338a3f22c91d4c5ec8ee7be5540935ea5f21649a5297b73eb368cf1de6f7ecbc250871e
   languageName: node
   linkType: hard
 
@@ -23693,6 +23859,15 @@ fsevents@~2.1.2:
     array-reduce: ~0.0.0
     jsonify: ~0.0.0
   checksum: 51bccdb33171d0c27854d4d8fc102bafbad0bdcf5028a0b5bb5da6caca37762712d48000deaac2c9a69e3060f0ef48f1d68f293bd6aeb7cbf6afc4b4d0f8ce03
+  languageName: node
+  linkType: hard
+
+"shelljs@npm:0.3.x":
+  version: 0.3.0
+  resolution: "shelljs@npm:0.3.0"
+  bin:
+    shjs: ./bin/shjs
+  checksum: 4bef5426395550a8dc77688763cc17519e02a368eed9dafe7afd0e0058add780aa64b964fdbd4ccbb92828c45681c7d8912804b56c61c37e069ecdf3c41b1d91
   languageName: node
   linkType: hard
 
@@ -24751,6 +24926,15 @@ fsevents@~2.1.2:
   dependencies:
     min-indent: ^1.0.0
   checksum: 4a7860e94372753b90a48d032758464efbf194880880fd7636965b7137ae4af24ce77a43d223a602cac787e2e95214aaa2f2470a65986e3d6ffa0e1c3dd887f6
+  languageName: node
+  linkType: hard
+
+"strip-json-comments@npm:1.0.x":
+  version: 1.0.4
+  resolution: "strip-json-comments@npm:1.0.4"
+  bin:
+    strip-json-comments: cli.js
+  checksum: f37f9b3465688adf2306b0db60171849f901f6f87e524550e5f275e41c826ea88a25a4d8e79b5b5fccd22dd90f84f0963ad8d93c3091adabd70616f023ea26b9
   languageName: node
   linkType: hard
 
@@ -25976,7 +26160,7 @@ typescript@4.1.2:
   languageName: node
   linkType: hard
 
-"unified@npm:^6.0.0, unified@npm:^6.2.0":
+"unified@npm:^6.0.0, unified@npm:^6.1.2, unified@npm:^6.2.0":
   version: 6.2.0
   resolution: "unified@npm:6.2.0"
   dependencies:
@@ -26731,6 +26915,19 @@ typescript@4.1.2:
   languageName: node
   linkType: hard
 
+"vscode-json-languageservice@npm:^3.7.0":
+  version: 3.11.0
+  resolution: "vscode-json-languageservice@npm:3.11.0"
+  dependencies:
+    jsonc-parser: ^3.0.0
+    vscode-languageserver-textdocument: ^1.0.1
+    vscode-languageserver-types: 3.16.0-next.2
+    vscode-nls: ^5.0.0
+    vscode-uri: ^2.1.2
+  checksum: 854ff4b8db73afb7e17ee3f853896b4fa43ff2d9c3642ba301b693b5bede1c2764b45e0febcd05d483e9e223867b2da15137e621721a95ffbfeba0e07dc66953
+  languageName: node
+  linkType: hard
+
 "vscode-jsonrpc@npm:^4.0.0":
   version: 4.0.0
   resolution: "vscode-jsonrpc@npm:4.0.0"
@@ -26748,10 +26945,24 @@ typescript@4.1.2:
   languageName: node
   linkType: hard
 
+"vscode-languageserver-textdocument@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "vscode-languageserver-textdocument@npm:1.0.1"
+  checksum: e69f0be2262e27fd78b14f5856643d3eb7aa0b26d1d48cac8ff39eb69f26a8eb8ce988ff2880f69dae76cecb3df9a9e538bb6937cbbf584e9042c4971412d08f
+  languageName: node
+  linkType: hard
+
 "vscode-languageserver-types@npm:3.14.0":
   version: 3.14.0
   resolution: "vscode-languageserver-types@npm:3.14.0"
   checksum: e329a350792f3f23f2505212ea606dfb9ec8254e89fd687a178406a795bf59166a9dc7aa8c7b0758f90dc6f7cb9f98e63e5cc43f2155419cffaf4cef2b31a559
+  languageName: node
+  linkType: hard
+
+"vscode-languageserver-types@npm:3.16.0-next.2":
+  version: 3.16.0-next.2
+  resolution: "vscode-languageserver-types@npm:3.16.0-next.2"
+  checksum: fadb5438cddbdaf1c3e4bf4c82e2bf26df7a86c326dc57cf838a252577f6f9b8874392758c7a981d04d7418765515413fe86e3f18ec591a793e17e6acaebb18b
   languageName: node
   linkType: hard
 
@@ -26767,6 +26978,13 @@ typescript@4.1.2:
   languageName: node
   linkType: hard
 
+"vscode-nls@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "vscode-nls@npm:5.0.0"
+  checksum: 6ad8ed1da5f04e447e157edcf4aa32fb264e059072ae55420d88f03154fb7308e8ea66e89568a00fa29e3769922a77bbbfb172d009e19ff186817ad2c30f4807
+  languageName: node
+  linkType: hard
+
 "vscode-uri@npm:1.0.6":
   version: 1.0.6
   resolution: "vscode-uri@npm:1.0.6"
@@ -26778,6 +26996,13 @@ typescript@4.1.2:
   version: 1.0.8
   resolution: "vscode-uri@npm:1.0.8"
   checksum: 7e245e8cfbfa5829f92c674ce39829d12dae6858fb1f10db1a8514a838d32aa53a6bc33482abce498c89c4209ff2cb9579b9df7ef215c99fe49d5564f2e8b158
+  languageName: node
+  linkType: hard
+
+"vscode-uri@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "vscode-uri@npm:2.1.2"
+  checksum: e911d2a2bbb2d087eb212f3c9f8e71de1bb8bc91c8aa5f07134e5dd7e5a85f8d6d629f4aa177e36c6295eba08e3d44594763b3296b607dc233d239985ee44d38
   languageName: node
   linkType: hard
 

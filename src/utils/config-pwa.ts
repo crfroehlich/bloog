@@ -1,6 +1,7 @@
 const hasValue = (value: any) => value && value.length > 0;
 
-const shortNameFromMetadata = (metadata: any) => calculateValue(metadata.short_name, metadata.name.replace(/\w+/, ''));
+const shortNameFromMetadata = (metadata: any) =>
+  calculateValue(metadata.short_name, metadata.name.replace(/\w+/, ''));
 
 const calculateValue = (value: any, fallbackValue: any) => {
   return hasValue(value) ? value : hasValue(fallbackValue) ? fallbackValue : null;
@@ -9,7 +10,8 @@ const calculateValue = (value: any, fallbackValue: any) => {
 const calculateIconLocalPath = (icon: any) => {
   if (icon && icon.startsWith('/assets/')) {
     return `static${icon}`;
-  } else if (icon && icon.startsWith('assets/')) {
+  }
+  if (icon && icon.startsWith('assets/')) {
     return `static/${icon}`;
   }
   return icon;
@@ -45,7 +47,10 @@ export const processPwa = (config: any) => {
   manifest.short_name = calculateValue(manifest.short_name, shortNameFromMetadata(config.metadata));
   manifest.description = calculateValue(manifest.description, config.metadata.description);
   manifest.start_url = calculateValue(manifest.start_url, config.metadata.pathPrefix);
-  manifest.background_color = calculateValue(manifest?.background_color, config.metadata.themeColor);
+  manifest.background_color = calculateValue(
+    manifest?.background_color,
+    config.metadata.themeColor
+  );
   manifest.theme_color = calculateValue(manifest.theme_color, config.metadata.themeColor);
   manifest.cache_busting_mode = 'none'; // enforce, because required to work with gatsby-plugin-offline
   const icon = calculateValue(manifest.icon, config.metadata.siteImage);
@@ -56,7 +61,7 @@ export const processPwa = (config: any) => {
     setIconsType(manifest.icons);
   }
   config.pwa = {
-    manifest: manifest,
+    manifest,
     enabled: config.pwa.enabled,
   };
 };
