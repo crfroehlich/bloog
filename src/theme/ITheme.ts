@@ -16,6 +16,7 @@ export interface IDefaultColors {
   blue: string;
   blueDark: string;
   blueLight: string;
+  blueTag: string;
   gray: string;
   grayDark: string;
   grayLight: string;

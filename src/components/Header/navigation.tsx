@@ -81,7 +81,7 @@ export const Navigation = styled(({ className, links }: any) => {
       opacity: 1;
       padding: 10px 15px;
       &:hover {
-        color: ${header.fond!.hover};
+        color: 'orange';
       }
     }
   }

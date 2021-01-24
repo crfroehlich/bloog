@@ -1,7 +1,8 @@
 ---
 metadata:
-  name: Hiking My Desk
-  short_name: hiking-my-desk
+  name: ЛУДДИТЫ, INC
+  altName: Luddites, Inc
+  shortName: ЛУДДИТЫ-inc
   description: One Man's Journey to Hike a Desk, Possibly His Own
   language: en
   pathPrefix: '/'
@@ -10,13 +11,9 @@ metadata:
   themeColor: '#ff0000'
 header:
   enabled: true
-  logo: '/assets/logo.svg'
+  logo: '/assets/luddite_logo.svg'
   logoLink: '/'
   helpUrl: ''
-  links:
-    - text: Home
-      link: '/'
-      external: false
 sidebar:
   enabled: true
   # forcedNavOrder:

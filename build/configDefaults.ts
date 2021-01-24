@@ -4,10 +4,11 @@ export const configDefaults: IConfig = {
     favicon: '/assets/favicon.svg',
     gaTrackingId: '',
     language: 'en',
-    name: 'HikingMyDesk',
+    name: 'ЛУДДИТЫ, INC',
     ogImage: '',
     pathPrefix: '/',
-    short_name: 'HikingMyDesk',
+    shortName: 'ЛУДДИТЫ, INC',
+    altName: 'Luddites, Inc.',
     siteImage: '',
     themeColor: '#',
     title: '',
@@ -24,21 +25,15 @@ export const configDefaults: IConfig = {
     forcedNavOrder: [],
     expanded: [],
     groups: [],
-    links: [],
-    poweredBy: {
-      link: '',
-      name: '',
-      trademark: '',
-    },
   },
   pwa: {
     enabled: true, // disabling this will also remove the existing service worker.
     manifest: {
-      name: 'HikingMyDesk',
-      short_name: 'HikingMyDesk',
-      start_url: '/',
-      background_color: '#6b37bf',
-      theme_color: '#6b37bf',
+      name: 'ЛУДДИТЫ, INC',
+      shortName: 'ЛУДДИТЫ',
+      startUrl: '/',
+      backgroundColor: '#6b37bf',
+      themeColor: '#6b37bf',
       display: 'minimal-ui',
       crossOrigin: 'anonymous',
     },
@@ -186,12 +181,6 @@ interface Mermaid {
   height: number;
 }
 
-interface PoweredBy {
-  name: string;
-  link: string;
-  trademark: string;
-}
-
 interface PageProgress {
   color: string;
   enabled: boolean;
@@ -263,6 +252,7 @@ interface Header {
 }
 
 interface Metadata {
+  altName: string;
   description: string;
   favicon: string;
   gaTrackingId: string;
@@ -270,7 +260,7 @@ interface Metadata {
   name: string;
   ogImage: string;
   pathPrefix: string;
-  short_name: string;
+  shortName: string;
   siteImage: string;
   themeColor: string;
   title: string;
@@ -284,10 +274,10 @@ interface Pwa {
 
 interface Manifest {
   name: string;
-  short_name: string;
-  start_url: string;
-  background_color: string;
-  theme_color: string;
+  shortName: string;
+  startUrl: string;
+  backgroundColor: string;
+  themeColor: string;
   display: string;
   crossOrigin: string;
 }
@@ -298,8 +288,7 @@ interface Sidebar {
   forcedNavOrder: any[];
   expanded: any[];
   groups: any[];
-  links: any[];
-  poweredBy: PoweredBy;
+  links?: any[];
 }
 
 interface Social {

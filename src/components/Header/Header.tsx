@@ -25,7 +25,7 @@ const SearchWrapper = styled.div`
   position: relative;
   min-width: 200px;
   max-width: 280px;
-  border-left: 1px solid ${header.border};
+  border-left: none;
   ${onTablet} {
     padding-left: 0;
   }
@@ -45,8 +45,7 @@ const HeaderWrapper = styled(({ show, ...props }) => <header {...props} />)`
   border: 0;
   display: ${(props) => (props.show ? 'flex' : 'none')};
   align-items: center;
-  box-shadow: 0 3px 8px 0 ${header.shadow};
-  border-bottom: 1px solid ${header.border};
+  border-bottom: none;
   padding: 10px 0;
   position: relative;
   overflow: hidden;
@@ -233,8 +232,7 @@ export const Header = ({ setShowSearch, location, show, toggleFullscreenMode }: 
     },
   } = headerTitleQuery;
   const logoLink = logo.link !== '' ? logo.link : '/';
-  const logoImg = require('images/logo.svg');
-  const darkMode = true;
+  const logoImg = require('images/luddite_logo.svg');
 
   const open = () => {
     setShowSearch(true);
@@ -246,17 +244,7 @@ export const Header = ({ setShowSearch, location, show, toggleFullscreenMode }: 
     hoverStroke: header.icons.hover,
     stroke: header.icons.stroke,
   };
-  const DarkModeButton = config.features.darkMode.enabled ? (
-    <DarkModeSwitch
-      {...iconBaseProps}
-      hoverFill={header.icons.hover}
-      fill={header.icons.fill}
-      isDarkThemeActive={darkMode}
-      toggleActiveTheme={() => {}}
-    />
-  ) : (
-    <Empty />
-  );
+
   const toggleMenuOpen = () => setMenuOpen(!menuOpen);
   globalHistory.listen((location) => {
     setMenuOpen(false);
@@ -267,11 +255,8 @@ export const Header = ({ setShowSearch, location, show, toggleFullscreenMode }: 
       {config.features.fullScreenMode.enabled && config.features.fullScreenMode.enabled === true ? (
         <FullScreenHeader show={!show} css={hiddenMobile}>
           <FullScreenClose toggle={toggleFullscreenMode} />
-          {DarkModeButton}
         </FullScreenHeader>
-      ) : (
-        <Empty />
-      )}
+      ) : null}
 
       <HeaderWrapper show={show}>
         <Logo link={logoLink} img={logoImg} title={headerTitle} />
@@ -284,14 +269,10 @@ export const Header = ({ setShowSearch, location, show, toggleFullscreenMode }: 
               <SearchOpener open={open} forcedComponent={'icon'} css={visibleTablet} />
               <SearchOpener open={open} css={hiddenTablet} />
             </div>
-          ) : (
-            <Empty />
-          )}
+          ) : null}
           {helpUrl && helpUrl.length > 0 ? (
             <HelpButton css={hiddenMobile} helpUrl={helpUrl} />
-          ) : (
-            <Empty />
-          )}
+          ) : null}
 
           <SocialButtonsWrapper css={hiddenMobile}>
             {SocialButtons(iconBaseProps, config.social)}
@@ -300,10 +281,7 @@ export const Header = ({ setShowSearch, location, show, toggleFullscreenMode }: 
           {config.features.fullScreenMode.enabled &&
           config.features.fullScreenMode.enabled === true ? (
             <FullScreenEnter toggle={toggleFullscreenMode} css={hiddenMobile} />
-          ) : (
-            <Empty />
-          )}
-          {DarkModeButton}
+          ) : null}
           <MobileMenuToggle toggle={toggleMenuOpen} open={menuOpen} />
         </ButtonsWrapper>
         {isMobile() ? (
@@ -314,9 +292,7 @@ export const Header = ({ setShowSearch, location, show, toggleFullscreenMode }: 
               {SocialButtons(iconBaseProps, config.social)}
             </SocialButtonsWrapper>
           </MobileNavigation>
-        ) : (
-          <Empty />
-        )}
+        ) : null}
       </HeaderWrapper>
     </div>
   );

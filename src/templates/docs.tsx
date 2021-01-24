@@ -1,8 +1,11 @@
 import styled from '@emotion/styled';
 import { graphql } from 'gatsby';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
-import React, { useEffect } from 'react';
-import { EditOnRepo, Layout, PreviousNext, Seo } from '..';
+import { useEffect } from 'react';
+import { EditOnRepo } from '../components/EditOnRepo/EditOnRepo';
+import { Layout } from '../components/Layout';
+import { PreviousNext } from '../components/PreviousNext';
+import { Seo } from '../components/Seo/Seo';
 import config from '../../.config';
 import { Empty } from '../components/Empty';
 import { onMobile, onTablet } from '../styles/responsive';
@@ -15,7 +18,6 @@ const Title = styled.h1`
   font-size: 24pt
   line-height: 1.5;
   font-weight: 500;
-  border-left: 2px solid ${colors.primary};
   padding: 0 16px;
   flex: 1;
   margin-top: 0;
@@ -32,7 +34,7 @@ const PageTitle = styled.div`
   flex-flow: wrap;
   align-items: center;
   padding-bottom: 30px;
-  border-bottom: 1px solid ${contend.border};
+  border-bottom: none;
   color: ${contend.titleFont};
   ${onMobile} {
     padding: 15px;

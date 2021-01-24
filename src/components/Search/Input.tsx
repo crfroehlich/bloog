@@ -66,17 +66,7 @@ const Form = styled.form`
   &, *, input::placeholder, svg {
     transition: ${transitions.hover};
   }
-  &:focus, &:visited, &:hover, &:focus-within  {
-    outline: none;
-    background-color: transparent;
-    input, input::placeholder{
-      color: ${colors.grayDark};
-    }
-    svg {
-      stroke: ${colors.grayDark};
-    }
-  }
-  
+
   svg {
     stroke: ${colors.grayLight};
   }

@@ -40,13 +40,6 @@ const SidebarMain = styled.div`
   }
 `;
 
-const PoweredByWrapper = styled.div`
-  display: block;
-  padding: 0;
-  position: relative;
-  box-shadow: 0 -7px 10px -5px ${navigationSidebar?.backgroundPrimary};
-`;
-
 const NavigationWrapper = styled(({ className, children }: any) => {
   return (
     <aside className={className}>
@@ -59,47 +52,7 @@ const NavigationWrapper = styled(({ className, children }: any) => {
   top: 0;
   flex: 0 0 ${layout.leftWidth};
   background: ${navigationSidebar?.backgroundPrimary};
-  background: linear-gradient(
-    ${navigationSidebar?.backgroundPrimary},
-    ${navigationSidebar?.backgroundSecondary}
-  );
-  /* Safari 4-5, Chrome 1-9 */
-  background: linear-gradient(
-    ${navigationSidebar?.backgroundPrimary},
-    ${navigationSidebar?.backgroundSecondary}
-  );
-  background: -webkit-gradient(
-    linear,
-    0% 0%,
-    0% 100%,
-    from(${navigationSidebar?.backgroundPrimary}),
-    to(${navigationSidebar?.backgroundSecondary})
-  );
-  /* Safari 5.1, Chrome 10+ */
-  background: -webkit-linear-gradient(
-    top,
-    ${navigationSidebar?.backgroundPrimary},
-    ${navigationSidebar?.backgroundSecondary}
-  );
-  /* Firefox 3.6+ */
-  background: -moz-linear-gradient(
-    top,
-    ${navigationSidebar?.backgroundPrimary},
-    ${navigationSidebar?.backgroundSecondary}
-  );
-  /* IE 10 */
-  background: -ms-linear-gradient(
-    top,
-    ${navigationSidebar?.backgroundPrimary},
-    ${navigationSidebar?.backgroundSecondary}
-  );
-  /* Opera 11.10+ */
-  background: -o-linear-gradient(
-    top,
-    ${navigationSidebar?.backgroundPrimary},
-    ${navigationSidebar?.backgroundSecondary}
-  );
-  border-right: 1px solid ${navigationSidebar.border};
+  border-right: none;
   position: sticky;
   ${onMobile} {
     width: 100%;
@@ -120,7 +73,6 @@ const Divider = styled((props: any) => (
     margin: 0;
     padding: 0;
     border: 0;
-    border-bottom: 1px solid ${navigationSidebar.border};
   }
 `;
 
@@ -135,21 +87,8 @@ export const Sidebar = ({ show, className, location }: any) => {
             <Divider />
             <Links links={config.sidebar.links} />
           </div>
-        ) : (
-          <Empty />
-        )}
+        ) : null}
       </SidebarMain>
-      {config.sidebar.poweredBy && config.sidebar.poweredBy.name ? (
-        <PoweredByWrapper>
-          <PoweredBy
-            trademark={config.sidebar.poweredBy.trademark}
-            name={config.sidebar.poweredBy.name}
-            link={config.sidebar.poweredBy.link}
-          />
-        </PoweredByWrapper>
-      ) : (
-        <Empty />
-      )}
     </NavigationWrapper>
   );
 };

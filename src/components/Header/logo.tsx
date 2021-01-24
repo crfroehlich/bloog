@@ -1,12 +1,11 @@
-// import Link from "../Link";
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
-import { Link } from '..';
+import { Link } from '../Link/Link';
 import { onMobile, onTablet } from '../../styles/responsive';
 import { getTheme } from '../../theme';
 
-const { header, layout } = getTheme();
+const { layout, colors } = getTheme();
 
 const logoStyle = () => css`
   padding: 0 0;
@@ -32,7 +31,7 @@ const logoStyle = () => css`
     height: auto;
     font-size: 26px;
     line-height: 1.5;
-    color: ${header.fond?.base};
+    color: ${colors.white};
     ${onTablet} {
       font-size: 21px;
     }
@@ -44,6 +43,7 @@ const logoStyle = () => css`
     &:hover {
       text-decoration: none;
       opacity: 0.8;
+      color: ${colors.red};
     }
   }
 `;
@@ -56,17 +56,12 @@ const LogoWrapper = styled.div`
 `;
 
 export const Logo = styled(({ className, link, img, title }: any) => {
-  const split = title.split(' ');
-  split[0] = `<strong>${split[0]}`;
-  const last = split.length < 3 ? 0 : split.length - 2;
-  split[last] = `${split[last]}</strong>`;
-  const title2 = split.join(' ');
   return (
     <div className={className}>
       <LogoWrapper>
         <Link to={link} css={logoStyle()}>
           <img css={{ display: 'inline-block' }} src={img} alt={'logo'} loading={'lazy'} />
-          <span css={{ display: 'inline-block' }} dangerouslySetInnerHTML={{ __html: title2 }} />
+          <span css={{ display: 'inline-block' }}>{title}</span>
         </Link>
       </LogoWrapper>
     </div>
@@ -75,7 +70,7 @@ export const Logo = styled(({ className, link, img, title }: any) => {
   min-width: ${layout.leftWidth};
   display: flex;
   align-items: center;
-  border-right: 1px solid ${header.border};
+  border-right: none;
   ${onMobile} {
     border-right: none;
     min-width: auto;

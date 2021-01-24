@@ -16,13 +16,12 @@ export const Link = ({ to, ...props }) => {
         </a>
       );
     }
-    if (!to || to.length == 0) {
+    if (!to || to.length === 0) {
       return <Empty />;
     }
     return <GatsbyLink to={to} {...props} />;
   } catch (e) {
-    console.log(to);
-    console.log(e);
+    console.log(['link error', to, e]);
     throw e;
   }
 };

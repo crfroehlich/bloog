@@ -47,7 +47,7 @@ export const blockquote = () => css`
   font-style: italic;
   color: ${colors.font};
   padding: 14px 25px 14px 75px;
-  border-left: 8px solid ${colors.primary};
+  border-left: 8px solid ${colors.blueTag};
   line-height: 1.6;
   position: relative;
   background: ${colors.border};

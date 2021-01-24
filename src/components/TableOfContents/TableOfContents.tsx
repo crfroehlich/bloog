@@ -35,7 +35,7 @@ const Sidebar = styled(({ show, ...props }) => <aside {...props} />)`
       text-decoration: none;
       display: block;
       position: relative;
-      border-left: 1px solid ${tableOfContents.border};
+      border-left: none;
       transition: ${transitions.hover};
     }
 
@@ -48,7 +48,6 @@ const Sidebar = styled(({ show, ...props }) => <aside {...props} />)`
   }
   .currentItem {
     a {
-      border-left: 2px solid ${tableOfContents.fond?.current} !important;
       color: ${tableOfContents.fond?.current} !important;
     }
   }
@@ -90,7 +89,6 @@ const TocTitle = styled(({ className }: any) => {
   text-transform: uppercase;
   letter-spacing: 1.2px;
   padding: 7px 24px 7px 16px;
-  border-left: 1px solid ${tableOfContents.border};
   color: ${tableOfContents.fond?.base};
   display: flex;
   align-items: center;
