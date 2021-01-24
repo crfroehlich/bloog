@@ -15,8 +15,10 @@ const logoStyle = () => css`
     min-height: 40px;
   }
   img {
-    width: 55px;
-    margin-right: 16px;
+    width: 85px;
+    margin-right: 5px;
+    margin-left: -40px;
+    margin-top: -40px;
     display: inline-block;
     ${onTablet} {
       width: 50px;

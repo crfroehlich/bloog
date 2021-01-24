@@ -41,7 +41,7 @@ rules:
   react/react-in-jsx-scope: 'off'
   react-hooks/rules-of-hooks: 'error' #Checks rules of Hooks
   react-hooks/exhaustive-deps: 'warn' #Checks effect dependencies
-  'jsx-a11y/click-events-have-key-events': 0
+  jsx-a11y/click-events-have-key-events: 0
   key-spacing:
     - 2
     - align: colon
