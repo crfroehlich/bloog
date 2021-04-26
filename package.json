@@ -61,7 +61,7 @@
     "gatsby-transformer-remark": "2.12.0",
     "gatsby-transformer-sharp": "2.8.0",
     "is-absolute-url": "3.0.3",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "lodash.flatten": "4.4.0",
     "lodash.startcase": "4.4.0",
     "puppeteer": "5.5.0",
@@ -105,6 +105,6 @@
   },
   "resolutions": {
     "gatsby-react-router-scroll": "3.3.0",
-    "lodash": "4.17.20"
+    "lodash": "4.17.21"
   }
 }
